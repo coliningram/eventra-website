@@ -149,6 +149,9 @@
 
     .site-logo {
       flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
     .logo-img {
@@ -168,6 +171,34 @@
 
     .site-header.scrolled .logo-dark {
       display: block;
+    }
+
+    .logo-text {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 22px;
+      letter-spacing: 0.04em;
+      color: var(--eg-white);
+      transition: color 0.35s ease;
+      white-space: nowrap;
+    }
+
+    .site-header.scrolled .logo-text {
+      color: var(--eg-charcoal);
+    }
+
+    .logo-subtitle {
+      font-family: var(--font-body);
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      transition: color 0.35s ease;
+      margin-top: 2px;
+    }
+
+    .site-header.scrolled .logo-subtitle {
+      color: var(--eg-mid-grey);
     }
 
     .site-nav {
@@ -832,12 +863,12 @@
       gap: 48px;
     }
 
-    .footer-logo-text {
-      font-family: var(--font-display);
-      font-weight: 400;
-      font-size: 20px;
-      color: var(--eg-white);
-      margin-bottom: 6px;
+    .footer-logo-img {
+      display: block;
+      width: auto;
+      height: 36px;
+      max-height: 36px;
+      margin-bottom: 12px;
     }
 
     .footer-tagline {
@@ -1056,8 +1087,12 @@
   <header class="site-header" id="site-header">
     <div class="container">
       <a href="/" class="site-logo">
-        <img src="EVENTRA_FINAL_LOGOS_20_JUNE_2025-03.png" alt="Eventra Group" class="logo-img logo-white">
-        <img src="EVENTRA_FINAL_LOGOS_20_JUNE_2025-02.png" alt="Eventra Group" class="logo-img logo-dark">
+        <img src="EVENTRA_FINAL_LOGOS_20_JUNE_2025-03.png" alt="" class="logo-img logo-white" aria-hidden="true">
+        <img src="EVENTRA_FINAL_LOGOS_20_JUNE_2025-02.png" alt="" class="logo-img logo-dark" aria-hidden="true">
+        <div class="logo-wordmark">
+          <div class="logo-text">Eventra Group</div>
+          <div class="logo-subtitle">Sports Hospitality &amp; Luxury Travel</div>
+        </div>
       </a>
 
       <nav class="site-nav" aria-label="Main navigation">
@@ -1318,7 +1353,7 @@
 
           <!-- Col 1 — Brand -->
           <div>
-            <div class="footer-logo-text">Eventra Group</div>
+            <img src="EVENTRA_FINAL_LOGOS_20_JUNE_2025-03.png" alt="Eventra Group" class="footer-logo-img">
             <p class="footer-tagline">The company you keep.<br>Luxury sports hospitality and experiential travel, curated from Cape Town for the world.</p>
             <div class="social-links">
               <a href="#" class="social-link" aria-label="Instagram">in</a>
