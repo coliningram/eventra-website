@@ -151,32 +151,23 @@
       flex-shrink: 0;
     }
 
-    .logo-text {
-      font-family: var(--font-display);
-      font-weight: 400;
-      font-size: 22px;
-      letter-spacing: 0.04em;
-      color: var(--eg-white);
-      transition: color 0.35s ease;
-      white-space: nowrap;
+    .logo-img {
+      display: block;
+      width: auto;
+      height: 40px;
+      max-height: 40px;
     }
 
-    .site-header.scrolled .logo-text {
-      color: var(--eg-charcoal);
+    .logo-dark {
+      display: none;
     }
 
-    .logo-subtitle {
-      font-family: var(--font-body);
-      font-size: 9px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.7);
-      transition: color 0.35s ease;
-      margin-top: 2px;
+    .site-header.scrolled .logo-white {
+      display: none;
     }
 
-    .site-header.scrolled .logo-subtitle {
-      color: var(--eg-mid-grey);
+    .site-header.scrolled .logo-dark {
+      display: block;
     }
 
     .site-nav {
@@ -1065,8 +1056,8 @@
   <header class="site-header" id="site-header">
     <div class="container">
       <a href="/" class="site-logo">
-        <div class="logo-text">Eventra Group</div>
-        <div class="logo-subtitle">Sports Hospitality &amp; Luxury Travel</div>
+        <img src="EVENTRA_FINAL_LOGOS_20_JUNE_2025-03.png" alt="Eventra Group" class="logo-img logo-white">
+        <img src="EVENTRA_FINAL_LOGOS_20_JUNE_2025-02.png" alt="Eventra Group" class="logo-img logo-dark">
       </a>
 
       <nav class="site-nav" aria-label="Main navigation">
