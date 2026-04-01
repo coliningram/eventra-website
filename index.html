@@ -151,32 +151,16 @@
       flex-shrink: 0;
     }
 
-    .logo-text {
-      font-family: var(--font-display);
-      font-weight: 400;
-      font-size: 22px;
-      letter-spacing: 0.04em;
-      color: var(--eg-white);
-      transition: color 0.35s ease;
-      white-space: nowrap;
+    .site-logo img {
+      height: 36px;
+      width: auto;
+      display: block;
+      filter: brightness(0) invert(1);
+      transition: filter 0.35s ease;
     }
 
-    .site-header.scrolled .logo-text {
-      color: var(--eg-charcoal);
-    }
-
-    .logo-subtitle {
-      font-family: var(--font-body);
-      font-size: 9px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.7);
-      transition: color 0.35s ease;
-      margin-top: 2px;
-    }
-
-    .site-header.scrolled .logo-subtitle {
-      color: var(--eg-mid-grey);
+    .site-header.scrolled .site-logo img {
+      filter: none;
     }
 
     .site-nav {
@@ -841,11 +825,11 @@
       gap: 48px;
     }
 
-    .footer-logo-text {
-      font-family: var(--font-display);
-      font-weight: 400;
-      font-size: 20px;
-      color: var(--eg-white);
+    .footer-logo img {
+      height: 32px;
+      width: auto;
+      display: block;
+      filter: brightness(0) invert(1);
       margin-bottom: 6px;
     }
 
@@ -1065,8 +1049,7 @@
   <header class="site-header" id="site-header">
     <div class="container">
       <a href="/" class="site-logo">
-        <div class="logo-text">Eventra Group</div>
-        <div class="logo-subtitle">Sports Hospitality &amp; Luxury Travel</div>
+        <img src="Eventra Group Logo.png" alt="Eventra Group" width="140" height="36">
       </a>
 
       <nav class="site-nav" aria-label="Main navigation">
@@ -1326,8 +1309,8 @@
         <div class="footer-grid">
 
           <!-- Col 1 — Brand -->
-          <div>
-            <div class="footer-logo-text">Eventra Group</div>
+          <div class="footer-logo">
+            <img src="Eventra Group Logo.png" alt="Eventra Group" width="130" height="32">
             <p class="footer-tagline">The company you keep.<br>Luxury sports hospitality and experiential travel, curated from Cape Town for the world.</p>
             <div class="social-links">
               <a href="#" class="social-link" aria-label="Instagram">in</a>
