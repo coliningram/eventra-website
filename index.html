@@ -359,14 +359,23 @@
       margin-bottom: 32px;
     }
 
+    .hero-tagline {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 26px;
+      letter-spacing: 0.02em;
+      color: rgba(255,255,255,0.88);
+      margin-bottom: 24px;
+    }
+
     .hero-subhead {
       font-family: var(--font-body);
       font-weight: 400;
-      font-size: 18px;
+      font-size: 16px;
       line-height: 1.7;
-      color: rgba(255,255,255,0.9);
+      color: rgba(255,255,255,0.8);
       margin-bottom: 48px;
-      max-width: 520px;
+      max-width: 480px;
     }
 
     .hero-ctas {
@@ -417,7 +426,55 @@
     }
 
     /* ───────────────────────────────────────────────
-       SECTION 2 — THREE DIVISION CARDS
+       SECTION 2 — POSITIONING
+    ─────────────────────────────────────────────── */
+    .positioning {
+      background: var(--eg-white);
+      padding: 120px 0;
+      text-align: center;
+    }
+
+    .positioning-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .positioning-headline {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: 44px;
+      line-height: 1.25;
+      color: var(--eg-charcoal);
+      margin-bottom: 48px;
+    }
+
+    .positioning-body p {
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.85;
+      color: var(--eg-mid-grey);
+      margin-bottom: 20px;
+      max-width: 620px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .positioning-body p.positioning-kicker {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--eg-charcoal);
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 768px) {
+      .positioning { padding: 80px 0; }
+      .positioning-headline { font-size: 30px; }
+      .positioning-body p.positioning-kicker { font-size: 18px; }
+    }
+
+    /* ───────────────────────────────────────────────
+       SECTION 3 — THREE DIVISION CARDS
     ─────────────────────────────────────────────── */
     .divisions {
       background: var(--eg-white);
@@ -1041,7 +1098,7 @@
 
   <!-- ────────────────────────────────────────────
        SECTION 1 — HERO
-       Copy from EVE-11 (approved)
+       Copy from EVE-16 (revised)
   ──────────────────────────────────────────── -->
   <section class="hero" aria-label="Hero">
     <div class="hero-bg" id="hero-bg"></div>
@@ -1049,12 +1106,11 @@
 
     <div class="hero-content">
       <div class="hero-inner">
-        <p class="hero-eyebrow">Sports Hospitality &amp; Experiential Travel</p>
-        <h1 class="hero-headline">Some sporting moments define&nbsp;the&nbsp;year. Eventra arranges the access, the hospitality, and the journey that surrounds them.</h1>
-        <p class="hero-subhead">Premium sports hospitality and bespoke luxury travel, curated from Cape Town for the world.</p>
+        <h1 class="hero-headline">There are those who attend.<br>And those who are present.</h1>
+        <p class="hero-tagline">The company you keep.</p>
+        <p class="hero-subhead">Eventra Group curates the moments that stay with you. Sports hospitality, luxury travel, and the kind of access that does not need explaining.</p>
         <div class="hero-ctas">
-          <a href="/events" class="btn btn-primary">Explore Our Events</a>
-          <a href="/bespoke" class="btn btn-white-outline">Plan Your Journey</a>
+          <a href="/enquire" class="btn btn-primary">Enquire Now</a>
         </div>
       </div>
     </div>
@@ -1067,7 +1123,24 @@
 
 
   <!-- ────────────────────────────────────────────
-       SECTION 2 — THREE DIVISION CARDS
+       SECTION 2 — POSITIONING
+       Copy from EVE-16 (revised)
+  ──────────────────────────────────────────── -->
+  <section class="positioning">
+    <div class="container">
+      <div class="positioning-inner">
+        <h2 class="positioning-headline">You know a great seat from a great experience.<br>You have felt the distance from the crowd.<br>You do not do that anymore.</h2>
+        <div class="positioning-body">
+          <p>Eventra Group was founded for a specific kind of client — one who has long understood that proximity to greatness is not the same as being in the room where it happens. We are a Cape Town-based luxury sports hospitality and experiential travel company. We work with a small number of clients who expect more, move differently, and understand that the details are never incidental.</p>
+          <p class="positioning-kicker">We do not offer packages. We offer access.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ────────────────────────────────────────────
+       SECTION 3 — THREE DIVISION CARDS
   ──────────────────────────────────────────── -->
   <section class="divisions">
     <div class="container">
@@ -1083,10 +1156,10 @@
             >
           </div>
           <div class="division-card-body">
-            <p class="division-label">Eventra Events</p>
-            <h2 class="division-card-title">Sports Hospitality</h2>
-            <p class="division-card-desc">Premium hospitality packages for marquee rugby, cricket, and Formula 1 events. Private suites, curated dining, and unmatched access.</p>
-            <a href="/events" class="card-link">View Events &rarr;</a>
+            <p class="division-label">Events</p>
+            <h2 class="division-card-title">The suite. The access.<br>The moment no one else has.</h2>
+            <p class="division-card-desc">From Springbok hospitality at DHL Stadium to a private VIP suite at Newlands, Eventra Events places you where the match truly lives. We secure premium experiences at South Africa's most celebrated sporting occasions — and we manage every detail so that you arrive as a guest, not the person who organised everything.<br><br>What you will find: private suites, curated catering, insider access, and a room full of people who chose the same thing.</p>
+            <a href="/events" class="card-link">View Upcoming Events &rarr;</a>
           </div>
         </article>
 
@@ -1100,10 +1173,10 @@
             >
           </div>
           <div class="division-card-body">
-            <p class="division-label">Eventra Bespoke</p>
-            <h2 class="division-card-title">Bespoke Luxury Travel</h2>
-            <p class="division-card-desc">Tailor-made journeys through Africa and beyond — crafted in partnership with Ker &amp; Downey Africa for the discerning traveller.</p>
-            <a href="/bespoke" class="card-link">Discover Bespoke &rarr;</a>
+            <p class="division-label">Bespoke Travel</p>
+            <h2 class="division-card-title">A coast you have to know<br>to find.</h2>
+            <p class="division-card-desc">In partnership with Ker &amp; Downey Africa, Eventra Bespoke designs travel that does not appear in standard search results. The private lodge in Mozambique. The Cape Town itinerary that moves like a resident, not a visitor. The journey shaped around a single person's idea of what extraordinary should feel like.<br><br>No templates. No assumptions. Only the trip that belongs to the person taking it.</p>
+            <a href="/bespoke" class="card-link">Explore Bespoke Travel &rarr;</a>
           </div>
         </article>
 
@@ -1117,9 +1190,9 @@
             >
           </div>
           <div class="division-card-body">
-            <p class="division-label">Eventra Festivals</p>
-            <h2 class="division-card-title">Youth Sports Experiences</h2>
-            <p class="division-card-desc">Inspiring the next generation of sporting talent through curated youth festival experiences and grassroots events across South Africa.</p>
+            <p class="division-label">Festivals</p>
+            <h2 class="division-card-title">Where the next generation<br>learns to compete.</h2>
+            <p class="division-card-desc">Eventra Festivals brings premium youth sports competitions to South Africa — building the infrastructure for the athletes of the next decade while creating experiences that families remember for the right reasons. We bring the same standard of access and execution to every event we host.</p>
             <a href="/festivals" class="card-link">Learn More &rarr;</a>
           </div>
         </article>
@@ -1136,9 +1209,9 @@
     <div class="container">
 
       <header class="section-header">
-        <p class="eyebrow">Upcoming Events</p>
-        <h2 class="section-title">Premium Sporting Experiences</h2>
-        <p class="section-sub">Hospitality packages for the world's finest sporting events.</p>
+        <p class="eyebrow">Featured Experiences</p>
+        <h2 class="section-title">The moments worth planning around.</h2>
+        <p class="section-sub">Four experiences. Limited availability.</p>
       </header>
 
       <div class="events-grid">
@@ -1155,9 +1228,9 @@
           </div>
           <div class="event-card-body">
             <p class="event-category">Rugby &middot; Cape Town</p>
-            <h3 class="event-title">Springboks vs All Blacks</h3>
-            <p class="event-teaser">Private suites at DHL Stadium — with post-match player access that no general ticket can replicate.</p>
-            <span class="btn btn-primary btn-sm">View Package</span>
+            <h3 class="event-title">The test that defines a season.</h3>
+            <p class="event-teaser">The Boks and the All Blacks. DHL Stadium. Three suites available.</p>
+            <span class="btn btn-primary btn-sm">Request a Proposal</span>
           </div>
         </a>
 
@@ -1173,27 +1246,27 @@
           </div>
           <div class="event-card-body">
             <p class="event-category">Formula 1 &middot; Monaco</p>
-            <h3 class="event-title">Monaco Grand Prix 2026</h3>
-            <p class="event-teaser">A Monaco GP week built around the grid, not the grandstand. Trackside access and curated experiences throughout race week.</p>
-            <span class="btn btn-primary btn-sm">View Package</span>
+            <h3 class="event-title">Monaco is not a race. It is the proof of concept.</h3>
+            <p class="event-teaser">The circuit that invented glamour. Eventra handles the rest.</p>
+            <span class="btn btn-primary btn-sm">Request a Proposal</span>
           </div>
         </a>
 
-        <!-- Card 3 — England Inbound Tour (small, horizontal) -->
-        <a href="/events/england-inbound-tour-2026" class="event-card small">
+        <!-- Card 3 — England vs SA 3rd Test Cricket (small, horizontal) -->
+        <a href="/events/england-cricket-newlands-2027" class="event-card small">
           <div class="event-card-image">
             <img
-              src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&q=80&auto=format&fit=crop"
-              alt="England Inbound Rugby Tour — Ellis Park, Johannesburg, July 2026"
+              src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=800&q=80&auto=format&fit=crop"
+              alt="England vs South Africa 3rd Test — Newlands Cricket Ground, January 2027"
               loading="lazy"
             >
-            <div class="event-date-badge">4 Jul 2026</div>
+            <div class="event-date-badge">Jan 2027</div>
           </div>
           <div class="event-card-body">
-            <p class="event-category">Rugby &middot; Johannesburg</p>
-            <h3 class="event-title">England Inbound Rugby Tour</h3>
-            <p class="event-teaser">Ellis Park, 4 July 2026. VIP hospitality for England vs South Africa.</p>
-            <span class="btn btn-primary btn-sm">View Package</span>
+            <p class="event-category">Cricket &middot; Cape Town</p>
+            <h3 class="event-title">Newlands in January. There is no better seat in South African cricket.</h3>
+            <p class="event-teaser">Private VIP suite. Full hospitality. One of the most storied Test venues in the world. R21,995 per person.</p>
+            <span class="btn btn-primary btn-sm">Enquire Now</span>
           </div>
         </a>
 
@@ -1209,68 +1282,35 @@
           </div>
           <div class="event-card-body">
             <p class="event-category">Rugby World Cup &middot; Australia</p>
-            <h3 class="event-title">RWC 2027 Australia</h3>
-            <p class="event-teaser">Bespoke packages for the Rugby World Cup in Australia — from first fixtures to the final.</p>
-            <span class="btn btn-primary btn-sm">View Package</span>
+            <h3 class="event-title">Australia, 2027. The tournament that comes once a decade.</h3>
+            <p class="event-teaser">Bespoke RWC 2027 packages. Limited availability.</p>
+            <span class="btn btn-primary btn-sm">Register Interest</span>
           </div>
         </a>
 
       </div>
 
       <div class="events-footer">
-        <a href="/events" class="btn btn-secondary">View All Events</a>
+        <a href="/enquire" class="btn btn-secondary">Enquire Now</a>
       </div>
 
-    </div>
-  </section>
-
-
-  <!-- ────────────────────────────────────────────
-       SECTION 4 — ABOUT SNIPPET
-       Body copy adapted from EVE-11 opening paragraphs
-  ──────────────────────────────────────────── -->
-  <section class="about-snippet">
-    <div class="container">
-      <div class="about-inner">
-
-        <div class="about-text">
-          <p class="eyebrow about-eyebrow">About Eventra Group</p>
-          <h2 class="about-title">Crafting Unforgettable Moments</h2>
-          <div class="about-body">
-            <p>Eventra Group is a Cape Town-based luxury sports hospitality and experiential travel company, delivering extraordinary access to the world's most celebrated sporting events.</p>
-            <p>Our three divisions — Eventra Events, Eventra Bespoke, and Eventra Festivals — work in harmony to create seamless, premium experiences for individuals, corporates, and the next generation of sports enthusiasts. We hold the relationships. Clients hold the experience.</p>
-          </div>
-          <div class="about-divider"></div>
-          <a href="/about" class="btn btn-primary">Our Story</a>
-        </div>
-
-        <div class="about-image">
-          <img
-            src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600&q=80&auto=format&fit=crop&h=750"
-            alt="Eventra Group — luxury sports hospitality, Cape Town"
-            loading="lazy"
-          >
-        </div>
-
-      </div>
     </div>
   </section>
 
 
   <!-- ────────────────────────────────────────────
        SECTION 5 — CTA BAND
+       Copy from EVE-16 (revised)
   ──────────────────────────────────────────── -->
   <section class="cta-band">
     <div class="cta-band-bg"></div>
     <div class="cta-band-overlay"></div>
     <div class="container">
       <div class="cta-band-content">
-        <p class="cta-band-eyebrow">Start Planning</p>
-        <h2 class="cta-band-title">Your Next Extraordinary Experience Awaits</h2>
-        <p class="cta-band-sub">Whether it's a once-in-a-lifetime sporting event or a tailor-made African journey — we're here to make it exceptional.</p>
+        <h2 class="cta-band-title">You already know whether this is for you.</h2>
+        <p class="cta-band-sub">A conversation costs nothing. An experience costs exactly what it is worth.</p>
         <div class="cta-band-buttons">
-          <a href="/enquire" class="btn btn-primary">Enquire Now</a>
-          <a href="/events" class="btn btn-white-outline">Explore Events</a>
+          <a href="/contact" class="btn btn-primary">Contact Us</a>
         </div>
       </div>
     </div>
@@ -1288,7 +1328,7 @@
           <!-- Col 1 — Brand -->
           <div>
             <div class="footer-logo-text">Eventra Group</div>
-            <p class="footer-tagline">Luxury sports hospitality and experiential travel, curated from Cape Town for the world.</p>
+            <p class="footer-tagline">The company you keep.<br>Luxury sports hospitality and experiential travel, curated from Cape Town for the world.</p>
             <div class="social-links">
               <a href="#" class="social-link" aria-label="Instagram">in</a>
               <a href="#" class="social-link" aria-label="LinkedIn">li</a>
@@ -1384,4 +1424,5 @@
 
 </body>
 </html>
+
 
