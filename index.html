@@ -155,13 +155,16 @@
       height: 36px;
       width: auto;
       display: block;
-      filter: brightness(0) invert(1);
-      transition: filter 0.35s ease;
+      transition: opacity 0.35s ease;
     }
 
-    .site-header.scrolled .site-logo img {
-      filter: none;
-    }
+    /* Default state: show white logo (hero/transparent header) */
+    .logo-light { display: block; }
+    .logo-dark  { display: none; }
+
+    /* Scrolled state: swap to dark logo (white header bg) */
+    .site-header.scrolled .logo-light { display: none; }
+    .site-header.scrolled .logo-dark  { display: block; }
 
     .site-nav {
       display: flex;
@@ -829,7 +832,6 @@
       height: 32px;
       width: auto;
       display: block;
-      filter: brightness(0) invert(1);
       margin-bottom: 6px;
     }
 
@@ -1049,7 +1051,10 @@
   <header class="site-header" id="site-header">
     <div class="container">
       <a href="/" class="site-logo">
-        <img src="Eventra Group Logo.png" alt="Eventra Group" width="140" height="36">
+        <!-- White logo: shown on hero/transparent header -->
+        <img class="logo-light" src="EVENTRA_FINAL_LOGOS_20_JUNE_2025-03.png" alt="Eventra Group" height="36" width="36">
+        <!-- Dark logo: shown on scrolled white header -->
+        <img class="logo-dark" src="EVENTRA_FINAL_LOGOS_20_JUNE_2025-04.png" alt="" height="36" width="36" aria-hidden="true">
       </a>
 
       <nav class="site-nav" aria-label="Main navigation">
@@ -1310,7 +1315,7 @@
 
           <!-- Col 1 — Brand -->
           <div class="footer-logo">
-            <img src="Eventra Group Logo.png" alt="Eventra Group" width="130" height="32">
+            <img src="EVENTRA_FINAL_LOGOS_20_JUNE_2025-03.png" alt="Eventra Group" height="32" width="32">
             <p class="footer-tagline">The company you keep.<br>Luxury sports hospitality and experiential travel, curated from Cape Town for the world.</p>
             <div class="social-links">
               <a href="#" class="social-link" aria-label="Instagram">in</a>
