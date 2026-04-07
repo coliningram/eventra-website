@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cricket Hospitality Cape Town | England vs SA Newlands 2027 | Eventra Group</title>
-  <meta name="description" content="VIP cricket hospitality for England vs South Africa 3rd Test at Newlands Cricket Ground, Cape Town — 3–7 January 2027. Private suite, full hospitality, ten days in Cape Town.">
+  <title>Cricket Hospitality South Africa | VIP Suites &amp; Test Match Packages | Eventra</title>
+  <meta name="description" content="Premium cricket hospitality across South Africa's great grounds. Eventra offers curated VIP suites and packages for Test matches, ODIs and T20s — from Newlands to the Wanderers, Centurion and beyond.">
   <link rel="canonical" href="https://eventragroup.co.za/experiences/cricket">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Cricket Hospitality | England vs South Africa Newlands 2027 | Eventra Group">
-  <meta property="og:description" content="Private VIP suite at Newlands for England vs SA 3rd Test, January 2027. Full hospitality. Ten days in Cape Town built around the match.">
+  <meta property="og:title" content="Cricket Hospitality South Africa | VIP Suites &amp; Test Match Packages | Eventra">
+  <meta property="og:description" content="From Newlands to the Wanderers, Eventra places you at the heart of South African cricket. VIP suites, hosted packages and exclusive access across every major venue — including our England vs SA New Year series.">
   <meta property="og:url" content="https://eventragroup.co.za/experiences/cricket">
   <meta property="og:image" content="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=1200&q=80&auto=format&fit=crop">
   <meta property="og:site_name" content="Eventra Group">
@@ -80,22 +80,59 @@
       --max-width:        1240px;
       --gutter:           32px;
     }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { font-family: var(--font-body); font-size: 16px; color: var(--eg-charcoal); background: var(--eg-white); -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: var(--eg-charcoal);
+      background: var(--eg-white);
+      -webkit-font-smoothing: antialiased;
+    }
     img { display: block; width: 100%; height: auto; }
     a { color: inherit; text-decoration: none; }
+
     .container { max-width: var(--max-width); margin: 0 auto; padding: 0 40px; }
-    .eyebrow { font-family: var(--font-body); font-weight: 500; font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--eg-gold); }
-    .btn { display: inline-block; font-family: var(--font-body); font-weight: 600; font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; padding: 16px 40px; border-radius: 2px; cursor: pointer; transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease; border: 1.5px solid transparent; }
+
+    .eyebrow {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--eg-gold);
+    }
+
+    .btn {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 16px 40px;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+      border: 1.5px solid transparent;
+    }
     .btn-primary { background: var(--eg-gold); color: var(--eg-white); border-color: var(--eg-gold); }
     .btn-primary:hover { background: var(--eg-gold-hover); border-color: var(--eg-gold-hover); }
     .btn-secondary { background: transparent; color: var(--eg-gold); border-color: var(--eg-gold); }
     .btn-secondary:hover { background: var(--eg-gold); color: var(--eg-white); }
+    .btn-white-outline { background: transparent; color: var(--eg-white); border-color: var(--eg-white); }
+    .btn-white-outline:hover { background: var(--eg-white); color: var(--eg-charcoal); }
     .btn-sm { padding: 12px 28px; font-size: 12px; }
 
     /* NAV */
-    .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 72px; display: flex; align-items: center; background: transparent; transition: background 0.35s ease, box-shadow 0.35s ease; }
+    .site-header {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100; height: 72px;
+      display: flex; align-items: center;
+      background: transparent;
+      transition: background 0.35s ease, box-shadow 0.35s ease;
+    }
     .site-header.scrolled { background: var(--eg-white); box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
     .site-header .container { width: 100%; display: flex; align-items: center; justify-content: space-between; }
     .site-logo { flex-shrink: 0; display: flex; align-items: center; gap: 10px; }
@@ -149,37 +186,66 @@
     .breadcrumb-item.current { color: var(--eg-gold); }
 
     /* HERO */
-    .hero { position: relative; min-height: 72vh; display: flex; align-items: center; overflow: hidden; }
-    .hero-bg { position: absolute; inset: 0; background-image: url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=2400&q=80&auto=format&fit=crop'); background-size: cover; background-position: center; background-color: #1A1A1A; transform: scale(1.03); transition: transform 8s ease-out; }
+    .hero {
+      position: relative;
+      min-height: 72vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=2400&q=80&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      background-color: #1A1A1A;
+      transform: scale(1.03);
+      transition: transform 8s ease-out;
+    }
     .hero-bg.loaded { transform: scale(1); }
     .hero-overlay { position: absolute; inset: 0; background: linear-gradient(105deg, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.38) 60%, rgba(0,0,0,0.18) 100%); }
     .hero-content { position: relative; z-index: 2; width: 100%; padding: 0 80px; padding-top: 100px; }
-    .hero-inner { max-width: 680px; }
+    .hero-inner { max-width: 780px; }
     .hero-eyebrow { font-family: var(--font-body); font-weight: 500; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.85); margin-bottom: 20px; }
-    .hero-headline { font-family: var(--font-display); font-weight: 300; font-size: 68px; line-height: 1.05; color: var(--eg-white); margin-bottom: 28px; }
-    .hero-subhead { font-family: var(--font-body); font-weight: 400; font-size: 16px; line-height: 1.7; color: rgba(255,255,255,0.8); margin-bottom: 44px; max-width: 480px; }
+    .hero-headline { font-family: var(--font-display); font-weight: 300; font-size: 68px; line-height: 1.05; color: var(--eg-white); margin-bottom: 36px; }
     .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
 
-    /* FEATURE SECTION */
-    .feature-section { background: var(--eg-warm-neutral); padding: var(--section-pad-v) 0; }
+    /* EDITORIAL INTRO */
+    .editorial-intro { background: var(--eg-white); padding: var(--section-pad-v) 0; }
+    .editorial-intro-inner { max-width: 760px; margin: 0 auto; text-align: center; }
+    .editorial-intro-text { font-family: var(--font-display); font-weight: 300; font-size: 24px; line-height: 1.65; color: var(--eg-charcoal); }
+    .editorial-intro-text p { margin-bottom: 1.4em; }
+    .editorial-intro-text p:last-child { margin-bottom: 0; }
+
+    /* WHAT WE OFFER */
+    .offer-section { background: var(--eg-warm-neutral); padding: var(--section-pad-v) 0; }
+    .offer-inner { max-width: 760px; margin: 0 auto; }
+    .offer-inner .eyebrow { margin-bottom: 20px; }
+    .offer-title { font-family: var(--font-display); font-weight: 300; font-size: 44px; color: var(--eg-charcoal); margin-bottom: 28px; line-height: 1.1; }
+    .offer-body { font-family: var(--font-body); font-size: 16px; color: var(--eg-mid-grey); line-height: 1.75; margin-bottom: 16px; }
+    .offer-body:last-child { margin-bottom: 0; }
+
+    /* FEATURED EXPERIENCE */
+    .feature-section { background: var(--eg-white); padding: var(--section-pad-v) 0; }
     .feature-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
     .feature-image { position: relative; overflow: hidden; aspect-ratio: 4/3; }
     .feature-image img { width: 100%; height: 100%; object-fit: cover; }
-    .feature-content { }
     .feature-content .eyebrow { margin-bottom: 20px; }
-    .feature-title { font-family: var(--font-display); font-weight: 300; font-size: 42px; color: var(--eg-charcoal); margin-bottom: 20px; line-height: 1.1; }
+    .feature-title { font-family: var(--font-display); font-weight: 300; font-size: 42px; color: var(--eg-charcoal); margin-bottom: 12px; line-height: 1.1; }
+    .feature-subtitle { font-family: var(--font-body); font-size: 13px; font-weight: 500; letter-spacing: 0.06em; color: var(--eg-mid-grey); margin-bottom: 24px; text-transform: uppercase; }
     .feature-body { font-family: var(--font-body); font-size: 16px; color: var(--eg-mid-grey); line-height: 1.75; margin-bottom: 16px; }
-    .feature-meta { font-family: var(--font-body); font-size: 14px; color: var(--eg-charcoal); font-weight: 500; margin-bottom: 8px; }
-    .feature-meta span { color: var(--eg-mid-grey); font-weight: 400; }
     .feature-cta { margin-top: 36px; }
 
-    /* INCLUSIONS */
-    .inclusions-band { background: var(--eg-white); padding: var(--section-pad-v) 0; }
-    .inclusions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gutter); margin-top: 48px; }
-    .inclusion-item { }
-    .inclusion-icon { font-size: 24px; margin-bottom: 16px; }
-    .inclusion-title { font-family: var(--font-display); font-weight: 400; font-size: 20px; color: var(--eg-charcoal); margin-bottom: 8px; }
-    .inclusion-desc { font-family: var(--font-body); font-size: 14px; color: var(--eg-mid-grey); line-height: 1.65; }
+    /* VENUE COVERAGE */
+    .venue-section { background: var(--eg-warm-neutral); padding: var(--section-pad-v) 0; }
+    .venue-header { margin-bottom: 56px; }
+    .venue-header .eyebrow { margin-bottom: 16px; }
+    .venue-header-title { font-family: var(--font-display); font-weight: 400; font-size: 44px; color: var(--eg-charcoal); line-height: 1.1; }
+    .venue-list { list-style: none; border-top: 1px solid rgba(0,0,0,0.1); }
+    .venue-item { border-bottom: 1px solid rgba(0,0,0,0.1); padding: 28px 0; display: grid; grid-template-columns: 1fr 2fr; gap: 40px; align-items: baseline; }
+    .venue-name { font-family: var(--font-display); font-weight: 400; font-size: 22px; color: var(--eg-charcoal); }
+    .venue-desc { font-family: var(--font-body); font-size: 15px; color: var(--eg-mid-grey); line-height: 1.65; }
 
     /* CTA BAND */
     .cta-band { background: var(--eg-charcoal); padding: 100px 0; }
@@ -215,10 +281,10 @@
     /* RESPONSIVE */
     @media (max-width: 1024px) {
       .feature-layout { grid-template-columns: 1fr; gap: 40px; }
-      .inclusions-grid { grid-template-columns: repeat(2, 1fr); }
       .hero-headline { font-size: 52px; }
       .hero-content { padding: 0 40px; padding-top: 100px; }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .venue-item { grid-template-columns: 1fr; gap: 8px; }
     }
     @media (max-width: 768px) {
       .nav-hamburger { display: flex; }
@@ -226,11 +292,15 @@
       .hero { min-height: 65vh; }
       .hero-headline { font-size: 38px; }
       .hero-content { padding: 0 24px; padding-top: 100px; }
-      .hero-subhead { font-size: 15px; }
       .container { padding: 0 24px; }
-      .inclusions-grid { grid-template-columns: 1fr; }
+      .editorial-intro { padding: var(--section-pad-v-sm) 0; }
+      .editorial-intro-text { font-size: 20px; }
+      .offer-section { padding: var(--section-pad-v-sm) 0; }
+      .offer-title { font-size: 32px; }
       .feature-section { padding: var(--section-pad-v-sm) 0; }
-      .inclusions-band { padding: var(--section-pad-v-sm) 0; }
+      .feature-title { font-size: 32px; }
+      .venue-section { padding: var(--section-pad-v-sm) 0; }
+      .venue-header-title { font-size: 32px; }
       .cta-band { padding: 80px 0; }
       .cta-band-title { font-size: 32px; }
       .footer-grid { grid-template-columns: 1fr; gap: 32px; }
@@ -254,15 +324,15 @@
       </a>
       <nav class="site-nav" aria-label="Main navigation">
         <div class="nav-dropdown-wrap">
-        <a href="/experiences" class="nav-link">Experiences</a>
-        <div class="nav-dropdown">
-          <a href="/experiences/rugby">Rugby</a>
-          <a href="/experiences/cricket">Cricket</a>
-          <a href="/experiences/f1">Formula 1</a>
-          <a href="/experiences/football">Football</a>
-          <a href="/experiences" class="nav-dropdown-view-all">View All</a>
+          <a href="/experiences" class="nav-link">Experiences</a>
+          <div class="nav-dropdown">
+            <a href="/experiences/rugby">Rugby</a>
+            <a href="/experiences/cricket">Cricket</a>
+            <a href="/experiences/f1">Formula 1</a>
+            <a href="/experiences/football">Football</a>
+            <a href="/experiences" class="nav-dropdown-view-all">View All</a>
+          </div>
         </div>
-      </div>
         <a href="/bespoke" class="nav-link">Bespoke Travel</a>
         <a href="/enquire" class="nav-cta">Enquire</a>
       </nav>
@@ -275,15 +345,15 @@
   <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
     <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close menu">&times;</button>
     <div class="mobile-exp-wrap">
-    <button class="nav-link mobile-exp-btn" aria-expanded="false" id="mobile-exp-trigger">Experiences <span class="mobile-exp-chevron">&#9662;</span></button>
-    <div class="mobile-subnav" id="mobile-subnav" hidden>
-      <a href="/experiences/rugby" class="nav-link mobile-sublink">Rugby</a>
-      <a href="/experiences/cricket" class="nav-link mobile-sublink">Cricket</a>
-      <a href="/experiences/f1" class="nav-link mobile-sublink">Formula 1</a>
-      <a href="/experiences/football" class="nav-link mobile-sublink">Football</a>
-      <a href="/experiences" class="nav-link mobile-sublink">View All</a>
+      <button class="nav-link mobile-exp-btn" aria-expanded="false" id="mobile-exp-trigger">Experiences <span class="mobile-exp-chevron">&#9662;</span></button>
+      <div class="mobile-subnav" id="mobile-subnav" hidden>
+        <a href="/experiences/rugby" class="nav-link mobile-sublink">Rugby</a>
+        <a href="/experiences/cricket" class="nav-link mobile-sublink">Cricket</a>
+        <a href="/experiences/f1" class="nav-link mobile-sublink">Formula 1</a>
+        <a href="/experiences/football" class="nav-link mobile-sublink">Football</a>
+        <a href="/experiences" class="nav-link mobile-sublink">View All</a>
+      </div>
     </div>
-  </div>
     <a href="/bespoke" class="nav-link">Bespoke Travel</a>
     <a href="/enquire" class="nav-cta btn btn-secondary">Enquire Now</a>
   </nav>
@@ -310,37 +380,62 @@
     <div class="hero-content">
       <div class="hero-inner">
         <p class="hero-eyebrow">Eventra Events &mdash; Cricket</p>
-        <h1 class="hero-headline">Cricket<br>Hospitality</h1>
-        <p class="hero-subhead">England vs South Africa at Newlands. The finest Test match setting in the country. Private suite, five days, full service — and ten nights in Cape Town around it.</p>
+        <h1 class="hero-headline">The Finest Seats in South African Cricket &mdash; and Everything That Comes With Them</h1>
         <div class="hero-ctas">
           <a href="/enquire" class="btn btn-primary">Enquire Now</a>
-          <a href="/events/england-cricket-newlands-2027" class="btn btn-white-outline">View Full Details</a>
         </div>
       </div>
     </div>
   </section>
 
 
-  <!-- FEATURE: THE MATCH -->
-  <section class="feature-section" aria-label="England vs South Africa cricket experience">
+  <!-- EDITORIAL INTRO -->
+  <section class="editorial-intro" aria-label="Cricket editorial introduction">
+    <div class="container">
+      <div class="editorial-intro-inner">
+        <div class="editorial-intro-text">
+          <p>South Africa&rsquo;s cricket grounds are among the most beautiful in the world.</p>
+          <p>Newlands beneath the mountain. The Wanderers in the Highveld heat. SuperSport Park, St George&rsquo;s Park, Kingsmead. Each venue has its own character, its own atmosphere, its own way of holding a moment.</p>
+          <p>Eventra gives you access to all of them &mdash; properly. Not just a ticket, but a seat worth having, a table worth sitting at, and a day that outlasts the last ball.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- WHAT WE OFFER -->
+  <section class="offer-section" aria-label="What Eventra offers">
+    <div class="container">
+      <div class="offer-inner">
+        <p class="eyebrow">What We Offer</p>
+        <h2 class="offer-title">Test Matches. ODIs. T20s.</h2>
+        <p class="offer-body">We curate hospitality across every format and every major South African venue &mdash; for international series, domestic fixtures and the moments that define a cricket summer.</p>
+        <p class="offer-body">Our packages are built around the experience of the day: premium suites and hospitality areas, catered service, and the kind of access that changes how you watch the game.</p>
+        <p class="offer-body">Whether you are hosting clients, celebrating with friends, or simply choosing to watch cricket the right way &mdash; we handle everything.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FEATURED EXPERIENCE -->
+  <section class="feature-section" aria-label="England vs South Africa New Year Test Series">
     <div class="container">
       <div class="feature-layout">
         <div class="feature-image">
           <img
             src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=1200&q=80&auto=format&fit=crop"
-            alt="Newlands Cricket Ground, Cape Town — England vs South Africa Test match hospitality"
+            alt="Newlands Cricket Ground, Cape Town — England vs South Africa New Year Test Series"
+            loading="lazy"
           >
         </div>
         <div class="feature-content">
-          <p class="eyebrow">England vs South Africa</p>
-          <h2 class="feature-title">Newlands in January. There is no better seat in South African cricket.</h2>
-          <p class="feature-body">The 3rd Test. Cape Town. Newlands Cricket Ground with the mountain as a backdrop. Eventra has secured a private VIP suite for the full five days — with premium dining, open bar, and curated service throughout.</p>
-          <p class="feature-body">The package extends well beyond the match: ten nights in Cape Town, winery visits, the Cape Peninsula, and private dinners built around the cricket schedule.</p>
-          <div style="margin-top: 28px;">
-            <p class="feature-meta">Date: <span>3–7 January 2027</span></p>
-            <p class="feature-meta">Venue: <span>Newlands Cricket Ground, Cape Town</span></p>
-            <p class="feature-meta">Availability: <span>Limited suite capacity</span></p>
-          </div>
+          <p class="eyebrow">Featured Experience</p>
+          <h2 class="feature-title">England vs South Africa &mdash; New Year Test Series</h2>
+          <p class="feature-subtitle">The 10-Night New Year Package</p>
+          <p class="feature-body">This is the one.</p>
+          <p class="feature-body">England&rsquo;s tour of South Africa at New Year is one of the most anticipated series on the international calendar &mdash; and Newlands at New Year is unlike anywhere else in cricket.</p>
+          <p class="feature-body">Our 10-night New Year package is a fully curated experience built around the Cape Town Test: premium match-day hospitality, accommodation, city access and guided itinerary across ten days in the Cape.</p>
+          <p class="feature-body">It is the kind of trip people talk about for years.</p>
           <div class="feature-cta">
             <a href="/events/england-cricket-newlands-2027" class="btn btn-primary">View Full Package</a>
           </div>
@@ -350,46 +445,35 @@
   </section>
 
 
-  <!-- INCLUSIONS -->
-  <section class="inclusions-band" aria-label="What is included">
+  <!-- VENUE COVERAGE -->
+  <section class="venue-section" aria-label="South African cricket venues">
     <div class="container">
-      <header style="text-align: center; margin-bottom: 0;">
-        <p class="eyebrow" style="margin-bottom: 16px;">What is included</p>
-        <h2 style="font-family: var(--font-display); font-weight: 400; font-size: 40px; color: var(--eg-charcoal); margin-bottom: 12px; line-height: 1.1;">Everything handled.</h2>
-        <p style="font-family: var(--font-body); font-size: 16px; color: var(--eg-mid-grey); max-width: 480px; margin: 0 auto; line-height: 1.7;">From match access to Cape Town transfers — Eventra coordinates every detail.</p>
-      </header>
-      <div class="inclusions-grid">
-        <div class="inclusion-item">
-          <div class="inclusion-icon">&#9670;</div>
-          <h3 class="inclusion-title">Private VIP Suite</h3>
-          <p class="inclusion-desc">Dedicated suite access for all five Test days, with premium pitch-facing views and climate control.</p>
-        </div>
-        <div class="inclusion-item">
-          <div class="inclusion-icon">&#9670;</div>
-          <h3 class="inclusion-title">Full Hospitality</h3>
-          <p class="inclusion-desc">Premium dining, open bar, and curated refreshments throughout each day of play.</p>
-        </div>
-        <div class="inclusion-item">
-          <div class="inclusion-icon">&#9670;</div>
-          <h3 class="inclusion-title">Ten Nights in Cape Town</h3>
-          <p class="inclusion-desc">Five-star accommodation at a curated Cape Town address — within reach of Newlands and the city.</p>
-        </div>
-        <div class="inclusion-item">
-          <div class="inclusion-icon">&#9670;</div>
-          <h3 class="inclusion-title">Winery &amp; Cape Experiences</h3>
-          <p class="inclusion-desc">Private Winelands tours, the Cape Peninsula, and curated dinners on the days without play.</p>
-        </div>
-        <div class="inclusion-item">
-          <div class="inclusion-icon">&#9670;</div>
-          <h3 class="inclusion-title">Private Transfers</h3>
-          <p class="inclusion-desc">Chauffeured transport between hotel, Newlands, and all programme activities.</p>
-        </div>
-        <div class="inclusion-item">
-          <div class="inclusion-icon">&#9670;</div>
-          <h3 class="inclusion-title">Dedicated Concierge</h3>
-          <p class="inclusion-desc">An Eventra concierge on-hand throughout — from arrival in Cape Town to departure.</p>
-        </div>
+      <div class="venue-header">
+        <p class="eyebrow">Venue Coverage</p>
+        <h2 class="venue-header-title">Every Ground. Every Series.</h2>
       </div>
+      <ul class="venue-list">
+        <li class="venue-item">
+          <span class="venue-name">Newlands, Cape Town</span>
+          <span class="venue-desc">The country&rsquo;s most iconic Test venue, set against the backdrop of Table Mountain.</span>
+        </li>
+        <li class="venue-item">
+          <span class="venue-name">The Wanderers, Johannesburg</span>
+          <span class="venue-desc">High altitude, fast outfield, electric atmosphere.</span>
+        </li>
+        <li class="venue-item">
+          <span class="venue-name">SuperSport Park, Centurion</span>
+          <span class="venue-desc">The Highveld fortress, home to some of South Africa&rsquo;s most memorable Test wins.</span>
+        </li>
+        <li class="venue-item">
+          <span class="venue-name">St George&rsquo;s Park, Gqeberha</span>
+          <span class="venue-desc">The oldest Test ground in South Africa, with a character all its own.</span>
+        </li>
+        <li class="venue-item">
+          <span class="venue-name">Kingsmead, Durban</span>
+          <span class="venue-desc">Sea air, swing bowling and afternoon thunder: Durban cricket in its purest form.</span>
+        </li>
+      </ul>
     </div>
   </section>
 
@@ -398,9 +482,9 @@
   <section class="cta-band">
     <div class="container">
       <div class="cta-band-content">
-        <h2 class="cta-band-title">Newlands, January 2027.</h2>
-        <p class="cta-band-sub">Suite capacity is limited. Request a proposal and we will confirm availability and pricing within 48 hours.</p>
-        <a href="/enquire" class="btn btn-primary">Request a Proposal</a>
+        <h2 class="cta-band-title">Your Next Cricket Summer Starts Here</h2>
+        <p class="cta-band-sub">Tell us which series, which venue, which format &mdash; and we will build the right package around it.</p>
+        <a href="/enquire" class="btn btn-primary">Enquire Now</a>
       </div>
     </div>
   </section>
@@ -413,7 +497,7 @@
         <div class="footer-grid">
           <div class="footer-brand">
             <img src="/EVENTRA_FINAL_LOGOS_20_JUNE_2025-01.png" alt="Eventra Group" class="footer-brand-logo">
-            <p class="footer-brand-text">Premium sports hospitality and luxury experiential travel. Three divisions — Eventra Events, Eventra Bespoke, and Eventra Festivals — based in Cape Town.</p>
+            <p class="footer-brand-text">Premium sports hospitality and luxury experiential travel. Three divisions &mdash; Eventra Events, Eventra Bespoke, and Eventra Festivals &mdash; based in Cape Town.</p>
             <div class="social-links">
               <a href="#" class="social-link" aria-label="Instagram">IG</a>
               <a href="#" class="social-link" aria-label="LinkedIn">LI</a>
@@ -461,7 +545,9 @@
 
   <script>
     const header = document.getElementById('site-header');
-    window.addEventListener('scroll', () => { header.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
     const heroBg = document.getElementById('hero-bg');
     if (heroBg) heroBg.classList.add('loaded');
     const hamburger = document.getElementById('nav-hamburger');
@@ -471,7 +557,7 @@
       hamburger.addEventListener('click', () => mobileNav.classList.add('open'));
       mobileClose.addEventListener('click', () => mobileNav.classList.remove('open'));
     }
-  
+
     // Mobile Experiences expand
     const expTrigger = document.getElementById('mobile-exp-trigger');
     const expSubnav = document.getElementById('mobile-subnav');
