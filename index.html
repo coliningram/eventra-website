@@ -1121,7 +1121,13 @@
           <a href="/experiences" class="nav-dropdown-view-all">View All</a>
         </div>
       </div>
-        <a href="/bespoke" class="nav-link">Bespoke Travel</a>
+        <div class="nav-dropdown-wrap">
+          <a href="/bespoke" class="nav-link">Bespoke Travel</a>
+          <div class="nav-dropdown">
+            <a href="/bespoke/africa">Africa</a>
+            <a href="/bespoke/europe">Europe</a>
+          </div>
+        </div>
         <a href="/enquire" class="nav-cta">Enquire</a>
       </nav>
 
@@ -1135,16 +1141,22 @@
   <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
     <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close menu">&times;</button>
     <div class="mobile-exp-wrap">
-    <button class="nav-link mobile-exp-btn" aria-expanded="false" id="mobile-exp-trigger">Experiences <span class="mobile-exp-chevron">&#9662;</span></button>
-    <div class="mobile-subnav" id="mobile-subnav" hidden>
-      <a href="/experiences/rugby" class="nav-link mobile-sublink">Rugby</a>
-      <a href="/experiences/cricket" class="nav-link mobile-sublink">Cricket</a>
-      <a href="/experiences/f1" class="nav-link mobile-sublink">Formula 1</a>
-      <a href="/experiences/football" class="nav-link mobile-sublink">Football</a>
-      <a href="/experiences" class="nav-link mobile-sublink">View All</a>
+      <button class="nav-link mobile-exp-btn" aria-expanded="false" id="mobile-exp-trigger">Experiences <span class="mobile-exp-chevron">&#9662;</span></button>
+      <div class="mobile-subnav" id="mobile-subnav" hidden>
+        <a href="/experiences/rugby" class="nav-link mobile-sublink">Rugby</a>
+        <a href="/experiences/cricket" class="nav-link mobile-sublink">Cricket</a>
+        <a href="/experiences/f1" class="nav-link mobile-sublink">Formula 1</a>
+        <a href="/experiences/football" class="nav-link mobile-sublink">Football</a>
+        <a href="/experiences" class="nav-link mobile-sublink">View All</a>
+      </div>
     </div>
-  </div>
-    <a href="/bespoke" class="nav-link">Bespoke Travel</a>
+    <div class="mobile-exp-wrap">
+      <button class="nav-link mobile-exp-btn" aria-expanded="false" id="mobile-bespoke-trigger">Bespoke Travel <span class="mobile-exp-chevron">&#9662;</span></button>
+      <div class="mobile-subnav" id="mobile-bespoke-subnav" hidden>
+        <a href="/bespoke/africa" class="nav-link mobile-sublink">Africa</a>
+        <a href="/bespoke/europe" class="nav-link mobile-sublink">Europe</a>
+      </div>
+    </div>
     <a href="/enquire" class="nav-cta btn btn-secondary">Enquire Now</a>
   </nav>
 
@@ -1482,6 +1494,17 @@
         const isExp = expTrigger.getAttribute('aria-expanded') === 'true';
         expTrigger.setAttribute('aria-expanded', String(!isExp));
         expSubnav.hidden = isExp;
+      });
+    }
+
+    // Mobile Bespoke expand
+    const bespokeTrigger = document.getElementById('mobile-bespoke-trigger');
+    const bespokeSubnav = document.getElementById('mobile-bespoke-subnav');
+    if (bespokeTrigger && bespokeSubnav) {
+      bespokeTrigger.addEventListener('click', () => {
+        const isOpen = bespokeTrigger.getAttribute('aria-expanded') === 'true';
+        bespokeTrigger.setAttribute('aria-expanded', String(!isOpen));
+        bespokeSubnav.hidden = isOpen;
       });
     }
   </script>
