@@ -327,6 +327,19 @@
     .mobile-exp-btn[aria-expanded="true"] .mobile-exp-chevron { transform: rotate(180deg); }
     .mobile-subnav { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-top: 14px; }
     .mobile-sublink { font-size: 12px !important; opacity: 0.72; }
+    /* Bespoke nested dropdown — desktop */
+    .nav-dropdown-item { position: relative; }
+    .nav-subnav { position: absolute; top: 0; left: 100%; background: var(--eg-white); min-width: 200px; border-top: 2px solid var(--eg-gold); box-shadow: 0 8px 32px rgba(0,0,0,0.12); opacity: 0; visibility: hidden; transition: opacity 0.2s ease, visibility 0.2s ease; transition-delay: 0.2s; z-index: 210; pointer-events: none; padding-top: 14px; }
+    .nav-dropdown-item:hover .nav-subnav { opacity: 1; visibility: visible; pointer-events: auto; transition-delay: 0s; }
+    .nav-subnav a { display: block; padding: 11px 20px; font-family: var(--font-body); font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--eg-charcoal); transition: background 0.15s, color 0.15s; text-decoration: none; }
+    .nav-subnav a:hover { background: var(--eg-warm-neutral); color: var(--eg-gold); }
+    .nav-subnav .nav-subnav-design { border-top: 1px solid #eee; color: var(--eg-gold); }
+    .nav-dropdown-arrow { font-size: 10px; opacity: 0.55; margin-left: 4px; }
+    /* Bespoke mobile nested accordion */
+    .mobile-sub-group { display: flex; flex-direction: column; align-items: center; width: 100%; gap: 0; }
+    .mobile-sub-group-btn { font-size: 12px !important; opacity: 0.72; background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 6px; padding: 0; color: var(--eg-white); font-family: var(--font-body); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; }
+    .mobile-sub-sub-nav { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 10px; margin-bottom: 4px; }
+    .mobile-sub-sublink { font-size: 11px !important; opacity: 0.55; }
 
     /* ───────────────────────────────────────────────
        SECTION 1 — HERO
@@ -1126,8 +1139,25 @@
         <div class="nav-dropdown-wrap">
           <a href="/bespoke" class="nav-link">Bespoke Travel</a>
           <div class="nav-dropdown">
-            <a href="/bespoke/africa">Africa</a>
-            <a href="/bespoke/europe">Europe</a>
+            <div class="nav-dropdown-item">
+              <a href="/bespoke/africa">Africa <span class="nav-dropdown-arrow">›</span></a>
+              <div class="nav-subnav">
+                <a href="/bespoke/africa/southern-africa">Southern Africa</a>
+                <a href="/bespoke/africa/east-africa">East Africa &amp; Islands</a>
+                <a href="/bespoke/africa/north-africa">North Africa</a>
+                <a href="/enquire" class="nav-subnav-design">Design Your Journey</a>
+              </div>
+            </div>
+            <div class="nav-dropdown-item">
+              <a href="/bespoke/europe">Europe <span class="nav-dropdown-arrow">›</span></a>
+              <div class="nav-subnav">
+                <a href="/bespoke/europe/western-europe">Western Europe</a>
+                <a href="/bespoke/europe/mediterranean">Mediterranean</a>
+                <a href="/bespoke/europe/uk-ireland">UK &amp; Ireland</a>
+                <a href="/bespoke/europe/nordic-eastern">Nordic &amp; Eastern Europe</a>
+                <a href="/enquire" class="nav-subnav-design">Design Your Journey</a>
+              </div>
+            </div>
           </div>
         </div>
         <a href="/enquire" class="nav-cta">Enquire</a>
@@ -1157,8 +1187,25 @@
     <div class="mobile-exp-wrap">
       <button class="nav-link mobile-exp-btn" aria-expanded="false" id="mobile-bespoke-trigger">Bespoke Travel <span class="mobile-exp-chevron">&#9662;</span></button>
       <div class="mobile-subnav" id="mobile-bespoke-subnav" hidden>
-        <a href="/bespoke/africa" class="nav-link mobile-sublink">Africa</a>
-        <a href="/bespoke/europe" class="nav-link mobile-sublink">Europe</a>
+        <div class="mobile-sub-group">
+          <button class="mobile-sub-group-btn" aria-expanded="false" id="mobile-bespoke-africa-trigger">Africa <span class="mobile-exp-chevron">&#9662;</span></button>
+          <div class="mobile-sub-sub-nav" id="mobile-bespoke-africa-subnav" hidden>
+            <a href="/bespoke/africa/southern-africa" class="nav-link mobile-sub-sublink">Southern Africa</a>
+            <a href="/bespoke/africa/east-africa" class="nav-link mobile-sub-sublink">East Africa &amp; Islands</a>
+            <a href="/bespoke/africa/north-africa" class="nav-link mobile-sub-sublink">North Africa</a>
+            <a href="/enquire" class="nav-link mobile-sub-sublink">Design Your Journey</a>
+          </div>
+        </div>
+        <div class="mobile-sub-group">
+          <button class="mobile-sub-group-btn" aria-expanded="false" id="mobile-bespoke-europe-trigger">Europe <span class="mobile-exp-chevron">&#9662;</span></button>
+          <div class="mobile-sub-sub-nav" id="mobile-bespoke-europe-subnav" hidden>
+            <a href="/bespoke/europe/western-europe" class="nav-link mobile-sub-sublink">Western Europe</a>
+            <a href="/bespoke/europe/mediterranean" class="nav-link mobile-sub-sublink">Mediterranean</a>
+            <a href="/bespoke/europe/uk-ireland" class="nav-link mobile-sub-sublink">UK &amp; Ireland</a>
+            <a href="/bespoke/europe/nordic-eastern" class="nav-link mobile-sub-sublink">Nordic &amp; Eastern Europe</a>
+            <a href="/enquire" class="nav-link mobile-sub-sublink">Design Your Journey</a>
+          </div>
+        </div>
       </div>
     </div>
     <a href="/enquire" class="nav-cta btn btn-secondary">Enquire Now</a>
@@ -1509,6 +1556,28 @@
         const isOpen = bespokeTrigger.getAttribute('aria-expanded') === 'true';
         bespokeTrigger.setAttribute('aria-expanded', String(!isOpen));
         bespokeSubnav.hidden = isOpen;
+      });
+    }
+
+    // Mobile Bespoke — Africa sub-accordion
+    const bespokeAfricaTrigger = document.getElementById('mobile-bespoke-africa-trigger');
+    const bespokeAfricaSubnav = document.getElementById('mobile-bespoke-africa-subnav');
+    if (bespokeAfricaTrigger && bespokeAfricaSubnav) {
+      bespokeAfricaTrigger.addEventListener('click', () => {
+        const isOpen = bespokeAfricaTrigger.getAttribute('aria-expanded') === 'true';
+        bespokeAfricaTrigger.setAttribute('aria-expanded', String(!isOpen));
+        bespokeAfricaSubnav.hidden = isOpen;
+      });
+    }
+
+    // Mobile Bespoke — Europe sub-accordion
+    const bespokeEuropeTrigger = document.getElementById('mobile-bespoke-europe-trigger');
+    const bespokeEuropeSubnav = document.getElementById('mobile-bespoke-europe-subnav');
+    if (bespokeEuropeTrigger && bespokeEuropeSubnav) {
+      bespokeEuropeTrigger.addEventListener('click', () => {
+        const isOpen = bespokeEuropeTrigger.getAttribute('aria-expanded') === 'true';
+        bespokeEuropeTrigger.setAttribute('aria-expanded', String(!isOpen));
+        bespokeEuropeSubnav.hidden = isOpen;
       });
     }
   </script>
