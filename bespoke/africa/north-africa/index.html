@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>North Africa | Bespoke Travel | Eventra Group</title>
+  <meta name="description" content="Eventra Bespoke North Africa — private journeys through Morocco, the Sahara Desert, Marrakech, and the Atlas Mountains. Coming soon.">
+  <link rel="canonical" href="https://eventragroup.co.za/bespoke/africa/north-africa">
+  <meta name="robots" content="noindex, follow">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --eg-white:        #FFFFFF;
+      --eg-warm-neutral: #F8F5F0;
+      --eg-charcoal:     #1A1A1A;
+      --eg-mid-grey:     #6B6B6B;
+      --eg-gold:         #B8966B;
+      --eg-gold-hover:   #9E7D55;
+      --font-display:    'Cormorant Garamond', serif;
+      --font-body:       'Inter', sans-serif;
+      --max-width:       1240px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); font-size: 16px; color: var(--eg-charcoal); background: var(--eg-white); -webkit-font-smoothing: antialiased; min-height: 100vh; display: flex; flex-direction: column; }
+    img { display: block; width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 40px; }
+
+    /* NAV */
+    .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 72px; display: flex; align-items: center; background: transparent; transition: background 0.35s ease, box-shadow 0.35s ease; }
+    .site-header.scrolled { background: var(--eg-white); box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+    .site-header .container { width: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .site-logo { flex-shrink: 0; display: flex; align-items: center; gap: 10px; }
+    .logo-img { display: block; width: auto; height: 40px; max-height: 40px; }
+    .logo-dark { display: none; }
+    .site-header.scrolled .logo-white { display: none; }
+    .site-header.scrolled .logo-dark { display: block; }
+    .logo-text { font-family: var(--font-display); font-weight: 400; font-size: 22px; letter-spacing: 0.04em; color: var(--eg-white); transition: color 0.35s ease; white-space: nowrap; }
+    .site-header.scrolled .logo-text { color: var(--eg-charcoal); }
+    .logo-subtitle { font-family: var(--font-body); font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.7); transition: color 0.35s ease; margin-top: 2px; }
+    .site-header.scrolled .logo-subtitle { color: var(--eg-mid-grey); }
+    .site-nav { display: flex; align-items: center; gap: 36px; }
+    .nav-link { font-family: var(--font-body); font-weight: 500; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.88); transition: color 0.25s ease; }
+    .site-header.scrolled .nav-link { color: var(--eg-charcoal); }
+    .nav-link:hover { color: var(--eg-gold); }
+    .nav-cta { font-family: var(--font-body); font-weight: 600; font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; padding: 10px 24px; border-radius: 2px; border: 1.5px solid rgba(255,255,255,0.7); color: var(--eg-white); transition: all 0.25s ease; }
+    .site-header.scrolled .nav-cta { border-color: var(--eg-gold); color: var(--eg-gold); }
+    .nav-cta:hover { background: var(--eg-white); color: var(--eg-charcoal); border-color: var(--eg-white); }
+    .site-header.scrolled .nav-cta:hover { background: var(--eg-gold); color: var(--eg-white); border-color: var(--eg-gold); }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+    .nav-hamburger span { display: block; width: 24px; height: 1.5px; background: var(--eg-white); transition: background 0.35s ease; }
+    .site-header.scrolled .nav-hamburger span { background: var(--eg-charcoal); }
+    .mobile-nav { display: none; position: fixed; inset: 0; background: var(--eg-charcoal); z-index: 99; flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav .nav-link { color: var(--eg-white); font-size: 14px; }
+    .mobile-nav .nav-cta { border-color: var(--eg-gold); color: var(--eg-gold); }
+    .mobile-nav-close { position: absolute; top: 24px; right: 24px; cursor: pointer; font-size: 28px; color: var(--eg-white); line-height: 1; background: none; border: none; }
+    .nav-dropdown-wrap { position: relative; display: flex; align-items: center; }
+    .nav-dropdown { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); background: var(--eg-white); min-width: 180px; border-top: 2px solid var(--eg-gold); box-shadow: 0 8px 32px rgba(0,0,0,0.12); opacity: 0; visibility: hidden; transition: opacity 0.2s ease, visibility 0.2s ease; transition-delay: 0.2s; z-index: 200; pointer-events: none; padding-top: 14px; }
+    .nav-dropdown-wrap:hover .nav-dropdown { opacity: 1; visibility: visible; pointer-events: auto; transition-delay: 0s; }
+    .nav-dropdown a { display: block; padding: 11px 20px; font-family: var(--font-body); font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--eg-charcoal); transition: background 0.15s, color 0.15s; }
+    .nav-dropdown a:hover { background: var(--eg-warm-neutral); color: var(--eg-gold); }
+    .nav-dropdown .nav-dropdown-view-all { border-top: 1px solid #eee; color: var(--eg-gold); }
+    .mobile-exp-wrap { display: flex; flex-direction: column; align-items: center; }
+    .mobile-exp-btn { background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 8px; padding: 0; }
+    .mobile-exp-chevron { font-size: 9px; transition: transform 0.2s; display: inline-block; }
+    .mobile-exp-btn[aria-expanded="true"] .mobile-exp-chevron { transform: rotate(180deg); }
+    .mobile-subnav { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-top: 14px; }
+    .mobile-sublink { font-size: 12px !important; opacity: 0.72; }
+
+    /* COMING SOON */
+    .coming-soon-wrap { flex: 1; position: relative; display: flex; align-items: center; justify-content: center; min-height: 100vh; overflow: hidden; }
+    .coming-soon-bg { position: absolute; inset: 0; background-image: url('https://images.unsplash.com/photo-1489493887464-892be6d1daae?w=2400&q=80&auto=format&fit=crop'); background-size: cover; background-position: center 40%; background-color: #1A1A1A; }
+    .coming-soon-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.48) 0%, rgba(0,0,0,0.70) 100%); }
+    .coming-soon-content { position: relative; z-index: 2; text-align: center; padding: 0 40px; max-width: 680px; }
+    .coming-soon-eyebrow { font-family: var(--font-body); font-weight: 500; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--eg-gold); margin-bottom: 24px; }
+    .coming-soon-title { font-family: var(--font-display); font-weight: 300; font-size: 64px; line-height: 1.05; color: var(--eg-white); margin-bottom: 28px; }
+    .coming-soon-body { font-family: var(--font-body); font-size: 16px; line-height: 1.75; color: rgba(255,255,255,0.78); margin-bottom: 44px; }
+    .coming-soon-divider { width: 40px; height: 1px; background: var(--eg-gold); margin: 0 auto 36px; }
+    .btn { display: inline-block; font-family: var(--font-body); font-weight: 600; font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; padding: 16px 40px; border-radius: 2px; cursor: pointer; transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease; border: 1.5px solid transparent; }
+    .btn-primary { background: var(--eg-gold); color: var(--eg-white); border-color: var(--eg-gold); }
+    .btn-primary:hover { background: var(--eg-gold-hover); border-color: var(--eg-gold-hover); }
+    .btn-white-outline { background: transparent; color: var(--eg-white); border-color: rgba(255,255,255,0.6); }
+    .btn-white-outline:hover { background: var(--eg-white); color: var(--eg-charcoal); border-color: var(--eg-white); }
+    .coming-soon-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .breadcrumb-overlay { position: absolute; bottom: 32px; left: 0; right: 0; z-index: 3; }
+    .breadcrumb-list { display: flex; align-items: center; gap: 8px; list-style: none; font-family: var(--font-body); font-size: 11px; color: rgba(255,255,255,0.5); justify-content: center; }
+    .breadcrumb-list li + li::before { content: '/'; opacity: 0.4; margin-right: 8px; }
+    .breadcrumb-list a { color: rgba(255,255,255,0.5); transition: color 0.2s; }
+    .breadcrumb-list a:hover { color: var(--eg-gold); }
+    .breadcrumb-list .current { color: rgba(255,255,255,0.75); }
+
+    @media (max-width: 768px) { .nav-hamburger { display: flex; } .site-nav { display: none; } .coming-soon-title { font-size: 40px; } .container { padding: 0 24px; } }
+    @media (max-width: 375px) { .coming-soon-title { font-size: 32px; } }
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="site-header" role="banner">
+    <div class="container">
+      <a href="/" class="site-logo" aria-label="Eventra Group — home">
+        <img src="/EVENTRA_FINAL_LOGOS_20_JUNE_2025-03.png" alt="Eventra Group logo (white)" class="logo-img logo-white">
+        <img src="/EVENTRA_FINAL_LOGOS_20_JUNE_2025-02.png" alt="Eventra Group logo (dark)" class="logo-img logo-dark">
+        <div>
+          <div class="logo-text">Eventra Group</div>
+          <div class="logo-subtitle">Sports Hospitality &amp; Luxury Travel</div>
+        </div>
+      </a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <div class="nav-dropdown-wrap">
+          <a href="/experiences" class="nav-link">Experiences</a>
+          <div class="nav-dropdown">
+            <a href="/experiences/rugby">Rugby</a>
+            <a href="/experiences/cricket">Cricket</a>
+            <a href="/experiences/f1">Formula 1</a>
+            <a href="/experiences/football">Football</a>
+            <a href="/experiences" class="nav-dropdown-view-all">View All</a>
+          </div>
+        </div>
+        <div class="nav-dropdown-wrap">
+          <a href="/bespoke" class="nav-link">Bespoke Travel</a>
+          <div class="nav-dropdown">
+            <a href="/bespoke/africa">Africa</a>
+            <a href="/bespoke/europe">Europe</a>
+          </div>
+        </div>
+        <a href="/enquire" class="nav-cta">Enquire</a>
+      </nav>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+    <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close menu">&times;</button>
+    <div class="mobile-exp-wrap">
+      <button class="nav-link mobile-exp-btn" aria-expanded="false" id="mobile-exp-trigger">Experiences <span class="mobile-exp-chevron">&#9662;</span></button>
+      <div class="mobile-subnav" id="mobile-subnav" hidden>
+        <a href="/experiences/rugby" class="nav-link mobile-sublink">Rugby</a>
+        <a href="/experiences/cricket" class="nav-link mobile-sublink">Cricket</a>
+        <a href="/experiences/f1" class="nav-link mobile-sublink">Formula 1</a>
+        <a href="/experiences/football" class="nav-link mobile-sublink">Football</a>
+        <a href="/experiences" class="nav-link mobile-sublink">View All</a>
+      </div>
+    </div>
+    <div class="mobile-exp-wrap">
+      <button class="nav-link mobile-exp-btn" aria-expanded="false" id="mobile-bespoke-trigger">Bespoke Travel <span class="mobile-exp-chevron">&#9662;</span></button>
+      <div class="mobile-subnav" id="mobile-bespoke-subnav" hidden>
+        <a href="/bespoke/africa" class="nav-link mobile-sublink">Africa</a>
+        <a href="/bespoke/europe" class="nav-link mobile-sublink">Europe</a>
+      </div>
+    </div>
+    <a href="/enquire" class="nav-cta">Enquire Now</a>
+  </nav>
+
+  <main class="coming-soon-wrap" aria-label="North Africa — coming soon">
+    <div class="coming-soon-bg"></div>
+    <div class="coming-soon-overlay"></div>
+    <div class="coming-soon-content">
+      <p class="coming-soon-eyebrow">Eventra Bespoke &mdash; North Africa</p>
+      <h1 class="coming-soon-title">Marrakech.<br>The Sahara.<br>The Atlas.</h1>
+      <div class="coming-soon-divider" aria-hidden="true"></div>
+      <p class="coming-soon-body">Morocco in depth — the medinas, the desert, the mountain passes. Our North Africa pages are being built. Enquire below and we will begin your journey now.</p>
+      <div class="coming-soon-actions">
+        <a href="/enquire" class="btn btn-primary">Design Your Journey</a>
+        <a href="/bespoke/africa" class="btn btn-white-outline">Back to Africa</a>
+      </div>
+    </div>
+    <nav class="breadcrumb-overlay" aria-label="Breadcrumb">
+      <ol class="breadcrumb-list">
+        <li><a href="/">Home</a></li>
+        <li><a href="/bespoke">Bespoke Travel</a></li>
+        <li><a href="/bespoke/africa">Africa</a></li>
+        <li><span class="current" aria-current="page">North Africa</span></li>
+      </ol>
+    </nav>
+  </main>
+
+  <script>
+    const header = document.getElementById('site-header');
+    window.addEventListener('scroll', () => { header.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+    const hamburger = document.getElementById('nav-hamburger');
+    const mobileNav = document.getElementById('mobile-nav');
+    const mobileClose = document.getElementById('mobile-nav-close');
+    if (hamburger && mobileNav && mobileClose) {
+      hamburger.addEventListener('click', () => mobileNav.classList.add('open'));
+      mobileClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+    }
+    const expTrigger = document.getElementById('mobile-exp-trigger');
+    const expSubnav = document.getElementById('mobile-subnav');
+    if (expTrigger && expSubnav) {
+      expTrigger.addEventListener('click', () => { const e = expTrigger.getAttribute('aria-expanded') === 'true'; expTrigger.setAttribute('aria-expanded', String(!e)); expSubnav.hidden = e; });
+    }
+    const bespokeTrigger = document.getElementById('mobile-bespoke-trigger');
+    const bespokeSubnav = document.getElementById('mobile-bespoke-subnav');
+    if (bespokeTrigger && bespokeSubnav) {
+      bespokeTrigger.addEventListener('click', () => { const e = bespokeTrigger.getAttribute('aria-expanded') === 'true'; bespokeTrigger.setAttribute('aria-expanded', String(!e)); bespokeSubnav.hidden = e; });
+    }
+  </script>
+</body>
+</html>
