@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cricket Hospitality South Africa | VIP Suites &amp; Test Match Packages | Eventra</title>
-  <meta name="description" content="Premium cricket hospitality across South Africa's great grounds. Eventra offers curated VIP suites and packages for Test matches, ODIs and T20s — from Newlands to the Wanderers, Centurion and beyond.">
-  <link rel="canonical" href="https://eventragroup.co.za/experiences/cricket">
+  <title>Concerts &amp; Culture Experiences — Live Music &amp; Arts Hospitality | Eventra</title>
+  <meta name="description" content="From Wembley Stadium to the world's great concert halls, Eventra curates premium live music and cultural experiences — with backstage access, VIP hospitality, and every detail arranged.">
+  <link rel="canonical" href="https://eventragroup.co.za/experiences/concerts-culture">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Cricket Hospitality South Africa | VIP Suites &amp; Test Match Packages | Eventra">
-  <meta property="og:description" content="From Newlands to the Wanderers, Eventra places you at the heart of South African cricket. VIP suites, hosted packages and exclusive access across every major venue — including our England vs SA New Year series.">
-  <meta property="og:url" content="https://eventragroup.co.za/experiences/cricket">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=1200&q=80&auto=format&fit=crop">
+  <meta property="og:title" content="Concerts &amp; Culture Experiences — Live Music &amp; Arts Hospitality | Eventra">
+  <meta property="og:description" content="Premium live music and cultural experiences at the world's great venues. Wembley, the O2, Royal Albert Hall — Eventra places you where the experience lives, not where the crowd waits.">
+  <meta property="og:url" content="https://eventragroup.co.za/experiences/concerts-culture">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=1200&q=80&auto=format&fit=crop">
   <meta property="og:site_name" content="Eventra Group">
 
   <!-- Schema: Organisation -->
@@ -23,7 +23,7 @@
     "name": "Eventra Group",
     "url": "https://eventragroup.co.za",
     "logo": "https://eventragroup.co.za/EVENTRA_FINAL_LOGOS_20_JUNE_2025-02.png",
-    "description": "Premium sports hospitality and luxury travel experiences. Rugby, cricket, Formula 1, and bespoke journeys.",
+    "description": "Premium sports hospitality and luxury travel experiences. Rugby, cricket, Formula 1, tennis, concerts, and bespoke journeys.",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Cape Town",
@@ -53,8 +53,8 @@
       {
         "@type": "ListItem",
         "position": 3,
-        "name": "Cricket",
-        "item": "https://eventragroup.co.za/experiences/cricket"
+        "name": "Concerts & Culture",
+        "item": "https://eventragroup.co.za/experiences/concerts-culture"
       }
     ]
   }
@@ -196,7 +196,7 @@
     .hero-bg {
       position: absolute;
       inset: 0;
-      background-image: url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=2400&q=80&auto=format&fit=crop');
+      background-image: url('https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=2400&q=80&auto=format&fit=crop');
       background-size: cover;
       background-position: center;
       background-color: #1A1A1A;
@@ -204,54 +204,62 @@
       transition: transform 8s ease-out;
     }
     .hero-bg.loaded { transform: scale(1); }
-    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(105deg, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.38) 60%, rgba(0,0,0,0.18) 100%); }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(105deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.2) 100%); }
     .hero-content { position: relative; z-index: 2; width: 100%; padding: 0 80px; padding-top: 100px; }
-    .hero-inner { max-width: 780px; }
+    .hero-inner { max-width: 680px; }
     .hero-eyebrow { font-family: var(--font-body); font-weight: 500; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.85); margin-bottom: 20px; }
-    .hero-headline { font-family: var(--font-display); font-weight: 300; font-size: 68px; line-height: 1.05; color: var(--eg-white); margin-bottom: 36px; }
+    .hero-headline { font-family: var(--font-display); font-weight: 300; font-size: 68px; line-height: 1.05; color: var(--eg-white); margin-bottom: 28px; }
+    .hero-subhead { font-family: var(--font-body); font-weight: 400; font-size: 16px; line-height: 1.7; color: rgba(255,255,255,0.8); margin-bottom: 44px; max-width: 480px; }
     .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
 
     /* EDITORIAL INTRO */
     .editorial-intro { background: var(--eg-white); padding: var(--section-pad-v) 0; }
     .editorial-intro-inner { max-width: 760px; margin: 0 auto; text-align: center; }
-    .editorial-intro-text { font-family: var(--font-display); font-weight: 300; font-size: 24px; line-height: 1.65; color: var(--eg-charcoal); }
-    .editorial-intro-text p { margin-bottom: 1.4em; }
-    .editorial-intro-text p:last-child { margin-bottom: 0; }
-
-    /* WHAT WE OFFER */
-    .offer-section { background: var(--eg-warm-neutral); padding: var(--section-pad-v) 0; }
-    .offer-inner { max-width: 760px; margin: 0 auto; }
-    .offer-inner .eyebrow { margin-bottom: 20px; }
-    .offer-title { font-family: var(--font-display); font-weight: 300; font-size: 44px; color: var(--eg-charcoal); margin-bottom: 28px; line-height: 1.1; }
-    .offer-body { font-family: var(--font-body); font-size: 16px; color: var(--eg-mid-grey); line-height: 1.75; margin-bottom: 16px; }
-    .offer-body:last-child { margin-bottom: 0; }
+    .editorial-intro-title { font-family: var(--font-display); font-weight: 300; font-size: 36px; color: var(--eg-charcoal); margin-bottom: 32px; line-height: 1.15; }
+    .editorial-intro-text { font-family: var(--font-body); font-size: 16px; line-height: 1.85; color: var(--eg-mid-grey); margin-bottom: 20px; }
+    .editorial-intro-text:last-child { margin-bottom: 0; }
 
     /* FEATURED EXPERIENCE */
-    .feature-section { background: var(--eg-white); padding: var(--section-pad-v) 0; }
+    .feature-section { background: var(--eg-warm-neutral); padding: var(--section-pad-v) 0; }
     .feature-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
     .feature-image { position: relative; overflow: hidden; aspect-ratio: 4/3; }
     .feature-image img { width: 100%; height: 100%; object-fit: cover; }
     .feature-content .eyebrow { margin-bottom: 20px; }
-    .feature-title { font-family: var(--font-display); font-weight: 300; font-size: 42px; color: var(--eg-charcoal); margin-bottom: 12px; line-height: 1.1; }
-    .feature-subtitle { font-family: var(--font-body); font-size: 13px; font-weight: 500; letter-spacing: 0.06em; color: var(--eg-mid-grey); margin-bottom: 24px; text-transform: uppercase; }
+    .feature-title { font-family: var(--font-display); font-weight: 300; font-size: 42px; color: var(--eg-charcoal); margin-bottom: 20px; line-height: 1.1; }
     .feature-body { font-family: var(--font-body); font-size: 16px; color: var(--eg-mid-grey); line-height: 1.75; margin-bottom: 16px; }
     .feature-cta { margin-top: 36px; }
 
-    /* VENUE COVERAGE */
-    .venue-section { background: var(--eg-warm-neutral); padding: var(--section-pad-v) 0; }
-    .venue-header { margin-bottom: 56px; }
-    .venue-header .eyebrow { margin-bottom: 16px; }
-    .venue-header-title { font-family: var(--font-display); font-weight: 400; font-size: 44px; color: var(--eg-charcoal); line-height: 1.1; }
-    .venue-list { list-style: none; border-top: 1px solid rgba(0,0,0,0.1); }
-    .venue-item { border-bottom: 1px solid rgba(0,0,0,0.1); padding: 28px 0; display: grid; grid-template-columns: 1fr 2fr; gap: 40px; align-items: baseline; }
-    .venue-name { font-family: var(--font-display); font-weight: 400; font-size: 22px; color: var(--eg-charcoal); }
-    .venue-desc { font-family: var(--font-body); font-size: 15px; color: var(--eg-mid-grey); line-height: 1.65; }
+    /* CARD GRID */
+    .card-section { background: var(--eg-white); padding: var(--section-pad-v) 0; }
+    .section-header { text-align: center; margin-bottom: 60px; }
+    .section-header .eyebrow { margin-bottom: 16px; }
+    .section-title { font-family: var(--font-display); font-weight: 400; font-size: 44px; color: var(--eg-charcoal); margin-bottom: 16px; line-height: 1.1; }
+    .section-sub { font-family: var(--font-body); font-size: 17px; color: var(--eg-mid-grey); max-width: 520px; margin: 0 auto; line-height: 1.7; }
+    .exp-card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gutter); }
+    .exp-card { background: var(--eg-warm-neutral); overflow: hidden; }
+    .exp-card-img { aspect-ratio: 3/2; overflow: hidden; }
+    .exp-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+    .exp-card:hover .exp-card-img img { transform: scale(1.04); }
+    .exp-card-body { padding: 28px 24px 32px; }
+    .exp-card-eyebrow { font-family: var(--font-body); font-weight: 500; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--eg-gold); margin-bottom: 12px; }
+    .exp-card-title { font-family: var(--font-display); font-weight: 400; font-size: 24px; color: var(--eg-charcoal); margin-bottom: 12px; line-height: 1.15; }
+    .exp-card-desc { font-family: var(--font-body); font-size: 14px; color: var(--eg-mid-grey); line-height: 1.7; }
+    .card-footer { text-align: center; margin-top: 44px; }
+    .card-footer-text { font-family: var(--font-body); font-size: 15px; color: var(--eg-mid-grey); font-style: italic; }
+
+    /* SERVICES */
+    .services-section { background: var(--eg-charcoal); padding: var(--section-pad-v) 0; }
+    .services-section .section-header .eyebrow { color: var(--eg-gold); }
+    .services-section .section-title { color: var(--eg-white); }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gutter); margin-top: 56px; }
+    .service-item { border-top: 1px solid rgba(255,255,255,0.12); padding-top: 28px; }
+    .service-marker { width: 6px; height: 6px; background: var(--eg-gold); border-radius: 50%; margin-bottom: 20px; }
+    .service-name { font-family: var(--font-display); font-weight: 400; font-size: 20px; color: var(--eg-white); line-height: 1.2; }
 
     /* CTA BAND */
-    .cta-band { background: var(--eg-charcoal); padding: 100px 0; }
+    .cta-band { background: var(--eg-warm-neutral); padding: 100px 0; }
     .cta-band-content { text-align: center; }
-    .cta-band-title { font-family: var(--font-display); font-weight: 300; font-size: 48px; color: var(--eg-white); margin-bottom: 20px; }
-    .cta-band-sub { font-family: var(--font-body); font-size: 16px; color: rgba(255,255,255,0.65); max-width: 480px; margin: 0 auto 40px; line-height: 1.7; }
+    .cta-band-title { font-family: var(--font-display); font-weight: 300; font-size: 48px; color: var(--eg-charcoal); margin-bottom: 40px; }
 
     /* FOOTER */
     .site-footer { background: #111111; }
@@ -281,10 +289,11 @@
     /* RESPONSIVE */
     @media (max-width: 1024px) {
       .feature-layout { grid-template-columns: 1fr; gap: 40px; }
+      .exp-card-grid { grid-template-columns: repeat(2, 1fr); }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
       .hero-headline { font-size: 52px; }
       .hero-content { padding: 0 40px; padding-top: 100px; }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
-      .venue-item { grid-template-columns: 1fr; gap: 8px; }
     }
     @media (max-width: 768px) {
       .nav-hamburger { display: flex; }
@@ -292,15 +301,15 @@
       .hero { min-height: 65vh; }
       .hero-headline { font-size: 38px; }
       .hero-content { padding: 0 24px; padding-top: 100px; }
+      .hero-subhead { font-size: 15px; }
       .container { padding: 0 24px; }
+      .exp-card-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
       .editorial-intro { padding: var(--section-pad-v-sm) 0; }
-      .editorial-intro-text { font-size: 20px; }
-      .offer-section { padding: var(--section-pad-v-sm) 0; }
-      .offer-title { font-size: 32px; }
+      .editorial-intro-title { font-size: 28px; }
       .feature-section { padding: var(--section-pad-v-sm) 0; }
-      .feature-title { font-size: 32px; }
-      .venue-section { padding: var(--section-pad-v-sm) 0; }
-      .venue-header-title { font-size: 32px; }
+      .card-section { padding: var(--section-pad-v-sm) 0; }
+      .services-section { padding: var(--section-pad-v-sm) 0; }
       .cta-band { padding: 80px 0; }
       .cta-band-title { font-size: 32px; }
       .footer-grid { grid-template-columns: 1fr; gap: 32px; }
@@ -371,20 +380,21 @@
         <span class="breadcrumb-sep">&rsaquo;</span>
         <span class="breadcrumb-item"><a href="/experiences">Experiences</a></span>
         <span class="breadcrumb-sep">&rsaquo;</span>
-        <span class="breadcrumb-item current" aria-current="page">Cricket</span>
+        <span class="breadcrumb-item current" aria-current="page">Concerts &amp; Culture</span>
       </nav>
     </div>
   </div>
 
 
   <!-- HERO -->
-  <section class="hero" aria-label="Cricket experiences hero">
+  <section class="hero" aria-label="Concerts and culture experiences hero">
     <div class="hero-bg" id="hero-bg"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <div class="hero-inner">
-        <p class="hero-eyebrow">Eventra Events &mdash; Cricket</p>
-        <h1 class="hero-headline">The Finest Seats in South African Cricket &mdash; and Everything That Comes With Them</h1>
+        <p class="hero-eyebrow">Eventra Events &mdash; Concerts &amp; Culture</p>
+        <h1 class="hero-headline">The Stage.<br>Not the Queue.</h1>
+        <p class="hero-subhead">Wembley. The O2. The world&rsquo;s great concert halls and cultural institutions. Eventra places you inside the experience &mdash; with the access, hospitality, and detail that makes the difference between attending and truly being there.</p>
         <div class="hero-ctas">
           <a href="/enquire" class="btn btn-primary">Enquire Now</a>
         </div>
@@ -394,54 +404,36 @@
 
 
   <!-- EDITORIAL INTRO -->
-  <section class="editorial-intro" aria-label="Cricket editorial introduction">
+  <section class="editorial-intro" aria-label="Concerts and culture hospitality introduction">
     <div class="container">
       <div class="editorial-intro-inner">
-        <div class="editorial-intro-text">
-          <p>South Africa&rsquo;s cricket grounds are among the most beautiful in the world.</p>
-          <p>Newlands beneath the mountain. The Wanderers in the Highveld heat. SuperSport Park, St George&rsquo;s Park, Kingsmead. Each venue has its own character, its own atmosphere, its own way of holding a moment.</p>
-          <p>Eventra gives you access to all of them &mdash; properly. Not just a ticket, but a seat worth having, a table worth sitting at, and a day that outlasts the last ball.</p>
-        </div>
+        <h2 class="editorial-intro-title">Live Music &amp; Culture, Done Properly</h2>
+        <p class="editorial-intro-text">The best live events in the world are not just concerts &mdash; they are occasions. And the difference between being in the crowd and being in the moment is entirely a matter of access.</p>
+        <p class="editorial-intro-text">Eventra arranges premium tickets, VIP hospitality, backstage experiences, and curated packages at the world&rsquo;s great venues. Wembley Stadium. The Royal Albert Hall. The O2. From sold-out world tours to exclusive cultural institution access &mdash; we handle the logistics so you can focus on the experience itself.</p>
+        <p class="editorial-intro-text">If it is worth attending, it is worth attending properly.</p>
       </div>
     </div>
   </section>
 
 
-  <!-- WHAT WE OFFER -->
-  <section class="offer-section" aria-label="What Eventra offers">
-    <div class="container">
-      <div class="offer-inner">
-        <p class="eyebrow">What We Offer</p>
-        <h2 class="offer-title">Test Matches. ODIs. T20s.</h2>
-        <p class="offer-body">We curate hospitality across every format and every major South African venue &mdash; for international series, domestic fixtures and the moments that define a cricket summer.</p>
-        <p class="offer-body">Our packages are built around the experience of the day: premium suites and hospitality areas, catered service, and the kind of access that changes how you watch the game.</p>
-        <p class="offer-body">Whether you are hosting clients, celebrating with friends, or simply choosing to watch cricket the right way &mdash; we handle everything.</p>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- FEATURED EXPERIENCE -->
-  <section class="feature-section" aria-label="England vs South Africa New Year Test Series">
+  <!-- FEATURED EXPERIENCE: WEMBLEY -->
+  <section class="feature-section" aria-label="Wembley Stadium concert hospitality featured experience">
     <div class="container">
       <div class="feature-layout">
         <div class="feature-image">
           <img
-            src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=1200&q=80&auto=format&fit=crop"
-            alt="Newlands Cricket Ground, Cape Town — England vs South Africa New Year Test Series"
+            src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=1200&q=80&auto=format&fit=crop"
+            alt="Wembley Stadium — live concert arena hospitality"
             loading="lazy"
           >
         </div>
         <div class="feature-content">
-          <p class="eyebrow">Featured Experience</p>
-          <h2 class="feature-title">England vs South Africa &mdash; New Year Test Series</h2>
-          <p class="feature-subtitle">The 10-Night New Year Package</p>
-          <p class="feature-body">This is the one.</p>
-          <p class="feature-body">England&rsquo;s tour of South Africa at New Year is one of the most anticipated series on the international calendar &mdash; and Newlands at New Year is unlike anywhere else in cricket.</p>
-          <p class="feature-body">Our 10-night New Year package is a fully curated experience built around the Cape Town Test: premium match-day hospitality, accommodation, city access and guided itinerary across ten days in the Cape.</p>
-          <p class="feature-body">It is the kind of trip people talk about for years.</p>
+          <p class="eyebrow">Featured Venue &mdash; Wembley Stadium</p>
+          <h2 class="feature-title">Wembley. Where the World Watches.</h2>
+          <p class="feature-body">Wembley Stadium is one of the world&rsquo;s great live music venues &mdash; 90,000 seats, an unmistakable arch, and a reputation built on the concerts that defined decades.</p>
+          <p class="feature-body">Eventra secures premium hospitality packages for the biggest shows at Wembley &mdash; from executive boxes with full catering to curated VIP access that puts you where the event actually happens, not where it can only be heard.</p>
           <div class="feature-cta">
-            <a href="/events/england-cricket-newlands-2027" class="btn btn-primary">View Full Package</a>
+            <a href="/enquire" class="btn btn-primary">Enquire about Wembley</a>
           </div>
         </div>
       </div>
@@ -449,35 +441,112 @@
   </section>
 
 
-  <!-- VENUE COVERAGE -->
-  <section class="venue-section" aria-label="South African cricket venues">
+  <!-- FEATURED EXPERIENCES CARD GRID -->
+  <section class="card-section" aria-label="Concert and cultural venue experiences">
     <div class="container">
-      <div class="venue-header">
-        <p class="eyebrow">Venue Coverage</p>
-        <h2 class="venue-header-title">Every Ground. Every Series.</h2>
+      <header class="section-header">
+        <p class="eyebrow">Great Venues</p>
+        <h2 class="section-title">The stages that matter.</h2>
+        <p class="section-sub">Each venue has its own scale, character, and occasion. All of them reward being there properly.</p>
+      </header>
+
+      <div class="exp-card-grid">
+
+        <div class="exp-card">
+          <div class="exp-card-img">
+            <img
+              src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=800&q=80&auto=format&fit=crop"
+              alt="Live music arena crowd — stadium concert experience"
+              loading="lazy"
+            >
+          </div>
+          <div class="exp-card-body">
+            <p class="exp-card-eyebrow">London &mdash; Stadium</p>
+            <h3 class="exp-card-title">Wembley Stadium</h3>
+            <p class="exp-card-desc">The definitive live music stadium. Executive hospitality, premium seating, and access to the biggest shows touring the world.</p>
+          </div>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-card-img">
+            <img
+              src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&q=80&auto=format&fit=crop"
+              alt="Concert arena performance — premium live music hospitality"
+              loading="lazy"
+            >
+          </div>
+          <div class="exp-card-body">
+            <p class="exp-card-eyebrow">London &mdash; Arena</p>
+            <h3 class="exp-card-title">The O2 &amp; Royal Albert Hall</h3>
+            <p class="exp-card-desc">From intimate classical evenings at the Royal Albert Hall to sold-out arena tours at the O2 &mdash; London&rsquo;s great venues, with the access they deserve.</p>
+          </div>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-card-img">
+            <img
+              src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=800&q=80&auto=format&fit=crop"
+              alt="Festival and cultural event hospitality experience"
+              loading="lazy"
+            >
+          </div>
+          <div class="exp-card-body">
+            <p class="exp-card-eyebrow">Worldwide &mdash; Bespoke</p>
+            <h3 class="exp-card-title">Festivals &amp; Cultural Events</h3>
+            <p class="exp-card-desc">Glastonbury. Coachella. The Edinburgh Festival. Opera at the Met. We arrange bespoke access to the cultural events that define each season.</p>
+          </div>
+        </div>
+
       </div>
-      <ul class="venue-list">
-        <li class="venue-item">
-          <span class="venue-name">Newlands, Cape Town</span>
-          <span class="venue-desc">The country&rsquo;s most iconic Test venue, set against the backdrop of Table Mountain.</span>
-        </li>
-        <li class="venue-item">
-          <span class="venue-name">The Wanderers, Johannesburg</span>
-          <span class="venue-desc">High altitude, fast outfield, electric atmosphere.</span>
-        </li>
-        <li class="venue-item">
-          <span class="venue-name">SuperSport Park, Centurion</span>
-          <span class="venue-desc">The Highveld fortress, home to some of South Africa&rsquo;s most memorable Test wins.</span>
-        </li>
-        <li class="venue-item">
-          <span class="venue-name">St George&rsquo;s Park, Gqeberha</span>
-          <span class="venue-desc">The oldest Test ground in South Africa, with a character all its own.</span>
-        </li>
-        <li class="venue-item">
-          <span class="venue-name">Kingsmead, Durban</span>
-          <span class="venue-desc">Sea air, swing bowling and afternoon thunder: Durban cricket in its purest form.</span>
-        </li>
-      </ul>
+
+      <div class="card-footer">
+        <p class="card-footer-text">All venues and events available on request. Enquire for current availability.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- WHAT WE ARRANGE -->
+  <section class="services-section" aria-label="Concert and culture hospitality services">
+    <div class="container">
+      <header class="section-header">
+        <p class="eyebrow">What We Arrange</p>
+        <h2 class="section-title">Everything the occasion requires.</h2>
+      </header>
+
+      <div class="services-grid">
+
+        <div class="service-item">
+          <div class="service-marker"></div>
+          <p class="service-name">Premium tickets and VIP hospitality packages</p>
+        </div>
+
+        <div class="service-item">
+          <div class="service-marker"></div>
+          <p class="service-name">Executive boxes and suite access</p>
+        </div>
+
+        <div class="service-item">
+          <div class="service-marker"></div>
+          <p class="service-name">Backstage and artist meet-and-greet experiences</p>
+        </div>
+
+        <div class="service-item">
+          <div class="service-marker"></div>
+          <p class="service-name">Pre- and post-show private dining</p>
+        </div>
+
+        <div class="service-item">
+          <div class="service-marker"></div>
+          <p class="service-name">Hotel and accommodation at each venue city</p>
+        </div>
+
+        <div class="service-item">
+          <div class="service-marker"></div>
+          <p class="service-name">Private transfers and concierge throughout</p>
+        </div>
+
+      </div>
     </div>
   </section>
 
@@ -486,9 +555,8 @@
   <section class="cta-band">
     <div class="container">
       <div class="cta-band-content">
-        <h2 class="cta-band-title">Your Next Cricket Summer Starts Here</h2>
-        <p class="cta-band-sub">Tell us which series, which venue, which format &mdash; and we will build the right package around it.</p>
-        <a href="/enquire" class="btn btn-primary">Enquire Now</a>
+        <h2 class="cta-band-title">Tell us the event.<br>We&rsquo;ll handle everything else.</h2>
+        <a href="/enquire" class="btn btn-primary">Enquire about Concerts &amp; Culture</a>
       </div>
     </div>
   </section>
@@ -513,7 +581,8 @@
               <li><a href="/experiences/rugby">Rugby</a></li>
               <li><a href="/experiences/cricket">Cricket</a></li>
               <li><a href="/experiences/f1">Formula 1</a></li>
-              <li><a href="/bespoke/rwc-2027-australia">RWC 2027</a></li>
+              <li><a href="/experiences/tennis">Tennis</a></li>
+              <li><a href="/experiences/concerts-culture">Concerts &amp; Culture</a></li>
             </ul>
           </div>
           <div>
@@ -561,15 +630,13 @@
       hamburger.addEventListener('click', () => mobileNav.classList.add('open'));
       mobileClose.addEventListener('click', () => mobileNav.classList.remove('open'));
     }
-
-    // Mobile Experiences expand
     const expTrigger = document.getElementById('mobile-exp-trigger');
     const expSubnav = document.getElementById('mobile-subnav');
     if (expTrigger && expSubnav) {
       expTrigger.addEventListener('click', () => {
-        const isExp = expTrigger.getAttribute('aria-expanded') === 'true';
-        expTrigger.setAttribute('aria-expanded', String(!isExp));
-        expSubnav.hidden = isExp;
+        const expanded = expTrigger.getAttribute('aria-expanded') === 'true';
+        expTrigger.setAttribute('aria-expanded', String(!expanded));
+        expSubnav.hidden = expanded;
       });
     }
   </script>
