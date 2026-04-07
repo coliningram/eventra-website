@@ -435,7 +435,7 @@
     }
     .destinations-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: var(--gutter);
     }
     .dest-card {
@@ -670,9 +670,7 @@
        RESPONSIVE
     ─────────────────────────────────────────────── */
     @media (max-width: 1024px) {
-      .destinations-grid { grid-template-columns: 1fr; gap: 24px; }
-      .dest-card { aspect-ratio: 16/9; }
-      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .destinations-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
     }
     @media (max-width: 768px) {
       .nav-hamburger { display: flex; }
@@ -684,6 +682,8 @@
       .intro-title { font-size: 34px; }
       .intro-body { font-size: 15px; }
       .section-title { font-size: 32px; }
+      .destinations-grid { grid-template-columns: 1fr; gap: 24px; }
+      .dest-card { aspect-ratio: 16/9; }
       .dest-card-title { font-size: 26px; }
       .dest-card-body { padding: 28px; }
       .cta-band-title { font-size: 32px; }
@@ -842,8 +842,8 @@
           <div class="dest-card-overlay"></div>
           <div class="dest-card-body">
             <p class="dest-card-label">Western Europe</p>
-            <h3 class="dest-card-title">Monaco.<br>Provence.<br>The Atlantic Coast.</h3>
-            <p class="dest-card-desc">France, Monaco, and the Iberian Peninsula. The places that define European luxury — experienced without the crowd.</p>
+            <h3 class="dest-card-title">France. Monaco.<br>Spain. Portugal.</h3>
+            <p class="dest-card-desc">France, Monaco, Spain, Portugal, Switzerland, Austria. The places that define European luxury — experienced without the crowd.</p>
             <span class="dest-card-arrow">Explore &rarr;</span>
           </div>
         </a>
@@ -861,17 +861,17 @@
           <div class="dest-card-overlay"></div>
           <div class="dest-card-body">
             <p class="dest-card-label">Mediterranean</p>
-            <h3 class="dest-card-title">Amalfi.<br>The Greek islands.<br>Croatia.</h3>
-            <p class="dest-card-desc">The southern coast of Europe by sea and land. Private villas, charter boats, and towns that close to outsiders for most of the year.</p>
+            <h3 class="dest-card-title">Italy. Greece.<br>Croatia. Amalfi.</h3>
+            <p class="dest-card-desc">Italy, Greece, Croatia, the Amalfi Coast, Sicily. Private villas, charter boats, and islands that reward patience.</p>
             <span class="dest-card-arrow">Enquire &rarr;</span>
           </div>
         </a>
 
-        <!-- The Rivieras -->
-        <a href="/enquire" class="dest-card" aria-label="Enquire about the French Riviera">
+        <!-- UK & Ireland -->
+        <a href="/enquire" class="dest-card" aria-label="Enquire about UK &amp; Ireland">
           <img
-            src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&q=80&auto=format&fit=crop"
-            alt="Aerial view of the French Riviera coastline in summer light — Eventra Bespoke French Riviera"
+            src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=900&q=80&auto=format&fit=crop"
+            alt="The Scottish Highlands at dawn — Eventra Bespoke UK and Ireland"
             class="dest-card-img"
             loading="lazy"
             width="900"
@@ -879,9 +879,28 @@
           >
           <div class="dest-card-overlay"></div>
           <div class="dest-card-body">
-            <p class="dest-card-label">The Rivieras</p>
-            <h3 class="dest-card-title">The French Riviera,<br>without the noise.</h3>
-            <p class="dest-card-desc">Cannes, Nice, Saint-Tropez, and the hillside villages behind the coast. Designed for one — not for the season.</p>
+            <p class="dest-card-label">UK &amp; Ireland</p>
+            <h3 class="dest-card-title">England. Scotland.<br>Ireland. Wales.</h3>
+            <p class="dest-card-desc">From the Scottish Highlands to the Irish west coast. Country estates, private distillery tours, and landscapes that require no filter.</p>
+            <span class="dest-card-arrow">Enquire &rarr;</span>
+          </div>
+        </a>
+
+        <!-- Nordic & Eastern Europe -->
+        <a href="/enquire" class="dest-card" aria-label="Enquire about Nordic &amp; Eastern Europe">
+          <img
+            src="https://images.unsplash.com/photo-1509541206217-cde45c41aa6d?w=900&q=80&auto=format&fit=crop"
+            alt="Northern lights over a frozen Scandinavian landscape — Eventra Bespoke Nordic Europe"
+            class="dest-card-img"
+            loading="lazy"
+            width="900"
+            height="1200"
+          >
+          <div class="dest-card-overlay"></div>
+          <div class="dest-card-body">
+            <p class="dest-card-label">Nordic &amp; Eastern Europe</p>
+            <h3 class="dest-card-title">Scandinavia.<br>Iceland. The Balkans.</h3>
+            <p class="dest-card-desc">Norway's fjords. Iceland's interior. The Balkans before everyone else arrives. Europe at its quietest and most remarkable.</p>
             <span class="dest-card-arrow">Enquire &rarr;</span>
           </div>
         </a>
