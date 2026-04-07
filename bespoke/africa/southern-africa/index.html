@@ -3,10 +3,88 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Southern Africa | Bespoke Travel | Eventra Group</title>
-  <meta name="description" content="Eventra Bespoke Southern Africa — private journeys across Botswana, South Africa, Mozambique, Namibia, and Zimbabwe. Coming soon.">
+  <title>Southern Africa Luxury Safari &amp; Travel | Eventra Bespoke</title>
+  <meta name="description" content="Luxury Southern Africa travel — Botswana, South Africa, Namibia, Mozambique, Zimbabwe and beyond. Eventra curates bespoke safaris and experiences across the region.">
   <link rel="canonical" href="https://eventragroup.co.za/bespoke/africa/southern-africa">
-  <meta name="robots" content="noindex, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Southern Africa Luxury Safari &amp; Travel | Eventra Bespoke">
+  <meta property="og:description" content="From the Okavango Delta to the wine estates of the Cape — Eventra designs bespoke journeys across Southern Africa.">
+  <meta property="og:url" content="https://eventragroup.co.za/bespoke/africa/southern-africa">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=1200&q=80&auto=format&fit=crop">
+  <meta property="og:site_name" content="Eventra Group">
+
+  <!-- Schema: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://eventragroup.co.za/" },
+      { "@type": "ListItem", "position": 2, "name": "Bespoke Travel", "item": "https://eventragroup.co.za/bespoke" },
+      { "@type": "ListItem", "position": 3, "name": "Africa", "item": "https://eventragroup.co.za/bespoke/africa" },
+      { "@type": "ListItem", "position": 4, "name": "Southern Africa", "item": "https://eventragroup.co.za/bespoke/africa/southern-africa" }
+    ]
+  }
+  </script>
+
+  <!-- Schema: TouristDestination -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "TouristDestination",
+        "name": "Okavango Delta, Botswana",
+        "description": "The Okavango Delta is one of the world's most biodiverse ecosystems — a vast inland delta that floods annually and creates a shifting landscape of channels, islands, and floodplains teeming with wildlife.",
+        "url": "https://eventragroup.co.za/bespoke/africa/southern-africa",
+        "touristType": "Luxury traveller",
+        "includesAttraction": { "@type": "TouristAttraction", "name": "Okavango Delta" }
+      },
+      {
+        "@type": "TouristDestination",
+        "name": "South Africa",
+        "description": "South Africa is the most diverse destination on the continent. Big Five safaris in Kruger, the Cape winelands, the Atlantic coastline, and Cape Town — one of the world's great cities.",
+        "url": "https://eventragroup.co.za/bespoke/africa/southern-africa",
+        "touristType": "Luxury traveller",
+        "includesAttraction": { "@type": "TouristAttraction", "name": "Kruger National Park" }
+      },
+      {
+        "@type": "TouristDestination",
+        "name": "Namibia",
+        "description": "Namibia is Africa's great empty space. The Namib Desert's red dunes at Sossusvlei, Etosha National Park, and the raw remoteness of the Skeleton Coast.",
+        "url": "https://eventragroup.co.za/bespoke/africa/southern-africa",
+        "touristType": "Luxury traveller",
+        "includesAttraction": { "@type": "TouristAttraction", "name": "Sossusvlei" }
+      },
+      {
+        "@type": "TouristDestination",
+        "name": "Mozambique",
+        "description": "Mozambique's coastline stretches for nearly 2,500 kilometres along the Indian Ocean — white sand, warm water, and private island lodges accessible only by light aircraft.",
+        "url": "https://eventragroup.co.za/bespoke/africa/southern-africa",
+        "touristType": "Luxury traveller",
+        "includesAttraction": { "@type": "TouristAttraction", "name": "Bazaruto Archipelago" }
+      },
+      {
+        "@type": "TouristDestination",
+        "name": "Zimbabwe — Victoria Falls",
+        "description": "Victoria Falls is one of the seven natural wonders of the world — a kilometre-wide curtain of water falling 108 metres into the Zambezi Gorge.",
+        "url": "https://eventragroup.co.za/bespoke/africa/southern-africa",
+        "touristType": "Luxury traveller",
+        "includesAttraction": { "@type": "TouristAttraction", "name": "Victoria Falls" }
+      },
+      {
+        "@type": "TouristDestination",
+        "name": "Zambia — South Luangwa",
+        "description": "Zambia is where the walking safari was born. The South Luangwa Valley offers intimate encounters with wildlife on foot, guided by some of the most experienced bush guides on the continent.",
+        "url": "https://eventragroup.co.za/bespoke/africa/southern-africa",
+        "touristType": "Luxury traveller",
+        "includesAttraction": { "@type": "TouristAttraction", "name": "South Luangwa National Park" }
+      }
+    ]
+  }
+  </script>
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,154 +92,74 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
+    /* ───────────────────────────────────────────────
+       DESIGN TOKENS
+    ─────────────────────────────────────────────── */
     :root {
-      --eg-white:        #FFFFFF;
-      --eg-warm-neutral: #F8F5F0;
-      --eg-charcoal:     #1A1A1A;
-      --eg-mid-grey:     #6B6B6B;
-      --eg-gold:         #B8966B;
-      --eg-gold-hover:   #9E7D55;
-
-      --font-display:    'Cormorant Garamond', serif;
-      --font-body:       'Inter', sans-serif;
-
-      --max-width:       1240px;
+      --eg-white:         #FFFFFF;
+      --eg-warm-neutral:  #F8F5F0;
+      --eg-charcoal:      #1A1A1A;
+      --eg-mid-grey:      #6B6B6B;
+      --eg-gold:          #B8966B;
+      --eg-gold-hover:    #9E7D55;
+      --font-display:     'Cormorant Garamond', serif;
+      --font-body:        'Inter', sans-serif;
+      --section-pad-v:    100px;
+      --section-pad-v-sm: 60px;
+      --max-width:        1240px;
+      --gutter:           32px;
     }
 
+    /* ───────────────────────────────────────────────
+       RESET & BASE
+    ─────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body {
-      font-family: var(--font-body);
-      font-size: 16px;
-      color: var(--eg-charcoal);
-      background: var(--eg-white);
-      -webkit-font-smoothing: antialiased;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+    body { font-family: var(--font-body); font-size: 16px; color: var(--eg-charcoal); background: var(--eg-white); -webkit-font-smoothing: antialiased; }
     img { display: block; width: 100%; height: auto; }
     a { color: inherit; text-decoration: none; }
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 40px; }
+    .eyebrow { font-family: var(--font-body); font-weight: 500; font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--eg-gold); }
+    .btn { display: inline-block; font-family: var(--font-body); font-weight: 600; font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; padding: 16px 40px; border-radius: 2px; cursor: pointer; transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease; border: 1.5px solid transparent; }
+    .btn-primary { background: var(--eg-gold); color: var(--eg-white); border-color: var(--eg-gold); }
+    .btn-primary:hover { background: var(--eg-gold-hover); border-color: var(--eg-gold-hover); }
+    .btn-secondary { background: transparent; color: var(--eg-gold); border-color: var(--eg-gold); }
+    .btn-secondary:hover { background: var(--eg-gold); color: var(--eg-white); }
+    .btn-white-outline { background: transparent; color: var(--eg-white); border-color: var(--eg-white); }
+    .btn-white-outline:hover { background: var(--eg-white); color: var(--eg-charcoal); }
+    .btn-sm { padding: 12px 28px; font-size: 12px; }
 
-    .container {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 40px;
-    }
-
-    /* NAV */
-    .site-header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      height: 72px;
-      display: flex;
-      align-items: center;
-      background: transparent;
-      transition: background 0.35s ease, box-shadow 0.35s ease;
-    }
-    .site-header.scrolled {
-      background: var(--eg-white);
-      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
-    }
-    .site-header .container {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .site-logo {
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+    /* ───────────────────────────────────────────────
+       NAVIGATION
+    ─────────────────────────────────────────────── */
+    .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 72px; display: flex; align-items: center; background: transparent; transition: background 0.35s ease, box-shadow 0.35s ease; }
+    .site-header.scrolled { background: var(--eg-white); box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+    .site-header .container { width: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .site-logo { flex-shrink: 0; display: flex; align-items: center; gap: 10px; }
     .logo-img { display: block; width: auto; height: 40px; max-height: 40px; }
     .logo-dark { display: none; }
     .site-header.scrolled .logo-white { display: none; }
     .site-header.scrolled .logo-dark { display: block; }
-    .logo-text {
-      font-family: var(--font-display);
-      font-weight: 400;
-      font-size: 22px;
-      letter-spacing: 0.04em;
-      color: var(--eg-white);
-      transition: color 0.35s ease;
-      white-space: nowrap;
-    }
+    .logo-text { font-family: var(--font-display); font-weight: 400; font-size: 22px; letter-spacing: 0.04em; color: var(--eg-white); transition: color 0.35s ease; white-space: nowrap; }
     .site-header.scrolled .logo-text { color: var(--eg-charcoal); }
-    .logo-subtitle {
-      font-family: var(--font-body);
-      font-size: 9px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.7);
-      transition: color 0.35s ease;
-      margin-top: 2px;
-    }
+    .logo-subtitle { font-family: var(--font-body); font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.7); transition: color 0.35s ease; margin-top: 2px; }
     .site-header.scrolled .logo-subtitle { color: var(--eg-mid-grey); }
     .site-nav { display: flex; align-items: center; gap: 36px; }
-    .nav-link {
-      font-family: var(--font-body);
-      font-weight: 500;
-      font-size: 12px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.88);
-      transition: color 0.25s ease;
-    }
+    .nav-link { font-family: var(--font-body); font-weight: 500; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.88); transition: color 0.25s ease; }
     .site-header.scrolled .nav-link { color: var(--eg-charcoal); }
     .nav-link:hover { color: var(--eg-gold); }
-    .nav-cta {
-      font-family: var(--font-body);
-      font-weight: 600;
-      font-size: 12px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      padding: 10px 24px;
-      border-radius: 2px;
-      border: 1.5px solid rgba(255,255,255,0.7);
-      color: var(--eg-white);
-      transition: all 0.25s ease;
-    }
+    .nav-cta { font-family: var(--font-body); font-weight: 600; font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; padding: 10px 24px; border-radius: 2px; border: 1.5px solid rgba(255,255,255,0.7); color: var(--eg-white); transition: all 0.25s ease; }
     .site-header.scrolled .nav-cta { border-color: var(--eg-gold); color: var(--eg-gold); }
     .nav-cta:hover { background: var(--eg-white); color: var(--eg-charcoal); border-color: var(--eg-white); }
     .site-header.scrolled .nav-cta:hover { background: var(--eg-gold); color: var(--eg-white); border-color: var(--eg-gold); }
-    .nav-hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 4px;
-      background: none;
-      border: none;
-    }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
     .nav-hamburger span { display: block; width: 24px; height: 1.5px; background: var(--eg-white); transition: background 0.35s ease; }
     .site-header.scrolled .nav-hamburger span { background: var(--eg-charcoal); }
-    .mobile-nav {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: var(--eg-charcoal);
-      z-index: 99;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 32px;
-    }
+    .mobile-nav { display: none; position: fixed; inset: 0; background: var(--eg-charcoal); z-index: 99; flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
     .mobile-nav.open { display: flex; }
     .mobile-nav .nav-link { color: var(--eg-white); font-size: 14px; }
     .mobile-nav .nav-cta { border-color: var(--eg-gold); color: var(--eg-gold); }
-    .mobile-nav-close {
-      position: absolute;
-      top: 24px; right: 24px;
-      cursor: pointer;
-      font-size: 28px;
-      color: var(--eg-white);
-      line-height: 1;
-      background: none;
-      border: none;
-    }
+    .mobile-nav-close { position: absolute; top: 24px; right: 24px; cursor: pointer; font-size: 28px; color: var(--eg-white); line-height: 1; background: none; border: none; }
     .nav-dropdown-wrap { position: relative; display: flex; align-items: center; }
     .nav-dropdown { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); background: var(--eg-white); min-width: 180px; border-top: 2px solid var(--eg-gold); box-shadow: 0 8px 32px rgba(0,0,0,0.12); opacity: 0; visibility: hidden; transition: opacity 0.2s ease, visibility 0.2s ease; transition-delay: 0.2s; z-index: 200; pointer-events: none; padding-top: 14px; }
     .nav-dropdown-wrap:hover .nav-dropdown { opacity: 1; visibility: visible; pointer-events: auto; transition-delay: 0s; }
@@ -175,121 +173,138 @@
     .mobile-subnav { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-top: 14px; }
     .mobile-sublink { font-size: 12px !important; opacity: 0.72; }
 
-    /* HERO / COMING SOON */
-    .coming-soon-wrap {
-      flex: 1;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      overflow: hidden;
-    }
-    .coming-soon-bg {
-      position: absolute;
-      inset: 0;
+    /* ───────────────────────────────────────────────
+       HERO
+    ─────────────────────────────────────────────── */
+    .hero { position: relative; min-height: 90vh; display: flex; align-items: center; overflow: hidden; }
+    .hero-bg {
+      position: absolute; inset: 0;
       background-image: url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=2400&q=80&auto=format&fit=crop');
-      background-size: cover;
-      background-position: center 30%;
-      background-color: #1A1A1A;
+      background-size: cover; background-position: center 35%; background-color: #1A1A1A;
+      transform: scale(1.03); transition: transform 8s ease-out;
     }
-    .coming-soon-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.72) 100%);
-    }
-    .coming-soon-content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      padding: 0 40px;
-      max-width: 680px;
-    }
-    .coming-soon-eyebrow {
-      font-family: var(--font-body);
-      font-weight: 500;
-      font-size: 11px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--eg-gold);
-      margin-bottom: 24px;
-    }
-    .coming-soon-title {
-      font-family: var(--font-display);
-      font-weight: 300;
-      font-size: 64px;
-      line-height: 1.05;
-      color: var(--eg-white);
-      margin-bottom: 28px;
-    }
-    .coming-soon-body {
-      font-family: var(--font-body);
-      font-size: 16px;
-      line-height: 1.75;
-      color: rgba(255,255,255,0.78);
-      margin-bottom: 44px;
-    }
-    .coming-soon-divider {
-      width: 40px;
-      height: 1px;
-      background: var(--eg-gold);
-      margin: 0 auto 36px;
-    }
-    .btn {
-      display: inline-block;
-      font-family: var(--font-body);
-      font-weight: 600;
-      font-size: 13px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      padding: 16px 40px;
-      border-radius: 2px;
-      cursor: pointer;
-      transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
-      border: 1.5px solid transparent;
-    }
-    .btn-primary { background: var(--eg-gold); color: var(--eg-white); border-color: var(--eg-gold); }
-    .btn-primary:hover { background: var(--eg-gold-hover); border-color: var(--eg-gold-hover); }
-    .btn-white-outline { background: transparent; color: var(--eg-white); border-color: rgba(255,255,255,0.6); }
-    .btn-white-outline:hover { background: var(--eg-white); color: var(--eg-charcoal); border-color: var(--eg-white); }
-    .coming-soon-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .hero-bg.loaded { transform: scale(1); }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(105deg, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.42) 60%, rgba(0,0,0,0.20) 100%); }
+    .hero-content { position: relative; z-index: 2; width: 100%; padding: 0 80px; padding-top: 100px; }
+    .hero-inner { max-width: 680px; }
+    .hero-eyebrow { font-family: var(--font-body); font-weight: 500; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.85); margin-bottom: 20px; }
+    .hero-headline { font-family: var(--font-display); font-weight: 300; font-size: 72px; line-height: 1.02; color: var(--eg-white); margin-bottom: 28px; }
+    .hero-subhead { font-family: var(--font-body); font-weight: 400; font-size: 16px; line-height: 1.7; color: rgba(255,255,255,0.8); margin-bottom: 44px; max-width: 520px; }
+    .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
 
-    /* BREADCRUMB */
-    .breadcrumb-overlay {
-      position: absolute;
-      bottom: 32px;
-      left: 0; right: 0;
-      z-index: 3;
-    }
-    .breadcrumb-list {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      list-style: none;
-      font-family: var(--font-body);
-      font-size: 11px;
-      color: rgba(255,255,255,0.5);
-      justify-content: center;
-    }
+    /* ───────────────────────────────────────────────
+       BREADCRUMB
+    ─────────────────────────────────────────────── */
+    .breadcrumb { background: var(--eg-warm-neutral); padding: 14px 0; border-bottom: 1px solid rgba(0,0,0,0.06); }
+    .breadcrumb-list { display: flex; align-items: center; gap: 8px; list-style: none; font-family: var(--font-body); font-size: 12px; color: var(--eg-mid-grey); }
     .breadcrumb-list li + li::before { content: '/'; opacity: 0.4; margin-right: 8px; }
-    .breadcrumb-list a { color: rgba(255,255,255,0.5); transition: color 0.2s; }
+    .breadcrumb-list a { color: var(--eg-mid-grey); transition: color 0.2s; }
     .breadcrumb-list a:hover { color: var(--eg-gold); }
-    .breadcrumb-list .current { color: rgba(255,255,255,0.75); }
+    .breadcrumb-list .current { color: var(--eg-charcoal); }
 
+    /* ───────────────────────────────────────────────
+       INTRO
+    ─────────────────────────────────────────────── */
+    .intro-section { background: var(--eg-white); padding: var(--section-pad-v) 0; }
+    .intro-inner { max-width: 760px; margin: 0 auto; text-align: center; }
+    .intro-inner .eyebrow { margin-bottom: 20px; }
+    .intro-title { font-family: var(--font-display); font-weight: 300; font-size: 50px; line-height: 1.1; color: var(--eg-charcoal); margin-bottom: 28px; }
+    .intro-body { font-family: var(--font-body); font-size: 17px; line-height: 1.75; color: var(--eg-mid-grey); }
+    .intro-body p + p { margin-top: 18px; }
+    .intro-divider { width: 48px; height: 1px; background: var(--eg-gold); margin: 40px auto 0; }
+
+    /* ───────────────────────────────────────────────
+       DESTINATION CARDS
+    ─────────────────────────────────────────────── */
+    .destinations-section { background: var(--eg-warm-neutral); padding: var(--section-pad-v) 0; }
+    .section-header { text-align: center; margin-bottom: 60px; }
+    .section-header .eyebrow { margin-bottom: 16px; }
+    .section-title { font-family: var(--font-display); font-weight: 400; font-size: 44px; color: var(--eg-charcoal); line-height: 1.1; }
+    .destinations-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gutter); }
+    .dest-card { display: block; position: relative; overflow: hidden; aspect-ratio: 3/4; cursor: pointer; }
+    .dest-card-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.55s ease; }
+    .dest-card:hover .dest-card-img { transform: scale(1.05); }
+    .dest-card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.10) 100%); transition: background 0.3s ease; }
+    .dest-card:hover .dest-card-overlay { background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.18) 100%); }
+    .dest-card-body { position: absolute; bottom: 0; left: 0; right: 0; padding: 36px; }
+    .dest-card-label { font-family: var(--font-body); font-weight: 500; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #FFFFFF; margin-bottom: 12px; }
+    .dest-card-title { font-family: var(--font-display); font-weight: 300; font-size: 34px; color: #FFFFFF; line-height: 1.1; margin-bottom: 14px; }
+    .dest-card-desc { font-family: var(--font-body); font-size: 13px; line-height: 1.6; color: rgba(255,255,255,0.88); margin-bottom: 24px; }
+    .dest-card-arrow { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-body); font-weight: 500; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--eg-white); border-bottom: 1px solid rgba(255,255,255,0.4); padding-bottom: 2px; transition: color 0.25s, border-color 0.25s; }
+    .dest-card:hover .dest-card-arrow { color: var(--eg-gold); border-color: var(--eg-gold); }
+
+    /* ───────────────────────────────────────────────
+       CTA BAND
+    ─────────────────────────────────────────────── */
+    .cta-band { background: var(--eg-charcoal); padding: 80px 0; text-align: center; }
+    .cta-band-eyebrow { font-family: var(--font-body); font-weight: 500; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--eg-gold); margin-bottom: 20px; }
+    .cta-band-title { font-family: var(--font-display); font-weight: 300; font-size: 48px; color: var(--eg-white); margin-bottom: 16px; line-height: 1.1; }
+    .cta-band-sub { font-family: var(--font-body); font-size: 16px; color: rgba(255,255,255,0.65); margin-bottom: 40px; max-width: 520px; margin-left: auto; margin-right: auto; line-height: 1.65; }
+
+    /* ───────────────────────────────────────────────
+       FOOTER
+    ─────────────────────────────────────────────── */
+    .site-footer { background: #111111; }
+    .footer-main { padding: 64px 0 48px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; }
+    .footer-brand-logo { height: 36px; width: auto; display: block; margin-bottom: 20px; filter: brightness(0) invert(1); opacity: 0.75; }
+    .footer-brand-text { font-family: var(--font-body); font-size: 13px; line-height: 1.7; color: rgba(255,255,255,0.45); max-width: 280px; margin-bottom: 24px; }
+    .social-links { display: flex; gap: 16px; }
+    .social-link { font-family: var(--font-body); font-weight: 600; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); transition: color 0.25s; }
+    .social-link:hover { color: var(--eg-gold); }
+    .footer-col-title { font-family: var(--font-body); font-weight: 600; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 20px; }
+    .footer-links { list-style: none; }
+    .footer-links li + li { margin-top: 12px; }
+    .footer-links a { font-family: var(--font-body); font-size: 14px; color: rgba(255,255,255,0.6); transition: color 0.25s; }
+    .footer-links a:hover { color: var(--eg-gold); }
+    .footer-contact-item { font-family: var(--font-body); font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 10px; line-height: 1.5; }
+    .footer-contact-item a { transition: color 0.25s; }
+    .footer-contact-item a:hover { color: var(--eg-gold); }
+    .footer-enquire { margin-top: 24px; }
+    .footer-legal { border-top: 1px solid rgba(255,255,255,0.08); padding: 20px 0; }
+    .footer-legal .container { display: flex; align-items: center; justify-content: space-between; }
+    .legal-text { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.3); }
+    .legal-links { display: flex; gap: 24px; }
+    .legal-links a { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.3); transition: color 0.25s; }
+    .legal-links a:hover { color: var(--eg-gold); }
+
+    /* ───────────────────────────────────────────────
+       RESPONSIVE
+    ─────────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .destinations-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+      .dest-card { aspect-ratio: 4/5; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
     @media (max-width: 768px) {
       .nav-hamburger { display: flex; }
       .site-nav { display: none; }
-      .coming-soon-title { font-size: 40px; }
+      .hero { min-height: 75vh; }
+      .hero-headline { font-size: 44px; }
+      .hero-content { padding: 0 24px; padding-top: 100px; }
+      .hero-subhead { font-size: 15px; }
+      .intro-title { font-size: 34px; }
+      .intro-body { font-size: 15px; }
+      .destinations-grid { grid-template-columns: 1fr; gap: 20px; }
+      .dest-card { aspect-ratio: 4/3; }
+      .section-title { font-size: 32px; }
+      .dest-card-title { font-size: 26px; }
+      .dest-card-body { padding: 28px; }
+      .cta-band-title { font-size: 32px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
       .container { padding: 0 24px; }
     }
     @media (max-width: 375px) {
-      .coming-soon-title { font-size: 32px; }
+      .hero-headline { font-size: 36px; }
+      .intro-title { font-size: 28px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
+  <!-- ────────────────────────────────────────────
+       HEADER
+  ──────────────────────────────────────────── -->
   <header class="site-header" id="site-header" role="banner">
     <div class="container">
       <a href="/" class="site-logo" aria-label="Eventra Group — home">
@@ -352,42 +367,282 @@
         <a href="/bespoke/europe" class="nav-link mobile-sublink">Europe</a>
       </div>
     </div>
-    <a href="/enquire" class="nav-cta">Enquire Now</a>
+    <a href="/enquire" class="nav-cta btn btn-secondary">Enquire Now</a>
   </nav>
 
-  <!-- COMING SOON -->
-  <main class="coming-soon-wrap" aria-label="Southern Africa — coming soon">
-    <div class="coming-soon-bg"></div>
-    <div class="coming-soon-overlay"></div>
 
-    <div class="coming-soon-content">
-      <p class="coming-soon-eyebrow">Eventra Bespoke &mdash; Southern Africa</p>
-      <h1 class="coming-soon-title">The Okavango.<br>The Cape.<br>The Coast.</h1>
-      <div class="coming-soon-divider" aria-hidden="true"></div>
-      <p class="coming-soon-body">Our Southern Africa pages are being built. In the meantime, we design every journey individually — enquire below and we will begin from your brief.</p>
-      <div class="coming-soon-actions">
-        <a href="/enquire" class="btn btn-primary">Design Your Journey</a>
-        <a href="/bespoke/africa" class="btn btn-white-outline">Back to Africa</a>
+  <!-- ────────────────────────────────────────────
+       HERO
+  ──────────────────────────────────────────── -->
+  <section class="hero" aria-label="Southern Africa hero">
+    <div class="hero-bg" id="hero-bg"></div>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <div class="hero-inner">
+        <p class="hero-eyebrow">Eventra Bespoke &mdash; Southern Africa</p>
+        <h1 class="hero-headline">Southern Africa.<br>Where the Wilderness Begins.</h1>
+        <p class="hero-subhead">From the Okavango Delta in Botswana to the wine estates of the Cape, the desert dunes of Namibia to the private islands of Mozambique — Southern Africa contains more extraordinary experiences per square kilometre than anywhere else on earth. Eventra places you inside all of it.</p>
+        <div class="hero-ctas">
+          <a href="/enquire" class="btn btn-primary">Design Your Journey</a>
+          <a href="#destinations" class="btn btn-white-outline">Explore the Region</a>
+        </div>
       </div>
     </div>
+  </section>
 
-    <nav class="breadcrumb-overlay" aria-label="Breadcrumb">
+
+  <!-- ────────────────────────────────────────────
+       BREADCRUMB
+  ──────────────────────────────────────────── -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="container">
       <ol class="breadcrumb-list">
         <li><a href="/">Home</a></li>
         <li><a href="/bespoke">Bespoke Travel</a></li>
         <li><a href="/bespoke/africa">Africa</a></li>
         <li><span class="current" aria-current="page">Southern Africa</span></li>
       </ol>
-    </nav>
-  </main>
+    </div>
+  </nav>
+
+
+  <!-- ────────────────────────────────────────────
+       INTRO
+  ──────────────────────────────────────────── -->
+  <section class="intro-section" aria-label="About Southern Africa">
+    <div class="container">
+      <div class="intro-inner">
+        <p class="eyebrow">The Heart of Africa</p>
+        <h2 class="intro-title">Where safari was invented.<br>Where wilderness meets world-class.</h2>
+        <div class="intro-body">
+          <p>Southern Africa is the heart of the continent's luxury travel offering. It is where safari was invented, where the Big Five still roam private conservancies larger than some countries, and where the transition from wilderness to world-class wine country takes less than an hour.</p>
+          <p>Our expert network of in-country specialists has spent decades building relationships with the lodges, guides, and private reserves that do not appear in standard search results — and cannot be booked through standard channels.</p>
+        </div>
+        <div class="intro-divider" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ────────────────────────────────────────────
+       DESTINATION CARDS
+  ──────────────────────────────────────────── -->
+  <section class="destinations-section" id="destinations" aria-label="Southern Africa destinations">
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">Where We Travel</p>
+        <h2 class="section-title">Six Countries. One Region.</h2>
+      </div>
+
+      <div class="destinations-grid">
+
+        <!-- Botswana -->
+        <a href="/enquire" class="dest-card" aria-label="Enquire about Botswana — The Okavango Delta">
+          <img
+            src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=900&q=80&auto=format&fit=crop&fm=webp"
+            alt="Elephant at the edge of the Okavango Delta, Botswana at golden hour"
+            class="dest-card-img"
+            loading="lazy"
+            width="900"
+            height="1200"
+          >
+          <div class="dest-card-overlay"></div>
+          <div class="dest-card-body">
+            <p class="dest-card-label">Botswana</p>
+            <h3 class="dest-card-title">The Delta.<br>Africa's last great wilderness.</h3>
+            <p class="dest-card-desc">The Okavango Delta floods annually to create a shifting landscape of channels, islands, and floodplains teeming with wildlife. Private concessions offer mokoro excursions and walking safaris in areas where no other vehicles operate.</p>
+            <span class="dest-card-arrow">Enquire &rarr;</span>
+          </div>
+        </a>
+
+        <!-- South Africa -->
+        <a href="/enquire" class="dest-card" aria-label="Enquire about South Africa — The Cape &amp; Beyond">
+          <img
+            src="https://images.unsplash.com/photo-1580060839134-75a5edca2e99?w=900&q=80&auto=format&fit=crop&fm=webp"
+            alt="Cape Town with Table Mountain at sunset, South Africa"
+            class="dest-card-img"
+            loading="lazy"
+            width="900"
+            height="1200"
+          >
+          <div class="dest-card-overlay"></div>
+          <div class="dest-card-body">
+            <p class="dest-card-label">South Africa</p>
+            <h3 class="dest-card-title">South Africa.<br>Safari, coast, and cellar.</h3>
+            <p class="dest-card-desc">Big Five safaris in the private reserves of Sabi Sand. The Cape winelands — Stellenbosch, Franschhoek, and Constantia. Cape Town itself — one of the world's great cities by any measure.</p>
+            <span class="dest-card-arrow">Enquire &rarr;</span>
+          </div>
+        </a>
+
+        <!-- Namibia -->
+        <a href="/enquire" class="dest-card" aria-label="Enquire about Namibia — The Desert">
+          <img
+            src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=900&q=80&auto=format&fit=crop&fm=webp"
+            alt="Red sand dunes of Sossusvlei, Namib Desert, Namibia at dawn"
+            class="dest-card-img"
+            loading="lazy"
+            width="900"
+            height="1200"
+          >
+          <div class="dest-card-overlay"></div>
+          <div class="dest-card-body">
+            <p class="dest-card-label">Namibia</p>
+            <h3 class="dest-card-title">Namibia.<br>The oldest desert on earth.</h3>
+            <p class="dest-card-desc">2.5 million people in a country the size of France and Germany combined. The Namib's red dunes at Sossusvlei. Etosha's salt pans. The Skeleton Coast — raw, remote, and unlike anywhere else.</p>
+            <span class="dest-card-arrow">Enquire &rarr;</span>
+          </div>
+        </a>
+
+        <!-- Mozambique -->
+        <a href="/enquire" class="dest-card" aria-label="Enquire about Mozambique — The Coast">
+          <img
+            src="https://images.unsplash.com/photo-1559339352-11d035aa65ce?w=900&q=80&auto=format&fit=crop&fm=webp"
+            alt="Turquoise Indian Ocean waters and white sand beach, Mozambique"
+            class="dest-card-img"
+            loading="lazy"
+            width="900"
+            height="1200"
+          >
+          <div class="dest-card-overlay"></div>
+          <div class="dest-card-body">
+            <p class="dest-card-label">Mozambique</p>
+            <h3 class="dest-card-title">Mozambique.<br>The Indian Ocean at its finest.</h3>
+            <p class="dest-card-desc">Nearly 2,500 kilometres of Indian Ocean coastline. The Bazaruto Archipelago and Quirimbas Islands offer some of the best diving in the world, alongside barefoot luxury lodges accessible only by light aircraft.</p>
+            <span class="dest-card-arrow">Enquire &rarr;</span>
+          </div>
+        </a>
+
+        <!-- Zimbabwe -->
+        <a href="/enquire" class="dest-card" aria-label="Enquire about Zimbabwe — Victoria Falls">
+          <img
+            src="https://images.unsplash.com/photo-1594739891060-6f1296082855?w=900&q=80&auto=format&fit=crop&fm=webp"
+            alt="Victoria Falls aerial view, Zimbabwe — the smoke that thunders"
+            class="dest-card-img"
+            loading="lazy"
+            width="900"
+            height="1200"
+          >
+          <div class="dest-card-overlay"></div>
+          <div class="dest-card-body">
+            <p class="dest-card-label">Zimbabwe</p>
+            <h3 class="dest-card-title">Zimbabwe.<br>The smoke that thunders.</h3>
+            <p class="dest-card-desc">Victoria Falls is one of the seven natural wonders of the world — a kilometre-wide curtain of water falling 108 metres into the Zambezi Gorge. Helicopter flights, sunset cruises, and luxury lodges positioned to make the most of the spectacle.</p>
+            <span class="dest-card-arrow">Enquire &rarr;</span>
+          </div>
+        </a>
+
+        <!-- Zambia -->
+        <a href="/enquire" class="dest-card" aria-label="Enquire about Zambia — The Bush">
+          <img
+            src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=900&q=80&auto=format&fit=crop&fm=webp"
+            alt="Walking safari in the South Luangwa Valley, Zambia at golden hour"
+            class="dest-card-img"
+            loading="lazy"
+            width="900"
+            height="1200"
+          >
+          <div class="dest-card-overlay"></div>
+          <div class="dest-card-body">
+            <p class="dest-card-label">Zambia</p>
+            <h3 class="dest-card-title">Zambia.<br>Walking safari country.</h3>
+            <p class="dest-card-desc">Zambia is where the walking safari was born. The South Luangwa Valley offers intimate encounters with wildlife on foot, guided by some of the most experienced bush guides on the continent.</p>
+            <span class="dest-card-arrow">Enquire &rarr;</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ────────────────────────────────────────────
+       CTA BAND
+  ──────────────────────────────────────────── -->
+  <section class="cta-band" aria-label="Design Your Southern Africa Journey">
+    <div class="container">
+      <p class="cta-band-eyebrow">Begin Here</p>
+      <h2 class="cta-band-title">Your Southern Africa<br>Journey Starts Here</h2>
+      <p class="cta-band-sub">Every journey we design is built around a single brief — yours. Tell us which destinations, which experiences, and what you want to feel when you arrive. We handle the rest.</p>
+      <a href="/enquire" class="btn btn-primary">Design Your Journey</a>
+    </div>
+  </section>
+
+
+  <!-- ────────────────────────────────────────────
+       FOOTER
+  ──────────────────────────────────────────── -->
+  <footer class="site-footer" aria-label="Site footer">
+    <div class="footer-main">
+      <div class="container">
+        <div class="footer-grid">
+
+          <div class="footer-brand">
+            <img src="/EVENTRA_FINAL_LOGOS_20_JUNE_2025-01.png" alt="Eventra Group" class="footer-brand-logo" loading="lazy">
+            <p class="footer-brand-text">Premium sports hospitality and luxury experiential travel. Three divisions — Eventra Events, Eventra Bespoke, and Eventra Festivals — based in Cape Town.</p>
+            <div class="social-links">
+              <a href="#" class="social-link" aria-label="Instagram">IG</a>
+              <a href="#" class="social-link" aria-label="LinkedIn">LI</a>
+            </div>
+          </div>
+
+          <div>
+            <p class="footer-col-title">Bespoke</p>
+            <ul class="footer-links">
+              <li><a href="/bespoke/africa">Africa</a></li>
+              <li><a href="/bespoke/africa/southern-africa">Southern Africa</a></li>
+              <li><a href="/bespoke/europe">Europe</a></li>
+              <li><a href="/enquire">Design Your Journey</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <p class="footer-col-title">Experiences</p>
+            <ul class="footer-links">
+              <li><a href="/experiences/rugby">Rugby</a></li>
+              <li><a href="/experiences/cricket">Cricket</a></li>
+              <li><a href="/experiences/f1">Formula 1</a></li>
+              <li><a href="/experiences">View All</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <p class="footer-col-title">Contact</p>
+            <p class="footer-contact-item">Cape Town, South Africa</p>
+            <p class="footer-contact-item"><a href="mailto:hello@eventragroup.co.za">hello@eventragroup.co.za</a></p>
+            <div class="footer-enquire">
+              <a href="/enquire" class="btn btn-secondary btn-sm">Enquire Now</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-legal">
+      <div class="container">
+        <p class="legal-text">&copy; 2026 Eventra Group. All rights reserved.</p>
+        <div class="legal-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
 
   <script>
+    // Scroll-triggered nav
     const header = document.getElementById('site-header');
     window.addEventListener('scroll', () => {
       header.classList.toggle('scrolled', window.scrollY > 40);
     }, { passive: true });
 
+    // Hero bg load animation
+    const heroBg = document.getElementById('hero-bg');
+    if (heroBg) { heroBg.classList.add('loaded'); }
+
+    // Mobile nav
     const hamburger = document.getElementById('nav-hamburger');
     const mobileNav = document.getElementById('mobile-nav');
     const mobileClose = document.getElementById('mobile-nav-close');
@@ -396,6 +651,7 @@
       mobileClose.addEventListener('click', () => mobileNav.classList.remove('open'));
     }
 
+    // Mobile Experiences expand
     const expTrigger = document.getElementById('mobile-exp-trigger');
     const expSubnav = document.getElementById('mobile-subnav');
     if (expTrigger && expSubnav) {
@@ -406,6 +662,7 @@
       });
     }
 
+    // Mobile Bespoke expand
     const bespokeTrigger = document.getElementById('mobile-bespoke-trigger');
     const bespokeSubnav = document.getElementById('mobile-bespoke-subnav');
     if (bespokeTrigger && bespokeSubnav) {
