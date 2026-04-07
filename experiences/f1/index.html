@@ -126,6 +126,21 @@
     .mobile-nav .nav-cta { border-color: var(--eg-gold); color: var(--eg-gold); }
     .mobile-nav-close { position: absolute; top: 24px; right: 24px; cursor: pointer; font-size: 28px; color: var(--eg-white); line-height: 1; background: none; border: none; }
 
+    /* Experiences dropdown — desktop */
+    .nav-dropdown-wrap { position: relative; display: flex; align-items: center; }
+    .nav-dropdown { position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%); background: var(--eg-white); min-width: 180px; border-top: 2px solid var(--eg-gold); box-shadow: 0 8px 32px rgba(0,0,0,0.12); opacity: 0; visibility: hidden; transition: opacity 0.2s ease, visibility 0.2s ease; z-index: 200; pointer-events: none; }
+    .nav-dropdown-wrap:hover .nav-dropdown { opacity: 1; visibility: visible; pointer-events: auto; }
+    .nav-dropdown a { display: block; padding: 11px 20px; font-family: var(--font-body); font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--eg-charcoal); transition: background 0.15s, color 0.15s; text-decoration: none; }
+    .nav-dropdown a:hover { background: var(--eg-warm-neutral); color: var(--eg-gold); }
+    .nav-dropdown .nav-dropdown-view-all { border-top: 1px solid #eee; color: var(--eg-gold); }
+    /* Experiences expand — mobile */
+    .mobile-exp-wrap { display: flex; flex-direction: column; align-items: center; }
+    .mobile-exp-btn { background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 8px; padding: 0; }
+    .mobile-exp-chevron { font-size: 9px; transition: transform 0.2s; display: inline-block; }
+    .mobile-exp-btn[aria-expanded="true"] .mobile-exp-chevron { transform: rotate(180deg); }
+    .mobile-subnav { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-top: 14px; }
+    .mobile-sublink { font-size: 12px !important; opacity: 0.72; }
+
     /* BREADCRUMB */
     .breadcrumb-bar { background: var(--eg-charcoal); padding: 14px 0; }
     .breadcrumb { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
@@ -239,7 +254,16 @@
         </div>
       </a>
       <nav class="site-nav" aria-label="Main navigation">
+        <div class="nav-dropdown-wrap">
         <a href="/experiences" class="nav-link">Experiences</a>
+        <div class="nav-dropdown">
+          <a href="/experiences/rugby">Rugby</a>
+          <a href="/experiences/cricket">Cricket</a>
+          <a href="/experiences/f1">Formula 1</a>
+          <a href="/experiences/football">Football</a>
+          <a href="/experiences" class="nav-dropdown-view-all">View All</a>
+        </div>
+      </div>
         <a href="/bespoke" class="nav-link">Bespoke Travel</a>
         <a href="/enquire" class="nav-cta">Enquire</a>
       </nav>
@@ -251,7 +275,16 @@
 
   <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
     <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close menu">&times;</button>
-    <a href="/experiences" class="nav-link">Experiences</a>
+    <div class="mobile-exp-wrap">
+    <button class="nav-link mobile-exp-btn" aria-expanded="false" id="mobile-exp-trigger">Experiences <span class="mobile-exp-chevron">&#9662;</span></button>
+    <div class="mobile-subnav" id="mobile-subnav" hidden>
+      <a href="/experiences/rugby" class="nav-link mobile-sublink">Rugby</a>
+      <a href="/experiences/cricket" class="nav-link mobile-sublink">Cricket</a>
+      <a href="/experiences/f1" class="nav-link mobile-sublink">Formula 1</a>
+      <a href="/experiences/football" class="nav-link mobile-sublink">Football</a>
+      <a href="/experiences" class="nav-link mobile-sublink">View All</a>
+    </div>
+  </div>
     <a href="/bespoke" class="nav-link">Bespoke Travel</a>
     <a href="/enquire" class="nav-cta btn btn-secondary">Enquire Now</a>
   </nav>
@@ -438,6 +471,17 @@
     if (hamburger && mobileNav && mobileClose) {
       hamburger.addEventListener('click', () => mobileNav.classList.add('open'));
       mobileClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+    }
+  
+    // Mobile Experiences expand
+    const expTrigger = document.getElementById('mobile-exp-trigger');
+    const expSubnav = document.getElementById('mobile-subnav');
+    if (expTrigger && expSubnav) {
+      expTrigger.addEventListener('click', () => {
+        const isExp = expTrigger.getAttribute('aria-expanded') === 'true';
+        expTrigger.setAttribute('aria-expanded', String(!isExp));
+        expSubnav.hidden = isExp;
+      });
     }
   </script>
 
