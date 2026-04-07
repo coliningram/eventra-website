@@ -533,8 +533,10 @@
 
     .divisions-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: var(--gutter);
+      max-width: 900px;
+      margin: 0 auto;
     }
 
     .division-card {
@@ -1020,11 +1022,6 @@
       .hero-headline { font-size: 52px; }
 
       .divisions-grid { grid-template-columns: 1fr 1fr; }
-      .divisions-grid .division-card:last-child {
-        grid-column: 1 / -1;
-        max-width: 50%;
-        margin: 0 auto;
-      }
 
       .events-grid {
         grid-template-columns: 1fr 1fr;
@@ -1064,6 +1061,7 @@
       .divisions { padding: var(--section-pad-v-sm) 0; }
       .divisions-grid {
         grid-template-columns: 1fr;
+        max-width: 100%;
       }
       .divisions-grid .division-card:last-child {
         grid-column: auto;
@@ -1262,20 +1260,20 @@
     <div class="container">
       <div class="divisions-grid">
 
-        <!-- Eventra Events -->
+        <!-- Eventra Experiences -->
         <article class="division-card">
           <div class="division-card-image">
             <img
-              src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=800&q=80&auto=format&fit=crop"
-              alt="Premium hospitality suite at a major sporting event"
+              src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&q=80&auto=format&fit=crop"
+              alt="Rugby stadium crowd at a major sporting occasion in South Africa"
               loading="lazy"
             >
           </div>
           <div class="division-card-body">
-            <p class="division-label">Events</p>
+            <p class="division-label">Sports Hospitality</p>
             <h2 class="division-card-title">The suite. The access.<br>The moment no one else has.</h2>
-            <p class="division-card-desc">From Springbok hospitality at DHL Stadium to a private VIP suite at Newlands, Eventra Events places you where the match truly lives. We secure premium experiences at South Africa's most celebrated sporting occasions — and we manage every detail so that you arrive as a guest, not the person who organised everything.<br><br>What you will find: private suites, curated catering, insider access, and a room full of people who chose the same thing.</p>
-            <a href="/events" class="card-link">View Upcoming Events &rarr;</a>
+            <p class="division-card-desc">From Springbok hospitality at DHL Stadium to a private VIP suite at Newlands, Eventra places you where the match truly lives. We secure premium experiences at South Africa's most celebrated sporting occasions — and we manage every detail so that you arrive as a guest, not the person who organised everything.<br><br>What you will find: private suites, curated catering, insider access, and a room full of people who chose the same thing.</p>
+            <a href="/experiences" class="card-link">View Experiences &rarr;</a>
           </div>
         </article>
 
@@ -1283,33 +1281,16 @@
         <article class="division-card">
           <div class="division-card-image">
             <img
-              src="https://images.unsplash.com/photo-1586348943529-beaae6c28db9?w=800&q=80&auto=format&fit=crop"
-              alt="Luxury African coastline — Ker & Downey Africa travel partnership"
+              src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&q=80&auto=format&fit=crop"
+              alt="Luxury safari lodge at sunset in Africa"
               loading="lazy"
             >
           </div>
           <div class="division-card-body">
             <p class="division-label">Bespoke Travel</p>
             <h2 class="division-card-title">A coast you have to know<br>to find.</h2>
-            <p class="division-card-desc">In partnership with Ker &amp; Downey Africa, Eventra Bespoke designs travel that does not appear in standard search results. The private lodge in Mozambique. The Cape Town itinerary that moves like a resident, not a visitor. The journey shaped around a single person's idea of what extraordinary should feel like.<br><br>No templates. No assumptions. Only the trip that belongs to the person taking it.</p>
+            <p class="division-card-desc">Through our expert network of in-country partners, Eventra Bespoke designs travel that does not appear in standard search results. The private lodge in Mozambique. The Cape Town itinerary that moves like a resident, not a visitor. The journey shaped around a single person's idea of what extraordinary should feel like.<br><br>No templates. No assumptions. Only the trip that belongs to the person taking it.</p>
             <a href="/bespoke" class="card-link">Explore Bespoke Travel &rarr;</a>
-          </div>
-        </article>
-
-        <!-- Eventra Festivals -->
-        <article class="division-card">
-          <div class="division-card-image">
-            <img
-              src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=800&q=80&auto=format&fit=crop"
-              alt="Youth sports action — Eventra Festivals"
-              loading="lazy"
-            >
-          </div>
-          <div class="division-card-body">
-            <p class="division-label">Festivals</p>
-            <h2 class="division-card-title">Where the next generation<br>learns to compete.</h2>
-            <p class="division-card-desc">Eventra Festivals brings premium youth sports competitions to South Africa — building the infrastructure for the athletes of the next decade while creating experiences that families remember for the right reasons. We bring the same standard of access and execution to every event we host.</p>
-            <a href="/festivals" class="card-link">Learn More &rarr;</a>
           </div>
         </article>
 
@@ -1452,9 +1433,9 @@
             </div>
           </div>
 
-          <!-- Col 2 — Events -->
+          <!-- Col 2 — Experiences -->
           <div>
-            <h3 class="footer-col-title">Events</h3>
+            <h3 class="footer-col-title">Experiences</h3>
             <ul class="footer-links">
               <li><a href="/events/springboks-vs-all-blacks-2026">Springboks vs All Blacks 2026</a></li>
               <li><a href="/monaco-gp-2026">Monaco Grand Prix 2026</a></li>
@@ -1471,7 +1452,6 @@
             <ul class="footer-links">
               <li><a href="/about">About Eventra Group</a></li>
               <li><a href="/bespoke">Bespoke Travel</a></li>
-              <li><a href="/festivals">Eventra Festivals</a></li>
               <li><a href="/partners">Partners</a></li>
               <li><a href="/contact">Contact</a></li>
             </ul>
