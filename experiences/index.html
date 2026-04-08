@@ -297,17 +297,20 @@
       align-items: center;
       overflow: hidden;
     }
-    .hero-bg {
+    .hero-carousel {
       position: absolute;
       inset: 0;
-      background-image: url('/images/experiences/henningsvaer-stadium-lofoten-islands-norway-aerial.webp');
+      background-color: #1A1A1A;
+    }
+    .hero-slide {
+      position: absolute;
+      inset: 0;
       background-size: cover;
       background-position: center;
-      background-color: #1A1A1A;
-      transform: scale(1.03);
-      transition: transform 8s ease-out;
+      opacity: 0;
+      transition: opacity 1.2s ease-in-out;
     }
-    .hero-bg.loaded { transform: scale(1); }
+    .hero-slide.active { opacity: 1; }
     .hero-overlay {
       position: absolute;
       inset: 0;
@@ -792,7 +795,10 @@
        HERO
   ──────────────────────────────────────────── -->
   <section class="hero" aria-label="Experiences hub hero">
-    <div class="hero-bg" id="hero-bg" role="img" aria-label="Aerial view of Henningsvær Stadium Lofoten Islands Norway — premium sporting experiences worldwide with Eventra"></div>
+    <div class="hero-carousel" id="hero-carousel" aria-hidden="true">
+      <div class="hero-slide active" style="background-image: url('/images/experiences/henningsvaer-stadium-lofoten-islands-norway-aerial.webp')"></div>
+      <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=2400&q=80&auto=format&fit=crop')"></div>
+    </div>
     <div class="hero-overlay"></div>
 
     <div class="hero-content">
@@ -1105,10 +1111,15 @@
       header.classList.toggle('scrolled', window.scrollY > 40);
     }, { passive: true });
 
-    // Hero parallax bg
-    const heroBg = document.getElementById('hero-bg');
-    if (heroBg) {
-      heroBg.classList.add('loaded');
+    // Hero carousel
+    const heroSlides = document.querySelectorAll('.hero-slide');
+    if (heroSlides.length > 1) {
+      let currentSlide = 0;
+      setInterval(() => {
+        heroSlides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % heroSlides.length;
+        heroSlides[currentSlide].classList.add('active');
+      }, 5000);
     }
 
     // Mobile nav
