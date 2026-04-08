@@ -216,12 +216,12 @@
     .dest-cards-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gutter); }
     .dest-card { display: block; position: relative; overflow: hidden; cursor: pointer; }
     .dest-card-featured { aspect-ratio: 16/7; }
-    .dest-cards-row .dest-card { aspect-ratio: 3/4; }
+    .dest-cards-row .dest-card { min-height: 560px; }
     .dest-card-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.55s ease; }
     .dest-card:hover .dest-card-img { transform: scale(1.05); }
     .dest-card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.10) 100%); transition: background 0.3s ease; }
     .dest-card:hover .dest-card-overlay { background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.18) 100%); }
-    .dest-card-body { position: absolute; bottom: 0; left: 0; right: 0; padding: 36px; }
+    .dest-card-body { position: absolute; bottom: 0; left: 0; right: 0; padding: 36px; z-index: 2; }
     .dest-card-label { font-family: var(--font-body); font-weight: 500; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #FFFFFF; margin-bottom: 12px; }
     .dest-card-title { font-family: var(--font-display); font-weight: 300; font-size: 34px; color: #FFFFFF; line-height: 1.1; margin-bottom: 14px; }
     .dest-card-desc { font-family: var(--font-body); font-size: 13px; line-height: 1.6; color: rgba(255,255,255,0.88); margin-bottom: 24px; }
@@ -283,7 +283,7 @@
       .intro-body { font-size: 15px; }
       .dest-card-featured { aspect-ratio: 4/3; }
       .dest-cards-row { grid-template-columns: 1fr; gap: 20px; }
-      .dest-cards-row .dest-card { aspect-ratio: 4/3; }
+      .dest-cards-row .dest-card { min-height: 420px; }
       .section-title { font-size: 32px; }
       .dest-card-title { font-size: 26px; }
       .dest-card-body { padding: 28px; }

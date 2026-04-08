@@ -216,12 +216,12 @@
     .dest-cards-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gutter); }
     .dest-card { display: block; position: relative; overflow: hidden; cursor: pointer; }
     .dest-card-featured { aspect-ratio: 16/7; }
-    .dest-cards-row .dest-card { aspect-ratio: 3/4; }
+    .dest-cards-row .dest-card { min-height: 560px; }
     .dest-card-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.55s ease; }
     .dest-card:hover .dest-card-img { transform: scale(1.05); }
     .dest-card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.10) 100%); transition: background 0.3s ease; }
     .dest-card:hover .dest-card-overlay { background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.18) 100%); }
-    .dest-card-body { position: absolute; bottom: 0; left: 0; right: 0; padding: 36px; }
+    .dest-card-body { position: absolute; bottom: 0; left: 0; right: 0; padding: 36px; z-index: 2; }
     .dest-card-label { font-family: var(--font-body); font-weight: 500; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #FFFFFF; margin-bottom: 12px; }
     .dest-card-title { font-family: var(--font-display); font-weight: 300; font-size: 34px; color: #FFFFFF; line-height: 1.1; margin-bottom: 14px; }
     .dest-card-desc { font-family: var(--font-body); font-size: 13px; line-height: 1.6; color: rgba(255,255,255,0.88); margin-bottom: 24px; }
@@ -283,7 +283,7 @@
       .intro-body { font-size: 15px; }
       .dest-card-featured { aspect-ratio: 4/3; }
       .dest-cards-row { grid-template-columns: 1fr; gap: 20px; }
-      .dest-cards-row .dest-card { aspect-ratio: 4/3; }
+      .dest-cards-row .dest-card { min-height: 420px; }
       .section-title { font-size: 32px; }
       .dest-card-title { font-size: 26px; }
       .dest-card-body { padding: 28px; }
@@ -465,7 +465,7 @@
           <div class="dest-card-body">
             <p class="dest-card-label">London</p>
             <h3 class="dest-card-title">London. The city that<br>never shows you everything at once.</h3>
-            <p class="dest-card-desc">London is inexhaustible &mdash; and most visitors only see its surface. The private members&rsquo; clubs of Mayfair. The galleries that open early for those who know to ask. The restaurants that seat fifty people and take reservations six months in advance. <a href="/experiences/tennis" style="color: rgba(255,255,255,0.9); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.4);">Wimbledon</a> from debenture seats in the second week. Wembley from a private box. The Chelsea Flower Show, the Henley Royal Regatta, the British Grand Prix at Silverstone &mdash; London is the hub from which Britain&rsquo;s greatest occasions radiate. Eventra designs London stays and event programmes for clients who want the city at its best.</p>
+            <p class="dest-card-desc">London is inexhaustible &mdash; and most visitors only see its surface. The private members&rsquo; clubs of Mayfair. The galleries that open early for those who know to ask. The restaurants that seat fifty people and take reservations six months in advance. Wimbledon from debenture seats in the second week. Wembley from a private box. The Chelsea Flower Show, the Henley Royal Regatta, the British Grand Prix at Silverstone &mdash; London is the hub from which Britain&rsquo;s greatest occasions radiate. Eventra designs London stays and event programmes for clients who want the city at its best.</p>
             <span class="dest-card-arrow">Enquire &rarr;</span>
           </div>
         </a>
@@ -506,7 +506,7 @@
             <div class="dest-card-body">
               <p class="dest-card-label">Ireland</p>
               <h3 class="dest-card-title">Ireland. The welcome<br>is genuine.</h3>
-              <p class="dest-card-desc">Ireland&rsquo;s west coast &mdash; the Wild Atlantic Way from Donegal to Cork &mdash; is one of Europe&rsquo;s great drives. The Aran Islands by ferry on a clear morning. The Cliffs of Moher at dusk. The private country house hotels of County Clare and County Kerry, where the standard of hospitality is matched only by the quality of the landscape. Dublin for the <a href="/experiences/rugby" style="color: rgba(255,255,255,0.9); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.4);">rugby</a> &mdash; the Aviva Stadium and the atmosphere of an Ireland Test match is unlike any other rugby experience in the world. Eventra has run hospitality programmes in Dublin and designs bespoke Irish journeys for clients who want the country properly.</p>
+              <p class="dest-card-desc">Ireland&rsquo;s west coast &mdash; the Wild Atlantic Way from Donegal to Cork &mdash; is one of Europe&rsquo;s great drives. The Aran Islands by ferry on a clear morning. The Cliffs of Moher at dusk. The private country house hotels of County Clare and County Kerry, where the standard of hospitality is matched only by the quality of the landscape. Dublin for the rugby &mdash; the Aviva Stadium and the atmosphere of an Ireland Test match is unlike any other rugby experience in the world. Eventra has run hospitality programmes in Dublin and designs bespoke Irish journeys for clients who want the country properly.</p>
               <span class="dest-card-arrow">Enquire &rarr;</span>
             </div>
           </a>
@@ -525,7 +525,7 @@
             <div class="dest-card-body">
               <p class="dest-card-label">Wales</p>
               <h3 class="dest-card-title">Wales. Underestimated<br>and extraordinary.</h3>
-              <p class="dest-card-desc">Wales is Britain&rsquo;s most underrated destination &mdash; a country of dramatic coastline, medieval castles, and the Brecon Beacons&rsquo; wild moorland that most international visitors pass through on the way to somewhere else. The Gower Peninsula has some of Britain&rsquo;s finest beaches. The Wye Valley is among its most beautiful river landscapes. And the Millennium Stadium in Cardiff &mdash; home of Welsh <a href="/experiences/rugby" style="color: rgba(255,255,255,0.9); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.4);">rugby</a> &mdash; hosts an atmosphere that rivals any sporting venue in the world.</p>
+              <p class="dest-card-desc">Wales is Britain&rsquo;s most underrated destination &mdash; a country of dramatic coastline, medieval castles, and the Brecon Beacons&rsquo; wild moorland that most international visitors pass through on the way to somewhere else. The Gower Peninsula has some of Britain&rsquo;s finest beaches. The Wye Valley is among its most beautiful river landscapes. And the Millennium Stadium in Cardiff &mdash; home of Welsh rugby &mdash; hosts an atmosphere that rivals any sporting venue in the world.</p>
               <span class="dest-card-arrow">Enquire &rarr;</span>
             </div>
           </a>
