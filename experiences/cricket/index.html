@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cricket Hospitality South Africa | VIP Suites &amp; Test Match Packages | Eventra</title>
-  <meta name="description" content="Premium cricket hospitality across South Africa's great grounds. Eventra offers curated VIP suites and packages for Test matches, ODIs and T20s — from Newlands to the Wanderers, Centurion and beyond.">
+  <title>Cricket Hospitality Packages | Test Match &amp; Ashes | Eventra</title>
+  <meta name="description" content="Premium cricket hospitality worldwide — Ashes series, Test matches, IPL and ICC events. Eventra curates VIP packages at Lord's, MCG, Newlands and beyond.">
   <link rel="canonical" href="https://eventragroup.co.za/experiences/cricket">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Cricket Hospitality South Africa | VIP Suites &amp; Test Match Packages | Eventra">
-  <meta property="og:description" content="From Newlands to the Wanderers, Eventra places you at the heart of South African cricket. VIP suites, hosted packages and exclusive access across every major venue — including our England vs SA New Year series.">
+  <meta property="og:title" content="Cricket Hospitality Packages | Test Match &amp; Ashes | Eventra">
+  <meta property="og:description" content="Premium cricket hospitality worldwide — Ashes series, Test matches, IPL and ICC events. Eventra curates VIP packages at Lord's, MCG, Newlands and beyond.">
   <meta property="og:url" content="https://eventragroup.co.za/experiences/cricket">
   <meta property="og:image" content="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=1200&q=80&auto=format&fit=crop">
   <meta property="og:site_name" content="Eventra Group">
@@ -247,6 +247,25 @@
     .venue-name { font-family: var(--font-display); font-weight: 400; font-size: 22px; color: var(--eg-charcoal); }
     .venue-desc { font-family: var(--font-body); font-size: 15px; color: var(--eg-mid-grey); line-height: 1.65; }
 
+    /* GLOBAL CRICKET CALENDAR */
+    .global-section { background: var(--eg-charcoal); padding: var(--section-pad-v) 0; }
+    .global-header { text-align: center; max-width: 720px; margin: 0 auto 64px; }
+    .global-title { font-family: var(--font-display); font-weight: 300; font-size: 44px; color: var(--eg-white); margin-bottom: 20px; line-height: 1.1; }
+    .global-intro { font-family: var(--font-body); font-size: 16px; color: rgba(255,255,255,0.6); line-height: 1.75; }
+    .global-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-bottom: 2px; }
+    .global-card { background: rgba(255,255,255,0.05); padding: 40px 36px; }
+    .global-card-region { font-family: var(--font-body); font-weight: 600; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--eg-gold); margin-bottom: 20px; }
+    .global-card-venues { list-style: none; margin-bottom: 20px; }
+    .global-card-venues li { font-family: var(--font-display); font-weight: 400; font-size: 18px; color: var(--eg-white); padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .global-card-venues li:first-child { border-top: 1px solid rgba(255,255,255,0.08); }
+    .global-card-note { font-family: var(--font-body); font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.65; font-style: italic; }
+    .global-events { background: rgba(255,255,255,0.05); padding: 28px 36px; text-align: center; }
+    .global-events-label { font-family: var(--font-body); font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+
+    /* VENUE GROUP */
+    .venue-group-label { font-family: var(--font-body); font-weight: 600; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--eg-gold); margin-top: 40px; margin-bottom: 4px; }
+    .venue-group-label:first-of-type { margin-top: 0; }
+
     /* CTA BAND */
     .cta-band { background: var(--eg-charcoal); padding: 100px 0; }
     .cta-band-content { text-align: center; }
@@ -285,6 +304,7 @@
       .hero-content { padding: 0 40px; padding-top: 100px; }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
       .venue-item { grid-template-columns: 1fr; gap: 8px; }
+      .global-grid { grid-template-columns: 1fr; gap: 2px; }
     }
     @media (max-width: 768px) {
       .nav-hamburger { display: flex; }
@@ -303,6 +323,10 @@
       .venue-header-title { font-size: 32px; }
       .cta-band { padding: 80px 0; }
       .cta-band-title { font-size: 32px; }
+      .global-section { padding: var(--section-pad-v-sm) 0; }
+      .global-title { font-size: 32px; }
+      .global-header { margin-bottom: 40px; }
+      .global-card { padding: 32px 24px; }
       .footer-grid { grid-template-columns: 1fr; gap: 32px; }
       .footer-main { padding: 48px 0 36px; }
       .footer-legal .container { flex-direction: column; align-items: flex-start; gap: 12px; }
@@ -384,7 +408,7 @@
     <div class="hero-content">
       <div class="hero-inner">
         <p class="hero-eyebrow">Eventra Events &mdash; Cricket</p>
-        <h1 class="hero-headline">The Finest Seats in South African Cricket &mdash; and Everything That Comes With Them</h1>
+        <h1 class="hero-headline">Every Test. Every Ground. The Best Seat in the Game.</h1>
         <div class="hero-ctas">
           <a href="/enquire" class="btn btn-primary">Enquire Now</a>
         </div>
@@ -398,9 +422,9 @@
     <div class="container">
       <div class="editorial-intro-inner">
         <div class="editorial-intro-text">
-          <p>South Africa&rsquo;s cricket grounds are among the most beautiful in the world.</p>
-          <p>Newlands beneath the mountain. The Wanderers in the Highveld heat. SuperSport Park, St George&rsquo;s Park, Kingsmead. Each venue has its own character, its own atmosphere, its own way of holding a moment.</p>
-          <p>Eventra gives you access to all of them &mdash; properly. Not just a ticket, but a seat worth having, a table worth sitting at, and a day that outlasts the last ball.</p>
+          <p>Cricket is played in some of the world&rsquo;s most extraordinary places.</p>
+          <p>Lord&rsquo;s on an English summer morning. The MCG under the floodlights at Boxing Day. Newlands at New Year, with Table Mountain filling the southern sky.</p>
+          <p>Eventra gives you access to all of it &mdash; properly. Not just a ticket, but the right seat, the right table, and a day that outlasts the last ball.</p>
         </div>
       </div>
     </div>
@@ -412,10 +436,55 @@
     <div class="container">
       <div class="offer-inner">
         <p class="eyebrow">What We Offer</p>
-        <h2 class="offer-title">Test Matches. ODIs. T20s.</h2>
-        <p class="offer-body">We curate hospitality across every format and every major South African venue &mdash; for international series, domestic fixtures and the moments that define a cricket summer.</p>
+        <h2 class="offer-title">The Ashes. The ICC. The IPL.</h2>
+        <p class="offer-body">We curate hospitality across the full international calendar &mdash; Ashes series in England and Australia, ICC World Cups and T20 events, IPL hospitality in India, and Test cricket across South Africa&rsquo;s great grounds.</p>
         <p class="offer-body">Our packages are built around the experience of the day: premium suites and hospitality areas, catered service, and the kind of access that changes how you watch the game.</p>
         <p class="offer-body">Whether you are hosting clients, celebrating with friends, or simply choosing to watch cricket the right way &mdash; we handle everything.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- GLOBAL CRICKET CALENDAR -->
+  <section class="global-section" aria-label="Global cricket calendar">
+    <div class="container">
+      <div class="global-header">
+        <p class="eyebrow" style="color:rgba(255,255,255,0.6)">The Full Calendar</p>
+        <h2 class="global-title">From Lord&rsquo;s to the MCG. From Cape Town to Kolkata.</h2>
+        <p class="global-intro">Eventra places you inside the international cricket calendar &mdash; across every Test-playing nation, every format, and every ground that defines the game.</p>
+      </div>
+      <div class="global-grid">
+        <div class="global-card">
+          <p class="global-card-region">England</p>
+          <ul class="global-card-venues">
+            <li>Lord&rsquo;s Cricket Ground</li>
+            <li>The Oval, Kennington</li>
+            <li>Headingley, Leeds</li>
+            <li>Edgbaston, Birmingham</li>
+          </ul>
+          <p class="global-card-note">The home of The Ashes. Test cricket as it was designed to be watched.</p>
+        </div>
+        <div class="global-card">
+          <p class="global-card-region">Australia</p>
+          <ul class="global-card-venues">
+            <li>Melbourne Cricket Ground</li>
+            <li>Sydney Cricket Ground</li>
+            <li>The Gabba, Brisbane</li>
+          </ul>
+          <p class="global-card-note">Boxing Day at the MCG. New Year at the SCG. The Ashes on Australian soil.</p>
+        </div>
+        <div class="global-card">
+          <p class="global-card-region">South Africa</p>
+          <ul class="global-card-venues">
+            <li>Newlands, Cape Town</li>
+            <li>The Wanderers, Johannesburg</li>
+            <li>SuperSport Park, Centurion</li>
+          </ul>
+          <p class="global-card-note">Year-round Test cricket in some of the world&rsquo;s most distinctive settings.</p>
+        </div>
+      </div>
+      <div class="global-events">
+        <p class="global-events-label">Plus: ICC events and World Cups &mdash; T20 and 50-over &mdash; and IPL hospitality for those seeking the pinnacle of franchise cricket.</p>
       </div>
     </div>
   </section>
@@ -450,12 +519,50 @@
 
 
   <!-- VENUE COVERAGE -->
-  <section class="venue-section" aria-label="South African cricket venues">
+  <section class="venue-section" aria-label="Global cricket venues">
     <div class="container">
       <div class="venue-header">
-        <p class="eyebrow">Venue Coverage</p>
-        <h2 class="venue-header-title">Every Ground. Every Series.</h2>
+        <p class="eyebrow">Global Footprint</p>
+        <h2 class="venue-header-title">The Grounds That Define the Game.</h2>
       </div>
+
+      <p class="venue-group-label">England</p>
+      <ul class="venue-list">
+        <li class="venue-item">
+          <span class="venue-name">Lord&rsquo;s Cricket Ground</span>
+          <span class="venue-desc">The home of cricket. A Long Room, a storied pavilion, and the sport&rsquo;s oldest rivalry at its grandest address.</span>
+        </li>
+        <li class="venue-item">
+          <span class="venue-name">The Oval, Kennington</span>
+          <span class="venue-desc">South London&rsquo;s Test ground, with a capacity for extended hospitality and some of England&rsquo;s finest corporate packages.</span>
+        </li>
+        <li class="venue-item">
+          <span class="venue-name">Headingley, Leeds</span>
+          <span class="venue-desc">Where the 2019 Ashes miracle unfolded, and where the crowd gives English cricket its northern backbone.</span>
+        </li>
+        <li class="venue-item">
+          <span class="venue-name">Edgbaston, Birmingham</span>
+          <span class="venue-desc">The most intense home crowd in English cricket, paired with first-class corporate hospitality.</span>
+        </li>
+      </ul>
+
+      <p class="venue-group-label">Australia</p>
+      <ul class="venue-list">
+        <li class="venue-item">
+          <span class="venue-name">Melbourne Cricket Ground</span>
+          <span class="venue-desc">The largest cricket stadium in the world: 100,000 seats, the Boxing Day Test, and an atmosphere unlike any other.</span>
+        </li>
+        <li class="venue-item">
+          <span class="venue-name">Sydney Cricket Ground</span>
+          <span class="venue-desc">New Year cricket in the harbour city, with the Members&rsquo; Pavilion and the Hill among the game&rsquo;s great sights.</span>
+        </li>
+        <li class="venue-item">
+          <span class="venue-name">The Gabba, Brisbane</span>
+          <span class="venue-desc">An historic Ashes fortress, known for partisan crowds and the intensity of an opening-Test atmosphere.</span>
+        </li>
+      </ul>
+
+      <p class="venue-group-label">South Africa</p>
       <ul class="venue-list">
         <li class="venue-item">
           <span class="venue-name">Newlands, Cape Town</span>
@@ -469,15 +576,8 @@
           <span class="venue-name">SuperSport Park, Centurion</span>
           <span class="venue-desc">The Highveld fortress, home to some of South Africa&rsquo;s most memorable Test wins.</span>
         </li>
-        <li class="venue-item">
-          <span class="venue-name">St George&rsquo;s Park, Gqeberha</span>
-          <span class="venue-desc">The oldest Test ground in South Africa, with a character all its own.</span>
-        </li>
-        <li class="venue-item">
-          <span class="venue-name">Kingsmead, Durban</span>
-          <span class="venue-desc">Sea air, swing bowling and afternoon thunder: Durban cricket in its purest form.</span>
-        </li>
       </ul>
+
     </div>
   </section>
 
@@ -486,7 +586,7 @@
   <section class="cta-band">
     <div class="container">
       <div class="cta-band-content">
-        <h2 class="cta-band-title">Your Next Cricket Summer Starts Here</h2>
+        <h2 class="cta-band-title">Your Next Cricket Series Starts Here.</h2>
         <p class="cta-band-sub">Tell us which series, which venue, which format &mdash; and we will build the right package around it.</p>
         <a href="/enquire" class="btn btn-primary">Enquire Now</a>
       </div>
