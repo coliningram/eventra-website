@@ -1,12 +1,616 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Western Europe Luxury Travel | Eventra Bespoke</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Western Europe Luxury Travel | France Monaco Spain | Eventra</title>
+  <meta name="description" content="Bespoke Western Europe travel — France, Monaco, Spain, Portugal, Switzerland and Austria. Eventra curates luxury journeys across the continent's finest destinations.">
+  <link rel="canonical" href="https://eventragroup.co.za/bespoke/europe/western-europe">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Western Europe Luxury Travel | France Monaco Spain | Eventra">
+  <meta property="og:description" content="From the French Riviera to the vineyards of Burgundy, the streets of San Sebastián to the clifftop villages of Portugal's Alentejo — Eventra designs Western Europe journeys at the level they deserve.">
+  <meta property="og:url" content="https://eventragroup.co.za/bespoke/europe/western-europe">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1499678329028-101435549a4e?w=1200&q=80&auto=format&fit=crop">
+  <meta property="og:site_name" content="Eventra Group">
+
+  <!-- Schema: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://eventragroup.co.za/" },
+      { "@type": "ListItem", "position": 2, "name": "Bespoke Travel", "item": "https://eventragroup.co.za/bespoke" },
+      { "@type": "ListItem", "position": 3, "name": "Europe", "item": "https://eventragroup.co.za/bespoke/europe" },
+      { "@type": "ListItem", "position": 4, "name": "Western Europe", "item": "https://eventragroup.co.za/bespoke/europe/western-europe" }
+    ]
+  }
+  </script>
+
+  <!-- Schema: TouristDestination -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "TouristDestination",
+        "name": "France and Monaco",
+        "description": "France is the world's most visited country and still manages to surprise. Paris in every season. The Loire Valley's châteaux. Provence in lavender. Burgundy and Bordeaux for those who measure holidays in vintages. And on the French Riviera, Monaco — a city-state that hosts the world's most glamorous sporting event.",
+        "url": "https://eventragroup.co.za/bespoke/europe/western-europe",
+        "touristType": "Luxury traveller",
+        "includesAttraction": { "@type": "TouristAttraction", "name": "Monaco Grand Prix Circuit" }
+      },
+      {
+        "@type": "TouristDestination",
+        "name": "Spain and Portugal",
+        "description": "Spain is heat, colour, and noise — the pintxos bars of San Sebastián, the architecture of Barcelona, the flamenco of Seville, the art of Madrid. Portugal is quieter, more contemplative — Lisbon's tiled facades and fado evenings, the Douro Valley's terraced vineyards, the Alentejo's cork forests and private wine estates.",
+        "url": "https://eventragroup.co.za/bespoke/europe/western-europe",
+        "touristType": "Luxury traveller",
+        "includesAttraction": { "@type": "TouristAttraction", "name": "Alhambra Palace, Granada" }
+      },
+      {
+        "@type": "TouristDestination",
+        "name": "Switzerland and Austria",
+        "description": "Switzerland — Geneva, Zurich, the Valais — offers private chalets, lake cruises, and mountain experiences that define the word pristine. Austria — Vienna's imperial architecture, the Salzkammergut lakes, the Tyrolean valleys — adds cultural weight to the natural drama.",
+        "url": "https://eventragroup.co.za/bespoke/europe/western-europe",
+        "touristType": "Luxury traveller",
+        "includesAttraction": { "@type": "TouristAttraction", "name": "Vienna State Opera" }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ───────────────────────────────────────────────
+       DESIGN TOKENS
+    ─────────────────────────────────────────────── */
+    :root {
+      --eg-white:         #FFFFFF;
+      --eg-warm-neutral:  #F8F5F0;
+      --eg-charcoal:      #1A1A1A;
+      --eg-mid-grey:      #6B6B6B;
+      --eg-gold:          #B8966B;
+      --eg-gold-hover:    #9E7D55;
+      --font-display:     'Cormorant Garamond', serif;
+      --font-body:        'Inter', sans-serif;
+      --section-pad-v:    100px;
+      --section-pad-v-sm: 60px;
+      --max-width:        1240px;
+      --gutter:           32px;
+    }
+
+    /* ───────────────────────────────────────────────
+       RESET & BASE
+    ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); font-size: 16px; color: var(--eg-charcoal); background: var(--eg-white); -webkit-font-smoothing: antialiased; }
+    img { display: block; width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 40px; }
+    .eyebrow { font-family: var(--font-body); font-weight: 500; font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--eg-gold); }
+    .btn { display: inline-block; font-family: var(--font-body); font-weight: 600; font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; padding: 16px 40px; border-radius: 2px; cursor: pointer; transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease; border: 1.5px solid transparent; }
+    .btn-primary { background: var(--eg-gold); color: var(--eg-white); border-color: var(--eg-gold); }
+    .btn-primary:hover { background: var(--eg-gold-hover); border-color: var(--eg-gold-hover); }
+    .btn-secondary { background: transparent; color: var(--eg-gold); border-color: var(--eg-gold); }
+    .btn-secondary:hover { background: var(--eg-gold); color: var(--eg-white); }
+    .btn-white-outline { background: transparent; color: var(--eg-white); border-color: var(--eg-white); }
+    .btn-white-outline:hover { background: var(--eg-white); color: var(--eg-charcoal); }
+    .btn-sm { padding: 12px 28px; font-size: 12px; }
+
+    /* ───────────────────────────────────────────────
+       NAVIGATION
+    ─────────────────────────────────────────────── */
+    .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 72px; display: flex; align-items: center; background: transparent; transition: background 0.35s ease, box-shadow 0.35s ease; }
+    .site-header.scrolled { background: var(--eg-white); box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+    .site-header .container { width: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .site-logo { flex-shrink: 0; display: flex; align-items: center; gap: 10px; }
+    .logo-img { display: block; width: auto; height: 40px; max-height: 40px; }
+    .logo-dark { display: none; }
+    .site-header.scrolled .logo-white { display: none; }
+    .site-header.scrolled .logo-dark { display: block; }
+    .logo-text { font-family: var(--font-display); font-weight: 400; font-size: 22px; letter-spacing: 0.04em; color: var(--eg-white); transition: color 0.35s ease; white-space: nowrap; }
+    .site-header.scrolled .logo-text { color: var(--eg-charcoal); }
+    .logo-subtitle { font-family: var(--font-body); font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.7); transition: color 0.35s ease; margin-top: 2px; }
+    .site-header.scrolled .logo-subtitle { color: var(--eg-mid-grey); }
+    .site-nav { display: flex; align-items: center; gap: 36px; }
+    .nav-link { font-family: var(--font-body); font-weight: 500; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.88); transition: color 0.25s ease; }
+    .site-header.scrolled .nav-link { color: var(--eg-charcoal); }
+    .nav-link:hover { color: var(--eg-gold); }
+    .nav-cta { font-family: var(--font-body); font-weight: 600; font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; padding: 10px 24px; border-radius: 2px; border: 1.5px solid rgba(255,255,255,0.7); color: var(--eg-white); transition: all 0.25s ease; }
+    .site-header.scrolled .nav-cta { border-color: var(--eg-gold); color: var(--eg-gold); }
+    .nav-cta:hover { background: var(--eg-white); color: var(--eg-charcoal); border-color: var(--eg-white); }
+    .site-header.scrolled .nav-cta:hover { background: var(--eg-gold); color: var(--eg-white); border-color: var(--eg-gold); }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+    .nav-hamburger span { display: block; width: 24px; height: 1.5px; background: var(--eg-white); transition: background 0.35s ease; }
+    .site-header.scrolled .nav-hamburger span { background: var(--eg-charcoal); }
+    .mobile-nav { display: none; position: fixed; inset: 0; background: var(--eg-charcoal); z-index: 99; flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav .nav-link { color: var(--eg-white); font-size: 14px; }
+    .mobile-nav .nav-cta { border-color: var(--eg-gold); color: var(--eg-gold); }
+    .mobile-nav-close { position: absolute; top: 24px; right: 24px; cursor: pointer; font-size: 28px; color: var(--eg-white); line-height: 1; background: none; border: none; }
+    .nav-dropdown-wrap { position: relative; display: flex; align-items: center; }
+    .nav-dropdown { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); background: var(--eg-white); min-width: 180px; border-top: 2px solid var(--eg-gold); box-shadow: 0 8px 32px rgba(0,0,0,0.12); opacity: 0; visibility: hidden; transition: opacity 0.2s ease, visibility 0.2s ease; transition-delay: 0.2s; z-index: 200; pointer-events: none; padding-top: 14px; }
+    .nav-dropdown-wrap:hover .nav-dropdown { opacity: 1; visibility: visible; pointer-events: auto; transition-delay: 0s; }
+    .nav-dropdown a { display: block; padding: 11px 20px; font-family: var(--font-body); font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--eg-charcoal); transition: background 0.15s, color 0.15s; text-decoration: none; }
+    .nav-dropdown a:hover { background: var(--eg-warm-neutral); color: var(--eg-gold); }
+    .nav-dropdown .nav-dropdown-view-all { border-top: 1px solid #eee; color: var(--eg-gold); }
+    .mobile-exp-wrap { display: flex; flex-direction: column; align-items: center; }
+    .mobile-exp-btn { background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 8px; padding: 0; }
+    .mobile-exp-chevron { font-size: 9px; transition: transform 0.2s; display: inline-block; }
+    .mobile-exp-btn[aria-expanded="true"] .mobile-exp-chevron { transform: rotate(180deg); }
+    .mobile-subnav { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-top: 14px; }
+    .mobile-sublink { font-size: 12px !important; opacity: 0.72; }
+
+    /* ───────────────────────────────────────────────
+       HERO
+    ─────────────────────────────────────────────── */
+    .hero { position: relative; min-height: 90vh; display: flex; align-items: center; overflow: hidden; }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1499678329028-101435549a4e?w=2400&q=80&auto=format&fit=crop');
+      background-size: cover; background-position: center 45%; background-color: #1A1A1A;
+      transform: scale(1.03); transition: transform 8s ease-out;
+    }
+    .hero-bg.loaded { transform: scale(1); }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(105deg, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.42) 60%, rgba(0,0,0,0.20) 100%); }
+    .hero-content { position: relative; z-index: 2; width: 100%; padding: 0 80px; padding-top: 100px; }
+    .hero-inner { max-width: 680px; }
+    .hero-eyebrow { font-family: var(--font-body); font-weight: 500; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.85); margin-bottom: 20px; }
+    .hero-headline { font-family: var(--font-display); font-weight: 300; font-size: 72px; line-height: 1.02; color: var(--eg-white); margin-bottom: 28px; }
+    .hero-subhead { font-family: var(--font-body); font-weight: 400; font-size: 16px; line-height: 1.7; color: rgba(255,255,255,0.8); margin-bottom: 44px; max-width: 520px; }
+    .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+
+    /* ───────────────────────────────────────────────
+       BREADCRUMB
+    ─────────────────────────────────────────────── */
+    .breadcrumb { background: var(--eg-warm-neutral); padding: 14px 0; border-bottom: 1px solid rgba(0,0,0,0.06); }
+    .breadcrumb-list { display: flex; align-items: center; gap: 8px; list-style: none; font-family: var(--font-body); font-size: 12px; color: var(--eg-mid-grey); }
+    .breadcrumb-list li + li::before { content: '/'; opacity: 0.4; margin-right: 8px; }
+    .breadcrumb-list a { color: var(--eg-mid-grey); transition: color 0.2s; }
+    .breadcrumb-list a:hover { color: var(--eg-gold); }
+    .breadcrumb-list .current { color: var(--eg-charcoal); }
+
+    /* ───────────────────────────────────────────────
+       INTRO
+    ─────────────────────────────────────────────── */
+    .intro-section { background: var(--eg-white); padding: var(--section-pad-v) 0; }
+    .intro-inner { max-width: 760px; margin: 0 auto; text-align: center; }
+    .intro-inner .eyebrow { margin-bottom: 20px; }
+    .intro-title { font-family: var(--font-display); font-weight: 300; font-size: 50px; line-height: 1.1; color: var(--eg-charcoal); margin-bottom: 28px; }
+    .intro-body { font-family: var(--font-body); font-size: 17px; line-height: 1.75; color: var(--eg-mid-grey); }
+    .intro-body p + p { margin-top: 18px; }
+    .intro-divider { width: 48px; height: 1px; background: var(--eg-gold); margin: 40px auto 0; }
+
+    /* ───────────────────────────────────────────────
+       DESTINATION CARDS
+    ─────────────────────────────────────────────── */
+    .destinations-section { background: var(--eg-warm-neutral); padding: var(--section-pad-v) 0; }
+    .section-header { text-align: center; margin-bottom: 60px; }
+    .section-header .eyebrow { margin-bottom: 16px; }
+    .section-title { font-family: var(--font-display); font-weight: 400; font-size: 44px; color: var(--eg-charcoal); line-height: 1.1; }
+    .destinations-grid { display: grid; gap: var(--gutter); }
+    .dest-card-featured { grid-column: 1 / -1; }
+    .dest-cards-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gutter); }
+    .dest-card { display: block; position: relative; overflow: hidden; cursor: pointer; }
+    .dest-card-featured { aspect-ratio: 16/7; }
+    .dest-cards-row .dest-card { aspect-ratio: 3/4; }
+    .dest-card-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.55s ease; }
+    .dest-card:hover .dest-card-img { transform: scale(1.05); }
+    .dest-card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.10) 100%); transition: background 0.3s ease; }
+    .dest-card:hover .dest-card-overlay { background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.18) 100%); }
+    .dest-card-body { position: absolute; bottom: 0; left: 0; right: 0; padding: 36px; }
+    .dest-card-label { font-family: var(--font-body); font-weight: 500; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #FFFFFF; margin-bottom: 12px; }
+    .dest-card-title { font-family: var(--font-display); font-weight: 300; font-size: 34px; color: #FFFFFF; line-height: 1.1; margin-bottom: 14px; }
+    .dest-card-desc { font-family: var(--font-body); font-size: 13px; line-height: 1.6; color: rgba(255,255,255,0.88); margin-bottom: 24px; }
+    .dest-card-featured .dest-card-desc { max-width: 680px; }
+    .dest-card-arrow { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-body); font-weight: 500; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--eg-white); border-bottom: 1px solid rgba(255,255,255,0.4); padding-bottom: 2px; transition: color 0.25s, border-color 0.25s; }
+    .dest-card:hover .dest-card-arrow { color: var(--eg-gold); border-color: var(--eg-gold); }
+
+    /* ───────────────────────────────────────────────
+       CTA BAND
+    ─────────────────────────────────────────────── */
+    .cta-band { background: var(--eg-charcoal); padding: 80px 0; text-align: center; }
+    .cta-band-eyebrow { font-family: var(--font-body); font-weight: 500; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--eg-gold); margin-bottom: 20px; }
+    .cta-band-title { font-family: var(--font-display); font-weight: 300; font-size: 48px; color: var(--eg-white); margin-bottom: 16px; line-height: 1.1; }
+    .cta-band-sub { font-family: var(--font-body); font-size: 16px; color: rgba(255,255,255,0.65); margin-bottom: 40px; max-width: 520px; margin-left: auto; margin-right: auto; line-height: 1.65; }
+
+    /* ───────────────────────────────────────────────
+       FOOTER
+    ─────────────────────────────────────────────── */
+    .site-footer { background: #111111; }
+    .footer-main { padding: 64px 0 48px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; }
+    .footer-brand-logo { height: 36px; width: auto; display: block; margin-bottom: 20px; filter: brightness(0) invert(1); opacity: 0.75; }
+    .footer-brand-text { font-family: var(--font-body); font-size: 13px; line-height: 1.7; color: rgba(255,255,255,0.45); max-width: 280px; margin-bottom: 24px; }
+    .social-links { display: flex; gap: 16px; }
+    .social-link { font-family: var(--font-body); font-weight: 600; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); transition: color 0.25s; }
+    .social-link:hover { color: var(--eg-gold); }
+    .footer-col-title { font-family: var(--font-body); font-weight: 600; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 20px; }
+    .footer-links { list-style: none; }
+    .footer-links li + li { margin-top: 12px; }
+    .footer-links a { font-family: var(--font-body); font-size: 14px; color: rgba(255,255,255,0.6); transition: color 0.25s; }
+    .footer-links a:hover { color: var(--eg-gold); }
+    .footer-contact-item { font-family: var(--font-body); font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 10px; line-height: 1.5; }
+    .footer-contact-item a { transition: color 0.25s; }
+    .footer-contact-item a:hover { color: var(--eg-gold); }
+    .footer-enquire { margin-top: 24px; }
+    .footer-legal { border-top: 1px solid rgba(255,255,255,0.08); padding: 20px 0; }
+    .footer-legal .container { display: flex; align-items: center; justify-content: space-between; }
+    .legal-text { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.3); }
+    .legal-links { display: flex; gap: 24px; }
+    .legal-links a { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.3); transition: color 0.25s; }
+    .legal-links a:hover { color: var(--eg-gold); }
+
+    /* ───────────────────────────────────────────────
+       RESPONSIVE
+    ─────────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .dest-card-featured { aspect-ratio: 16/8; }
+      .dest-cards-row { gap: 24px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+    @media (max-width: 768px) {
+      .nav-hamburger { display: flex; }
+      .site-nav { display: none; }
+      .hero { min-height: 75vh; }
+      .hero-headline { font-size: 44px; }
+      .hero-content { padding: 0 24px; padding-top: 100px; }
+      .hero-subhead { font-size: 15px; }
+      .intro-title { font-size: 34px; }
+      .intro-body { font-size: 15px; }
+      .dest-card-featured { aspect-ratio: 4/3; }
+      .dest-cards-row { grid-template-columns: 1fr; gap: 20px; }
+      .dest-cards-row .dest-card { aspect-ratio: 4/3; }
+      .section-title { font-size: 32px; }
+      .dest-card-title { font-size: 26px; }
+      .dest-card-body { padding: 28px; }
+      .cta-band-title { font-size: 32px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .container { padding: 0 24px; }
+    }
+    @media (max-width: 375px) {
+      .hero-headline { font-size: 36px; }
+      .intro-title { font-size: 28px; }
+    }
+  </style>
 </head>
 <body>
-<h1>Western Europe. The Continent at Its Most Refined.</h1>
-<p>Coming soon.</p>
-<a href="/enquire">Design Your Journey</a>
+
+  <!-- ────────────────────────────────────────────
+       HEADER
+  ──────────────────────────────────────────── -->
+  <header class="site-header" id="site-header" role="banner">
+    <div class="container">
+      <a href="/" class="site-logo" aria-label="Eventra Group — home">
+        <img src="/EVENTRA_FINAL_LOGOS_20_JUNE_2025-03.png" alt="Eventra Group logo (white)" class="logo-img logo-white">
+        <img src="/EVENTRA_FINAL_LOGOS_20_JUNE_2025-02.png" alt="Eventra Group logo (dark)" class="logo-img logo-dark">
+        <div>
+          <div class="logo-text">Eventra Group</div>
+          <div class="logo-subtitle">Sports Hospitality &amp; Luxury Travel</div>
+        </div>
+      </a>
+
+      <nav class="site-nav" aria-label="Main navigation">
+        <div class="nav-dropdown-wrap">
+          <a href="/experiences" class="nav-link">Experiences</a>
+          <div class="nav-dropdown">
+            <a href="/experiences/rugby">Rugby</a>
+            <a href="/experiences/cricket">Cricket</a>
+            <a href="/experiences/f1">Formula 1</a>
+            <a href="/experiences/football">Football</a>
+            <a href="/experiences/tennis">Tennis</a>
+            <a href="/experiences/concerts-culture">Concerts &amp; Culture</a>
+            <a href="/experiences" class="nav-dropdown-view-all">View All</a>
+          </div>
+        </div>
+        <div class="nav-dropdown-wrap">
+          <a href="/bespoke" class="nav-link">Bespoke Travel</a>
+          <div class="nav-dropdown">
+            <a href="/bespoke/africa">Africa</a>
+            <a href="/bespoke/europe">Europe</a>
+          </div>
+        </div>
+        <a href="/enquire" class="nav-cta">Enquire</a>
+      </nav>
+
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile nav -->
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+    <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close menu">&times;</button>
+    <div class="mobile-exp-wrap">
+      <button class="nav-link mobile-exp-btn" aria-expanded="false" id="mobile-exp-trigger">Experiences <span class="mobile-exp-chevron">&#9662;</span></button>
+      <div class="mobile-subnav" id="mobile-subnav" hidden>
+        <a href="/experiences/rugby" class="nav-link mobile-sublink">Rugby</a>
+        <a href="/experiences/cricket" class="nav-link mobile-sublink">Cricket</a>
+        <a href="/experiences/f1" class="nav-link mobile-sublink">Formula 1</a>
+        <a href="/experiences/football" class="nav-link mobile-sublink">Football</a>
+        <a href="/experiences/tennis" class="nav-link mobile-sublink">Tennis</a>
+        <a href="/experiences/concerts-culture" class="nav-link mobile-sublink">Concerts &amp; Culture</a>
+        <a href="/experiences" class="nav-link mobile-sublink">View All</a>
+      </div>
+    </div>
+    <div class="mobile-exp-wrap">
+      <button class="nav-link mobile-exp-btn" aria-expanded="false" id="mobile-bespoke-trigger">Bespoke Travel <span class="mobile-exp-chevron">&#9662;</span></button>
+      <div class="mobile-subnav" id="mobile-bespoke-subnav" hidden>
+        <a href="/bespoke/africa" class="nav-link mobile-sublink">Africa</a>
+        <a href="/bespoke/europe" class="nav-link mobile-sublink">Europe</a>
+      </div>
+    </div>
+    <a href="/enquire" class="nav-cta btn btn-secondary">Enquire Now</a>
+  </nav>
+
+
+  <!-- ────────────────────────────────────────────
+       HERO
+  ──────────────────────────────────────────── -->
+  <section class="hero" aria-label="Western Europe hero">
+    <div class="hero-bg" id="hero-bg"></div>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <div class="hero-inner">
+        <p class="hero-eyebrow">Eventra Bespoke &mdash; Western Europe</p>
+        <h1 class="hero-headline">Western Europe.<br>The Continent at<br>Its Most Refined.</h1>
+        <p class="hero-subhead">From the French Riviera to the vineyards of Burgundy, the streets of San Sebasti&aacute;n to the clifftop villages of Portugal&rsquo;s Alentejo &mdash; Western Europe rewards those who move through it properly. Not on a schedule, but on a brief. Eventra designs the journey around what matters to you.</p>
+        <div class="hero-ctas">
+          <a href="/enquire" class="btn btn-primary">Design Your Journey</a>
+          <a href="#destinations" class="btn btn-white-outline">Explore the Region</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ────────────────────────────────────────────
+       BREADCRUMB
+  ──────────────────────────────────────────── -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="container">
+      <ol class="breadcrumb-list">
+        <li><a href="/">Home</a></li>
+        <li><a href="/bespoke">Bespoke Travel</a></li>
+        <li><a href="/bespoke/europe">Europe</a></li>
+        <li><span class="current" aria-current="page">Western Europe</span></li>
+      </ol>
+    </div>
+  </nav>
+
+
+  <!-- ────────────────────────────────────────────
+       INTRO
+  ──────────────────────────────────────────── -->
+  <section class="intro-section" aria-label="About Western Europe">
+    <div class="container">
+      <div class="intro-inner">
+        <p class="eyebrow">The World&rsquo;s Most Visited Region</p>
+        <h2 class="intro-title">The access that changes<br>what a destination means.</h2>
+        <div class="intro-body">
+          <p>Western Europe is the world&rsquo;s most visited region for a reason &mdash; but most people only see its surface. The difference between a good trip and an extraordinary one is rarely the destination. It is the access. The private cellar tasting at a first-growth Bordeaux ch&acirc;teau. The table at a Michelin three-star that does not take reservations from the public. The <a href="/experiences/f1" style="color: var(--eg-gold); text-decoration: none; border-bottom: 1px solid var(--eg-gold);">Monaco GP</a> race week arranged around the grid, not the grandstand.</p>
+          <p>This is what Eventra designs &mdash; Western Europe experienced at the level it is capable of, for those who know the difference.</p>
+        </div>
+        <div class="intro-divider" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ────────────────────────────────────────────
+       DESTINATION CARDS
+  ──────────────────────────────────────────── -->
+  <section class="destinations-section" id="destinations" aria-label="Western Europe destinations">
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">Where We Travel</p>
+        <h2 class="section-title">Three Corners of the Continent.</h2>
+      </div>
+
+      <div class="destinations-grid">
+
+        <!-- France & Monaco — featured full-width card -->
+        <a href="/enquire" class="dest-card dest-card-featured" aria-label="Enquire about France and Monaco">
+          <img
+            src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=1800&q=80&auto=format&fit=crop&fm=webp"
+            alt="Aerial view of Nice French Riviera coastline and harbour at golden hour, Côte d'Azur France"
+            class="dest-card-img"
+            loading="lazy"
+            width="1800"
+            height="788"
+          >
+          <div class="dest-card-overlay"></div>
+          <div class="dest-card-body">
+            <p class="dest-card-label">France &amp; Monaco</p>
+            <h3 class="dest-card-title">France. And the principality beside it.</h3>
+            <p class="dest-card-desc">France is the world&rsquo;s most visited country and still manages to surprise. Paris in every season. The Loire Valley&rsquo;s ch&acirc;teaux. Provence in lavender. Burgundy and Bordeaux for those who measure holidays in vintages. And on the French Riviera, Monaco &mdash; a city-state that hosts the world&rsquo;s most glamorous sporting event and one of the most concentrated collections of luxury in a square kilometre anywhere on earth. Eventra&rsquo;s France and Monaco journeys are built around the Formula 1 race calendar, the Riviera summer season, and the gastronomic regions that never disappoint.</p>
+            <span class="dest-card-arrow">Enquire &rarr;</span>
+          </div>
+        </a>
+
+        <!-- Spain & Portugal and Switzerland & Austria side by side -->
+        <div class="dest-cards-row">
+
+          <!-- Spain & Portugal -->
+          <a href="/enquire" class="dest-card" aria-label="Enquire about Spain and Portugal">
+            <img
+              src="https://images.unsplash.com/photo-1588668214407-6ea9a6d8c272?w=900&q=80&auto=format&fit=crop&fm=webp"
+              alt="Aerial view of Lisbon cityscape with the Tagus river and rooftops at dusk, Portugal"
+              class="dest-card-img"
+              loading="lazy"
+              width="900"
+              height="1200"
+            >
+            <div class="dest-card-overlay"></div>
+            <div class="dest-card-body">
+              <p class="dest-card-label">Spain &amp; Portugal</p>
+              <h3 class="dest-card-title">The Iberian Peninsula,<br>properly done.</h3>
+              <p class="dest-card-desc">Spain is heat, colour, and noise &mdash; the pintxos bars of San Sebasti&aacute;n, the architecture of Barcelona, the flamenco of Seville, the art of Madrid. Portugal is quieter, more contemplative &mdash; Lisbon&rsquo;s tiled facades and fado evenings, the Douro Valley&rsquo;s terraced vineyards, the Alentejo&rsquo;s cork forests and private wine estates. Together they represent two of Europe&rsquo;s most rewarding travel cultures. Eventra designs itineraries that do justice to both.</p>
+              <span class="dest-card-arrow">Enquire &rarr;</span>
+            </div>
+          </a>
+
+          <!-- Switzerland & Austria -->
+          <a href="/enquire" class="dest-card" aria-label="Enquire about Switzerland and Austria">
+            <img
+              src="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=900&q=80&auto=format&fit=crop&fm=webp"
+              alt="Aerial view of Swiss Alps mountain peaks reflected in a turquoise alpine lake in summer"
+              class="dest-card-img"
+              loading="lazy"
+              width="900"
+              height="1200"
+            >
+            <div class="dest-card-overlay"></div>
+            <div class="dest-card-body">
+              <p class="dest-card-label">Switzerland &amp; Austria</p>
+              <h3 class="dest-card-title">Alpine precision<br>and cultural depth.</h3>
+              <p class="dest-card-desc">Switzerland &mdash; Geneva, Zurich, the Valais &mdash; offers private chalets, lake cruises, and mountain experiences that define the word pristine. Austria &mdash; Vienna&rsquo;s imperial architecture, the Salzkammergut lakes, the Tyrolean valleys &mdash; adds cultural weight to the natural drama. For clients combining European travel with the <a href="/experiences/f1" style="color: var(--eg-gold); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.4);">Monaco GP</a> or a Riviera summer, Switzerland and Austria provide the natural complement.</p>
+              <span class="dest-card-arrow">Enquire &rarr;</span>
+            </div>
+          </a>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ────────────────────────────────────────────
+       CTA BAND
+  ──────────────────────────────────────────── -->
+  <section class="cta-band" aria-label="Design Your Western Europe Journey">
+    <div class="container">
+      <p class="cta-band-eyebrow">Begin Here</p>
+      <h2 class="cta-band-title">Your Western Europe Journey<br>Starts Here</h2>
+      <p class="cta-band-sub">Tell us the destination, the occasion, and what you want to feel when you arrive. We design the rest.</p>
+      <a href="/enquire" class="btn btn-primary">Design Your Journey</a>
+    </div>
+  </section>
+
+
+  <!-- ────────────────────────────────────────────
+       FOOTER
+  ──────────────────────────────────────────── -->
+  <footer class="site-footer" aria-label="Site footer">
+    <div class="footer-main">
+      <div class="container">
+        <div class="footer-grid">
+
+          <div class="footer-brand">
+            <img src="/EVENTRA_FINAL_LOGOS_20_JUNE_2025-01.png" alt="Eventra Group" class="footer-brand-logo" loading="lazy">
+            <p class="footer-brand-text">The company you keep. Luxury sports hospitality and experiential travel, curated from Cape Town for the world.</p>
+            <div class="social-links">
+              <a href="#" class="social-link" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12c0 3.259.014 3.668.072 4.948.058 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24c3.259 0 3.668-.014 4.948-.072 1.277-.058 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.689.072-4.948 0-3.259-.014-3.667-.072-4.947-.058-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.259 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.645-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg></a>
+              <a href="#" class="social-link" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+              <a href="#" class="social-link" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 11.954 12 12.728v-8.945H8.468v-3.783H12v-2.886c0-3.475 2.07-5.397 5.24-5.397 1.519 0 3.109.269 3.109.269v3.404h-1.751c-1.726 0-2.265 1.071-2.265 2.17v2.43h3.856l-.616 3.782H16.33v8.945c7.617-.772 12.003-6.737 12.003-12.727z"/></svg></a>
+            </div>
+          </div>
+
+          <div>
+            <p class="footer-col-title">Bespoke</p>
+            <ul class="footer-links">
+              <li><a href="/bespoke">All Bespoke Travel</a></li>
+              <li><a href="/bespoke/africa">Africa</a></li>
+              <li><a href="/bespoke/europe">Europe</a></li>
+              <li><a href="/bespoke/europe/western-europe">Western Europe</a></li>
+              <li><a href="/enquire">Design Your Journey</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <p class="footer-col-title">Experiences</p>
+            <ul class="footer-links">
+              <li><a href="/experiences/f1">Formula 1</a></li>
+              <li><a href="/experiences/rugby">Rugby</a></li>
+              <li><a href="/experiences/cricket">Cricket</a></li>
+              <li><a href="/experiences/tennis">Tennis</a></li>
+              <li><a href="/experiences/football">Football</a></li>
+              <li><a href="/experiences/concerts-culture">Concerts &amp; Culture</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <p class="footer-col-title">Contact</p>
+            <p class="footer-contact-item"><a href="mailto:info@eventragroup.co.za">info@eventragroup.co.za</a></p>
+            <p class="footer-contact-item">Cape Town, South Africa</p>
+            <div class="footer-enquire">
+              <a href="/enquire" class="btn btn-secondary btn-sm">Enquire Now</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-legal">
+      <div class="container">
+        <p class="legal-text">&copy; 2025 Eventra Group. All rights reserved.</p>
+        <div class="legal-links">
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/terms">Terms &amp; Conditions</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    // Header scroll behaviour
+    const header = document.getElementById('site-header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // Hero parallax image load
+    const heroBg = document.getElementById('hero-bg');
+    if (heroBg) {
+      const img = new Image();
+      img.onload = () => heroBg.classList.add('loaded');
+      img.src = 'https://images.unsplash.com/photo-1499678329028-101435549a4e?w=2400&q=80&auto=format&fit=crop';
+    }
+
+    // Mobile nav
+    const hamburger = document.getElementById('nav-hamburger');
+    const mobileNav = document.getElementById('mobile-nav');
+    const mobileClose = document.getElementById('mobile-nav-close');
+    if (hamburger && mobileNav && mobileClose) {
+      hamburger.addEventListener('click', () => mobileNav.classList.add('open'));
+      mobileClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+    }
+
+    // Mobile Experiences dropdown
+    const expTrigger = document.getElementById('mobile-exp-trigger');
+    const expSubnav = document.getElementById('mobile-subnav');
+    if (expTrigger && expSubnav) {
+      expTrigger.addEventListener('click', () => {
+        const isExp = expTrigger.getAttribute('aria-expanded') === 'true';
+        expTrigger.setAttribute('aria-expanded', String(!isExp));
+        expSubnav.hidden = isExp;
+      });
+    }
+
+    // Mobile Bespoke dropdown
+    const bespokeTrigger = document.getElementById('mobile-bespoke-trigger');
+    const bespokeSubnav = document.getElementById('mobile-bespoke-subnav');
+    if (bespokeTrigger && bespokeSubnav) {
+      bespokeTrigger.addEventListener('click', () => {
+        const isExp = bespokeTrigger.getAttribute('aria-expanded') === 'true';
+        bespokeTrigger.setAttribute('aria-expanded', String(!isExp));
+        bespokeSubnav.hidden = isExp;
+      });
+    }
+  </script>
+
 </body>
 </html>
