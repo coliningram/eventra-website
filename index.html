@@ -364,7 +364,7 @@
       background-size: cover;
       background-position: center top;
       opacity: 0;
-      transition: opacity 1.5s ease;
+      transition: opacity 0.8s ease;
     }
 
     .hero-slide--active {
@@ -1514,7 +1514,7 @@
         heroSlides[current].classList.remove('hero-slide--active');
         current = (current + 1) % heroSlides.length;
         heroSlides[current].classList.add('hero-slide--active');
-      }, 5000);
+      }, 3500);
     }
 
     // Mobile nav
