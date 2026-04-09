@@ -12,7 +12,7 @@
   <meta property="og:title" content="Rwanda Luxury Travel | Gorilla Trekking &amp; Volcanoes National Park | Eventra">
   <meta property="og:description" content="Rwanda&rsquo;s Volcanoes National Park is home to approximately half the world&rsquo;s remaining mountain gorillas. One hour in the presence of a gorilla family is an encounter that requires no superlatives.">
   <meta property="og:url" content="https://eventragroup.co.za/bespoke/africa/east-africa/rwanda">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1662612732223-1fe6ea43263e?w=1200&q=80&auto=format&fit=crop&fm=webp">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1662612732223-1fe6ea43263e?w=1200&q=70&auto=format&fit=crop&fm=webp">
   <meta property="og:site_name" content="Eventra Group">
 
   <!-- Schema: BreadcrumbList -->
@@ -50,6 +50,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
@@ -122,7 +123,7 @@
     .mobile-subnav { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-top: 14px; }
     .mobile-sublink { font-size: 12px !important; opacity: 0.72; }
     .hero { position: relative; min-height: 90vh; display: flex; align-items: center; overflow: hidden; }
-    .hero-bg { position: absolute; inset: 0; background-image: url('https://images.unsplash.com/photo-1662612732223-1fe6ea43263e?w=2400&q=80&auto=format&fit=crop&fm=webp'); background-size: cover; background-position: center 40%; background-color: #1A1A1A; transform: scale(1.03); transition: transform 8s ease-out; }
+    .hero-bg { position: absolute; inset: 0; background-image: url('https://images.unsplash.com/photo-1662612732223-1fe6ea43263e?w=1200&q=70&auto=format&fit=crop&fm=webp'); background-size: cover; background-position: center 40%; background-color: #1A1A1A; transform: scale(1.03); transition: transform 8s ease-out; }
     .hero-bg.loaded { transform: scale(1); }
     .hero-overlay { position: absolute; inset: 0; background: linear-gradient(105deg, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.42) 60%, rgba(0,0,0,0.20) 100%); }
     .hero-content { position: relative; z-index: 2; width: 100%; padding: 0 80px; padding-top: 100px; }
@@ -378,7 +379,7 @@
     const header = document.getElementById('site-header');
     window.addEventListener('scroll', () => { header.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
     const heroBg = document.getElementById('hero-bg');
-    if (heroBg) { const img = new Image(); img.onload = () => heroBg.classList.add('loaded'); img.src = 'https://images.unsplash.com/photo-1662612732223-1fe6ea43263e?w=2400&q=80&auto=format&fit=crop&fm=webp'; }
+    if (heroBg) { const img = new Image(); img.onload = () => heroBg.classList.add('loaded'); img.src = 'https://images.unsplash.com/photo-1662612732223-1fe6ea43263e?w=1200&q=70&auto=format&fit=crop&fm=webp'; }
     const hamburger = document.getElementById('nav-hamburger');
     const mobileNav = document.getElementById('mobile-nav');
     const mobileClose = document.getElementById('mobile-nav-close');
