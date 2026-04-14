@@ -1114,6 +1114,53 @@
       .footer-grid { grid-template-columns: 1fr; gap: 32px; }
       .footer-legal .container { flex-direction: column; align-items: flex-start; }
     }
+
+    /* TICKER STYLES START — remove to disable */
+    .event-ticker-wrap {
+      background: var(--eg-warm-neutral);
+      border-top: 0.5px solid #B8966B44;
+      border-bottom: 0.5px solid #B8966B44;
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 14px 0;
+      cursor: default;
+      user-select: none;
+    }
+
+    .event-ticker-track {
+      display: inline-block;
+      animation: ticker-scroll 40s linear infinite;
+    }
+
+    .event-ticker-wrap:hover .event-ticker-track {
+      animation-play-state: paused;
+    }
+
+    .event-ticker-item {
+      display: inline;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--eg-charcoal);
+    }
+
+    .event-ticker-sep {
+      display: inline;
+      color: var(--eg-gold);
+      margin: 0 20px;
+    }
+
+    @keyframes ticker-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    @media (max-width: 768px) {
+      .event-ticker-item { font-size: 13px; }
+    }
+    /* TICKER STYLES END */
   </style>
 </head>
 
@@ -1250,6 +1297,37 @@
       <div class="scroll-arrow"></div>
     </div>
   </section>
+
+  <!-- TICKER START — remove this entire block to disable -->
+  <div id="event-ticker" class="event-ticker-wrap" aria-hidden="true">
+    <div class="event-ticker-track" id="event-ticker-track">
+      <span class="event-ticker-item">Springboks vs All Blacks · DHL Stadium · 29 August 2026 · Limited Suites Available</span>
+      <span class="event-ticker-sep">—</span>
+      <span class="event-ticker-item">Springboks vs England · Ellis Park · 4 July 2026 · Hospitality Available</span>
+      <span class="event-ticker-sep">—</span>
+      <span class="event-ticker-item">Springboks vs Scotland · Loftus Versfeld · 11 July 2026 · Enquire Now</span>
+      <span class="event-ticker-sep">—</span>
+      <span class="event-ticker-item">Monaco Grand Prix 2026 · Formula 1 Hospitality · Enquire for Availability</span>
+      <span class="event-ticker-sep">—</span>
+      <span class="event-ticker-item">England vs South Africa · Newlands · January 2027 · VIP Suites Available</span>
+      <span class="event-ticker-sep">—</span>
+      <span class="event-ticker-item">Australia 2027 · Register Your Interest Now</span>
+      <span class="event-ticker-sep">—</span>
+      <span class="event-ticker-item">Springboks vs All Blacks · DHL Stadium · 29 August 2026 · Limited Suites Available</span>
+      <span class="event-ticker-sep">—</span>
+      <span class="event-ticker-item">Springboks vs England · Ellis Park · 4 July 2026 · Hospitality Available</span>
+      <span class="event-ticker-sep">—</span>
+      <span class="event-ticker-item">Springboks vs Scotland · Loftus Versfeld · 11 July 2026 · Enquire Now</span>
+      <span class="event-ticker-sep">—</span>
+      <span class="event-ticker-item">Monaco Grand Prix 2026 · Formula 1 Hospitality · Enquire for Availability</span>
+      <span class="event-ticker-sep">—</span>
+      <span class="event-ticker-item">England vs South Africa · Newlands · January 2027 · VIP Suites Available</span>
+      <span class="event-ticker-sep">—</span>
+      <span class="event-ticker-item">Australia 2027 · Register Your Interest Now</span>
+      <span class="event-ticker-sep">—</span>
+    </div>
+  </div>
+  <!-- TICKER END -->
 
 
   <!-- ────────────────────────────────────────────
@@ -1581,6 +1659,17 @@
         bespokeEuropeSubnav.hidden = isOpen;
       });
     }
+
+    /* TICKER JS START — remove to disable */
+    (function () {
+      var track = document.getElementById('event-ticker-track');
+      if (!track) return;
+      // Respect prefers-reduced-motion
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        track.style.animation = 'none';
+      }
+    })();
+    /* TICKER JS END */
   </script>
 
 </body>
