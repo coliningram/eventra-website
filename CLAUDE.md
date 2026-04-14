@@ -15,6 +15,14 @@
 - Every `.dest-card-body` must have `z-index: 2` so text appears above the overlay.
 - Do not use `aspect-ratio` on `.dest-cards-row .dest-card` — use `min-height` instead to prevent text clipping.
 
+## Image Rules
+
+- When using Unsplash images, always verify the URL returns a real image by checking the photo ID exists before using it in any page. Never invent or guess Unsplash photo IDs. Only use photo IDs sourced directly from unsplash.com search results.
+
+## Task Completion
+
+- CRITICAL: Every single task must end with a git push to github.com/coliningram/eventra-website main branch. Never mark a task complete without confirming the commit hash. If you cannot push, report the exact error. Never save to memory instead of pushing.
+
 ## Existing Pages
 
 These pages exist and must be linked to (not `/enquire`):
