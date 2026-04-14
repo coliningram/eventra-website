@@ -242,6 +242,33 @@
       .hero-headline { font-size: 36px; }
       .intro-title { font-size: 28px; }
     }
+
+    /* OCCASIONS SECTION */
+    .occasions-section { background: var(--eg-warm-neutral); padding: var(--section-pad-v) 0; }
+    .occasions-intro { max-width: 760px; margin: 0 auto 64px; text-align: center; }
+    .occasions-intro .eyebrow { margin-bottom: 20px; }
+    .occasions-intro-title { font-family: var(--font-display); font-weight: 300; font-size: 46px; line-height: 1.1; color: var(--eg-charcoal); margin-bottom: 20px; }
+    .occasions-intro-body { font-family: var(--font-body); font-size: 16px; line-height: 1.75; color: var(--eg-mid-grey); }
+    .occasions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .occ-card { position: relative; overflow: hidden; display: block; cursor: pointer; min-height: 480px; }
+    .occ-card-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.55s ease; }
+    .occ-card:hover .occ-card-img { transform: scale(1.05); }
+    .occ-card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.45) 55%, rgba(0,0,0,0.08) 100%); transition: background 0.3s ease; }
+    .occ-card:hover .occ-card-overlay { background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.55) 55%, rgba(0,0,0,0.18) 100%); }
+    .occ-card-body { position: absolute; bottom: 0; left: 0; right: 0; padding: 32px; z-index: 2; }
+    .occ-card-label { font-family: var(--font-body); font-weight: 500; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--eg-gold); margin-bottom: 10px; }
+    .occ-card-title { font-family: var(--font-display); font-weight: 300; font-size: 26px; color: #FFFFFF; line-height: 1.15; margin-bottom: 12px; }
+    .occ-card-desc { font-family: var(--font-body); font-size: 13px; line-height: 1.6; color: rgba(255,255,255,0.82); margin-bottom: 18px; }
+    .occ-card-arrow { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-body); font-weight: 500; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--eg-white); border-bottom: 1px solid rgba(255,255,255,0.4); padding-bottom: 2px; transition: color 0.25s, border-color 0.25s; }
+    .occ-card:hover .occ-card-arrow { color: var(--eg-gold); border-color: var(--eg-gold); }
+    @media (max-width: 1024px) {
+      .occasions-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .occasions-grid { grid-template-columns: 1fr; gap: 20px; }
+      .occ-card { min-height: 380px; }
+      .occasions-intro-title { font-size: 32px; }
+    }
   </style>
 </head>
 <body>
@@ -422,6 +449,7 @@
             <h2 class="editorial-heading">Wimbledon from debenture seats. Silverstone from inside the fence.</h2>
             <p class="editorial-body">England&rsquo;s sporting calendar is among the most coveted in the world. Wimbledon debenture seats in the second week, when the draws have thinned and the standard of play is at its highest. Silverstone&rsquo;s British Grand Prix from hospitality that puts you inside the circuit. Wembley and Twickenham from boxes that remove the crowd from the experience without removing the atmosphere. Eventra has run event programmes at all of them.</p>
             <a href="/enquire" class="editorial-cta">Enquire About Sporting Events &rarr;</a>
+            <a href="/experiences/f1" class="editorial-cta" style="margin-top: 12px;">Formula 1 Experiences &rarr;</a>
           </div>
         </div>
       </div>
@@ -451,6 +479,136 @@
     </div>
 
   </div>
+
+
+  <!-- ENGLAND'S GREAT OCCASIONS -->
+  <section class="occasions-section" aria-label="England's Great Occasions">
+    <div class="container">
+      <div class="occasions-intro">
+        <p class="eyebrow">The Calendar</p>
+        <h2 class="occasions-intro-title">England&rsquo;s Great Occasions</h2>
+        <p class="occasions-intro-body">England&rsquo;s sporting and cultural calendar is among the richest in the world. Beyond the Grand Prix circuit, the country offers a season of extraordinary events &mdash; each with its own character, its own dress code, and its own way of doing things properly. Eventra curates access to all of them.</p>
+      </div>
+
+      <div class="occasions-grid">
+
+        <!-- Goodwood Festival of Speed -->
+        <a href="/enquire" class="occ-card" aria-label="Goodwood Festival of Speed — luxury motorsport hospitality">
+          <img
+            src="https://images.unsplash.com/photo-1568065893174-b4a21a87e2b3?w=800&q=80&auto=format&fit=crop&fm=webp"
+            alt="Racing cars at the Goodwood Festival of Speed hillclimb — luxury motorsport hospitality England with Eventra Bespoke"
+            class="occ-card-img"
+            loading="lazy"
+            width="800"
+            height="480"
+          >
+          <div class="occ-card-overlay"></div>
+          <div class="occ-card-body">
+            <p class="occ-card-label">Motorsport</p>
+            <h3 class="occ-card-title">Goodwood Festival of Speed. Motorsport on a private estate.</h3>
+            <p class="occ-card-desc">The Festival of Speed at Goodwood House is one of the most extraordinary motorsport events on earth &mdash; historic and modern racing cars climbing a private hillclimb through the grounds of a Sussex estate. Paddock access, private hospitality, and a garden party atmosphere that exists nowhere else on the racing calendar.</p>
+            <span class="occ-card-arrow">Enquire &rarr;</span>
+          </div>
+        </a>
+
+        <!-- Royal Ascot -->
+        <a href="/enquire" class="occ-card" aria-label="Royal Ascot — luxury horse racing hospitality">
+          <img
+            src="https://images.unsplash.com/photo-1553559241-d42b41736b6b?w=800&q=80&auto=format&fit=crop&fm=webp"
+            alt="Royal Ascot horse racing England — luxury racing hospitality with Eventra Bespoke"
+            class="occ-card-img"
+            loading="lazy"
+            width="800"
+            height="480"
+          >
+          <div class="occ-card-overlay"></div>
+          <div class="occ-card-body">
+            <p class="occ-card-label">Horse Racing</p>
+            <h3 class="occ-card-title">Royal Ascot. Five days of racing and dressing well.</h3>
+            <p class="occ-card-desc">Royal Ascot is the most prestigious flat racing meeting in Britain &mdash; five days in June at Ascot Racecourse in Berkshire, attended by the Royal Family and the country&rsquo;s most elegantly dressed. The Royal Enclosure, private boxes, and the pageantry of the Royal Procession make it an occasion as much as a race meeting. Eventra arranges Royal Enclosure access, private hospitality boxes, and hotel arrangements across the five days.</p>
+            <span class="occ-card-arrow">Enquire &rarr;</span>
+          </div>
+        </a>
+
+        <!-- Cheltenham Festival -->
+        <a href="/enquire" class="occ-card" aria-label="Cheltenham Festival — luxury horse racing hospitality">
+          <img
+            src="https://images.unsplash.com/photo-1518739745383-6ba5a1e3e4e9?w=800&q=80&auto=format&fit=crop&fm=webp"
+            alt="Cheltenham Festival jump racing England — luxury racing hospitality with Eventra Bespoke"
+            class="occ-card-img"
+            loading="lazy"
+            width="800"
+            height="480"
+          >
+          <div class="occ-card-overlay"></div>
+          <div class="occ-card-body">
+            <p class="occ-card-label">Horse Racing</p>
+            <h3 class="occ-card-title">The Cheltenham Festival. Four days of the finest jump racing.</h3>
+            <p class="occ-card-desc">The Cheltenham Festival in March is the pinnacle of National Hunt racing &mdash; four days of championship jump racing at Cheltenham Racecourse in the Cotswolds, culminating in the Gold Cup. The atmosphere is unlike any other race meeting in Britain &mdash; passionate, knowledgeable, and entirely its own. Private hospitality suites and Gold Cup day packages available through Eventra.</p>
+            <span class="occ-card-arrow">Enquire &rarr;</span>
+          </div>
+        </a>
+
+        <!-- Henley Royal Regatta -->
+        <a href="/enquire" class="occ-card" aria-label="Henley Royal Regatta — luxury rowing hospitality">
+          <img
+            src="https://images.unsplash.com/photo-1568209865332-a15790aed756?w=800&q=80&auto=format&fit=crop&fm=webp"
+            alt="Henley Royal Regatta rowing on the Thames England — luxury summer hospitality with Eventra Bespoke"
+            class="occ-card-img"
+            loading="lazy"
+            width="800"
+            height="480"
+          >
+          <div class="occ-card-overlay"></div>
+          <div class="occ-card-body">
+            <p class="occ-card-label">Summer Occasions</p>
+            <h3 class="occ-card-title">Henley Royal Regatta. Rowing, strawberries, and the Thames.</h3>
+            <p class="occ-card-desc">The Henley Royal Regatta in July is one of England&rsquo;s great summer occasions &mdash; five days of elite rowing on the Thames at Henley-on-Thames in Oxfordshire. The Stewards Enclosure, private houseboats moored along the course, and an atmosphere of unhurried English summer that has not changed in a century. Eventra arranges Stewards Enclosure access and hospitality for the full regatta.</p>
+            <span class="occ-card-arrow">Enquire &rarr;</span>
+          </div>
+        </a>
+
+        <!-- Wimbledon -->
+        <a href="/experiences/tennis" class="occ-card" aria-label="Wimbledon — Eventra tennis experiences">
+          <img
+            src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&q=80&auto=format&fit=crop&fm=webp"
+            alt="Wimbledon Centre Court tennis grass — luxury tennis hospitality with Eventra Experiences"
+            class="occ-card-img"
+            loading="lazy"
+            width="800"
+            height="480"
+          >
+          <div class="occ-card-overlay"></div>
+          <div class="occ-card-body">
+            <p class="occ-card-label">Tennis</p>
+            <h3 class="occ-card-title">Wimbledon. The only Grand Slam on grass.</h3>
+            <p class="occ-card-desc">Wimbledon is covered under Eventra Experiences &mdash; Centre Court debenture seats, private hospitality, and two weeks of the most intense tennis on the calendar.</p>
+            <span class="occ-card-arrow">Explore Tennis Experiences &rarr;</span>
+          </div>
+        </a>
+
+        <!-- The Epsom Derby -->
+        <a href="/enquire" class="occ-card" aria-label="Epsom Derby — luxury horse racing hospitality">
+          <img
+            src="https://images.unsplash.com/photo-1605462936479-e5f3c55b3cde?w=800&q=80&auto=format&fit=crop&fm=webp"
+            alt="Epsom Derby horse racing Surrey England — luxury racing hospitality with Eventra Bespoke"
+            class="occ-card-img"
+            loading="lazy"
+            width="800"
+            height="480"
+          >
+          <div class="occ-card-overlay"></div>
+          <div class="occ-card-body">
+            <p class="occ-card-label">Horse Racing</p>
+            <h3 class="occ-card-title">The Epsom Derby. The greatest flat race in the world.</h3>
+            <p class="occ-card-desc">The Epsom Derby in June is the most prestigious Classic in British flat racing &mdash; run over a mile and a half on the Surrey Downs at Epsom Racecourse. The Queen&rsquo;s Stand provides the finest vantage point on the course. One of the oldest and most celebrated sporting occasions in the British calendar.</p>
+            <span class="occ-card-arrow">Enquire &rarr;</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
 
 
   <!-- CTA BAND -->
