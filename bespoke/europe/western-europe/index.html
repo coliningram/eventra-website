@@ -160,7 +160,7 @@
     .hero { position: relative; min-height: 90vh; display: flex; align-items: center; overflow: hidden; }
     .hero-bg {
       position: absolute; inset: 0;
-      background-image: url('https://images.unsplash.com/photo-1499678329028-101435549a4e?w=1200&q=70&auto=format&fit=crop');
+      background-image: url('../../../images/bespoke/europe/western-europe/paris-seine-river-eiffel-tower-view.webp');
       background-size: cover; background-position: center 45%; background-color: #1A1A1A;
       transform: scale(1.03); transition: transform 8s ease-out;
     }
@@ -362,7 +362,7 @@
        HERO
   ──────────────────────────────────────────── -->
   <section class="hero" aria-label="Western Europe hero">
-    <div class="hero-bg" id="hero-bg"></div>
+    <div class="hero-bg" id="hero-bg" role="img" aria-label="View along the Seine River in Paris towards the Eiffel Tower — luxury France and Western Europe travel with Eventra Bespoke"></div>
     <div class="hero-overlay"></div>
 
     <div class="hero-content">
@@ -582,7 +582,8 @@
     if (heroBg) {
       const img = new Image();
       img.onload = () => heroBg.classList.add('loaded');
-      img.src = 'https://images.unsplash.com/photo-1499678329028-101435549a4e?w=1200&q=70&auto=format&fit=crop';
+      img.src = '../../../images/bespoke/europe/western-europe/paris-seine-river-eiffel-tower-view.webp';
+      img.alt = 'View along the Seine River in Paris towards the Eiffel Tower — luxury France and Western Europe travel with Eventra Bespoke';
     }
 
     // Mobile nav
