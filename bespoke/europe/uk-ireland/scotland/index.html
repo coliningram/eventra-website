@@ -139,7 +139,7 @@
     .hero { position: relative; min-height: 90vh; display: flex; align-items: center; overflow: hidden; }
     .hero-bg {
       position: absolute; inset: 0;
-      background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=80&auto=format&fit=crop&fm=webp');
+      background-image: url('../../../../images/bespoke/europe/uk-ireland/scotland/eilean-donan-castle-scotland-highlands-loch-aerial.webp');
       background-size: cover; background-position: center 40%; background-color: #1A1A1A;
       transform: scale(1.03); transition: transform 8s ease-out;
     }
@@ -332,7 +332,7 @@
 
   <!-- HERO -->
   <section class="hero" aria-label="Scotland hero">
-    <div class="hero-bg" id="hero-bg" role="img" aria-label="Aerial view of the Scottish Highlands with misty mountains and a loch — luxury Scotland travel with Eventra Bespoke"></div>
+    <div class="hero-bg" id="hero-bg" role="img" aria-label="Eilean Donan Castle on a tidal island where three sea lochs meet in the Scottish Highlands — luxury Scotland travel with Eventra Bespoke"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <div class="hero-inner">
@@ -561,7 +561,8 @@
     if (heroBg) {
       const img = new Image();
       img.onload = () => heroBg.classList.add('loaded');
-      img.src = 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=80&auto=format&fit=crop&fm=webp';
+      img.src = '../../../../images/bespoke/europe/uk-ireland/scotland/eilean-donan-castle-scotland-highlands-loch-aerial.webp';
+      img.alt = 'Eilean Donan Castle on a tidal island where three sea lochs meet in the Scottish Highlands — luxury Scotland travel with Eventra Bespoke';
     }
 
     const hamburger = document.getElementById('nav-hamburger');
