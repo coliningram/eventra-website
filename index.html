@@ -554,6 +554,7 @@
     .division-card {
       display: flex;
       flex-direction: column;
+      position: relative;
     }
 
     .division-card-image {
@@ -624,6 +625,12 @@
     .card-link:hover {
       color: var(--eg-gold-hover);
       gap: 12px;
+    }
+
+    .card-link::after {
+      content: '';
+      position: absolute;
+      inset: 0;
     }
 
     /* ───────────────────────────────────────────────
