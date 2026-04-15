@@ -14,7 +14,7 @@
   <meta property="og:title" content="Luxury Switzerland Travel — Geneva, Zurich, the Alps | Eventra">
   <meta property="og:description" content="Switzerland is the standard by which precision, scenery and hospitality are measured. Geneva on the lake, Zurich's quiet wealth, and the Alps at Zermatt and St Moritz. Eventra designs Switzerland for those who expect nothing less than the best.">
   <meta property="og:url" content="https://eventragroup.co.za/bespoke/europe/western-europe/switzerland-austria/switzerland">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=1200&q=70&auto=format&fit=crop">
+  <meta property="og:image" content="https://eventragroup.com/images/bespoke/europe/western-europe/switzerland/village-in-the-swiss-alps.webp">
   <meta property="og:site_name" content="Eventra Group">
 
   <!-- Schema: BreadcrumbList -->
@@ -115,7 +115,7 @@
     .mobile-subnav{display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:14px;}
     .mobile-sublink{font-size:12px !important;opacity:0.72;}
     .hero{position:relative;min-height:90vh;display:flex;align-items:center;overflow:hidden;}
-    .hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=1200&q=70&auto=format&fit=crop');background-size:cover;background-position:center 55%;background-color:#1A1A1A;transform:scale(1.03);transition:transform 8s ease-out;}
+    .hero-bg{position:absolute;inset:0;background-image:url('/images/bespoke/europe/western-europe/switzerland/village-in-the-swiss-alps.webp');background-size:cover;background-position:center 55%;background-color:#1A1A1A;transform:scale(1.03);transition:transform 8s ease-out;}
     .hero-bg.loaded{transform:scale(1);}
     .hero-overlay{position:absolute;inset:0;background:linear-gradient(105deg,rgba(0,0,0,0.68) 0%,rgba(0,0,0,0.42) 60%,rgba(0,0,0,0.20) 100%);}
     .hero-content{position:relative;z-index:2;width:100%;padding:0 80px;padding-top:100px;}
@@ -424,7 +424,7 @@
     const hdr = document.getElementById('site-header');
     window.addEventListener('scroll', () => { hdr.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
     const heroBg = document.getElementById('hero-bg');
-    if (heroBg) { const img = new Image(); img.onload = () => heroBg.classList.add('loaded'); img.src = 'https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=1200&q=70&auto=format&fit=crop'; }
+    if (heroBg) { const img = new Image(); img.onload = () => heroBg.classList.add('loaded'); img.src = '/images/bespoke/europe/western-europe/switzerland/village-in-the-swiss-alps.webp'; }
     const hamburger = document.getElementById('nav-hamburger');
     const mobileNav = document.getElementById('mobile-nav');
     const mobileClose = document.getElementById('mobile-nav-close');
