@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>US Open Tennis Hospitality | Arthur Ashe Stadium | Eventra</title>
+  <title>US Open Men's Final Hospitality | Arthur Ashe | Eventra</title>
   <link rel="icon" type="image/png" href="/images/logos/Eventra-Logo-Gold.png">
   <link rel="apple-touch-icon" href="/images/logos/Eventra-Logo-Gold.png">
-  <meta name="description" content="Premium US Open tennis hospitality — Arthur Ashe Stadium, private suites and VIP access in New York. Eventra curates luxury US Open packages.">
-  <link rel="canonical" href="https://eventragroup.co.za/experiences/tennis/us-open">
+  <meta name="description" content="Upper tier sideline seats for the US Open Men's Final at Arthur Ashe Stadium 13 September 2026. Plus general admission access to all outer courts. Book through Eventra.">
+  <link rel="canonical" href="https://eventragroup.co.za/experiences/tennis/us-open/mens-final-upper-tier">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="US Open Tennis Hospitality | Arthur Ashe Stadium | Eventra">
-  <meta property="og:description" content="Premium US Open tennis hospitality — Arthur Ashe Stadium, private suites and VIP access in New York. Eventra curates luxury US Open packages.">
-  <meta property="og:url" content="https://eventragroup.co.za/experiences/tennis/us-open">
-  <meta property="og:image" content="https://eventragroup.co.za/experiences/tennis/us-open-hard-court-tennis-racket.webp">
+  <meta property="og:title" content="US Open Men's Final Hospitality | Arthur Ashe | Eventra">
+  <meta property="og:description" content="Upper tier sideline seats for the US Open Men's Final at Arthur Ashe Stadium 13 September 2026. Plus general admission access to all outer courts. Book through Eventra.">
+  <meta property="og:url" content="https://eventragroup.co.za/experiences/tennis/us-open/mens-final-upper-tier">
+  <meta property="og:image" content="https://eventragroup.co.za/images/experiences/tennis/us-open-hard-court-tennis-racket.webp">
   <meta property="og:site_name" content="Eventra Group">
 
   <!-- Schema: Organisation -->
@@ -39,13 +39,13 @@
   {
     "@context": "https://schema.org",
     "@type": "Event",
-    "name": "US Open Tennis",
-    "startDate": "2026-08-31",
+    "name": "US Open Men's Final 2026",
+    "startDate": "2026-09-13T14:00",
     "eventStatus": "https://schema.org/EventScheduled",
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
     "location": {
       "@type": "Place",
-      "name": "USTA Billie Jean King National Tennis Center",
+      "name": "Arthur Ashe Stadium",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "New York",
@@ -57,7 +57,7 @@
       "name": "Eventra Group",
       "url": "https://eventragroup.co.za"
     },
-    "description": "Premium US Open tennis hospitality — Arthur Ashe Stadium premium seats, private suites and VIP access in New York."
+    "description": "Upper tier sideline seats for the US Open Men's Final at Arthur Ashe Stadium. Plus general admission access to all outer courts."
   }
   </script>
 
@@ -90,6 +90,12 @@
         "position": 4,
         "name": "US Open",
         "item": "https://eventragroup.co.za/experiences/tennis/us-open"
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "name": "Men's Final Upper Tier",
+        "item": "https://eventragroup.co.za/experiences/tennis/us-open/mens-final-upper-tier"
       }
     ]
   }
@@ -160,6 +166,7 @@
     .btn-white-outline:hover { background: var(--eg-white); color: var(--eg-charcoal); }
     .btn-sm { padding: 12px 28px; font-size: 12px; }
 
+    /* NAV */
     .site-header {
       position: fixed; top: 0; left: 0; right: 0;
       z-index: 100; height: 72px;
@@ -208,6 +215,7 @@
     .mobile-subnav { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-top: 14px; }
     .mobile-sublink { font-size: 12px !important; opacity: 0.72; }
 
+    /* BREADCRUMB */
     .breadcrumb-bar { background: var(--eg-charcoal); padding: 14px 0; }
     .breadcrumb { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
     .breadcrumb-item { font-family: var(--font-body); font-size: 12px; letter-spacing: 0.08em; color: rgba(255,255,255,0.45); }
@@ -216,6 +224,7 @@
     .breadcrumb-sep { color: rgba(255,255,255,0.25); font-size: 10px; }
     .breadcrumb-item.current { color: var(--eg-gold); }
 
+    /* HERO */
     .hero {
       position: relative;
       min-height: 72vh;
@@ -226,7 +235,7 @@
     .hero-bg {
       position: absolute;
       inset: 0;
-      background-image: url('/experiences/tennis/us-open-hard-court-tennis-racket.webp');
+      background-image: url('/images/experiences/tennis/us-open-hard-court-tennis-racket.webp');
       background-size: cover;
       background-position: center;
       background-color: #1A1A1A;
@@ -239,9 +248,9 @@
     .hero-inner { max-width: 680px; }
     .hero-eyebrow { font-family: var(--font-body); font-weight: 500; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.85); margin-bottom: 20px; }
     .hero-headline { font-family: var(--font-display); font-weight: 300; font-size: 68px; line-height: 1.05; color: var(--eg-white); margin-bottom: 28px; }
-    .hero-subhead { font-family: var(--font-body); font-weight: 400; font-size: 16px; line-height: 1.7; color: rgba(255,255,255,0.8); margin-bottom: 44px; max-width: 480px; }
-    .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+    .hero-subhead { font-family: var(--font-body); font-weight: 400; font-size: 16px; line-height: 1.7; color: rgba(255,255,255,0.8); max-width: 520px; }
 
+    /* CONTENT SECTIONS */
     .content-section { padding: var(--section-pad-v) 0; }
     .content-section.alt { background: var(--eg-warm-neutral); }
     .content-inner { max-width: 800px; }
@@ -250,46 +259,41 @@
     .content-body { font-family: var(--font-body); font-size: 16px; color: var(--eg-mid-grey); line-height: 1.85; margin-bottom: 20px; }
     .content-body:last-child { margin-bottom: 0; }
 
-    .services-section { background: var(--eg-charcoal); padding: var(--section-pad-v) 0; }
-    .services-section .section-header .eyebrow { color: var(--eg-gold); }
-    .section-header { text-align: center; margin-bottom: 56px; }
-    .section-title { font-family: var(--font-display); font-weight: 400; font-size: 44px; color: var(--eg-white); margin-bottom: 16px; line-height: 1.1; }
-    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gutter); }
-    .service-item { border-top: 1px solid rgba(255,255,255,0.12); padding-top: 28px; }
-    .service-marker { width: 6px; height: 6px; background: var(--eg-gold); border-radius: 50%; margin-bottom: 20px; }
-    .service-name { font-family: var(--font-display); font-weight: 400; font-size: 20px; color: var(--eg-white); line-height: 1.2; }
+    /* INCLUSIONS LIST */
+    .inclusions-section { background: var(--eg-charcoal); padding: var(--section-pad-v) 0; }
+    .inclusions-header { margin-bottom: 48px; }
+    .inclusions-header .eyebrow { color: var(--eg-gold); margin-bottom: 16px; }
+    .inclusions-title { font-family: var(--font-display); font-weight: 300; font-size: 42px; color: var(--eg-white); line-height: 1.1; }
+    .inclusions-list { list-style: none; }
+    .inclusions-list li {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.5;
+    }
+    .inclusions-list li:first-child { border-top: 1px solid rgba(255,255,255,0.1); }
+    .inclusions-marker {
+      flex-shrink: 0;
+      width: 6px;
+      height: 6px;
+      background: var(--eg-gold);
+      border-radius: 50%;
+      margin-top: 6px;
+    }
 
-    /* EXPERIENCES CARDS */
-    .exp-cards-section { background: var(--eg-white); padding: var(--section-pad-v) 0; }
-    .exp-cards-header { margin-bottom: 48px; }
-    .exp-cards-header .eyebrow { margin-bottom: 16px; }
-    .exp-cards-header-title { font-family: var(--font-display); font-weight: 400; font-size: 44px; color: var(--eg-charcoal); line-height: 1.1; }
-    .exp-cards-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gutter); }
-    .dest-card {
-      display: block;
-      background: var(--eg-warm-neutral);
-      overflow: hidden;
-      transition: box-shadow 0.25s ease;
-    }
-    .dest-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.1); }
-    .dest-card-img {
-      background: var(--eg-warm-neutral);
-      background-size: cover;
-      background-position: center;
-      min-height: 220px;
-    }
-    .dest-card-body {
-      padding: 28px 24px 32px;
-      z-index: 2;
-    }
-    .dest-card-eyebrow { font-family: var(--font-body); font-weight: 500; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--eg-gold); margin-bottom: 12px; }
-    .dest-card-title { font-family: var(--font-display); font-weight: 400; font-size: 24px; color: var(--eg-charcoal); margin-bottom: 12px; line-height: 1.15; }
-    .dest-card-desc { font-family: var(--font-body); font-size: 14px; color: var(--eg-mid-grey); line-height: 1.7; }
-
+    /* CTA BAND */
     .cta-band { background: var(--eg-warm-neutral); padding: 100px 0; }
-    .cta-band-content { text-align: center; }
-    .cta-band-title { font-family: var(--font-display); font-weight: 300; font-size: 48px; color: var(--eg-charcoal); margin-bottom: 40px; }
+    .cta-band-content { max-width: 640px; }
+    .cta-band-eyebrow { margin-bottom: 20px; }
+    .cta-band-title { font-family: var(--font-display); font-weight: 300; font-size: 48px; color: var(--eg-charcoal); margin-bottom: 20px; line-height: 1.1; }
+    .cta-band-body { font-family: var(--font-body); font-size: 16px; color: var(--eg-mid-grey); line-height: 1.75; margin-bottom: 40px; }
 
+    /* FOOTER */
     .site-footer { background: #111111; }
     .footer-main { padding: 64px 0 48px; }
     .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; }
@@ -314,9 +318,8 @@
     .legal-links a { font-family: var(--font-body); font-size: 11px; color: rgba(255,255,255,0.35); letter-spacing: 0.02em; transition: color 0.25s; }
     .legal-links a:hover { color: var(--eg-gold); }
 
+    /* RESPONSIVE */
     @media (max-width: 1024px) {
-      .services-grid { grid-template-columns: repeat(2, 1fr); }
-      .exp-cards-row { grid-template-columns: repeat(2, 1fr); }
       .hero-headline { font-size: 52px; }
       .hero-content { padding: 0 40px; padding-top: 100px; }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
@@ -329,14 +332,10 @@
       .hero-content { padding: 0 24px; padding-top: 100px; }
       .hero-subhead { font-size: 15px; }
       .container { padding: 0 24px; }
-      .services-grid { grid-template-columns: 1fr; }
-      .exp-cards-row { grid-template-columns: 1fr; }
       .content-section { padding: var(--section-pad-v-sm) 0; }
       .content-title { font-size: 32px; }
-      .services-section { padding: var(--section-pad-v-sm) 0; }
-      .exp-cards-section { padding: var(--section-pad-v-sm) 0; }
-      .section-title { font-size: 32px; }
-      .exp-cards-header-title { font-size: 32px; }
+      .inclusions-section { padding: var(--section-pad-v-sm) 0; }
+      .inclusions-title { font-size: 32px; }
       .cta-band { padding: 80px 0; }
       .cta-band-title { font-size: 32px; }
       .footer-grid { grid-template-columns: 1fr; gap: 32px; }
@@ -409,119 +408,108 @@
         <span class="breadcrumb-sep">&rsaquo;</span>
         <span class="breadcrumb-item"><a href="/experiences/tennis">Tennis</a></span>
         <span class="breadcrumb-sep">&rsaquo;</span>
-        <span class="breadcrumb-item current" aria-current="page">US Open</span>
+        <span class="breadcrumb-item"><a href="/experiences/tennis/us-open">US Open</a></span>
+        <span class="breadcrumb-sep">&rsaquo;</span>
+        <span class="breadcrumb-item current" aria-current="page">Men&rsquo;s Final Upper Tier</span>
       </nav>
     </div>
   </div>
 
 
   <!-- HERO -->
-  <section class="hero" aria-label="US Open hero">
+  <section class="hero" aria-label="US Open Men's Final hero">
     <div class="hero-bg" id="hero-bg"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <div class="hero-inner">
-        <p class="hero-eyebrow">Eventra Tennis &mdash; Grand Slam</p>
-        <h1 class="hero-headline">The US Open. New York Under the Lights.</h1>
-        <p class="hero-subhead">Arthur Ashe Stadium under the New York lights. The loudest Grand Slam, the most electric atmosphere, and a city that knows how to make a sporting occasion feel like a world event.</p>
-        <div class="hero-ctas">
-          <a href="/enquire" class="btn btn-primary">Enquire Now</a>
-          <a href="/experiences/tennis" class="btn btn-white-outline">All Tennis</a>
-        </div>
+        <p class="hero-eyebrow">US Open &mdash; Men&rsquo;s Final</p>
+        <h1 class="hero-headline">US Open Men&rsquo;s Final. Arthur Ashe Stadium. 13 September 2026.</h1>
+        <p class="hero-subhead">Day Fifteen at the US Open. The Men&rsquo;s Final. Arthur Ashe Stadium under the New York afternoon sun &mdash; the largest tennis stadium in the world, the loudest crowd in the sport, and two weeks of hard court tennis arriving at its conclusion. The city that never sleeps does not sleep on this afternoon either.</p>
       </div>
     </div>
   </section>
 
 
-  <!-- THE TOURNAMENT -->
-  <section class="content-section" aria-label="About the US Open">
+  <!-- THE SEATS -->
+  <section class="content-section" aria-label="The seats">
     <div class="container">
       <div class="content-inner">
-        <p class="eyebrow content-eyebrow">The Tournament</p>
-        <h2 class="content-title">New York in late August. The loudest Grand Slam on earth.</h2>
-        <p class="content-body">Arthur Ashe Stadium under the New York lights. The loudest Grand Slam, the most electric atmosphere, and a city that knows how to make a sporting occasion feel like a world event. The US Open in late August and September is New York at its most alive.</p>
+        <p class="eyebrow content-eyebrow">The Seats</p>
+        <h2 class="content-title">The full geometry of the game, visible from the first serve.</h2>
+        <p class="content-body">Upper tier sideline seats at Arthur Ashe Stadium place you in the heart of the action &mdash; above the court, side-on, with the full geometry of the game visible from the first serve. Up to two seats together as standard, with additional seats available on request. Digital tickets delivered directly to your device.</p>
       </div>
     </div>
   </section>
 
 
   <!-- THE ACCESS -->
-  <section class="content-section alt" aria-label="US Open access">
+  <section class="content-section alt" aria-label="The access">
     <div class="container">
       <div class="content-inner">
         <p class="eyebrow content-eyebrow">The Access</p>
-        <h2 class="content-title">Arthur Ashe Stadium. New York arranged around tennis.</h2>
-        <p class="content-body">Eventra arranges premium Arthur Ashe Stadium seats, private hospitality suites, and curated New York experiences built around the tournament. Two weeks in the greatest city in the world, with the best tennis on earth as the centrepiece.</p>
+        <h2 class="content-title">The US Open grounds on Men&rsquo;s Final day.</h2>
+        <p class="content-body">Your US Open package extends well beyond Arthur Ashe Stadium. First-come, first-served general admission gives you unreserved upper-level access to Louis Armstrong Stadium, the Grandstand, and all outer courts from Courts 4 through 17. The US Open grounds on Men&rsquo;s Final day are an experience in their own right &mdash; world-class tennis on every court, from morning until the last ball is struck on Ashe.</p>
       </div>
     </div>
   </section>
 
 
-  <!-- WHAT WE ARRANGE -->
-  <section class="services-section" aria-label="What Eventra arranges for the US Open">
+  <!-- THE DAY -->
+  <section class="content-section" aria-label="The day">
     <div class="container">
-      <header class="section-header">
-        <p class="eyebrow">What We Arrange</p>
-        <h2 class="section-title">New York and the tennis, arranged properly.</h2>
-      </header>
-
-      <div class="services-grid">
-        <div class="service-item">
-          <div class="service-marker"></div>
-          <p class="service-name">Arthur Ashe Stadium premium seats</p>
-        </div>
-        <div class="service-item">
-          <div class="service-marker"></div>
-          <p class="service-name">Private hospitality suites</p>
-        </div>
-        <div class="service-item">
-          <div class="service-marker"></div>
-          <p class="service-name">Hotel arrangements in New York</p>
-        </div>
-        <div class="service-item">
-          <div class="service-marker"></div>
-          <p class="service-name">Transfer and logistics</p>
-        </div>
-        <div class="service-item">
-          <div class="service-marker"></div>
-          <p class="service-name">Dining reservations</p>
-        </div>
-        <div class="service-item">
-          <div class="service-marker"></div>
-          <p class="service-name">Pre and post-match private events</p>
-        </div>
+      <div class="content-inner">
+        <p class="eyebrow content-eyebrow">The Day</p>
+        <h2 class="content-title">New York in September. The city at its best.</h2>
+        <p class="content-body">The Men&rsquo;s Final begins at 2pm. Arrive early &mdash; the grounds open in the morning and the outer courts deliver extraordinary tennis throughout the day before the main event. New York in September is the city at its best: warm, alive, and entirely itself. The US Open is the punctuation mark on the city&rsquo;s summer.</p>
       </div>
     </div>
   </section>
 
 
-  <!-- FEATURED EXPERIENCES -->
-  <section class="exp-cards-section" aria-label="US Open featured experiences">
+  <!-- WHAT'S INCLUDED -->
+  <section class="inclusions-section" aria-label="What is included">
     <div class="container">
-      <header class="exp-cards-header">
-        <p class="eyebrow">Featured Experiences</p>
-        <h2 class="exp-cards-header-title">Hospitality at the US Open.</h2>
-      </header>
-
-      <div class="exp-cards-row">
-        <a href="/experiences/tennis/us-open/mens-final-upper-tier" class="dest-card">
-          <div class="dest-card-img" style="background-image: url('/images/experiences/tennis/us-open-hard-court-tennis-racket.webp');" aria-hidden="true"></div>
-          <div class="dest-card-body">
-            <p class="dest-card-eyebrow">Men&rsquo;s Final &mdash; 13 September 2026</p>
-            <h3 class="dest-card-title">Men&rsquo;s Final &mdash; Upper Tier Sideline</h3>
-            <p class="dest-card-desc">Upper tier sideline seats at Arthur Ashe Stadium for the Men&rsquo;s Final. Plus general admission to all outer courts. 13 September 2026.</p>
-          </div>
-        </a>
+      <div class="inclusions-header">
+        <p class="eyebrow">What&rsquo;s Included</p>
+        <h2 class="inclusions-title">Everything the day requires.</h2>
       </div>
+      <ul class="inclusions-list">
+        <li>
+          <span class="inclusions-marker" aria-hidden="true"></span>
+          Upper tier sideline seats &mdash; Arthur Ashe Stadium Men&rsquo;s Final
+        </li>
+        <li>
+          <span class="inclusions-marker" aria-hidden="true"></span>
+          Up to 2 seats together (more on request)
+        </li>
+        <li>
+          <span class="inclusions-marker" aria-hidden="true"></span>
+          Digital tickets
+        </li>
+        <li>
+          <span class="inclusions-marker" aria-hidden="true"></span>
+          General admission &mdash; Louis Armstrong Stadium upper level unreserved
+        </li>
+        <li>
+          <span class="inclusions-marker" aria-hidden="true"></span>
+          General admission &mdash; Grandstand Stadium
+        </li>
+        <li>
+          <span class="inclusions-marker" aria-hidden="true"></span>
+          General admission &mdash; all outer courts (Courts 4&ndash;17)
+        </li>
+      </ul>
     </div>
   </section>
 
 
   <!-- CTA BAND -->
-  <section class="cta-band">
+  <section class="cta-band" aria-label="Enquire about Men's Final upper tier seats">
     <div class="container">
       <div class="cta-band-content">
-        <h2 class="cta-band-title">Tell us which sessions. We handle New York and the rest.</h2>
+        <p class="eyebrow cta-band-eyebrow">Secure Your Seat for the Men&rsquo;s Final</p>
+        <h2 class="cta-band-title">Secure Your Seat for the Men&rsquo;s Final</h2>
+        <p class="cta-band-body">US Open Men&rsquo;s Final seats are allocated on a first come first served basis. Enquire now to confirm availability.</p>
         <a href="/enquire" class="btn btn-primary">Enquire Now</a>
       </div>
     </div>
