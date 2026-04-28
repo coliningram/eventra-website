@@ -14,7 +14,7 @@
   <meta property="og:title" content="Monaco Grand Prix &amp; Luxury Travel | Eventra Bespoke">
   <meta property="og:description" content="One square kilometre of concentrated ambition. The Monaco Grand Prix, the Casino de Monte Carlo, superyachts and Michelin dining. Eventra curates Monaco beyond what a hotel concierge can arrange.">
   <meta property="og:url" content="https://eventragroup.co.za/bespoke/europe/western-europe/france-monaco/monaco">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1499678329028-101435549a4e?w=1200&q=70&auto=format&fit=crop">
+  <meta property="og:image" content="https://eventragroup.com/images/bespoke/europe/western-europe/monaco/monaco-montecarlo-principality.webp">
   <meta property="og:site_name" content="Eventra Group">
 
   <!-- Schema: BreadcrumbList -->
@@ -117,7 +117,7 @@
     .mobile-subnav{display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:14px}
     .mobile-sublink{font-size:12px!important;opacity:0.72}
     .hero{position:relative;min-height:90vh;display:flex;align-items:center;overflow:hidden}
-    .hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1499678329028-101435549a4e?w=1200&q=70&auto=format&fit=crop');background-size:cover;background-position:center 50%;background-color:#1A1A1A;transform:scale(1.03);transition:transform 8s ease-out}
+    .hero-bg{position:absolute;inset:0;background-image:url('/images/bespoke/europe/western-europe/monaco/monaco-montecarlo-principality.webp');background-size:cover;background-position:center 50%;background-color:#1A1A1A;transform:scale(1.03);transition:transform 8s ease-out}
     .hero-bg.loaded{transform:scale(1)}
     .hero-overlay{position:absolute;inset:0;background:linear-gradient(105deg,rgba(0,0,0,0.68) 0%,rgba(0,0,0,0.42) 60%,rgba(0,0,0,0.20) 100%)}
     .hero-content{position:relative;z-index:2;width:100%;padding:0 80px;padding-top:100px}
@@ -423,7 +423,7 @@
     const header=document.getElementById('site-header');
     window.addEventListener('scroll',()=>{header.classList.toggle('scrolled',window.scrollY>40)},{passive:true});
     const heroBg=document.getElementById('hero-bg');
-    if(heroBg){const img=new Image();img.onload=()=>heroBg.classList.add('loaded');img.src='https://images.unsplash.com/photo-1499678329028-101435549a4e?w=1200&q=70&auto=format&fit=crop';}
+    if(heroBg){const img=new Image();img.onload=()=>heroBg.classList.add('loaded');img.src='/images/bespoke/europe/western-europe/monaco/monaco-montecarlo-principality.webp';}
     const hamburger=document.getElementById('nav-hamburger');
     const mobileNav=document.getElementById('mobile-nav');
     const mobileClose=document.getElementById('mobile-nav-close');
