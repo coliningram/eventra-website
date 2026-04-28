@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Football Hospitality | Eventra Group</title>
+  <title>Liverpool vs Chelsea Hospitality | Founders Lounge | Eventra</title>
   <link rel="icon" type="image/png" href="/images/logos/Eventra-Logo-Gold.png">
   <link rel="apple-touch-icon" href="/images/logos/Eventra-Logo-Gold.png">
-  <meta name="description" content="Premium football hospitality experiences from Eventra Group — coming soon. Register your interest to be first to hear when packages are announced.">
-  <link rel="canonical" href="https://eventragroup.co.za/experiences/football">
+  <meta name="description" content="Liverpool vs Chelsea at Anfield 9 May 2026 &mdash; Founders Lounge with champagne reception, multicourse dinner, complimentary drinks and premium seats. Book through Eventra.">
+  <link rel="canonical" href="https://eventragroup.co.za/experiences/football/liverpool-vs-chelsea-2026">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Football Hospitality | Eventra Group">
-  <meta property="og:description" content="Premium football hospitality packages — coming soon from Eventra Group.">
-  <meta property="og:url" content="https://eventragroup.co.za/experiences/football">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=1200&q=70&auto=format&fit=crop">
+  <meta property="og:title" content="Liverpool vs Chelsea Hospitality | Founders Lounge | Eventra">
+  <meta property="og:description" content="Liverpool vs Chelsea at Anfield 9 May 2026 — Founders Lounge with champagne reception, multicourse dinner, complimentary drinks and premium seats.">
+  <meta property="og:url" content="https://eventragroup.co.za/experiences/football/liverpool-vs-chelsea-2026">
+  <meta property="og:image" content="https://images.unsplash.com/photo-JsAsyytxyB8?w=1200&q=75&auto=format&fit=crop">
   <meta property="og:site_name" content="Eventra Group">
 
   <!-- Schema: Organisation -->
@@ -25,12 +25,39 @@
     "name": "Eventra Group",
     "url": "https://eventragroup.co.za",
     "logo": "https://eventragroup.co.za/EVENTRA_FINAL_LOGOS_20_JUNE_2025-02.png",
-    "description": "Premium sports hospitality and luxury travel experiences. Rugby, cricket, Formula 1, and bespoke journeys.",
+    "description": "Premium sports hospitality and luxury travel experiences.",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Cape Town",
       "addressCountry": "ZA"
     }
+  }
+  </script>
+
+  <!-- Schema: Event -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "Liverpool vs Chelsea",
+    "startDate": "2026-05-09T12:30",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "location": {
+      "@type": "Place",
+      "name": "Anfield",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Liverpool",
+        "addressCountry": "GB"
+      }
+    },
+    "organizer": {
+      "@type": "Organization",
+      "name": "Eventra Group",
+      "url": "https://eventragroup.co.za"
+    },
+    "description": "Liverpool vs Chelsea at Anfield 9 May 2026 — Founders Lounge with champagne reception, multicourse dinner, complimentary drinks and premium seats."
   }
   </script>
 
@@ -57,6 +84,12 @@
         "position": 3,
         "name": "Football",
         "item": "https://eventragroup.co.za/experiences/football"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Liverpool vs Chelsea 2026",
+        "item": "https://eventragroup.co.za/experiences/football/liverpool-vs-chelsea-2026"
       }
     ]
   }
@@ -83,21 +116,57 @@
       --max-width:        1240px;
       --gutter:           32px;
     }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { font-family: var(--font-body); font-size: 16px; color: var(--eg-charcoal); background: var(--eg-white); -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: var(--eg-charcoal);
+      background: var(--eg-white);
+      -webkit-font-smoothing: antialiased;
+    }
     img { display: block; width: 100%; height: auto; }
     a { color: inherit; text-decoration: none; }
+
     .container { max-width: var(--max-width); margin: 0 auto; padding: 0 40px; }
-    .eyebrow { font-family: var(--font-body); font-weight: 500; font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--eg-gold); }
-    .btn { display: inline-block; font-family: var(--font-body); font-weight: 600; font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; padding: 16px 40px; border-radius: 2px; cursor: pointer; transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease; border: 1.5px solid transparent; }
+
+    .eyebrow {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--eg-gold);
+    }
+
+    .btn {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 16px 40px;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+      border: 1.5px solid transparent;
+    }
     .btn-primary { background: var(--eg-gold); color: var(--eg-white); border-color: var(--eg-gold); }
     .btn-primary:hover { background: var(--eg-gold-hover); border-color: var(--eg-gold-hover); }
     .btn-secondary { background: transparent; color: var(--eg-gold); border-color: var(--eg-gold); }
     .btn-secondary:hover { background: var(--eg-gold); color: var(--eg-white); }
+    .btn-sm { padding: 12px 28px; font-size: 12px; }
 
     /* NAV */
-    .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 72px; display: flex; align-items: center; background: transparent; transition: background 0.35s ease, box-shadow 0.35s ease; }
+    .site-header {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100; height: 72px;
+      display: flex; align-items: center;
+      background: transparent;
+      transition: background 0.35s ease, box-shadow 0.35s ease;
+    }
     .site-header.scrolled { background: var(--eg-white); box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
     .site-header .container { width: 100%; display: flex; align-items: center; justify-content: space-between; }
     .site-logo { flex-shrink: 0; display: flex; align-items: center; gap: 10px; }
@@ -125,14 +194,13 @@
     .mobile-nav .nav-link { color: var(--eg-white); font-size: 14px; }
     .mobile-nav .nav-cta { border-color: var(--eg-gold); color: var(--eg-gold); }
     .mobile-nav-close { position: absolute; top: 24px; right: 24px; cursor: pointer; font-size: 28px; color: var(--eg-white); line-height: 1; background: none; border: none; }
-    /* Experiences dropdown — desktop */
+
     .nav-dropdown-wrap { position: relative; display: flex; align-items: center; }
     .nav-dropdown { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); background: var(--eg-white); min-width: 180px; border-top: 2px solid var(--eg-gold); box-shadow: 0 8px 32px rgba(0,0,0,0.12); opacity: 0; visibility: hidden; transition: opacity 0.2s ease, visibility 0.2s ease; transition-delay: 0.2s; z-index: 200; pointer-events: none; padding-top: 14px; }
     .nav-dropdown-wrap:hover .nav-dropdown { opacity: 1; visibility: visible; pointer-events: auto; transition-delay: 0s; }
     .nav-dropdown a { display: block; padding: 11px 20px; font-family: var(--font-body); font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--eg-charcoal); transition: background 0.15s, color 0.15s; text-decoration: none; }
     .nav-dropdown a:hover { background: var(--eg-warm-neutral); color: var(--eg-gold); }
     .nav-dropdown .nav-dropdown-view-all { border-top: 1px solid #eee; color: var(--eg-gold); }
-    /* Experiences expand — mobile */
     .mobile-exp-wrap { display: flex; flex-direction: column; align-items: center; }
     .mobile-exp-btn { background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 8px; padding: 0; }
     .mobile-exp-chevron { font-size: 9px; transition: transform 0.2s; display: inline-block; }
@@ -150,40 +218,73 @@
     .breadcrumb-item.current { color: var(--eg-gold); }
 
     /* HERO */
-    .hero { position: relative; min-height: 80vh; display: flex; align-items: center; overflow: hidden; }
-    .hero-bg { position: absolute; inset: 0; background-image: url('https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=1200&q=70&auto=format&fit=crop'); background-size: cover; background-position: center 30%; }
-    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(105deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.40) 60%, rgba(0,0,0,0.20) 100%); }
+    .hero {
+      position: relative;
+      min-height: 72vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-JsAsyytxyB8?w=1400&q=80&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      background-color: #1A1A1A;
+      transform: scale(1.03);
+      transition: transform 8s ease-out;
+    }
+    .hero-bg.loaded { transform: scale(1); }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(105deg, rgba(0,0,0,0.70) 0%, rgba(0,0,0,0.45) 60%, rgba(0,0,0,0.25) 100%); }
     .hero-content { position: relative; z-index: 2; width: 100%; padding: 0 80px; padding-top: 100px; }
     .hero-inner { max-width: 680px; }
     .hero-eyebrow { font-family: var(--font-body); font-weight: 500; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.85); margin-bottom: 20px; }
     .hero-headline { font-family: var(--font-display); font-weight: 300; font-size: 68px; line-height: 1.05; color: var(--eg-white); margin-bottom: 28px; }
-    .hero-subhead { font-family: var(--font-body); font-weight: 400; font-size: 16px; line-height: 1.7; color: rgba(255,255,255,0.8); margin-bottom: 44px; max-width: 480px; }
+    .hero-subhead { font-family: var(--font-body); font-weight: 400; font-size: 16px; line-height: 1.7; color: rgba(255,255,255,0.8); max-width: 540px; }
 
-    /* COMING SOON SECTION */
-    .coming-soon-section { background: var(--eg-white); padding: var(--section-pad-v) 0; text-align: center; }
-    .coming-soon-inner { max-width: 600px; margin: 0 auto; }
-    .coming-soon-icon { font-size: 48px; margin-bottom: 32px; opacity: 0.35; }
-    .coming-soon-title { font-family: var(--font-display); font-weight: 300; font-size: 42px; color: var(--eg-charcoal); margin-bottom: 24px; line-height: 1.1; }
-    .coming-soon-body { font-family: var(--font-body); font-size: 16px; color: var(--eg-mid-grey); line-height: 1.75; margin-bottom: 40px; }
-    .coming-soon-ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    /* CONTENT SECTIONS */
+    .content-section { padding: var(--section-pad-v) 0; }
+    .content-section.alt { background: var(--eg-warm-neutral); }
+    .content-inner { max-width: 800px; }
+    .content-eyebrow { margin-bottom: 16px; }
+    .content-title { font-family: var(--font-display); font-weight: 300; font-size: 42px; color: var(--eg-charcoal); margin-bottom: 24px; line-height: 1.1; }
+    .content-body { font-family: var(--font-body); font-size: 16px; color: var(--eg-mid-grey); line-height: 1.85; margin-bottom: 20px; }
+    .content-body:last-child { margin-bottom: 0; }
 
-    /* OTHER SPORTS */
-    .other-sports { background: var(--eg-warm-neutral); padding: var(--section-pad-v) 0; }
-    .other-sports-header { text-align: center; margin-bottom: 56px; }
-    .section-title { font-family: var(--font-display); font-weight: 300; font-size: 38px; color: var(--eg-charcoal); margin-bottom: 16px; line-height: 1.15; }
-    .section-sub { font-family: var(--font-body); font-size: 16px; color: var(--eg-mid-grey); }
-    .sports-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gutter); }
-    .sport-card { background: var(--eg-white); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-    .sport-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
-    .sport-card-img { aspect-ratio: 16/9; overflow: hidden; }
-    .sport-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-    .sport-card:hover .sport-card-img img { transform: scale(1.04); }
-    .sport-card-body { padding: 28px; }
-    .sport-card-label { font-family: var(--font-body); font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--eg-gold); margin-bottom: 10px; }
-    .sport-card-title { font-family: var(--font-display); font-weight: 400; font-size: 22px; color: var(--eg-charcoal); margin-bottom: 10px; }
-    .sport-card-desc { font-family: var(--font-body); font-size: 13px; color: var(--eg-mid-grey); line-height: 1.65; margin-bottom: 20px; }
-    .sport-card-link { font-family: var(--font-body); font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--eg-gold); display: flex; align-items: center; gap: 6px; }
-    .sport-card-link::after { content: '→'; }
+    /* INCLUSIONS LIST */
+    .inclusions-section { background: var(--eg-charcoal); padding: var(--section-pad-v) 0; }
+    .inclusions-header { margin-bottom: 48px; }
+    .inclusions-header .eyebrow { color: var(--eg-gold); margin-bottom: 16px; }
+    .inclusions-title { font-family: var(--font-display); font-weight: 300; font-size: 42px; color: var(--eg-white); line-height: 1.1; }
+    .inclusions-list { list-style: none; }
+    .inclusions-list li {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.5;
+    }
+    .inclusions-list li:first-child { border-top: 1px solid rgba(255,255,255,0.1); }
+    .inclusions-marker {
+      flex-shrink: 0;
+      width: 6px;
+      height: 6px;
+      background: var(--eg-gold);
+      border-radius: 50%;
+      margin-top: 6px;
+    }
+
+    /* CTA BAND */
+    .cta-band { background: var(--eg-white); padding: 100px 0; }
+    .cta-band-content { max-width: 640px; }
+    .cta-band-eyebrow { margin-bottom: 20px; }
+    .cta-band-title { font-family: var(--font-display); font-weight: 300; font-size: 48px; color: var(--eg-charcoal); margin-bottom: 20px; line-height: 1.1; }
+    .cta-band-body { font-family: var(--font-body); font-size: 16px; color: var(--eg-mid-grey); line-height: 1.75; margin-bottom: 40px; }
 
     /* FOOTER */
     .site-footer { background: #111111; }
@@ -212,44 +313,36 @@
 
     /* RESPONSIVE */
     @media (max-width: 1024px) {
-      .sports-grid { grid-template-columns: 1fr 1fr; }
+      .hero-headline { font-size: 52px; }
+      .hero-content { padding: 0 40px; padding-top: 100px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
     }
     @media (max-width: 768px) {
       .nav-hamburger { display: flex; }
       .site-nav { display: none; }
+      .hero { min-height: 65vh; }
+      .hero-headline { font-size: 38px; }
       .hero-content { padding: 0 24px; padding-top: 100px; }
-      .hero-headline { font-size: 44px; }
-      .coming-soon-title { font-size: 32px; }
-      .sports-grid { grid-template-columns: 1fr; }
+      .hero-subhead { font-size: 15px; }
+      .container { padding: 0 24px; }
+      .content-section { padding: var(--section-pad-v-sm) 0; }
+      .content-title { font-size: 32px; }
+      .inclusions-section { padding: var(--section-pad-v-sm) 0; }
+      .inclusions-title { font-size: 32px; }
+      .cta-band { padding: 80px 0; }
+      .cta-band-title { font-size: 32px; }
       .footer-grid { grid-template-columns: 1fr; gap: 32px; }
       .footer-main { padding: 48px 0 36px; }
       .footer-legal .container { flex-direction: column; align-items: flex-start; gap: 12px; }
     }
-
-    /* FEATURED EXPERIENCES */
-    .card-section { background: var(--eg-white); padding: var(--section-pad-v) 0; }
-    .card-section-header { margin-bottom: 48px; }
-    .card-section-header .eyebrow { margin-bottom: 16px; }
-    .card-section-title { font-family: var(--font-display); font-weight: 300; font-size: 42px; color: var(--eg-charcoal); line-height: 1.1; }
-    .exp-card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gutter); }
-    .exp-card { background: var(--eg-warm-neutral); overflow: hidden; display: block; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-    .exp-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
-    .exp-card-img { aspect-ratio: 3/2; overflow: hidden; }
-    .exp-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-    .exp-card:hover .exp-card-img img { transform: scale(1.04); }
-    .exp-card-body { padding: 28px 24px 32px; z-index: 2; }
-    .exp-card-eyebrow { font-family: var(--font-body); font-weight: 500; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--eg-gold); margin-bottom: 12px; }
-    .exp-card-title { font-family: var(--font-display); font-weight: 400; font-size: 24px; color: var(--eg-charcoal); margin-bottom: 12px; line-height: 1.15; }
-    .exp-card-desc { font-family: var(--font-body); font-size: 14px; color: var(--eg-mid-grey); line-height: 1.7; }
-    @media (max-width: 1024px) { .exp-card-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 768px) { .exp-card-grid { grid-template-columns: 1fr; } .card-section { padding: var(--section-pad-v-sm) 0; } .card-section-title { font-size: 32px; } }
   </style>
 </head>
+
 <body>
 
   <header class="site-header" id="site-header">
     <div class="container">
-      <a href="/" class="site-logo" aria-label="Eventra Group — home">
+      <a href="/" class="site-logo">
         <img src="/EVENTRA_FINAL_LOGOS_20_JUNE_2025-03.png" alt="" class="logo-img logo-white" aria-hidden="true">
         <img src="/EVENTRA_FINAL_LOGOS_20_JUNE_2025-02.png" alt="" class="logo-img logo-dark" aria-hidden="true">
         <div class="logo-wordmark">
@@ -257,7 +350,6 @@
           <div class="logo-subtitle">Sports Hospitality &amp; Luxury Travel</div>
         </div>
       </a>
-
       <nav class="site-nav" aria-label="Main navigation">
         <div class="nav-dropdown-wrap">
           <a href="/experiences" class="nav-link">Experiences</a>
@@ -274,7 +366,6 @@
         <a href="/bespoke" class="nav-link">Bespoke Travel</a>
         <a href="/enquire" class="nav-cta">Enquire</a>
       </nav>
-
       <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
@@ -299,127 +390,130 @@
     <a href="/enquire" class="nav-cta btn btn-secondary">Enquire Now</a>
   </nav>
 
+
   <!-- BREADCRUMB -->
   <div class="breadcrumb-bar" style="padding-top: 72px;">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <span class="breadcrumb-item"><a href="/">Home</a></span>
-        <span class="breadcrumb-sep" aria-hidden="true">›</span>
+        <span class="breadcrumb-sep">&rsaquo;</span>
         <span class="breadcrumb-item"><a href="/experiences">Experiences</a></span>
-        <span class="breadcrumb-sep" aria-hidden="true">›</span>
-        <span class="breadcrumb-item current" aria-current="page">Football</span>
+        <span class="breadcrumb-sep">&rsaquo;</span>
+        <span class="breadcrumb-item"><a href="/experiences/football">Football</a></span>
+        <span class="breadcrumb-sep">&rsaquo;</span>
+        <span class="breadcrumb-item current" aria-current="page">Liverpool vs Chelsea 2026</span>
       </nav>
     </div>
   </div>
 
+
   <!-- HERO -->
-  <section class="hero" aria-label="Football hospitality">
-    <div class="hero-bg"></div>
+  <section class="hero" aria-label="Liverpool vs Chelsea Founders Lounge hero">
+    <div class="hero-bg" id="hero-bg" role="img" aria-label="Anfield stadium Liverpool &mdash; Liverpool vs Chelsea Founders Lounge hospitality with Eventra"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <div class="hero-inner">
-        <p class="hero-eyebrow">Football Hospitality</p>
-        <h1 class="hero-headline">The beautiful game.<br>At its most exclusive.</h1>
-        <p class="hero-subhead">Premium football hospitality packages — private suites, VIP access, and white-glove service at the matches that matter.</p>
+        <p class="hero-eyebrow">Football &mdash; Anfield &mdash; 9 May 2026</p>
+        <h1 class="hero-headline">Liverpool vs Chelsea. Anfield. 9 May 2026.</h1>
+        <p class="hero-subhead">Anfield on a matchday is one of football&rsquo;s great atmospheres &mdash; the Kop in full voice, the history on every wall, and a stadium that has witnessed more than most clubs experience in a lifetime. The Founders Lounge is where you experience it at its finest &mdash; historic charm, modern luxury, and the best seats in the house for one of the Premier League&rsquo;s most compelling fixtures.</p>
       </div>
     </div>
   </section>
 
-  <!-- FEATURED EXPERIENCES -->
-  <section class="card-section" aria-label="Featured football experiences">
+
+  <!-- THE LOUNGE -->
+  <section class="content-section" aria-label="The Founders Lounge">
     <div class="container">
-      <div class="card-section-header">
-        <p class="eyebrow">Available Now</p>
-        <h2 class="card-section-title">Football hospitality, arranged.</h2>
-      </div>
-      <div class="exp-card-grid">
-        <a href="/experiences/football/manchester-united-vs-liverpool-2026" class="exp-card">
-          <div class="exp-card-img">
-            <img src="https://images.unsplash.com/photo-1642763907630-17bad0853f15?w=800&q=75&auto=format&fit=crop" alt="Old Trafford stadium Manchester &mdash; Manchester United vs Liverpool 500 Club hospitality with Eventra" loading="lazy">
-          </div>
-          <div class="exp-card-body">
-            <p class="exp-card-eyebrow">Manchester &mdash; 3 May 2026</p>
-            <h3 class="exp-card-title">Manchester United vs Liverpool &mdash; 500 Club</h3>
-            <p class="exp-card-desc">The greatest club rivalry in English football. Old Trafford, 3 May 2026. Padded seats, Sports Bar lounge access, hot food and matchday programme included.</p>
-          </div>
-        </a>
-        <a href="/experiences/football/liverpool-vs-chelsea-2026" class="exp-card">
-          <div class="exp-card-img">
-            <img src="https://images.unsplash.com/photo-pa447fb59MI?w=800&q=75&auto=format&fit=crop" alt="Anfield stadium Liverpool &mdash; Liverpool vs Chelsea Founders Lounge hospitality with Eventra" loading="lazy">
-          </div>
-          <div class="exp-card-body">
-            <p class="exp-card-eyebrow">Liverpool &mdash; 9 May 2026</p>
-            <h3 class="exp-card-title">Liverpool vs Chelsea &mdash; Founders Lounge</h3>
-            <p class="exp-card-desc">Anfield at its finest. Champagne reception, multicourse dinner, complimentary drinks and premium seats for one of the Premier League&rsquo;s great fixtures. 9 May 2026.</p>
-          </div>
-        </a>
+      <div class="content-inner">
+        <p class="eyebrow content-eyebrow">The Lounge</p>
+        <h2 class="content-title">The Founders Lounge.</h2>
+        <p class="content-body">The Founders Lounge at Anfield celebrates the spirit of Liverpool FC &mdash; a space that blends the club&rsquo;s historic character with the standard of hospitality the occasion deserves. From the champagne reception on arrival to the multicourse dinner, the Founders Lounge is designed for those who want the full Anfield experience, not just the match.</p>
       </div>
     </div>
   </section>
 
-  <!-- COMING SOON -->
-  <section class="coming-soon-section">
+
+  <!-- CHAMPAGNE RECEPTION -->
+  <section class="content-section alt" aria-label="Champagne reception">
     <div class="container">
-      <div class="coming-soon-inner">
-        <div class="coming-soon-icon" aria-hidden="true">⚽</div>
-        <h2 class="coming-soon-title">Football packages coming soon</h2>
-        <p class="coming-soon-body">We are currently curating a selection of premium football hospitality experiences. Register your interest now and be first to hear when packages are announced.</p>
-        <div class="coming-soon-ctas">
-          <a href="/enquire" class="btn btn-primary">Register Interest</a>
-          <a href="/experiences" class="btn btn-secondary">View All Experiences</a>
-        </div>
+      <div class="content-inner">
+        <p class="eyebrow content-eyebrow">The Arrival</p>
+        <h2 class="content-title">Champagne Reception.</h2>
+        <p class="content-body">Founders Lounge guests arrive to a champagne reception &mdash; the right way to begin a matchday at Anfield. Complimentary drinks flow throughout the day, from arrival through to the final whistle.</p>
       </div>
     </div>
   </section>
 
-  <!-- OTHER SPORTS -->
-  <section class="other-sports">
+
+  <!-- MULTICOURSE DINNER -->
+  <section class="content-section" aria-label="Multicourse dinner">
     <div class="container">
-      <div class="other-sports-header">
-        <p class="eyebrow">Available Now</p>
-        <h2 class="section-title">While you wait, explore our other sports</h2>
-        <p class="section-sub">Premium experiences across rugby, cricket, and Formula 1.</p>
-      </div>
-
-      <div class="sports-grid">
-        <div class="sport-card">
-          <div class="sport-card-img">
-            <img src="/images/experiences/rugby/springboks-vs-all-blacks-tour-2026.webp" alt="Rugby hospitality — private suites at DHL Stadium" loading="lazy">
-          </div>
-          <div class="sport-card-body">
-            <p class="sport-card-label">Rugby</p>
-            <h3 class="sport-card-title">Springboks, England, Scotland &amp; RWC 2027</h3>
-            <p class="sport-card-desc">Four premium rugby hospitality experiences — from Springboks vs All Blacks at DHL Stadium to a World Cup package in Australia.</p>
-            <a href="/experiences/rugby" class="sport-card-link">View Rugby</a>
-          </div>
-        </div>
-
-        <div class="sport-card">
-          <div class="sport-card-img">
-            <img src="/images/experiences/newlands-cricket-ground-cape-town.webp" alt="Cricket hospitality — Newlands Cricket Ground Cape Town" loading="lazy">
-          </div>
-          <div class="sport-card-body">
-            <p class="sport-card-label">Cricket</p>
-            <h3 class="sport-card-title">England vs South Africa — Newlands 2027</h3>
-            <p class="sport-card-desc">A private suite at Newlands for England vs SA 3rd Test, January 2027. Ten days in Cape Town built around the match.</p>
-            <a href="/experiences/cricket" class="sport-card-link">View Cricket</a>
-          </div>
-        </div>
-
-        <div class="sport-card">
-          <div class="sport-card-img">
-            <img src="/images/experiences/monaco-harbour-aerial-f1-grand-prix.webp" alt="Aerial view of Monaco harbour — Formula 1 and sports hospitality with Eventra" loading="lazy">
-          </div>
-          <div class="sport-card-body">
-            <p class="sport-card-label">Formula 1</p>
-            <h3 class="sport-card-title">Monaco Grand Prix 2026</h3>
-            <p class="sport-card-desc">The most prestigious race on the calendar. Private yacht, paddock access, and Monaco at its most spectacular.</p>
-            <a href="/experiences/f1" class="sport-card-link">View Formula 1</a>
-          </div>
-        </div>
+      <div class="content-inner">
+        <p class="eyebrow content-eyebrow">The Dining</p>
+        <h2 class="content-title">Multicourse Dinner.</h2>
+        <p class="content-body">A multicourse dinner is served in the Founders Lounge before the match &mdash; a full dining experience that reflects the quality of the hospitality rather than the convenience of the catering. The kind of pre-match meal that makes the afternoon feel like an occasion.</p>
       </div>
     </div>
   </section>
+
+
+  <!-- THE MATCH -->
+  <section class="content-section alt" aria-label="The match">
+    <div class="container">
+      <div class="content-inner">
+        <p class="eyebrow content-eyebrow">The Match</p>
+        <h2 class="content-title">The Best Seats in the House.</h2>
+        <p class="content-body">Premium seats give you Anfield at its best &mdash; a full view of one of the most storied football grounds in the world, as Liverpool face Chelsea in a fixture that rarely disappoints. Kick-off is at 12:30 on 9 May 2026.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- WHAT'S INCLUDED -->
+  <section class="inclusions-section" aria-label="What is included">
+    <div class="container">
+      <div class="inclusions-header">
+        <p class="eyebrow">What&rsquo;s Included</p>
+        <h2 class="inclusions-title">Everything the day requires.</h2>
+      </div>
+      <ul class="inclusions-list">
+        <li>
+          <span class="inclusions-marker" aria-hidden="true"></span>
+          Founders Lounge access
+        </li>
+        <li>
+          <span class="inclusions-marker" aria-hidden="true"></span>
+          Champagne reception on arrival
+        </li>
+        <li>
+          <span class="inclusions-marker" aria-hidden="true"></span>
+          Complimentary drinks throughout
+        </li>
+        <li>
+          <span class="inclusions-marker" aria-hidden="true"></span>
+          Multicourse dinner
+        </li>
+        <li>
+          <span class="inclusions-marker" aria-hidden="true"></span>
+          Premium seats &mdash; best in the house
+        </li>
+      </ul>
+    </div>
+  </section>
+
+
+  <!-- CTA BAND -->
+  <section class="cta-band" aria-label="Enquire about Liverpool vs Chelsea Founders Lounge">
+    <div class="container">
+      <div class="cta-band-content">
+        <p class="eyebrow cta-band-eyebrow">Secure Your Place at Anfield</p>
+        <h2 class="cta-band-title">Secure Your Place at Anfield</h2>
+        <p class="cta-band-body">Founders Lounge capacity at Anfield is strictly limited. Liverpool vs Chelsea takes place on 9 May 2026.</p>
+        <a href="/enquire" class="btn btn-primary">Enquire Now</a>
+      </div>
+    </div>
+  </section>
+
 
   <!-- FOOTER -->
   <footer class="site-footer" aria-label="Site footer">
@@ -442,7 +536,8 @@
               <li><a href="/experiences/cricket">Cricket</a></li>
               <li><a href="/experiences/f1">Formula 1</a></li>
               <li><a href="/experiences/football">Football</a></li>
-              <li><a href="/experiences">View All</a></li>
+              <li><a href="/experiences/tennis">Tennis</a></li>
+              <li><a href="/experiences/concerts-culture">Concerts &amp; Culture</a></li>
             </ul>
           </div>
           <div>
@@ -475,38 +570,28 @@
     </div>
   </footer>
 
-  <script>
-    // Scroll-based header
-    const header = document.getElementById('site-header');
-    const onScroll = () => {
-      if (window.scrollY > 40) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
 
-    // Mobile nav
+  <script>
+    const header = document.getElementById('site-header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+    const heroBg = document.getElementById('hero-bg');
+    if (heroBg) heroBg.classList.add('loaded');
     const hamburger = document.getElementById('nav-hamburger');
     const mobileNav = document.getElementById('mobile-nav');
     const mobileClose = document.getElementById('mobile-nav-close');
     if (hamburger && mobileNav && mobileClose) {
       hamburger.addEventListener('click', () => mobileNav.classList.add('open'));
       mobileClose.addEventListener('click', () => mobileNav.classList.remove('open'));
-      mobileNav.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => mobileNav.classList.remove('open'));
-      });
     }
-
-    // Mobile Experiences expand
     const expTrigger = document.getElementById('mobile-exp-trigger');
     const expSubnav = document.getElementById('mobile-subnav');
     if (expTrigger && expSubnav) {
       expTrigger.addEventListener('click', () => {
-        const isExp = expTrigger.getAttribute('aria-expanded') === 'true';
-        expTrigger.setAttribute('aria-expanded', String(!isExp));
-        expSubnav.hidden = isExp;
+        const expanded = expTrigger.getAttribute('aria-expanded') === 'true';
+        expTrigger.setAttribute('aria-expanded', String(!expanded));
+        expSubnav.hidden = expanded;
       });
     }
   </script>
