@@ -3,18 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Roland Garros Hospitality | French Open VIP | Eventra</title>
+  <title>Roland Garros Men's Final | La Mezzanine | Eventra</title>
   <link rel="icon" type="image/png" href="/images/logos/Eventra-Logo-Gold.png">
   <link rel="apple-touch-icon" href="/images/logos/Eventra-Logo-Gold.png">
-  <meta name="description" content="Premium Roland Garros hospitality — Court Philippe-Chatrier, private suites and VIP access at the French Open in Paris. Eventra curates luxury packages.">
-  <link rel="canonical" href="https://eventragroup.co.za/experiences/tennis/roland-garros">
+  <meta name="description" content="Roland Garros Men's Final hospitality in La Mezzanine — intimate VIP lounge, gastronomic lunch and Court Philippe-Chatrier access. Book through Eventra.">
+  <link rel="canonical" href="https://eventragroup.co.za/experiences/tennis/roland-garros/mens-final-la-mezzanine">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Roland Garros Hospitality | French Open VIP | Eventra">
-  <meta property="og:description" content="Premium Roland Garros hospitality — Court Philippe-Chatrier, private suites and VIP access at the French Open in Paris. Eventra curates luxury packages.">
-  <meta property="og:url" content="https://eventragroup.co.za/experiences/tennis/roland-garros">
-  <meta property="og:image" content="https://eventragroup.co.za/experiences/tennis/roland-garros-clay-court-tennis-racket.webp">
+  <meta property="og:title" content="Roland Garros Men's Final | La Mezzanine | Eventra">
+  <meta property="og:description" content="Roland Garros Men's Final hospitality in La Mezzanine — intimate VIP lounge, gastronomic lunch and Court Philippe-Chatrier access. Book through Eventra.">
+  <meta property="og:url" content="https://eventragroup.co.za/experiences/tennis/roland-garros/mens-final-la-mezzanine">
   <meta property="og:site_name" content="Eventra Group">
 
   <!-- Schema: Organisation -->
@@ -39,13 +38,13 @@
   {
     "@context": "https://schema.org",
     "@type": "Event",
-    "name": "Roland Garros French Open",
-    "startDate": "2026-05-24",
+    "name": "Roland Garros Men's Final",
+    "startDate": "2026-06-08",
     "eventStatus": "https://schema.org/EventScheduled",
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
     "location": {
       "@type": "Place",
-      "name": "Stade Roland Garros",
+      "name": "Court Philippe-Chatrier",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Paris",
@@ -57,7 +56,7 @@
       "name": "Eventra Group",
       "url": "https://eventragroup.co.za"
     },
-    "description": "Premium Roland Garros hospitality — Court Philippe-Chatrier premium seats, private suites and VIP access at the French Open in Paris."
+    "description": "Roland Garros Men's Final hospitality in La Mezzanine — intimate VIP lounge, gastronomic lunch and Court Philippe-Chatrier access."
   }
   </script>
 
@@ -90,6 +89,12 @@
         "position": 4,
         "name": "Roland Garros",
         "item": "https://eventragroup.co.za/experiences/tennis/roland-garros"
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "name": "Men's Final La Mezzanine",
+        "item": "https://eventragroup.co.za/experiences/tennis/roland-garros/mens-final-la-mezzanine"
       }
     ]
   }
@@ -169,27 +174,23 @@
       transition: background 0.35s ease, box-shadow 0.35s ease;
     }
     .site-header.scrolled { background: var(--eg-white); box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+    .site-header.nav-light { background: var(--eg-white); box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
     .site-header .container { width: 100%; display: flex; align-items: center; justify-content: space-between; }
     .site-logo { flex-shrink: 0; display: flex; align-items: center; gap: 10px; }
     .logo-img { display: block; width: auto; height: 40px; max-height: 40px; }
-    .logo-dark { display: none; }
+    .logo-white { display: none; }
+    .logo-dark { display: block; }
     .site-header.scrolled .logo-white { display: none; }
     .site-header.scrolled .logo-dark { display: block; }
-    .logo-text { font-family: var(--font-display); font-weight: 400; font-size: 22px; letter-spacing: 0.04em; color: var(--eg-white); transition: color 0.35s ease; white-space: nowrap; }
-    .site-header.scrolled .logo-text { color: var(--eg-charcoal); }
-    .logo-subtitle { font-family: var(--font-body); font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.7); transition: color 0.35s ease; margin-top: 2px; }
-    .site-header.scrolled .logo-subtitle { color: var(--eg-mid-grey); }
+    .logo-text { font-family: var(--font-display); font-weight: 400; font-size: 22px; letter-spacing: 0.04em; color: var(--eg-charcoal); transition: color 0.35s ease; white-space: nowrap; }
+    .logo-subtitle { font-family: var(--font-body); font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--eg-mid-grey); transition: color 0.35s ease; margin-top: 2px; }
     .site-nav { display: flex; align-items: center; gap: 36px; }
-    .nav-link { font-family: var(--font-body); font-weight: 500; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.88); transition: color 0.25s ease; }
-    .site-header.scrolled .nav-link { color: var(--eg-charcoal); }
+    .nav-link { font-family: var(--font-body); font-weight: 500; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--eg-charcoal); transition: color 0.25s ease; }
     .nav-link:hover { color: var(--eg-gold); }
-    .nav-cta { font-family: var(--font-body); font-weight: 600; font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; padding: 10px 24px; border-radius: 2px; border: 1.5px solid rgba(255,255,255,0.7); color: var(--eg-white); transition: all 0.25s ease; }
-    .site-header.scrolled .nav-cta { border-color: var(--eg-gold); color: var(--eg-gold); }
-    .nav-cta:hover { background: var(--eg-white); color: var(--eg-charcoal); border-color: var(--eg-white); }
-    .site-header.scrolled .nav-cta:hover { background: var(--eg-gold); color: var(--eg-white); border-color: var(--eg-gold); }
+    .nav-cta { font-family: var(--font-body); font-weight: 600; font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; padding: 10px 24px; border-radius: 2px; border: 1.5px solid var(--eg-gold); color: var(--eg-gold); transition: all 0.25s ease; }
+    .nav-cta:hover { background: var(--eg-gold); color: var(--eg-white); border-color: var(--eg-gold); }
     .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
-    .nav-hamburger span { display: block; width: 24px; height: 1.5px; background: var(--eg-white); transition: background 0.35s ease; }
-    .site-header.scrolled .nav-hamburger span { background: var(--eg-charcoal); }
+    .nav-hamburger span { display: block; width: 24px; height: 1.5px; background: var(--eg-charcoal); transition: background 0.35s ease; }
     .mobile-nav { display: none; position: fixed; inset: 0; background: var(--eg-charcoal); z-index: 99; flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
     .mobile-nav.open { display: flex; }
     .mobile-nav .nav-link { color: var(--eg-white); font-size: 14px; }
@@ -209,6 +210,7 @@
     .mobile-subnav { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-top: 14px; }
     .mobile-sublink { font-size: 12px !important; opacity: 0.72; }
 
+    /* BREADCRUMB */
     .breadcrumb-bar { background: var(--eg-charcoal); padding: 14px 0; }
     .breadcrumb { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
     .breadcrumb-item { font-family: var(--font-body); font-size: 12px; letter-spacing: 0.08em; color: rgba(255,255,255,0.45); }
@@ -217,32 +219,17 @@
     .breadcrumb-sep { color: rgba(255,255,255,0.25); font-size: 10px; }
     .breadcrumb-item.current { color: var(--eg-gold); }
 
+    /* HERO — no image, warm neutral */
     .hero {
-      position: relative;
-      min-height: 72vh;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
+      background: var(--eg-warm-neutral);
+      padding: 120px 0 100px;
     }
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background-image: url('/experiences/tennis/roland-garros-clay-court-tennis-racket.webp');
-      background-size: cover;
-      background-position: center;
-      background-color: #1A1A1A;
-      transform: scale(1.03);
-      transition: transform 8s ease-out;
-    }
-    .hero-bg.loaded { transform: scale(1); }
-    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(105deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.2) 100%); }
-    .hero-content { position: relative; z-index: 2; width: 100%; padding: 0 80px; padding-top: 100px; }
-    .hero-inner { max-width: 680px; }
-    .hero-eyebrow { font-family: var(--font-body); font-weight: 500; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.85); margin-bottom: 20px; }
-    .hero-headline { font-family: var(--font-display); font-weight: 300; font-size: 68px; line-height: 1.05; color: var(--eg-white); margin-bottom: 28px; }
-    .hero-subhead { font-family: var(--font-body); font-weight: 400; font-size: 16px; line-height: 1.7; color: rgba(255,255,255,0.8); margin-bottom: 44px; max-width: 480px; }
-    .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+    .hero-inner { max-width: 760px; }
+    .hero-eyebrow { font-family: var(--font-body); font-weight: 500; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--eg-gold); margin-bottom: 24px; }
+    .hero-headline { font-family: var(--font-display); font-weight: 300; font-size: 64px; line-height: 1.05; color: var(--eg-charcoal); margin-bottom: 32px; }
+    .hero-subhead { font-family: var(--font-body); font-weight: 400; font-size: 17px; line-height: 1.8; color: var(--eg-mid-grey); max-width: 620px; }
 
+    /* CONTENT SECTIONS */
     .content-section { padding: var(--section-pad-v) 0; }
     .content-section.alt { background: var(--eg-warm-neutral); }
     .content-inner { max-width: 800px; }
@@ -251,44 +238,41 @@
     .content-body { font-family: var(--font-body); font-size: 16px; color: var(--eg-mid-grey); line-height: 1.85; margin-bottom: 20px; }
     .content-body:last-child { margin-bottom: 0; }
 
-    .services-section { background: var(--eg-charcoal); padding: var(--section-pad-v) 0; }
-    .services-section .section-header .eyebrow { color: var(--eg-gold); }
-    .section-header { text-align: center; margin-bottom: 56px; }
-    .section-title { font-family: var(--font-display); font-weight: 400; font-size: 44px; color: var(--eg-white); margin-bottom: 16px; line-height: 1.1; }
-    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gutter); }
-    .service-item { border-top: 1px solid rgba(255,255,255,0.12); padding-top: 28px; }
-    .service-marker { width: 6px; height: 6px; background: var(--eg-gold); border-radius: 50%; margin-bottom: 20px; }
-    .service-name { font-family: var(--font-display); font-weight: 400; font-size: 20px; color: var(--eg-white); line-height: 1.2; }
+    /* INCLUSIONS LIST */
+    .inclusions-section { background: var(--eg-charcoal); padding: var(--section-pad-v) 0; }
+    .inclusions-header { margin-bottom: 48px; }
+    .inclusions-header .eyebrow { color: var(--eg-gold); margin-bottom: 16px; }
+    .inclusions-title { font-family: var(--font-display); font-weight: 300; font-size: 42px; color: var(--eg-white); line-height: 1.1; }
+    .inclusions-list { list-style: none; }
+    .inclusions-list li {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.5;
+    }
+    .inclusions-list li:first-child { border-top: 1px solid rgba(255,255,255,0.1); }
+    .inclusions-marker {
+      flex-shrink: 0;
+      width: 6px;
+      height: 6px;
+      background: var(--eg-gold);
+      border-radius: 50%;
+      margin-top: 6px;
+    }
 
-    /* EXPERIENCES CARDS */
-    .exp-cards-section { background: var(--eg-white); padding: var(--section-pad-v) 0; }
-    .exp-cards-header { margin-bottom: 48px; }
-    .exp-cards-header .eyebrow { margin-bottom: 16px; }
-    .exp-cards-header-title { font-family: var(--font-display); font-weight: 400; font-size: 44px; color: var(--eg-charcoal); line-height: 1.1; }
-    .exp-cards-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gutter); }
-    .dest-card {
-      display: block;
-      background: var(--eg-warm-neutral);
-      overflow: hidden;
-      transition: box-shadow 0.25s ease;
-    }
-    .dest-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.1); }
-    .dest-card-img {
-      background: var(--eg-warm-neutral);
-      min-height: 220px;
-    }
-    .dest-card-body {
-      padding: 28px 24px 32px;
-      z-index: 2;
-    }
-    .dest-card-eyebrow { font-family: var(--font-body); font-weight: 500; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--eg-gold); margin-bottom: 12px; }
-    .dest-card-title { font-family: var(--font-display); font-weight: 400; font-size: 24px; color: var(--eg-charcoal); margin-bottom: 12px; line-height: 1.15; }
-    .dest-card-desc { font-family: var(--font-body); font-size: 14px; color: var(--eg-mid-grey); line-height: 1.7; }
-
+    /* CTA BAND */
     .cta-band { background: var(--eg-warm-neutral); padding: 100px 0; }
-    .cta-band-content { text-align: center; }
-    .cta-band-title { font-family: var(--font-display); font-weight: 300; font-size: 48px; color: var(--eg-charcoal); margin-bottom: 40px; }
+    .cta-band-content { max-width: 640px; }
+    .cta-band-eyebrow { margin-bottom: 20px; }
+    .cta-band-title { font-family: var(--font-display); font-weight: 300; font-size: 48px; color: var(--eg-charcoal); margin-bottom: 20px; line-height: 1.1; }
+    .cta-band-body { font-family: var(--font-body); font-size: 16px; color: var(--eg-mid-grey); line-height: 1.75; margin-bottom: 40px; }
 
+    /* FOOTER */
     .site-footer { background: #111111; }
     .footer-main { padding: 64px 0 48px; }
     .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; }
@@ -314,28 +298,20 @@
     .legal-links a:hover { color: var(--eg-gold); }
 
     @media (max-width: 1024px) {
-      .services-grid { grid-template-columns: repeat(2, 1fr); }
-      .exp-cards-row { grid-template-columns: repeat(2, 1fr); }
       .hero-headline { font-size: 52px; }
-      .hero-content { padding: 0 40px; padding-top: 100px; }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
     }
     @media (max-width: 768px) {
       .nav-hamburger { display: flex; }
       .site-nav { display: none; }
-      .hero { min-height: 65vh; }
+      .hero { padding: 100px 0 80px; }
       .hero-headline { font-size: 38px; }
-      .hero-content { padding: 0 24px; padding-top: 100px; }
       .hero-subhead { font-size: 15px; }
       .container { padding: 0 24px; }
-      .services-grid { grid-template-columns: 1fr; }
-      .exp-cards-row { grid-template-columns: 1fr; }
       .content-section { padding: var(--section-pad-v-sm) 0; }
       .content-title { font-size: 32px; }
-      .services-section { padding: var(--section-pad-v-sm) 0; }
-      .exp-cards-section { padding: var(--section-pad-v-sm) 0; }
-      .section-title { font-size: 32px; }
-      .exp-cards-header-title { font-size: 32px; }
+      .inclusions-section { padding: var(--section-pad-v-sm) 0; }
+      .inclusions-title { font-size: 32px; }
       .cta-band { padding: 80px 0; }
       .cta-band-title { font-size: 32px; }
       .footer-grid { grid-template-columns: 1fr; gap: 32px; }
@@ -347,7 +323,7 @@
 
 <body>
 
-  <header class="site-header" id="site-header">
+  <header class="site-header nav-light" id="site-header">
     <div class="container">
       <a href="/" class="site-logo">
         <img src="/EVENTRA_FINAL_LOGOS_20_JUNE_2025-03.png" alt="" class="logo-img logo-white" aria-hidden="true">
@@ -399,7 +375,7 @@
 
 
   <!-- BREADCRUMB -->
-  <div class="breadcrumb-bar" style="padding-top: 72px;">
+  <div class="breadcrumb-bar" style="margin-top: 72px;">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <span class="breadcrumb-item"><a href="/">Home</a></span>
@@ -408,121 +384,106 @@
         <span class="breadcrumb-sep">&rsaquo;</span>
         <span class="breadcrumb-item"><a href="/experiences/tennis">Tennis</a></span>
         <span class="breadcrumb-sep">&rsaquo;</span>
-        <span class="breadcrumb-item current" aria-current="page">Roland Garros</span>
+        <span class="breadcrumb-item"><a href="/experiences/tennis/roland-garros">Roland Garros</a></span>
+        <span class="breadcrumb-sep">&rsaquo;</span>
+        <span class="breadcrumb-item current" aria-current="page">Men&rsquo;s Final La Mezzanine</span>
       </nav>
     </div>
   </div>
 
 
   <!-- HERO -->
-  <section class="hero" aria-label="Roland Garros hero">
-    <div class="hero-bg" id="hero-bg"></div>
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
+  <section class="hero" aria-label="La Mezzanine hero">
+    <div class="container">
       <div class="hero-inner">
-        <p class="hero-eyebrow">Eventra Tennis &mdash; Grand Slam</p>
-        <h1 class="hero-headline">Roland Garros. The French Open on Parisian Clay.</h1>
-        <p class="hero-subhead">Two weeks on the red clay of Paris in late May and early June. Court Philippe-Chatrier in the afternoon sun &mdash; the finest clay court in the world, in one of the world&rsquo;s great cities.</p>
-        <div class="hero-ctas">
-          <a href="/enquire" class="btn btn-primary">Enquire Now</a>
-          <a href="/experiences/tennis" class="btn btn-white-outline">All Tennis</a>
-        </div>
+        <p class="hero-eyebrow">Roland Garros &mdash; Men&rsquo;s Final Hospitality</p>
+        <h1 class="hero-headline">Roland Garros Men&rsquo;s Final. La Mezzanine &mdash; Full Day.</h1>
+        <p class="hero-subhead">There is a moment on the final Sunday of Roland Garros when the clay dust settles and the crowd holds its breath. La Mezzanine is where you watch it happen &mdash; steps from Court Philippe-Chatrier, on the first floor of the Orangerie, in one of the most intimate and considered hospitality spaces in all of tennis.</p>
       </div>
     </div>
   </section>
 
 
-  <!-- THE TOURNAMENT -->
-  <section class="content-section" aria-label="About Roland Garros">
+  <!-- THE SETTING -->
+  <section class="content-section" aria-label="La Mezzanine — the setting">
     <div class="container">
       <div class="content-inner">
-        <p class="eyebrow content-eyebrow">The Tournament</p>
-        <h2 class="content-title">Two weeks on the red clay of Paris.</h2>
-        <p class="content-body">Two weeks on the red clay of Paris in late May and early June. Court Philippe-Chatrier in the afternoon sun &mdash; the finest clay court in the world, in one of the world&rsquo;s great cities. The French Open rewards the patient and punishes everyone else.</p>
+        <p class="eyebrow content-eyebrow">The Setting</p>
+        <h2 class="content-title">The first floor of the Orangerie.</h2>
+        <p class="content-body">La Mezzanine occupies the first floor of the Orangerie at Roland Garros &mdash; a bright, elegant VIP space that looks out over the grounds and sits within walking distance of Court Philippe-Chatrier. It is designed for a small number of guests. The scale is deliberate. This is not a corporate box &mdash; it is closer to a private salon, and it feels like it.</p>
       </div>
     </div>
   </section>
 
 
-  <!-- THE ACCESS -->
-  <section class="content-section alt" aria-label="Roland Garros access">
+  <!-- THE DAY -->
+  <section class="content-section alt" aria-label="La Mezzanine — the day">
     <div class="container">
       <div class="content-inner">
-        <p class="eyebrow content-eyebrow">The Access</p>
-        <h2 class="content-title">Court Philippe-Chatrier. Paris at its finest.</h2>
-        <p class="content-body">Eventra arranges premium court-side seats, private hospitality suites, and curated Paris experiences built around the tournament. The city is at its best in late May &mdash; Eventra makes the most of both.</p>
+        <p class="eyebrow content-eyebrow">The Day</p>
+        <h2 class="content-title">Every match. From first ball to trophy ceremony.</h2>
+        <p class="content-body">La Mezzanine access covers the full day of the Men&rsquo;s Final &mdash; every match on Court Philippe-Chatrier from the opening ball to the trophy ceremony. A cocktail reception on arrival. Complimentary drinks throughout the day. Small bites served during the morning session. A gastronomic lunch between matches &mdash; the kind of lunch that Roland Garros does better than any other tournament in tennis. An official souvenir to mark the occasion.</p>
       </div>
     </div>
   </section>
 
 
-  <!-- WHAT WE ARRANGE -->
-  <section class="services-section" aria-label="What Eventra arranges for Roland Garros">
+  <!-- THE TENNIS -->
+  <section class="content-section" aria-label="La Mezzanine — the tennis">
     <div class="container">
-      <header class="section-header">
-        <p class="eyebrow">What We Arrange</p>
-        <h2 class="section-title">Two weeks in Paris, arranged properly.</h2>
-      </header>
-
-      <div class="services-grid">
-        <div class="service-item">
-          <div class="service-marker"></div>
-          <p class="service-name">Court Philippe-Chatrier premium seats</p>
-        </div>
-        <div class="service-item">
-          <div class="service-marker"></div>
-          <p class="service-name">Private hospitality suites</p>
-        </div>
-        <div class="service-item">
-          <div class="service-marker"></div>
-          <p class="service-name">Hotel arrangements in Paris</p>
-        </div>
-        <div class="service-item">
-          <div class="service-marker"></div>
-          <p class="service-name">Transfer and logistics</p>
-        </div>
-        <div class="service-item">
-          <div class="service-marker"></div>
-          <p class="service-name">Dining reservations at Paris&rsquo;s finest restaurants</p>
-        </div>
-        <div class="service-item">
-          <div class="service-marker"></div>
-          <p class="service-name">Pre and post-match private events</p>
-        </div>
+      <div class="content-inner">
+        <p class="eyebrow content-eyebrow">The Tennis</p>
+        <h2 class="content-title">The finest clay court in the world.</h2>
+        <p class="content-body">Court Philippe-Chatrier is the finest clay court in the world. The Roland Garros Men&rsquo;s Final is the greatest clay court match in tennis. Watching it from La Mezzanine &mdash; close, quiet, and properly hosted &mdash; is the experience as it was always meant to be.</p>
       </div>
     </div>
   </section>
 
 
-  <!-- FEATURED EXPERIENCES -->
-  <section class="exp-cards-section" aria-label="Roland Garros featured experiences">
+  <!-- WHAT'S INCLUDED -->
+  <section class="inclusions-section" aria-label="La Mezzanine inclusions">
     <div class="container">
-      <header class="exp-cards-header">
-        <p class="eyebrow">Roland Garros Experiences</p>
-        <h2 class="exp-cards-header-title">Hospitality at the French Open.</h2>
-      </header>
-
-      <div class="exp-cards-row">
-
-        <a href="/experiences/tennis/roland-garros/mens-final-la-mezzanine" class="dest-card">
-          <div class="dest-card-img" style="background: #F8F5F0;" aria-hidden="true"></div>
-          <div class="dest-card-body">
-            <p class="dest-card-eyebrow">Men&rsquo;s Final &mdash; 8 June 2026</p>
-            <h3 class="dest-card-title">Men&rsquo;s Final &mdash; La Mezzanine Full Day</h3>
-            <p class="dest-card-desc">Intimate VIP lounge on the first floor of the Orangerie. Steps from Court Philippe-Chatrier. Gastronomic lunch, complimentary drinks and a souvenir included.</p>
-          </div>
-        </a>
-
+      <div class="inclusions-header">
+        <p class="eyebrow">What&rsquo;s Included</p>
+        <h2 class="inclusions-title">Everything the day requires.</h2>
       </div>
+      <ul class="inclusions-list">
+        <li>
+          <span class="inclusions-marker" aria-hidden="true"></span>
+          La Mezzanine lounge access &mdash; full day
+        </li>
+        <li>
+          <span class="inclusions-marker" aria-hidden="true"></span>
+          Complimentary drinks throughout
+        </li>
+        <li>
+          <span class="inclusions-marker" aria-hidden="true"></span>
+          Small bites &mdash; morning session
+        </li>
+        <li>
+          <span class="inclusions-marker" aria-hidden="true"></span>
+          Gastronomic lunch
+        </li>
+        <li>
+          <span class="inclusions-marker" aria-hidden="true"></span>
+          Court Philippe-Chatrier access &mdash; all matches of the day including the Men&rsquo;s Final
+        </li>
+        <li>
+          <span class="inclusions-marker" aria-hidden="true"></span>
+          Official Roland Garros souvenir
+        </li>
+      </ul>
     </div>
   </section>
 
 
   <!-- CTA BAND -->
-  <section class="cta-band">
+  <section class="cta-band" aria-label="Enquire about La Mezzanine">
     <div class="container">
       <div class="cta-band-content">
-        <h2 class="cta-band-title">Tell us which days. We handle Paris and the rest.</h2>
+        <p class="eyebrow cta-band-eyebrow">Secure Your Place</p>
+        <h2 class="cta-band-title">Secure Your Place at the Men&rsquo;s Final</h2>
+        <p class="cta-band-body">La Mezzanine capacity is strictly limited. The Men&rsquo;s Final sells out well in advance.</p>
         <a href="/enquire" class="btn btn-primary">Enquire Now</a>
       </div>
     </div>
@@ -589,8 +550,6 @@
     window.addEventListener('scroll', () => {
       header.classList.toggle('scrolled', window.scrollY > 40);
     }, { passive: true });
-    const heroBg = document.getElementById('hero-bg');
-    if (heroBg) heroBg.classList.add('loaded');
     const hamburger = document.getElementById('nav-hamburger');
     const mobileNav = document.getElementById('mobile-nav');
     const mobileClose = document.getElementById('mobile-nav-close');
