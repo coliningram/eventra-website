@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tennis Hospitality Packages | Wimbledon &amp; Grand Slams | Eventra</title>
+  <title>US Open Tennis Hospitality | Arthur Ashe Stadium | Eventra</title>
   <link rel="icon" type="image/png" href="/images/logos/Eventra-Logo-Gold.png">
   <link rel="apple-touch-icon" href="/images/logos/Eventra-Logo-Gold.png">
-  <meta name="description" content="Premium tennis hospitality at Wimbledon, Roland Garros, US Open and Australian Open. Eventra curates VIP packages across the full Grand Slam calendar.">
-  <link rel="canonical" href="https://eventragroup.co.za/experiences/tennis">
+  <meta name="description" content="Premium US Open tennis hospitality — Arthur Ashe Stadium, private suites and VIP access in New York. Eventra curates luxury US Open packages.">
+  <link rel="canonical" href="https://eventragroup.co.za/experiences/tennis/us-open">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Tennis Hospitality Packages | Wimbledon &amp; Grand Slams | Eventra">
-  <meta property="og:description" content="From the grass of Wimbledon to the clay of Roland Garros — Eventra places you at the heart of tennis's greatest occasions.">
-  <meta property="og:url" content="https://eventragroup.co.za/experiences/tennis">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?w=1200&q=70&auto=format&fit=crop">
+  <meta property="og:title" content="US Open Tennis Hospitality | Arthur Ashe Stadium | Eventra">
+  <meta property="og:description" content="Premium US Open tennis hospitality — Arthur Ashe Stadium, private suites and VIP access in New York. Eventra curates luxury US Open packages.">
+  <meta property="og:url" content="https://eventragroup.co.za/experiences/tennis/us-open">
+  <meta property="og:image" content="https://eventragroup.co.za/experiences/tennis/us-open-hard-court-tennis-racket.webp">
   <meta property="og:site_name" content="Eventra Group">
 
   <!-- Schema: Organisation -->
@@ -25,12 +25,39 @@
     "name": "Eventra Group",
     "url": "https://eventragroup.co.za",
     "logo": "https://eventragroup.co.za/EVENTRA_FINAL_LOGOS_20_JUNE_2025-02.png",
-    "description": "Premium sports hospitality and luxury travel experiences. Rugby, cricket, Formula 1, tennis, and bespoke journeys.",
+    "description": "Premium sports hospitality and luxury travel experiences.",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Cape Town",
       "addressCountry": "ZA"
     }
+  }
+  </script>
+
+  <!-- Schema: Event -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "US Open Tennis",
+    "startDate": "2026-08-31",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "location": {
+      "@type": "Place",
+      "name": "USTA Billie Jean King National Tennis Center",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "New York",
+        "addressCountry": "US"
+      }
+    },
+    "organizer": {
+      "@type": "Organization",
+      "name": "Eventra Group",
+      "url": "https://eventragroup.co.za"
+    },
+    "description": "Premium US Open tennis hospitality — Arthur Ashe Stadium premium seats, private suites and VIP access in New York."
   }
   </script>
 
@@ -57,6 +84,12 @@
         "position": 3,
         "name": "Tennis",
         "item": "https://eventragroup.co.za/experiences/tennis"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "US Open",
+        "item": "https://eventragroup.co.za/experiences/tennis/us-open"
       }
     ]
   }
@@ -65,7 +98,6 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://images.unsplash.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
@@ -128,7 +160,6 @@
     .btn-white-outline:hover { background: var(--eg-white); color: var(--eg-charcoal); }
     .btn-sm { padding: 12px 28px; font-size: 12px; }
 
-    /* NAV */
     .site-header {
       position: fixed; top: 0; left: 0; right: 0;
       z-index: 100; height: 72px;
@@ -164,14 +195,12 @@
     .mobile-nav .nav-cta { border-color: var(--eg-gold); color: var(--eg-gold); }
     .mobile-nav-close { position: absolute; top: 24px; right: 24px; cursor: pointer; font-size: 28px; color: var(--eg-white); line-height: 1; background: none; border: none; }
 
-    /* Experiences dropdown — desktop */
     .nav-dropdown-wrap { position: relative; display: flex; align-items: center; }
     .nav-dropdown { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); background: var(--eg-white); min-width: 180px; border-top: 2px solid var(--eg-gold); box-shadow: 0 8px 32px rgba(0,0,0,0.12); opacity: 0; visibility: hidden; transition: opacity 0.2s ease, visibility 0.2s ease; transition-delay: 0.2s; z-index: 200; pointer-events: none; padding-top: 14px; }
     .nav-dropdown-wrap:hover .nav-dropdown { opacity: 1; visibility: visible; pointer-events: auto; transition-delay: 0s; }
     .nav-dropdown a { display: block; padding: 11px 20px; font-family: var(--font-body); font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--eg-charcoal); transition: background 0.15s, color 0.15s; text-decoration: none; }
     .nav-dropdown a:hover { background: var(--eg-warm-neutral); color: var(--eg-gold); }
     .nav-dropdown .nav-dropdown-view-all { border-top: 1px solid #eee; color: var(--eg-gold); }
-    /* Experiences expand — mobile */
     .mobile-exp-wrap { display: flex; flex-direction: column; align-items: center; }
     .mobile-exp-btn { background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 8px; padding: 0; }
     .mobile-exp-chevron { font-size: 9px; transition: transform 0.2s; display: inline-block; }
@@ -179,7 +208,6 @@
     .mobile-subnav { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-top: 14px; }
     .mobile-sublink { font-size: 12px !important; opacity: 0.72; }
 
-    /* BREADCRUMB */
     .breadcrumb-bar { background: var(--eg-charcoal); padding: 14px 0; }
     .breadcrumb { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
     .breadcrumb-item { font-family: var(--font-body); font-size: 12px; letter-spacing: 0.08em; color: rgba(255,255,255,0.45); }
@@ -188,7 +216,6 @@
     .breadcrumb-sep { color: rgba(255,255,255,0.25); font-size: 10px; }
     .breadcrumb-item.current { color: var(--eg-gold); }
 
-    /* HERO */
     .hero {
       position: relative;
       min-height: 72vh;
@@ -199,7 +226,7 @@
     .hero-bg {
       position: absolute;
       inset: 0;
-      background-image: url('https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?w=1200&q=70&auto=format&fit=crop');
+      background-image: url('/experiences/tennis/us-open-hard-court-tennis-racket.webp');
       background-size: cover;
       background-position: center;
       background-color: #1A1A1A;
@@ -215,56 +242,27 @@
     .hero-subhead { font-family: var(--font-body); font-weight: 400; font-size: 16px; line-height: 1.7; color: rgba(255,255,255,0.8); margin-bottom: 44px; max-width: 480px; }
     .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
 
-    /* EDITORIAL INTRO */
-    .editorial-intro { background: var(--eg-white); padding: var(--section-pad-v) 0; }
-    .editorial-intro-inner { max-width: 760px; margin: 0 auto; text-align: center; }
-    .editorial-intro-title { font-family: var(--font-display); font-weight: 300; font-size: 36px; color: var(--eg-charcoal); margin-bottom: 32px; line-height: 1.15; }
-    .editorial-intro-text { font-family: var(--font-body); font-size: 16px; line-height: 1.85; color: var(--eg-mid-grey); margin-bottom: 20px; }
-    .editorial-intro-text:last-child { margin-bottom: 0; }
+    .content-section { padding: var(--section-pad-v) 0; }
+    .content-section.alt { background: var(--eg-warm-neutral); }
+    .content-inner { max-width: 800px; }
+    .content-eyebrow { margin-bottom: 16px; }
+    .content-title { font-family: var(--font-display); font-weight: 300; font-size: 42px; color: var(--eg-charcoal); margin-bottom: 24px; line-height: 1.1; }
+    .content-body { font-family: var(--font-body); font-size: 16px; color: var(--eg-mid-grey); line-height: 1.85; margin-bottom: 20px; }
+    .content-body:last-child { margin-bottom: 0; }
 
-    /* FEATURED EXPERIENCE */
-    .feature-section { background: var(--eg-warm-neutral); padding: var(--section-pad-v) 0; }
-    .feature-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-    .feature-image { position: relative; overflow: hidden; aspect-ratio: 4/3; }
-    .feature-image img { width: 100%; height: 100%; object-fit: cover; }
-    .feature-content .eyebrow { margin-bottom: 20px; }
-    .feature-title { font-family: var(--font-display); font-weight: 300; font-size: 42px; color: var(--eg-charcoal); margin-bottom: 20px; line-height: 1.1; }
-    .feature-body { font-family: var(--font-body); font-size: 16px; color: var(--eg-mid-grey); line-height: 1.75; margin-bottom: 16px; }
-    .feature-cta { margin-top: 36px; }
-
-    /* CARD GRID */
-    .card-section { background: var(--eg-white); padding: var(--section-pad-v) 0; }
-    .section-header { text-align: center; margin-bottom: 60px; }
-    .section-header .eyebrow { margin-bottom: 16px; }
-    .section-title { font-family: var(--font-display); font-weight: 400; font-size: 44px; color: var(--eg-charcoal); margin-bottom: 16px; line-height: 1.1; }
-    .section-sub { font-family: var(--font-body); font-size: 17px; color: var(--eg-mid-grey); max-width: 520px; margin: 0 auto; line-height: 1.7; }
-    .exp-card-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gutter); }
-    .exp-card { display: block; background: var(--eg-warm-neutral); overflow: hidden; }
-    .exp-card-img { aspect-ratio: 3/2; overflow: hidden; }
-    .exp-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-    .exp-card:hover .exp-card-img img { transform: scale(1.04); }
-    .exp-card-body { padding: 28px 24px 32px; }
-    .exp-card-eyebrow { font-family: var(--font-body); font-weight: 500; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--eg-gold); margin-bottom: 12px; }
-    .exp-card-title { font-family: var(--font-display); font-weight: 400; font-size: 24px; color: var(--eg-charcoal); margin-bottom: 12px; line-height: 1.15; }
-    .exp-card-desc { font-family: var(--font-body); font-size: 14px; color: var(--eg-mid-grey); line-height: 1.7; }
-    .card-footer { text-align: center; margin-top: 44px; }
-    .card-footer-text { font-family: var(--font-body); font-size: 15px; color: var(--eg-mid-grey); font-style: italic; }
-
-    /* SERVICES */
     .services-section { background: var(--eg-charcoal); padding: var(--section-pad-v) 0; }
     .services-section .section-header .eyebrow { color: var(--eg-gold); }
-    .services-section .section-title { color: var(--eg-white); }
-    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gutter); margin-top: 56px; }
+    .section-header { text-align: center; margin-bottom: 56px; }
+    .section-title { font-family: var(--font-display); font-weight: 400; font-size: 44px; color: var(--eg-white); margin-bottom: 16px; line-height: 1.1; }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gutter); }
     .service-item { border-top: 1px solid rgba(255,255,255,0.12); padding-top: 28px; }
     .service-marker { width: 6px; height: 6px; background: var(--eg-gold); border-radius: 50%; margin-bottom: 20px; }
     .service-name { font-family: var(--font-display); font-weight: 400; font-size: 20px; color: var(--eg-white); line-height: 1.2; }
 
-    /* CTA BAND */
     .cta-band { background: var(--eg-warm-neutral); padding: 100px 0; }
     .cta-band-content { text-align: center; }
     .cta-band-title { font-family: var(--font-display); font-weight: 300; font-size: 48px; color: var(--eg-charcoal); margin-bottom: 40px; }
 
-    /* FOOTER */
     .site-footer { background: #111111; }
     .footer-main { padding: 64px 0 48px; }
     .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; }
@@ -289,12 +287,8 @@
     .legal-links a { font-family: var(--font-body); font-size: 11px; color: rgba(255,255,255,0.35); letter-spacing: 0.02em; transition: color 0.25s; }
     .legal-links a:hover { color: var(--eg-gold); }
 
-    /* RESPONSIVE */
     @media (max-width: 1024px) {
-      .feature-layout { grid-template-columns: 1fr; gap: 40px; }
-      .exp-card-grid { grid-template-columns: repeat(2, 1fr); }
       .services-grid { grid-template-columns: repeat(2, 1fr); }
-
       .hero-headline { font-size: 52px; }
       .hero-content { padding: 0 40px; padding-top: 100px; }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
@@ -307,13 +301,11 @@
       .hero-content { padding: 0 24px; padding-top: 100px; }
       .hero-subhead { font-size: 15px; }
       .container { padding: 0 24px; }
-      .exp-card-grid { grid-template-columns: 1fr; }
       .services-grid { grid-template-columns: 1fr; }
-      .editorial-intro { padding: var(--section-pad-v-sm) 0; }
-      .editorial-intro-title { font-size: 28px; }
-      .feature-section { padding: var(--section-pad-v-sm) 0; }
-      .card-section { padding: var(--section-pad-v-sm) 0; }
+      .content-section { padding: var(--section-pad-v-sm) 0; }
+      .content-title { font-size: 32px; }
       .services-section { padding: var(--section-pad-v-sm) 0; }
+      .section-title { font-size: 32px; }
       .cta-band { padding: 80px 0; }
       .cta-band-title { font-size: 32px; }
       .footer-grid { grid-template-columns: 1fr; gap: 32px; }
@@ -384,181 +376,89 @@
         <span class="breadcrumb-sep">&rsaquo;</span>
         <span class="breadcrumb-item"><a href="/experiences">Experiences</a></span>
         <span class="breadcrumb-sep">&rsaquo;</span>
-        <span class="breadcrumb-item current" aria-current="page">Tennis</span>
+        <span class="breadcrumb-item"><a href="/experiences/tennis">Tennis</a></span>
+        <span class="breadcrumb-sep">&rsaquo;</span>
+        <span class="breadcrumb-item current" aria-current="page">US Open</span>
       </nav>
     </div>
   </div>
 
 
   <!-- HERO -->
-  <section class="hero" aria-label="Tennis experiences hero">
+  <section class="hero" aria-label="US Open hero">
     <div class="hero-bg" id="hero-bg"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <div class="hero-inner">
-        <p class="hero-eyebrow">Eventra Experiences &mdash; Tennis</p>
-        <h1 class="hero-headline">Every Grand Slam. The Inner Circle.</h1>
-        <p class="hero-subhead">Tennis has four moments that define a year. Wimbledon in June. Roland Garros on Parisian clay. The US Open under the New York lights. Melbourne in January heat. Eventra places you at all of them &mdash; not in the crowd, but in the room where the season is decided.</p>
+        <p class="hero-eyebrow">Eventra Tennis &mdash; Grand Slam</p>
+        <h1 class="hero-headline">The US Open. New York Under the Lights.</h1>
+        <p class="hero-subhead">Arthur Ashe Stadium under the New York lights. The loudest Grand Slam, the most electric atmosphere, and a city that knows how to make a sporting occasion feel like a world event.</p>
         <div class="hero-ctas">
           <a href="/enquire" class="btn btn-primary">Enquire Now</a>
+          <a href="/experiences/tennis" class="btn btn-white-outline">All Tennis</a>
         </div>
       </div>
     </div>
   </section>
 
 
-  <!-- EDITORIAL INTRO -->
-  <section class="editorial-intro" aria-label="Tennis hospitality introduction">
+  <!-- THE TOURNAMENT -->
+  <section class="content-section" aria-label="About the US Open">
     <div class="container">
-      <div class="editorial-intro-inner">
-        <p class="editorial-intro-text">The Grand Slam calendar is the most consistent luxury event programme in sport. Four tournaments. Four cities. Four entirely different experiences of the same game at its highest level. Centre Court hospitality at Wimbledon is unlike anything else in British sport &mdash; the strawberries, the quiet, the grass, the gravity of it. Roland Garros is Paris in late May, clay dust and champagne. Flushing Meadows is New York at its most electric. Melbourne is summer, heat, and the season&rsquo;s first drama.</p>
-        <p class="editorial-intro-text">Eventra curates hospitality across the full calendar &mdash; from debenture seats and premium lounges to private boxes and hospitality suites at every major venue. We work across the ATP and WTA tours as well, placing clients at the events that matter beyond the Slams.</p>
+      <div class="content-inner">
+        <p class="eyebrow content-eyebrow">The Tournament</p>
+        <h2 class="content-title">New York in late August. The loudest Grand Slam on earth.</h2>
+        <p class="content-body">Arthur Ashe Stadium under the New York lights. The loudest Grand Slam, the most electric atmosphere, and a city that knows how to make a sporting occasion feel like a world event. The US Open in late August and September is New York at its most alive.</p>
       </div>
     </div>
   </section>
 
 
-  <!-- FEATURED EXPERIENCE: WIMBLEDON -->
-  <section class="feature-section" aria-label="Wimbledon hospitality featured experience">
+  <!-- THE ACCESS -->
+  <section class="content-section alt" aria-label="US Open access">
     <div class="container">
-      <div class="feature-layout">
-        <div class="feature-image">
-          <img
-            src="/experiences/tennis/wimbledon-grass-court-tennis-racket.webp"
-            alt="Tennis racket and ball on Wimbledon grass court — premium tennis hospitality packages with Eventra"
-            loading="lazy"
-          >
-        </div>
-        <div class="feature-content">
-          <p class="eyebrow">Featured &mdash; Wimbledon 2026</p>
-          <h2 class="feature-title">Centre Court. The Only Court That Matters.</h2>
-          <p class="feature-body">Wimbledon is the only Grand Slam on grass, the oldest tennis tournament in the world, and the most sought-after ticket in sport. Eventra&rsquo;s Wimbledon packages place you in debenture seats at Centre Court &mdash; with access to private hospitality, curated dining, and two weeks of the most intense tennis on the calendar.</p>
-          <p class="feature-body">Strawberries and cream are included. Everything else, we arrange.</p>
-          <div class="feature-cta">
-            <a href="/enquire" class="btn btn-primary">Enquire about Wimbledon</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- FEATURED EXPERIENCES CARD GRID -->
-  <section class="card-section" aria-label="Grand Slam tennis experiences">
-    <div class="container">
-      <header class="section-header">
-        <p class="eyebrow">The Grand Slams</p>
-        <h2 class="section-title">Four tournaments. Four occasions.</h2>
-        <p class="section-sub">Each Grand Slam has its own character. All four deserve to be attended properly.</p>
-      </header>
-
-      <div class="exp-card-grid">
-
-        <a href="/experiences/tennis/wimbledon" class="exp-card">
-          <div class="exp-card-img">
-            <img
-              src="/experiences/tennis/wimbledon-grass-court-tennis-racket.webp"
-              alt="Wimbledon — grass court tennis at the All England Club"
-              loading="lazy"
-            >
-          </div>
-          <div class="exp-card-body">
-            <p class="exp-card-eyebrow">London &mdash; June / July</p>
-            <h3 class="exp-card-title">Wimbledon</h3>
-            <p class="exp-card-desc">The All England Club. Two weeks of grass-court tennis, debenture seating, and an atmosphere that belongs to no other tournament on earth.</p>
-          </div>
-        </a>
-
-        <a href="/experiences/tennis/roland-garros" class="exp-card">
-          <div class="exp-card-img">
-            <img
-              src="/experiences/tennis/roland-garros-clay-court-tennis-racket.webp"
-              alt="Tennis racket and ball on clay court — Roland Garros French Open hospitality packages with Eventra"
-              loading="lazy"
-            >
-          </div>
-          <div class="exp-card-body">
-            <p class="exp-card-eyebrow">Paris &mdash; May / June</p>
-            <h3 class="exp-card-title">Roland Garros</h3>
-            <p class="exp-card-desc">The French Open on the red clay of Paris. Court Philippe-Chatrier in the afternoon sun &mdash; the best tennis surface in the world, in one of the world&rsquo;s great cities.</p>
-          </div>
-        </a>
-
-        <a href="/experiences/tennis/us-open" class="exp-card">
-          <div class="exp-card-img">
-            <img
-              src="/experiences/tennis/us-open-hard-court-tennis-racket.webp"
-              alt="Tennis racket and ball on blue hard court — US Open tennis hospitality packages with Eventra"
-              loading="lazy"
-            >
-          </div>
-          <div class="exp-card-body">
-            <p class="exp-card-eyebrow">New York &mdash; August / September</p>
-            <h3 class="exp-card-title">US Open</h3>
-            <p class="exp-card-desc">Arthur Ashe Stadium under the New York lights. The loudest, most electric Grand Slam &mdash; and a city that knows how to make a sporting occasion feel like a world event.</p>
-          </div>
-        </a>
-
-        <a href="/experiences/tennis/australian-open" class="exp-card">
-          <div class="exp-card-img">
-            <img
-              src="https://images.unsplash.com/photo-1692288720754-743fbd1f2155?w=800&q=70&auto=format&fit=crop"
-              alt="Rod Laver Arena Melbourne Australian Open tennis — premium hospitality with Eventra"
-              loading="lazy"
-            >
-          </div>
-          <div class="exp-card-body">
-            <p class="exp-card-eyebrow">Melbourne &mdash; January</p>
-            <h3 class="exp-card-title">Australian Open</h3>
-            <p class="exp-card-desc">Melbourne Park in the southern summer heat. Rod Laver Arena, the night sessions, and the Grand Slam that sets the tone for the tennis year.</p>
-          </div>
-        </a>
-
+      <div class="content-inner">
+        <p class="eyebrow content-eyebrow">The Access</p>
+        <h2 class="content-title">Arthur Ashe Stadium. New York arranged around tennis.</h2>
+        <p class="content-body">Eventra arranges premium Arthur Ashe Stadium seats, private hospitality suites, and curated New York experiences built around the tournament. Two weeks in the greatest city in the world, with the best tennis on earth as the centrepiece.</p>
       </div>
     </div>
   </section>
 
 
   <!-- WHAT WE ARRANGE -->
-  <section class="services-section" aria-label="Tennis hospitality services">
+  <section class="services-section" aria-label="What Eventra arranges for the US Open">
     <div class="container">
       <header class="section-header">
         <p class="eyebrow">What We Arrange</p>
-        <h2 class="section-title">Everything the tournament requires.</h2>
+        <h2 class="section-title">New York and the tennis, arranged properly.</h2>
       </header>
 
       <div class="services-grid">
-
         <div class="service-item">
           <div class="service-marker"></div>
-          <p class="service-name">Grand Slam hospitality packages</p>
+          <p class="service-name">Arthur Ashe Stadium premium seats</p>
         </div>
-
         <div class="service-item">
           <div class="service-marker"></div>
-          <p class="service-name">Debenture and premium seat access</p>
+          <p class="service-name">Private hospitality suites</p>
         </div>
-
         <div class="service-item">
           <div class="service-marker"></div>
-          <p class="service-name">Private boxes and hospitality suites</p>
+          <p class="service-name">Hotel arrangements in New York</p>
         </div>
-
         <div class="service-item">
           <div class="service-marker"></div>
-          <p class="service-name">ATP and WTA tour experiences</p>
+          <p class="service-name">Transfer and logistics</p>
         </div>
-
         <div class="service-item">
           <div class="service-marker"></div>
-          <p class="service-name">Hotel and transfer arrangements at every venue</p>
+          <p class="service-name">Dining reservations</p>
         </div>
-
         <div class="service-item">
           <div class="service-marker"></div>
-          <p class="service-name">Pre and post-match private dining</p>
+          <p class="service-name">Pre and post-match private events</p>
         </div>
-
       </div>
     </div>
   </section>
@@ -568,7 +468,7 @@
   <section class="cta-band">
     <div class="container">
       <div class="cta-band-content">
-        <h2 class="cta-band-title">Tell us which tournament. We handle everything else.</h2>
+        <h2 class="cta-band-title">Tell us which sessions. We handle New York and the rest.</h2>
         <a href="/enquire" class="btn btn-primary">Enquire Now</a>
       </div>
     </div>
@@ -586,7 +486,7 @@
             <div class="social-links">
               <a href="#" class="social-link" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12c0 3.259.014 3.668.072 4.948.058 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24c3.259 0 3.668-.014 4.948-.072 1.277-.058 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.689.072-4.948 0-3.259-.014-3.667-.072-4.947-.058-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.259 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.645-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg></a>
               <a href="#" class="social-link" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
-            <a href="#" class="social-link" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 11.954 12 12.728v-8.945H8.468v-3.783H12v-2.886c0-3.475 2.07-5.397 5.24-5.397 1.519 0 3.109.269 3.109.269v3.404h-1.751c-1.726 0-2.265 1.071-2.265 2.17v2.43h3.856l-.616 3.782H16.33v8.945c7.617-.772 12.003-6.737 12.003-12.727z"/></svg></a>
+              <a href="#" class="social-link" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 11.954 12 12.728v-8.945H8.468v-3.783H12v-2.886c0-3.475 2.07-5.397 5.24-5.397 1.519 0 3.109.269 3.109.269v3.404h-1.751c-1.726 0-2.265 1.071-2.265 2.17v2.43h3.856l-.616 3.782H16.33v8.945c7.617-.772 12.003-6.737 12.003-12.727z"/></svg></a>
             </div>
           </div>
           <div>
