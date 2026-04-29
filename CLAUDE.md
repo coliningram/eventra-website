@@ -23,6 +23,10 @@
 
 - CRITICAL: Every single task must end with a git push to github.com/coliningram/eventra-website main branch. Never mark a task complete without confirming the commit hash. If you cannot push, report the exact error. Never save to memory instead of pushing.
 
+## Hosting Decisions
+
+- `eventragroup.com` stays on Framer until the new build is explicitly ready to migrate. Do NOT flag this in audits or recommend migration unless the board has explicitly decided we're ready. (EVE-212)
+
 ## Existing Pages
 
 These pages exist and must be linked to (not `/enquire`):
