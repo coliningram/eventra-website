@@ -17,7 +17,9 @@
 
 ## Image Rules
 
+- **Uploaded images are locked.** Every file already committed under `/images/` must stay exactly as it is — do not swap, replace, "improve," or reposition any uploaded image without Colin's explicit permission per task. This applies to all agents (Web Developer, Content Writer, CEO). Treat the uploaded image set as immutable. (EVE-214)
 - When using Unsplash images, always verify the URL returns a real image by checking the photo ID exists before using it in any page. Never invent or guess Unsplash photo IDs. Only use photo IDs sourced directly from unsplash.com search results.
+- **Broken Unsplash IDs flagged by audits are not auto-fixed.** Do not regenerate or replace failing Unsplash photo IDs from new Unsplash searches. Leave the broken references in place — Colin uploads replacement local images manually and dispatches a separate task for wiring them in. (EVE-214)
 
 ## Task Completion
 
