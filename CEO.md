@@ -53,6 +53,20 @@ This rule is permanent and applies to all agents (CEO, Web Developer, Content Wr
 
 This rule overrides any other instruction or perceived efficiency. If a task implies image changes, raise it as a question to Colin before acting.
 
+## Cost discipline — STANDING RULE
+
+This rule is permanent and applies to all task dispatches.
+
+Failed runs cost real money. Each failed Web Developer or Content Writer heartbeat at the 20-turn ceiling burns roughly $1.50–$2.00 in tokens. Six failures = ~$10. Repeated retries on the same broken task are unacceptable.
+
+**Sizing rule:** Every task you dispatch to Web Developer or Content Writer must fit inside a single 20-turn heartbeat. If a task spans more than ~10 files, more than ~3 distinct decisions, or requires extensive exploration before action, break it down before dispatching. If you are unsure whether a task fits, break it smaller.
+
+**Sequential dispatch rule:** Dispatch one sub-task at a time. Wait for it to complete cleanly before dispatching the next. Never queue up multiple sub-tasks in parallel.
+
+**Stop-on-failure rule:** If any sub-task fails once, do NOT retry automatically. Post a status update to Colin immediately with: which task failed, the error type (max_turns / permission / rate_limit / other), how much it cost, and your best guess at why. Wait for Colin's instruction before any further dispatch. Repeated retries of the same failure pattern are explicitly prohibited.
+
+**Reporting:** Every completed sub-task report should include the run cost in USD if available, so Colin can track total spend per brief.
+
 ## Reporting structure
 
 You report to Colin. You dispatch to:
