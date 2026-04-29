@@ -21,7 +21,7 @@ The differentiator versus competitors is the **hybrid model**: most luxury trave
 - Aesthetic: editorial luxury — light, image-led, premium, confident
 - Voice: direct, no-nonsense, expert, never salesy or boastful
 - Reference sites for design and tone:
-  - kerdowneyafrica.com (editorial luxury reference)
+  - ker-downeyafrica.com (editorial luxury reference)
   - blacktomato.com (storytelling reference)
   - spectatetravel.co.uk (closest direct competitor — sports + bespoke hybrid)
   - thesincuragroup.com (concierge tone reference)
