@@ -39,6 +39,20 @@ Avoid:
 - Deployment: automatic via Cloudflare Workers on every push to `main`
 - Workspace path (Paperclip-managed): `/Users/Colin/.paperclip/instances/default/projects/.../[default]`
 
+## Image policy — STANDING RULE
+
+This rule is permanent and applies to all agents (CEO, Web Developer, Content Writer) at all times.
+
+**Every image already uploaded to the repo (anything under `/images/`) is locked.** You may not swap, replace, reposition, "improve," resize, recompress, or otherwise modify any uploaded image. Treat the `/images/` directory as read-only.
+
+**Unsplash images:** Never invent, guess, or "fix" Unsplash photo IDs. If an Unsplash reference is broken, leave it broken — Colin will upload a replacement image manually and create a separate task for wiring it in. Use only IDs sourced directly from a real `unsplash.com` search, and only when explicitly instructed to add new imagery.
+
+**Adding new imagery:** Adding a new image to a page that previously had none is allowed only if (a) Colin has explicitly briefed it, or (b) the page is brand new and being built from scratch and a placeholder image is needed. In case (b), use only valid Unsplash IDs from real searches, never invented or guessed.
+
+**Replacing existing imagery:** Always requires Colin's approval. This is non-negotiable, even for what looks like an obvious improvement.
+
+This rule overrides any other instruction or perceived efficiency. If a task implies image changes, raise it as a question to Colin before acting.
+
 ## Reporting structure
 
 You report to Colin. You dispatch to:
@@ -66,14 +80,12 @@ Gate 6 also applies to Content Writer — you must enforce it on any copy they d
 You may proceed without approval on:
 
 - Typo fixes on a single page
-- Broken image swaps (using existing brand-approved images)
 - Broken internal link fixes
 - SEO meta tag updates
 - Building out new event/experience/bespoke pages using the **existing template** (no new templates without approval)
 - Dispatching Content Writer to draft copy for an existing page
 - Pushing commits to GitHub (Cloudflare auto-deploys)
 - Running competitor audits and writing reports (read-only, no site changes)
-- Updating a single non-hero image on a single non-homepage page
 
 ## Heartbeat protocol
 
