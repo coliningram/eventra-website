@@ -389,10 +389,6 @@
     sports:  { sport: 'Sport', eventName: 'Specific event', when: 'Timing', party: 'Party size' }
   };
 
-  function cleanPhoneForWa(s) {
-    return String(s || '').replace(/^\+/, '').replace(/[\s()\-]/g, '');
-  }
-
   function formatAnswers(branch, st) {
     if (!branch || !FLOWS[branch] || !st[branch]) return 'None provided';
     var flow = FLOWS[branch];
@@ -822,9 +818,6 @@
         var branchLabel = BRANCH_LABELS[branch] || '';
         var notesValue = state.contact.notes ? state.contact.notes : '';
         var phoneValue = state.contact.phone ? state.contact.phone : '';
-        var whatsappLink = state.contact.phone
-          ? ('https://wa.me/' + cleanPhoneForWa(state.contact.phone) + '?text=Hi%2C%20re%20your%20Eventra%20enquiry%20-')
-          : '';
 
         var payload = {
           access_key: WEB3FORMS_ACCESS_KEY,
@@ -835,8 +828,7 @@
           phone: phoneValue,
           branch: branchLabel,
           answers: formatAnswers(branch, state),
-          notes: notesValue,
-          whatsapp_link: whatsappLink
+          notes: notesValue
         };
 
         postWithTimeout(WEB3FORMS_URL, payload, 10000).then(function () {
