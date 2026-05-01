@@ -7,7 +7,8 @@
   if (window.__eventraOnlineConsultantLoaded) return;
   window.__eventraOnlineConsultantLoaded = true;
 
-  var LEAD_ENDPOINT = '/api/lead-placeholder';
+  var WEB3FORMS_URL = 'https://api.web3forms.com/submit';
+  var WEB3FORMS_ACCESS_KEY = '6b1b9f4c-cee8-480f-b58b-d08099358faa';
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   var STYLES = [
@@ -416,6 +417,80 @@
     ]
   };
 
+  var BRANCH_LABELS = { bespoke: 'Bespoke Travel', sports: 'Sports & Events' };
+
+  var ANSWER_LABELS = {
+    bespoke: { region: 'Region', when: 'Timing', travellers: 'Party size', tripType: 'Trip type' },
+    sports:  { sport: 'Sport', eventName: 'Specific event', when: 'Timing', party: 'Party size' }
+  };
+
+  function cleanPhoneForWa(s) {
+    return String(s || '').replace(/^\+/, '').replace(/[\s()\-]/g, '');
+  }
+
+  function formatAnswers(branch, st) {
+    if (!branch || !FLOWS[branch] || !st[branch]) return 'None provided';
+    var flow = FLOWS[branch];
+    var labels = ANSWER_LABELS[branch] || {};
+    var lines = [];
+    for (var i = 0; i < flow.length; i++) {
+      var q = flow[i];
+      var val = st[branch][q.stateKey];
+      var leftLabel = labels[q.stateKey] || q.stateKey;
+      if (q.type === 'text') {
+        var trimmed = (val || '').toString().trim();
+        if (trimmed) lines.push(leftLabel + ': ' + trimmed);
+      } else if (val) {
+        var match = null;
+        for (var j = 0; j < q.options.length; j++) {
+          if (q.options[j].value === val) { match = q.options[j].label; break; }
+        }
+        if (match) lines.push(leftLabel + ': ' + match);
+      }
+    }
+    return lines.length ? lines.join('\n') : 'None provided';
+  }
+
+  function postWithTimeout(url, payload, timeoutMs) {
+    return new Promise(function (resolve, reject) {
+      var done = false;
+      var controller = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+      var timer = setTimeout(function () {
+        if (done) return;
+        done = true;
+        if (controller) { try { controller.abort(); } catch (e) {} }
+        reject(new Error('timeout'));
+      }, timeoutMs);
+
+      var opts = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      };
+      if (controller) opts.signal = controller.signal;
+
+      try {
+        fetch(url, opts).then(function (res) {
+          if (done) return;
+          done = true;
+          clearTimeout(timer);
+          if (res && res.ok) resolve(res);
+          else reject(new Error('http_' + (res && res.status)));
+        }, function (err) {
+          if (done) return;
+          done = true;
+          clearTimeout(timer);
+          reject(err);
+        });
+      } catch (err) {
+        if (done) return;
+        done = true;
+        clearTimeout(timer);
+        reject(err);
+      }
+    });
+  }
+
   var state = window.__eventraOnlineConsultantState || {
     branch: null,
     bespoke: { region: null, when: null, travellers: null, tripType: null },
@@ -538,6 +613,7 @@
           '</div>',
           '<p class="oc-form-subtext">A senior consultant will be in touch within 2 business hours during 8am–6pm SAST Monday–Friday. Out-of-hours enquiries answered first thing the next business day.</p>',
           '<button type="submit" id="oc-lead-submit" class="oc-cta">Send enquiry</button>',
+          '<p id="oc-lead-submit-error" class="oc-form-error" aria-live="polite"></p>',
           '<p class="oc-form-disclaimer">By submitting, you agree to be contacted by Eventra Group regarding your enquiry.</p>',
         '</form>',
       '</div>'
@@ -558,6 +634,7 @@
           '<label class="oc-input-label" for="oc-conf-phone-input">Phone</label>',
           '<input id="oc-conf-phone-input" type="tel" class="oc-conf-phone__input" autocomplete="tel" placeholder="e.g. +44 7700 900000" aria-label="Phone number (optional)" />',
           '<button type="button" id="oc-conf-phone-btn" class="oc-conf-phone__btn">Add my number</button>',
+          '<p id="oc-conf-phone-error" class="oc-form-error" aria-live="polite"></p>',
         '</div>',
         (state.phoneFollowupSent
           ? '<p class="oc-conf-phone__confirm" data-conf-phone-confirm>Thanks — we have your number.</p>'
@@ -732,39 +809,43 @@
 
       var confPhoneInput = screenRegion.querySelector('#oc-conf-phone-input');
       var confPhoneBtn = screenRegion.querySelector('#oc-conf-phone-btn');
+      var confPhoneErr = screenRegion.querySelector('#oc-conf-phone-error');
       if (confPhoneBtn && confPhoneInput) {
         confPhoneBtn.addEventListener('click', function () {
           if (state.phoneFollowupSent) return;
           var phone = confPhoneInput.value.trim();
           if (!phone) return;
 
-          state.phoneFollowupSent = true;
+          if (confPhoneErr) confPhoneErr.textContent = '';
+          var prevBtnText = confPhoneBtn.textContent;
           confPhoneBtn.disabled = true;
+          confPhoneBtn.textContent = 'Sending…';
 
           var followupPayload = {
-            type: 'phone_followup',
+            access_key: WEB3FORMS_ACCESS_KEY,
+            subject: 'Eventra Group Online Consultant — Phone Number Added',
             leadEmail: state.contact.email,
             phone: phone,
-            submittedAt: new Date().toISOString()
+            whatsapp_link: 'https://wa.me/' + cleanPhoneForWa(phone) + '?text=Hi%2C%20re%20your%20Eventra%20enquiry%20-'
           };
 
-          try {
-            fetch(LEAD_ENDPOINT, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(followupPayload)
-            });
-          } catch (err) { /* swallow */ }
-
-          var wrap = screenRegion.querySelector('[data-conf-phone]');
-          if (wrap && wrap.parentNode) {
-            var confirm = document.createElement('p');
-            confirm.className = 'oc-conf-phone__confirm';
-            confirm.setAttribute('data-conf-phone-confirm', '');
-            confirm.setAttribute('aria-live', 'polite');
-            confirm.textContent = 'Thanks — we have your number.';
-            wrap.parentNode.replaceChild(confirm, wrap);
-          }
+          postWithTimeout(WEB3FORMS_URL, followupPayload, 10000).then(function () {
+            state.phoneFollowupSent = true;
+            var wrap = screenRegion.querySelector('[data-conf-phone]');
+            if (wrap && wrap.parentNode) {
+              var confirm = document.createElement('p');
+              confirm.className = 'oc-conf-phone__confirm';
+              confirm.setAttribute('data-conf-phone-confirm', '');
+              confirm.setAttribute('aria-live', 'polite');
+              confirm.textContent = 'Thanks — we have your number.';
+              wrap.parentNode.replaceChild(confirm, wrap);
+            }
+          }, function () {
+            state.phoneFollowupSent = false;
+            confPhoneBtn.disabled = false;
+            confPhoneBtn.textContent = prevBtnText;
+            if (confPhoneErr) confPhoneErr.textContent = "Couldn't add the number — please try again or include it in a follow-up email.";
+          });
         });
       }
     }
@@ -815,48 +896,36 @@
           return;
         }
 
+        var submitErr = form.querySelector('#oc-lead-submit-error');
+        if (submitErr) submitErr.textContent = '';
+
         submitBtn.disabled = true;
         submitBtn.textContent = 'Sending…';
 
         var branch = state.branch;
-        var answers = {};
-        if (branch && state[branch]) {
-          for (var k in state[branch]) {
-            if (Object.prototype.hasOwnProperty.call(state[branch], k)) {
-              answers[k] = state[branch][k];
-            }
-          }
-        }
+        var branchLabel = BRANCH_LABELS[branch] || '';
+        var notesValue = state.contact.notes ? state.contact.notes : 'None provided';
+
         var payload = {
-          branch: branch,
-          answers: answers,
-          contact: {
-            name:  state.contact.name,
-            email: state.contact.email,
-            notes: state.contact.notes
-          },
-          submittedAt: new Date().toISOString()
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: 'Eventra Group Online Consultant Enquiry',
+          from_name: state.contact.name,
+          name: state.contact.name,
+          email: state.contact.email,
+          branch: branchLabel,
+          answers: formatAnswers(branch, state),
+          notes: notesValue
         };
 
-        function finalize() {
+        postWithTimeout(WEB3FORMS_URL, payload, 10000).then(function () {
+          if (submitErr) submitErr.textContent = '';
           state.submitted = true;
           navigate('confirmation');
-        }
-
-        try {
-          var p = fetch(LEAD_ENDPOINT, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-          });
-          if (p && typeof p.then === 'function') {
-            p.then(finalize, finalize);
-          } else {
-            finalize();
-          }
-        } catch (err) {
-          finalize();
-        }
+        }, function () {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send enquiry';
+          if (submitErr) submitErr.textContent = 'Sorry — something went wrong. Please email enquire@eventragroup.com directly.';
+        });
       }
 
       form.addEventListener('submit', function (e) {
