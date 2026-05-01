@@ -428,6 +428,64 @@
         ]
       }
     ],
+    bespoke_africa: [
+      {
+        id: 'bespoke_africa-1', stateKey: 'experience',
+        heading: 'What kind of African experience are you looking for?',
+        options: [
+          { value: 'classic-safari', label: 'Classic safari — Big Five game viewing' },
+          { value: 'off-grid-wilderness', label: 'Off-grid wilderness — remote camps, no other guests' },
+          { value: 'safari-and-beach', label: 'Safari and beach — combine bush with coast' },
+          { value: 'cultural-historical', label: 'Cultural and historical — South Africa, Zimbabwe, Egypt' },
+          { value: 'wildlife-specialty', label: 'Wildlife specialty — gorillas, primates, big cats, photographic' },
+          { value: 'active-adventure', label: 'Active and adventure — walking safaris, mobile camps, exploration' },
+          { value: 'mix', label: 'Something else / mix — tell us in the next step' }
+        ]
+      },
+      {
+        id: 'bespoke_africa-2', stateKey: 'beyondSafari',
+        heading: 'Beyond the safari, where do you want to be?',
+        options: [
+          { value: 'coast-islands', label: 'Coast and islands — Cape Town, Indian Ocean islands, Mozambique' },
+          { value: 'wine-country', label: 'Wine country and the Cape — Stellenbosch, Franschhoek, Cape Town' },
+          { value: 'city-culture', label: 'City and culture — Cape Town, Joburg, beyond' },
+          { value: 'pure-wilderness', label: 'Pure wilderness — let the safari be the whole trip, no add-ons' },
+          { value: 'surprise-us', label: 'Surprise us — open to suggestions' }
+        ]
+      },
+      {
+        id: 'bespoke_africa-3', stateKey: 'accommodation',
+        heading: 'What style of accommodation suits you?',
+        options: [
+          { value: 'excellent-value', label: 'Excellent properties, well-priced — comfortable, well-located, good value' },
+          { value: 'premium', label: 'Premium properties, the better experience — top-tier within their category, often boutique' },
+          { value: 'very-best', label: 'The very best — no compromises — flagship lodges, suites, private villas' },
+          { value: 'mix', label: "Mix across the trip — splash out where it matters, save where it doesn't" }
+        ]
+      },
+      {
+        id: 'bespoke_africa-4', stateKey: 'when',
+        heading: 'When are you thinking of travelling?',
+        options: [
+          { value: 'within-3', label: 'Within 3 months' },
+          { value: '3-6', label: '3-6 months' },
+          { value: '6-12', label: '6-12 months' },
+          { value: 'beyond-1y', label: 'More than a year out' },
+          { value: 'flexible', label: 'Flexible' }
+        ]
+      },
+      {
+        id: 'bespoke_africa-5', stateKey: 'travellers',
+        heading: 'How many travellers?',
+        options: [
+          { value: 'just-me', label: 'Just me' },
+          { value: 'couple', label: 'A couple' },
+          { value: 'family', label: 'A family' },
+          { value: 'small-group', label: 'A small group (3-8)' },
+          { value: 'large-group', label: 'A larger group (9+)' }
+        ]
+      }
+    ],
     sports: [
       {
         id: 'sports-1', stateKey: 'sport',
@@ -479,10 +537,36 @@
 
   var ANSWER_LABELS = {
     bespoke: { region: 'Region', when: 'Timing', travellers: 'Party size', tripType: 'Trip type' },
+    bespoke_africa: { experience: 'Experience', beyondSafari: 'Beyond safari', accommodation: 'Accommodation', when: 'Timing', travellers: 'Party size' },
     sports:  { sport: 'Sport', eventName: 'Specific event', when: 'Timing', party: 'Party size' }
   };
 
   function formatAnswers(branch, st) {
+    if (branch === 'bespoke' && st.bespoke && st.bespoke.region === 'africa') {
+      var afLines = [];
+      var regionQ = FLOWS.bespoke[0];
+      var regionLabel = null;
+      for (var ri = 0; ri < regionQ.options.length; ri++) {
+        if (regionQ.options[ri].value === 'africa') { regionLabel = regionQ.options[ri].label; break; }
+      }
+      afLines.push((ANSWER_LABELS.bespoke.region || 'Region') + ': ' + (regionLabel || 'Africa'));
+      var afFlow = FLOWS.bespoke_africa;
+      var afLabels = ANSWER_LABELS.bespoke_africa || {};
+      var afState = st.bespoke_africa || {};
+      for (var ai = 0; ai < afFlow.length; ai++) {
+        var aq = afFlow[ai];
+        var aval = afState[aq.stateKey];
+        var aLeft = afLabels[aq.stateKey] || aq.stateKey;
+        if (aval) {
+          var aMatch = null;
+          for (var aj = 0; aj < aq.options.length; aj++) {
+            if (aq.options[aj].value === aval) { aMatch = aq.options[aj].label; break; }
+          }
+          if (aMatch) afLines.push(aLeft + ': ' + aMatch);
+        }
+      }
+      return afLines.length ? afLines.join('\n') : 'None provided';
+    }
     if (!branch || !FLOWS[branch] || !st[branch]) return 'None provided';
     var flow = FLOWS[branch];
     var labels = ANSWER_LABELS[branch] || {};
@@ -548,6 +632,7 @@
   var state = window.__eventraOnlineConsultantState || {
     branch: null,
     bespoke: { region: null, when: null, travellers: null, tripType: null },
+    bespoke_africa: { experience: null, beyondSafari: null, accommodation: null, when: null, travellers: null },
     sports:  { sport: null, eventName: '', when: null, party: null },
     contact: { name: '', email: '', phone: '', notes: '' },
     submitted: false
@@ -555,6 +640,7 @@
   if (!state.contact) state.contact = { name: '', email: '', phone: '', notes: '' };
   if (typeof state.contact.phone !== 'string') state.contact.phone = '';
   if (typeof state.submitted !== 'boolean') state.submitted = false;
+  if (!state.bespoke_africa) state.bespoke_africa = { experience: null, beyondSafari: null, accommodation: null, when: null, travellers: null };
   window.__eventraOnlineConsultantState = state;
 
   var stack = [];
@@ -564,9 +650,12 @@
   function escHtml(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
   function parseQuestionId(name) {
-    var m = /^(bespoke|sports)-([1-4])$/.exec(name);
+    var m = /^(bespoke_africa|bespoke|sports)-(\d+)$/.exec(name);
     if (!m) return null;
-    return { branch: m[1], idx: parseInt(m[2], 10) - 1 };
+    var branch = m[1];
+    var idx = parseInt(m[2], 10) - 1;
+    if (!FLOWS[branch] || idx < 0 || idx >= FLOWS[branch].length) return null;
+    return { branch: branch, idx: idx };
   }
 
   function renderWelcome() {
@@ -604,9 +693,14 @@
     ].join('');
   }
 
+  var TOTAL_STEPS = { bespoke: 5, bespoke_africa: 7, sports: 5 };
+  var STEP_OFFSET = { bespoke: 2, bespoke_africa: 3, sports: 2 };
+
   function renderQuestion(branch, idx) {
     var q = FLOWS[branch][idx];
-    var stepNum = idx + 2; // branch picker is step 1
+    var offset = STEP_OFFSET[branch] || 2;
+    var totalSteps = TOTAL_STEPS[branch] || 5;
+    var stepNum = idx + offset;
     var body;
 
     if (q.type === 'text') {
@@ -633,7 +727,7 @@
       '<div class="oc-screen oc-screen--question" data-screen="' + q.id + '">',
         '<div class="oc-step-meta">',
           '<button type="button" class="oc-back" data-back aria-label="Back to previous step">← Back</button>',
-          '<span class="oc-progress">Step ' + stepNum + ' of 5</span>',
+          '<span class="oc-progress">Step ' + stepNum + ' of ' + totalSteps + '</span>',
         '</div>',
         '<h2 class="oc-step-heading" tabindex="-1" data-focus>' + escHtml(q.heading) + '</h2>',
         body,
@@ -767,6 +861,10 @@
     }
 
     function goNextFromQuestion(branch, idx) {
+      if (branch === 'bespoke' && idx === 0 && state.bespoke.region === 'africa') {
+        navigate('bespoke_africa-1');
+        return;
+      }
       if (idx + 1 < FLOWS[branch].length) {
         navigate(branch + '-' + (idx + 2));
       } else {
@@ -777,6 +875,7 @@
     function reset() {
       state.branch = null;
       state.bespoke = { region: null, when: null, travellers: null, tripType: null };
+      state.bespoke_africa = { experience: null, beyondSafari: null, accommodation: null, when: null, travellers: null };
       state.sports  = { sport: null, eventName: '', when: null, party: null };
       state.contact = { name: '', email: '', phone: '', notes: '' };
       state.submitted = false;
