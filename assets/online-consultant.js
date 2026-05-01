@@ -252,6 +252,46 @@
 
     '.oc-conf-slot{min-height:8px;}',
 
+    '.oc-conf-phone{margin:8px 0 22px;padding:16px 18px;background:rgba(184,150,107,0.08);border:1px solid rgba(184,150,107,0.22);border-radius:4px;}',
+    '.oc-conf-phone__heading{',
+      'font-family:"Cormorant Garamond","Times New Roman",serif;',
+      'font-size:17px;font-weight:400;line-height:1.3;',
+      'color:#0A3D2E;margin:0 0 6px;',
+    '}',
+    '.oc-conf-phone__copy{',
+      'font-family:"Inter",system-ui,sans-serif;',
+      'font-size:12px;font-weight:400;line-height:1.55;letter-spacing:0.01em;',
+      'color:#6B6B6B;margin:0 0 12px;',
+    '}',
+    '.oc-conf-phone__input{',
+      'appearance:none;width:100%;box-sizing:border-box;',
+      'padding:10px 14px;',
+      'font-family:"Inter",system-ui,sans-serif;',
+      'font-size:13px;font-weight:400;line-height:1.5;',
+      'color:#1A1A1A;background:#FFFFFF;',
+      'border:1px solid rgba(10,61,46,0.18);border-radius:4px;',
+      'margin:0 0 10px;',
+      'transition:border-color .15s ease,box-shadow .15s ease;',
+    '}',
+    '.oc-conf-phone__input:focus-visible{outline:none;border-color:#0A3D2E;box-shadow:0 0 0 3px rgba(184,150,107,0.25);}',
+    '.oc-conf-phone__input::placeholder{color:#A0A0A0;}',
+    '.oc-conf-phone__btn{',
+      'appearance:none;cursor:pointer;',
+      'padding:9px 18px;',
+      'font-family:"Inter",system-ui,sans-serif;',
+      'font-size:10px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;',
+      'color:#0A3D2E;background:transparent;',
+      'border:1px solid #0A3D2E;border-radius:0;',
+      'transition:background .2s ease,color .2s ease,border-color .2s ease;',
+    '}',
+    '.oc-conf-phone__btn:hover,.oc-conf-phone__btn:focus-visible{background:#0A3D2E;color:#FFFFFF;border-color:#0A3D2E;}',
+    '.oc-conf-phone__btn:focus-visible{outline:2px solid #B8966B;outline-offset:3px;}',
+    '.oc-conf-phone__confirm{',
+      'font-family:"Inter",system-ui,sans-serif;',
+      'font-size:12px;font-weight:400;line-height:1.55;letter-spacing:0.01em;',
+      'color:#0A3D2E;margin:0;',
+    '}',
+
     '@media (max-width: 600px){',
       '.oc-launcher{right:16px;bottom:16px;padding:12px 18px;font-size:10px;}',
       '.oc-panel{',
@@ -380,11 +420,13 @@
     branch: null,
     bespoke: { region: null, when: null, travellers: null, tripType: null },
     sports:  { sport: null, eventName: '', when: null, party: null },
-    contact: { name: '', email: '', phone: '', notes: '' },
-    submitted: false
+    contact: { name: '', email: '', notes: '' },
+    submitted: false,
+    phoneFollowupSent: false
   };
-  if (!state.contact) state.contact = { name: '', email: '', phone: '', notes: '' };
+  if (!state.contact) state.contact = { name: '', email: '', notes: '' };
   if (typeof state.submitted !== 'boolean') state.submitted = false;
+  if (typeof state.phoneFollowupSent !== 'boolean') state.phoneFollowupSent = false;
   window.__eventraOnlineConsultantState = state;
 
   var stack = [];
@@ -491,11 +533,6 @@
             '<p id="oc-lead-email-error" class="oc-form-error" aria-live="polite"></p>',
           '</div>',
           '<div class="oc-form-field">',
-            '<label class="oc-input-label" for="oc-lead-phone">Phone *</label>',
-            '<input id="oc-lead-phone" type="tel" class="oc-input" autocomplete="tel" aria-required="true" aria-describedby="oc-lead-phone-error" value="' + escAttr(c.phone) + '" />',
-            '<p id="oc-lead-phone-error" class="oc-form-error" aria-live="polite"></p>',
-          '</div>',
-          '<div class="oc-form-field">',
             '<label class="oc-input-label" for="oc-lead-notes">Anything else?</label>',
             '<textarea id="oc-lead-notes" class="oc-textarea" rows="3">' + escHtml(c.notes) + '</textarea>',
           '</div>',
@@ -515,6 +552,16 @@
         '<p class="oc-intro__eyebrow">Enquiry received</p>',
         '<h2 class="oc-intro__heading" tabindex="-1" data-focus>Thank you, ' + escHtml(firstName) + '.</h2>',
         '<p class="oc-intro__copy">Your enquiry has reached us and a senior consultant will be in touch within 2 business hours.</p>',
+        '<div class="oc-conf-phone" data-conf-phone' + (state.phoneFollowupSent ? ' hidden' : '') + '>',
+          '<p class="oc-conf-phone__heading">Want a faster response?</p>',
+          '<p class="oc-conf-phone__copy">Share your number and a consultant will call or WhatsApp you directly.</p>',
+          '<label class="oc-input-label" for="oc-conf-phone-input">Phone</label>',
+          '<input id="oc-conf-phone-input" type="tel" class="oc-conf-phone__input" autocomplete="tel" placeholder="e.g. +44 7700 900000" aria-label="Phone number (optional)" />',
+          '<button type="button" id="oc-conf-phone-btn" class="oc-conf-phone__btn">Add my number</button>',
+        '</div>',
+        (state.phoneFollowupSent
+          ? '<p class="oc-conf-phone__confirm" data-conf-phone-confirm>Thanks — we have your number.</p>'
+          : ''),
         '<div class="oc-conf-slot" data-conf-slot><!-- TASK 5: prefilled content goes here --></div>',
         '<button type="button" id="oc-conf-close" class="oc-cta">Close</button>',
       '</div>'
@@ -608,8 +655,9 @@
       state.branch = null;
       state.bespoke = { region: null, when: null, travellers: null, tripType: null };
       state.sports  = { sport: null, eventName: '', when: null, party: null };
-      state.contact = { name: '', email: '', phone: '', notes: '' };
+      state.contact = { name: '', email: '', notes: '' };
       state.submitted = false;
+      state.phoneFollowupSent = false;
       stack.length = 0;
       current = 'welcome';
       render();
@@ -681,6 +729,44 @@
           close();
         });
       }
+
+      var confPhoneInput = screenRegion.querySelector('#oc-conf-phone-input');
+      var confPhoneBtn = screenRegion.querySelector('#oc-conf-phone-btn');
+      if (confPhoneBtn && confPhoneInput) {
+        confPhoneBtn.addEventListener('click', function () {
+          if (state.phoneFollowupSent) return;
+          var phone = confPhoneInput.value.trim();
+          if (!phone) return;
+
+          state.phoneFollowupSent = true;
+          confPhoneBtn.disabled = true;
+
+          var followupPayload = {
+            type: 'phone_followup',
+            leadEmail: state.contact.email,
+            phone: phone,
+            submittedAt: new Date().toISOString()
+          };
+
+          try {
+            fetch(LEAD_ENDPOINT, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(followupPayload)
+            });
+          } catch (err) { /* swallow */ }
+
+          var wrap = screenRegion.querySelector('[data-conf-phone]');
+          if (wrap && wrap.parentNode) {
+            var confirm = document.createElement('p');
+            confirm.className = 'oc-conf-phone__confirm';
+            confirm.setAttribute('data-conf-phone-confirm', '');
+            confirm.setAttribute('aria-live', 'polite');
+            confirm.textContent = 'Thanks — we have your number.';
+            wrap.parentNode.replaceChild(confirm, wrap);
+          }
+        });
+      }
     }
 
     function setFieldError(input, errorEl, msg) {
@@ -698,18 +784,15 @@
     function wireLeadForm(form) {
       var nameInput  = form.querySelector('#oc-lead-name');
       var emailInput = form.querySelector('#oc-lead-email');
-      var phoneInput = form.querySelector('#oc-lead-phone');
       var notesInput = form.querySelector('#oc-lead-notes');
       var submitBtn  = form.querySelector('#oc-lead-submit');
       var nameErr    = form.querySelector('#oc-lead-name-error');
       var emailErr   = form.querySelector('#oc-lead-email-error');
-      var phoneErr   = form.querySelector('#oc-lead-phone-error');
 
       function validate() {
         var ok = true;
         var name  = nameInput.value.trim();
         var email = emailInput.value.trim();
-        var phone = phoneInput.value.trim();
 
         if (!name) { setFieldError(nameInput, nameErr, 'Please enter your name.'); ok = false; }
         else setFieldError(nameInput, nameErr, '');
@@ -718,16 +801,12 @@
         else if (!EMAIL_RE.test(email)) { setFieldError(emailInput, emailErr, 'Please enter a valid email.'); ok = false; }
         else setFieldError(emailInput, emailErr, '');
 
-        if (!phone) { setFieldError(phoneInput, phoneErr, 'Please enter your phone number.'); ok = false; }
-        else setFieldError(phoneInput, phoneErr, '');
-
         return ok;
       }
 
       function submitLead() {
         state.contact.name  = nameInput.value.trim();
         state.contact.email = emailInput.value.trim();
-        state.contact.phone = phoneInput.value.trim();
         state.contact.notes = notesInput.value.trim();
 
         if (!validate()) {
@@ -754,7 +833,6 @@
           contact: {
             name:  state.contact.name,
             email: state.contact.email,
-            phone: state.contact.phone,
             notes: state.contact.notes
           },
           submittedAt: new Date().toISOString()
