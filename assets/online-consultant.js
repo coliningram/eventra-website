@@ -1,4 +1,4 @@
-/* Eventra Online Consultant — widget shell (Task 1 of 5, EVE-248)
+/* Eventra Online Consultant — widget shell + branching question flow (EVE-250)
    Self-contained: injects its own styles + DOM into every page.
    No frameworks, no dependencies. Vanilla JS. */
 (function () {
@@ -80,6 +80,10 @@
       'color:#1A1A1A;',
     '}',
 
+    '.oc-screen-region{display:flex;flex-direction:column;flex:1 1 auto;min-height:0;}',
+    '.oc-screen{display:flex;flex-direction:column;flex:1 1 auto;}',
+    '.oc-screen[data-focus],.oc-screen [data-focus]{outline:none;}',
+
     '.oc-intro__eyebrow{',
       'font-family:"Inter",system-ui,sans-serif;',
       'font-size:10px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;',
@@ -117,6 +121,98 @@
       'color:#6B6B6B;',
     '}',
 
+    '.oc-step-meta{',
+      'display:flex;align-items:center;justify-content:space-between;gap:12px;',
+      'margin-bottom:18px;',
+    '}',
+    '.oc-back{',
+      'appearance:none;background:transparent;border:none;cursor:pointer;',
+      'padding:6px 0;',
+      'font-family:"Inter",system-ui,sans-serif;',
+      'font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;',
+      'color:#6B6B6B;',
+      'transition:color .15s ease;',
+    '}',
+    '.oc-back:hover,.oc-back:focus-visible{color:#0A3D2E;}',
+    '.oc-back:focus-visible{outline:2px solid #B8966B;outline-offset:3px;}',
+    '.oc-progress{',
+      'font-family:"Inter",system-ui,sans-serif;',
+      'font-size:10px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;',
+      'color:#B8966B;',
+    '}',
+
+    '.oc-step-heading{',
+      'font-family:"Cormorant Garamond","Times New Roman",serif;',
+      'font-size:24px;font-weight:400;line-height:1.3;',
+      'color:#0A3D2E;margin-bottom:22px;',
+    '}',
+
+    '.oc-options{display:flex;flex-direction:column;gap:10px;margin-bottom:18px;}',
+    '.oc-option{',
+      'appearance:none;cursor:pointer;',
+      'display:block;width:100%;text-align:left;',
+      'padding:14px 18px;',
+      'font-family:"Inter",system-ui,sans-serif;',
+      'font-size:14px;font-weight:500;letter-spacing:0.02em;line-height:1.4;',
+      'color:#1A1A1A;background:#FFFFFF;',
+      'border:1px solid rgba(10,61,46,0.18);border-radius:4px;',
+      'transition:background .15s ease,border-color .15s ease,color .15s ease,box-shadow .15s ease;',
+    '}',
+    '.oc-option:hover,.oc-option:focus-visible{background:#0A3D2E;border-color:#0A3D2E;color:#FFFFFF;box-shadow:0 6px 18px rgba(10,61,46,0.16);}',
+    '.oc-option:focus-visible{outline:2px solid #B8966B;outline-offset:3px;}',
+
+    '.oc-branch-options{display:flex;flex-direction:column;gap:14px;}',
+    '.oc-branch{',
+      'appearance:none;cursor:pointer;',
+      'display:flex;flex-direction:column;align-items:flex-start;gap:6px;',
+      'width:100%;text-align:left;',
+      'padding:22px;',
+      'font-family:"Cormorant Garamond","Times New Roman",serif;',
+      'font-size:20px;font-weight:400;letter-spacing:0.01em;',
+      'color:#0A3D2E;background:#FFFFFF;',
+      'border:1px solid rgba(10,61,46,0.16);border-radius:4px;',
+      'transition:background .2s ease,border-color .2s ease,color .2s ease,box-shadow .2s ease;',
+    '}',
+    '.oc-branch:hover,.oc-branch:focus-visible{background:#0A3D2E;border-color:#0A3D2E;color:#FFFFFF;box-shadow:0 10px 28px rgba(10,61,46,0.18);}',
+    '.oc-branch:focus-visible{outline:2px solid #B8966B;outline-offset:3px;}',
+    '.oc-branch__sub{',
+      'font-family:"Inter",system-ui,sans-serif;',
+      'font-size:12px;font-weight:400;letter-spacing:0.04em;color:#6B6B6B;',
+    '}',
+    '.oc-branch:hover .oc-branch__sub,.oc-branch:focus-visible .oc-branch__sub{color:rgba(255,255,255,0.82);}',
+
+    '.oc-input-label{',
+      'display:block;',
+      'font-family:"Inter",system-ui,sans-serif;',
+      'font-size:10px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;',
+      'color:#B8966B;margin-bottom:8px;',
+    '}',
+    '.oc-input{',
+      'appearance:none;width:100%;box-sizing:border-box;',
+      'padding:14px 16px;',
+      'font-family:"Inter",system-ui,sans-serif;',
+      'font-size:14px;font-weight:400;line-height:1.5;',
+      'color:#1A1A1A;background:#FFFFFF;',
+      'border:1px solid rgba(10,61,46,0.22);border-radius:4px;',
+      'margin-bottom:18px;',
+      'transition:border-color .15s ease,box-shadow .15s ease;',
+    '}',
+    '.oc-input:focus-visible{outline:none;border-color:#0A3D2E;box-shadow:0 0 0 3px rgba(184,150,107,0.25);}',
+    '.oc-input::placeholder{color:#A0A0A0;}',
+
+    '.oc-continue{',
+      'align-self:flex-start;',
+      'appearance:none;cursor:pointer;',
+      'padding:14px 28px;',
+      'font-family:"Inter",system-ui,sans-serif;',
+      'font-size:11px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;',
+      'color:#FFFFFF;background:#0A3D2E;',
+      'border:1px solid #0A3D2E;',
+      'transition:background .2s ease,border-color .2s ease,color .2s ease;',
+    '}',
+    '.oc-continue:hover,.oc-continue:focus-visible{background:#B8966B;border-color:#B8966B;color:#FFFFFF;}',
+    '.oc-continue:focus-visible{outline:2px solid #0A3D2E;outline-offset:3px;}',
+
     '@media (max-width: 600px){',
       '.oc-launcher{right:16px;bottom:16px;padding:12px 18px;font-size:10px;}',
       '.oc-panel{',
@@ -126,10 +222,12 @@
       '}',
       '.oc-body{padding:28px 22px 24px;}',
       '.oc-intro__heading{font-size:24px;}',
+      '.oc-step-heading{font-size:22px;}',
+      '.oc-options,.oc-branch-options{flex-direction:column;}',
     '}',
 
     '@media (prefers-reduced-motion: reduce){',
-      '.oc-launcher,.oc-panel{transition:none;}',
+      '.oc-launcher,.oc-panel,.oc-option,.oc-branch,.oc-cta,.oc-continue,.oc-back,.oc-close,.oc-input{transition:none;}',
       '.oc-launcher{transform:none;}',
     '}'
   ].join('');
@@ -141,6 +239,215 @@
     style.textContent = STYLES;
     document.head.appendChild(style);
   }
+
+  // ---- Question flow data + state -----------------------------------------
+
+  var FLOWS = {
+    bespoke: [
+      {
+        id: 'bespoke-1', stateKey: 'region',
+        heading: 'Which region are you drawn to?',
+        options: [
+          { value: 'africa', label: 'Africa' },
+          { value: 'europe', label: 'Europe' },
+          { value: 'asia', label: 'Asia' },
+          { value: 'americas', label: 'Americas' },
+          { value: 'multi-region', label: 'Multi-region' },
+          { value: 'open', label: 'Open to suggestions' }
+        ]
+      },
+      {
+        id: 'bespoke-2', stateKey: 'when',
+        heading: 'When are you thinking of travelling?',
+        options: [
+          { value: 'within-3', label: 'Within 3 months' },
+          { value: '3-6', label: '3-6 months' },
+          { value: '6-12', label: '6-12 months' },
+          { value: 'beyond-1y', label: 'More than a year out' },
+          { value: 'flexible', label: 'Flexible' }
+        ]
+      },
+      {
+        id: 'bespoke-3', stateKey: 'travellers',
+        heading: 'How many travellers?',
+        options: [
+          { value: 'just-me', label: 'Just me' },
+          { value: 'couple', label: 'A couple' },
+          { value: 'family', label: 'A family' },
+          { value: 'small-group', label: 'A small group (3-8)' },
+          { value: 'large-group', label: 'A larger group (9+)' }
+        ]
+      },
+      {
+        id: 'bespoke-4', stateKey: 'tripType',
+        heading: 'What kind of trip do you have in mind?',
+        options: [
+          { value: 'special-occasion', label: 'A special occasion' },
+          { value: 'relaxing-escape', label: 'A relaxing escape' },
+          { value: 'adventure', label: 'An adventure' },
+          { value: 'cultural', label: 'A cultural journey' },
+          { value: 'multi-purpose', label: 'Multi-purpose / not sure yet' }
+        ]
+      }
+    ],
+    sports: [
+      {
+        id: 'sports-1', stateKey: 'sport',
+        heading: 'Which sport interests you?',
+        options: [
+          { value: 'rugby', label: 'Rugby' },
+          { value: 'cricket', label: 'Cricket' },
+          { value: 'f1', label: 'F1 / Motor Racing' },
+          { value: 'tennis', label: 'Tennis' },
+          { value: 'football', label: 'Football' },
+          { value: 'concerts-culture', label: 'Concerts & Culture' },
+          { value: 'other', label: 'Other / not sure yet' }
+        ]
+      },
+      {
+        id: 'sports-2', stateKey: 'eventName',
+        heading: 'Do you have a specific event in mind?',
+        type: 'text',
+        inputLabel: 'Specific event',
+        ariaLabel: 'Specific event in mind',
+        placeholder: "e.g. Springboks vs All Blacks, Wimbledon, Monaco GP, or 'open to suggestions'"
+      },
+      {
+        id: 'sports-3', stateKey: 'when',
+        heading: 'When is the event (if known)?',
+        options: [
+          { value: 'within-3', label: 'Within 3 months' },
+          { value: '3-6', label: '3-6 months' },
+          { value: '6-12', label: '6-12 months' },
+          { value: 'beyond-1y', label: 'More than a year out' },
+          { value: 'unknown', label: "Don't know yet" }
+        ]
+      },
+      {
+        id: 'sports-4', stateKey: 'party',
+        heading: 'How many in your party?',
+        options: [
+          { value: 'just-me', label: 'Just me' },
+          { value: 'couple', label: 'A couple' },
+          { value: 'family', label: 'A family' },
+          { value: 'small-group', label: 'A small group (3-8)' },
+          { value: 'large-group', label: 'A larger group (9+)' }
+        ]
+      }
+    ]
+  };
+
+  var state = window.__eventraOnlineConsultantState || {
+    branch: null,
+    bespoke: { region: null, when: null, travellers: null, tripType: null },
+    sports:  { sport: null, eventName: '', when: null, party: null }
+  };
+  window.__eventraOnlineConsultantState = state;
+
+  var stack = [];
+  var current = 'welcome';
+
+  function escAttr(s) { return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;'); }
+  function escHtml(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  function parseQuestionId(name) {
+    var m = /^(bespoke|sports)-([1-4])$/.exec(name);
+    if (!m) return null;
+    return { branch: m[1], idx: parseInt(m[2], 10) - 1 };
+  }
+
+  function renderWelcome() {
+    return [
+      '<div class="oc-screen oc-screen--welcome" data-screen="welcome">',
+        '<p class="oc-intro__eyebrow">A senior consultant, on hand</p>',
+        '<h2 class="oc-intro__heading">Welcome to Eventra.</h2>',
+        '<p class="oc-intro__copy">Whether you’re planning a sporting trip, a curated journey abroad, or a combination of both, our consultants will help you shape something exceptional.</p>',
+        '<p class="oc-intro__copy">Tell us a little about what you have in mind and a senior consultant will be in touch within two business hours.</p>',
+        '<button type="button" id="oc-begin" class="oc-cta" data-focus>Begin</button>',
+        '<p class="oc-footnote">Replies within two business hours, Monday–Friday.</p>',
+      '</div>'
+    ].join('');
+  }
+
+  function renderBranchPicker() {
+    return [
+      '<div class="oc-screen oc-screen--branch" data-screen="branch-picker">',
+        '<div class="oc-step-meta">',
+          '<button type="button" class="oc-back" data-back aria-label="Back to welcome">← Back</button>',
+          '<span class="oc-progress">Step 1 of 5</span>',
+        '</div>',
+        '<h2 class="oc-step-heading" tabindex="-1" data-focus>What kind of experience are you exploring?</h2>',
+        '<div class="oc-branch-options" role="group" aria-label="Choose experience type">',
+          '<button type="button" class="oc-branch" data-branch="bespoke">',
+            '<span class="oc-branch__label">Bespoke Travel</span>',
+            '<span class="oc-branch__sub">Curated journeys, tailored to you</span>',
+          '</button>',
+          '<button type="button" class="oc-branch" data-branch="sports">',
+            '<span class="oc-branch__label">Sports &amp; Events</span>',
+            '<span class="oc-branch__sub">Premium hospitality and tour packages</span>',
+          '</button>',
+        '</div>',
+      '</div>'
+    ].join('');
+  }
+
+  function renderQuestion(branch, idx) {
+    var q = FLOWS[branch][idx];
+    var stepNum = idx + 2; // branch picker is step 1
+    var body;
+
+    if (q.type === 'text') {
+      var inputId = 'oc-input-' + q.stateKey;
+      var currentVal = state[branch][q.stateKey] || '';
+      body = [
+        '<label class="oc-input-label" for="' + inputId + '">' + escHtml(q.inputLabel) + '</label>',
+        '<input type="text" id="' + inputId + '" class="oc-input" data-text-input ',
+          'placeholder="' + escAttr(q.placeholder) + '" ',
+          'aria-label="' + escAttr(q.ariaLabel) + '" ',
+          'value="' + escAttr(currentVal) + '" />',
+        '<button type="button" class="oc-continue" data-continue>Continue</button>'
+      ].join('');
+    } else {
+      var opts = '';
+      for (var i = 0; i < q.options.length; i++) {
+        var o = q.options[i];
+        opts += '<button type="button" class="oc-option" data-option="' + escAttr(o.value) + '">' + escHtml(o.label) + '</button>';
+      }
+      body = '<div class="oc-options" role="group" aria-label="' + escAttr(q.heading) + '">' + opts + '</div>';
+    }
+
+    return [
+      '<div class="oc-screen oc-screen--question" data-screen="' + q.id + '">',
+        '<div class="oc-step-meta">',
+          '<button type="button" class="oc-back" data-back aria-label="Back to previous step">← Back</button>',
+          '<span class="oc-progress">Step ' + stepNum + ' of 5</span>',
+        '</div>',
+        '<h2 class="oc-step-heading" tabindex="-1" data-focus>' + escHtml(q.heading) + '</h2>',
+        body,
+      '</div>'
+    ].join('');
+  }
+
+  function renderPlaceholder() {
+    return [
+      '<div class="oc-screen oc-screen--placeholder" data-screen="placeholder">',
+        '<p class="oc-intro__eyebrow">Almost there</p>',
+        '<h2 class="oc-intro__heading" tabindex="-1" data-focus>Continuing to your details…</h2>',
+        '<p class="oc-intro__copy">A senior consultant will follow up within two business hours. We’ll just need a few details first — coming up next.</p>',
+      '</div>'
+    ].join('');
+  }
+
+  function getMarkup(name) {
+    if (name === 'welcome') return renderWelcome();
+    if (name === 'branch-picker') return renderBranchPicker();
+    if (name === 'placeholder') return renderPlaceholder();
+    var parsed = parseQuestionId(name);
+    if (parsed) return renderQuestion(parsed.branch, parsed.idx);
+    return renderWelcome();
+  }
+
+  // ---- Markup + wiring -----------------------------------------------------
 
   function buildMarkup() {
     var root = document.createElement('div');
@@ -162,12 +469,7 @@
           '</button>',
         '</div>',
         '<div class="oc-body">',
-          '<p class="oc-intro__eyebrow">A senior consultant, on hand</p>',
-          '<h2 class="oc-intro__heading">Welcome to Eventra.</h2>',
-          '<p class="oc-intro__copy">Whether you’re planning a sporting trip, a curated journey abroad, or a combination of both, our consultants will help you shape something exceptional.</p>',
-          '<p class="oc-intro__copy">Tell us a little about what you have in mind and a senior consultant will be in touch within two business hours.</p>',
-          '<button type="button" id="oc-begin" class="oc-cta">Begin</button>',
-          '<p class="oc-footnote">Replies within two business hours, Monday–Friday.</p>',
+          '<div id="oc-screen-region" class="oc-screen-region" aria-live="polite"></div>',
         '</div>',
       '</div>'
     ].join('');
@@ -179,10 +481,99 @@
     var launcher = root.querySelector('#oc-launcher');
     var panel = root.querySelector('#oc-panel');
     var closeBtn = root.querySelector('#oc-close');
-    var beginBtn = root.querySelector('#oc-begin');
+    var screenRegion = root.querySelector('#oc-screen-region');
 
     var FOCUSABLE = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
     var lastFocused = null;
+
+    function render() {
+      screenRegion.innerHTML = getMarkup(current);
+      wireScreen();
+    }
+
+    function applyFocus() {
+      setTimeout(function () {
+        var target = screenRegion.querySelector('[data-focus]');
+        if (target && typeof target.focus === 'function') target.focus();
+      }, 30);
+    }
+
+    function navigate(name) {
+      stack.push(current);
+      current = name;
+      render();
+      if (panel.classList.contains('is-open')) applyFocus();
+    }
+
+    function goBack() {
+      if (stack.length === 0) return;
+      current = stack.pop();
+      render();
+      if (panel.classList.contains('is-open')) applyFocus();
+    }
+
+    function goNextFromQuestion(branch, idx) {
+      if (idx + 1 < FLOWS[branch].length) {
+        navigate(branch + '-' + (idx + 2));
+      } else {
+        navigate('placeholder');
+      }
+    }
+
+    function wireScreen() {
+      var begin = screenRegion.querySelector('#oc-begin');
+      if (begin) {
+        begin.addEventListener('click', function () { navigate('branch-picker'); });
+      }
+
+      var back = screenRegion.querySelector('[data-back]');
+      if (back) {
+        back.addEventListener('click', goBack);
+      }
+
+      var branches = screenRegion.querySelectorAll('[data-branch]');
+      for (var bi = 0; bi < branches.length; bi++) {
+        (function (btn) {
+          btn.addEventListener('click', function () {
+            var br = btn.getAttribute('data-branch');
+            state.branch = br;
+            navigate(br + '-1');
+          });
+        })(branches[bi]);
+      }
+
+      var opts = screenRegion.querySelectorAll('[data-option]');
+      for (var oi = 0; oi < opts.length; oi++) {
+        (function (btn) {
+          btn.addEventListener('click', function () {
+            var parsed = parseQuestionId(current);
+            if (!parsed) return;
+            var q = FLOWS[parsed.branch][parsed.idx];
+            state[parsed.branch][q.stateKey] = btn.getAttribute('data-option');
+            goNextFromQuestion(parsed.branch, parsed.idx);
+          });
+        })(opts[oi]);
+      }
+
+      var continueBtn = screenRegion.querySelector('[data-continue]');
+      var textInput = screenRegion.querySelector('[data-text-input]');
+      function commitText() {
+        var parsed = parseQuestionId(current);
+        if (!parsed) return;
+        var q = FLOWS[parsed.branch][parsed.idx];
+        state[parsed.branch][q.stateKey] = textInput ? textInput.value.trim() : '';
+        goNextFromQuestion(parsed.branch, parsed.idx);
+      }
+      if (continueBtn) continueBtn.addEventListener('click', commitText);
+      if (textInput) {
+        textInput.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            commitText();
+          }
+        });
+      }
+    }
 
     function open() {
       if (panel.classList.contains('is-open')) return;
@@ -191,10 +582,7 @@
       panel.setAttribute('aria-hidden', 'false');
       launcher.setAttribute('aria-expanded', 'true');
       launcher.classList.add('is-hidden');
-      // shift initial focus into the panel
-      setTimeout(function () {
-        if (beginBtn) beginBtn.focus();
-      }, 30);
+      applyFocus();
     }
 
     function close() {
@@ -212,10 +600,6 @@
 
     launcher.addEventListener('click', open);
     closeBtn.addEventListener('click', close);
-
-    beginBtn.addEventListener('click', function () {
-      console.log('begin clicked');
-    });
 
     // Escape closes; Tab is trapped within the panel while open.
     document.addEventListener('keydown', function (e) {
@@ -245,6 +629,9 @@
         first.focus();
       }
     });
+
+    // Initial render
+    render();
   }
 
   function mount() {
@@ -253,7 +640,6 @@
     var root = buildMarkup();
     document.body.appendChild(root);
     wire(root);
-    // entrance animation
     var launcher = root.querySelector('#oc-launcher');
     requestAnimationFrame(function () {
       requestAnimationFrame(function () { launcher.classList.add('is-ready'); });
