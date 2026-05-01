@@ -256,7 +256,21 @@
     '}',
     '.oc-cta:disabled,.oc-continue:disabled{opacity:0.6;cursor:default;pointer-events:none;}',
 
-    '.oc-conf-slot{min-height:8px;}',
+    '.oc-conf-slot{',
+      'min-height:8px;',
+      'border-top:1px solid #B8966B;',
+      'padding-top:22px;margin-top:26px;',
+    '}',
+    '.oc-conf-heading{',
+      'font-family:"Cormorant Garamond","Times New Roman",serif;',
+      'font-size:19px;font-weight:500;line-height:1.3;letter-spacing:0.01em;',
+      'color:#0A3D2E;margin:0 0 10px;',
+    '}',
+    '.oc-conf-snippet{',
+      'font-family:"Inter",system-ui,-apple-system,sans-serif;',
+      'font-size:13px;font-weight:400;line-height:1.65;letter-spacing:0.01em;',
+      'color:#4A4A4A;margin:0;',
+    '}',
 
     '@media (max-width: 600px){',
       '.oc-launcher{right:16px;bottom:16px;padding:12px 18px;font-size:10px;}',
@@ -283,6 +297,85 @@
     style.id = 'oc-styles';
     style.textContent = STYLES;
     document.head.appendChild(style);
+  }
+
+  // ---- Confirmation snippets ----------------------------------------------
+  // Snippet content — edit here to update what visitors see on the confirmation
+  // screen. Each snippet should be 60-90 words, factual, and align with what
+  // Eventra can actually deliver. Update when product offerings change
+  // (especially CONCERTS which references specific current artist tours).
+  var SNIPPETS = {
+    BESPOKE_AFRICA: {
+      heading: "Bespoke Africa",
+      body: "Curated journeys across the continent — Cape Town and the Garden Route, Kruger and the private reserves of the Sabi Sands, Victoria Falls, Botswana's Okavango, Namibia's deserts, Zambia, Zimbabwe, Madagascar, and the Indian Ocean islands. From a long weekend escape to a multi-week journey of a lifetime. Three tiers — Classic, Signature, Prestige — and every itinerary built around the people we know on the ground."
+    },
+    BESPOKE_EUROPE: {
+      heading: "Bespoke Europe",
+      body: "Tailor-made journeys across the British Isles, France and Monaco, Italy, Spain and Portugal, Switzerland and Austria, Greece, Croatia and the Adriatic, the Nordic countries, and Central and Eastern Europe. Designed around the way you want to travel — a city weekend, a private villa with the family, a self-drive through wine country, a multi-country grand tour. Every journey priced on enquiry, with the right contacts and properties chosen for what you have in mind."
+    },
+    BESPOKE_GENERAL: {
+      heading: "Eventra Bespoke",
+      body: "Tailor-made journeys with our destination contacts in Africa, Europe, and beyond. Whether you have a specific destination in mind or want our recommendations based on what you're looking for, we'll build something that fits. Every itinerary priced on enquiry, designed around the way you want to travel."
+    },
+    SPRINGBOKS: {
+      heading: "Springboks Hospitality",
+      body: "Premium hospitality at every Springbok test in South Africa — DHL Stadium, Loftus Versfeld, Ellis Park, Kings Park, Mbombela, Free State — and on tour overseas. Private suites for groups, executive hospitality for smaller parties, premium tickets where preferred. Match-day only, match plus accommodation in the host city, or multi-day inbound packages built around safari, the Cape, and the wider country. Built around your group, your budget, and the rugby you want to be at."
+    },
+    CRICKET: {
+      heading: "Cricket Hospitality",
+      body: "Premium cricket experiences at all five major South African venues — Newlands, Wanderers, Centurion, Kingsmead, St George's Park — across Tests, ODIs, T20s, and domestic finals where the moment calls for it. Currently building toward the England vs South Africa Test at Newlands, January 2027, with private VIP suites and inbound packages built around the match. Beyond home tests, hospitality at Lord's, the Oval, the Ashes, and the Springboks of cricket — the Proteas — wherever they're touring."
+    },
+    F1_MOTOGP: {
+      heading: "F1 & MotoGP Hospitality",
+      body: "Hospitality at most rounds on the F1 calendar — Monaco yacht weekends, Paddock Club at Silverstone and Monza, the Champions Club in Austria, the Green Room in Singapore, premium trackside lounges everywhere from Melbourne to Las Vegas. MotoGP rounds where the calendar allows. Race weekend only, race-plus-city, or multi-day stays built around the wider region. From a single ticket to a full corporate group, every package built to the way you want to experience the weekend."
+    },
+    TENNIS: {
+      heading: "Tennis Hospitality",
+      body: "Three of the four Grand Slams — Wimbledon, Roland Garros, and the US Open — with hospitality across the spectrum: Wimbledon debenture seats, Roland Garros' La Mezzanine, premium upper-tier seating at Flushing Meadows, and box hire where the moment justifies it. From a single match-day to multi-day stays built around the city. Finals-focused for the showcase moment, full-tournament for the proper tennis traveller. Built around what the match means to you."
+    },
+    FOOTBALL: {
+      heading: "Football Hospitality",
+      body: "Premier League fixtures across every club, every weekend — and the moments that matter most: Champions League and Europa League finals, the FA Cup final, England internationals at major venues. Hospitality boxes, premium lounges with full pre and post-match service, player meet-and-greets where the access exists. From a single derby weekend to multi-match tours built around the football and the city. Built around the club you support, the match you want to be at, the way you want the day to feel."
+    },
+    CONCERTS: {
+      heading: "Concerts & Culture Hospitality",
+      body: "Premium hospitality at the UK's biggest live music tours. Currently confirmed for Harry Styles, Bruno Mars, The Weeknd, and Bon Jovi — stadium and arena packages with hospitality boxes, premium tickets, dining and transfers built into the night. From a single show to a weekend in London or Manchester built around the gig. Beyond live music, we'll arrange access to the cultural moments that matter to you wherever availability allows — tell us what you'd like to be at."
+    },
+    SPORTS_GENERAL: {
+      heading: "Eventra Sports & Events",
+      body: "Premium hospitality at the world's most iconic sporting and cultural moments — from rugby and cricket to F1, tennis, football, and live music. Tell us the event you want to be at and we'll handle the access, the hospitality, the accommodation, and the transfers. Built around what you'd most like to see."
+    }
+  };
+
+  function pickSnippetKey() {
+    var branch = state && state.branch;
+    if (branch === 'bespoke') {
+      var region = state.bespoke && state.bespoke.region;
+      if (region === 'africa' || region === 'multi-region') return 'BESPOKE_AFRICA';
+      if (region === 'europe') return 'BESPOKE_EUROPE';
+      return 'BESPOKE_GENERAL';
+    }
+    if (branch === 'sports') {
+      var sport = state.sports && state.sports.sport;
+      if (sport === 'rugby') return 'SPRINGBOKS';
+      if (sport === 'cricket') return 'CRICKET';
+      if (sport === 'f1') return 'F1_MOTOGP';
+      if (sport === 'tennis') return 'TENNIS';
+      if (sport === 'football') return 'FOOTBALL';
+      if (sport === 'concerts-culture') return 'CONCERTS';
+      return 'SPORTS_GENERAL';
+    }
+    return 'BESPOKE_GENERAL';
+  }
+
+  function renderConfirmationSnippet() {
+    var snippet = SNIPPETS[pickSnippetKey()] || SNIPPETS.BESPOKE_GENERAL;
+    return [
+      '<div class="oc-conf-slot" data-conf-slot>',
+        '<h3 class="oc-conf-heading">While you wait — about ' + escHtml(snippet.heading) + '</h3>',
+        '<p class="oc-conf-snippet">' + escHtml(snippet.body) + '</p>',
+      '</div>'
+    ].join('');
   }
 
   // ---- Question flow data + state -----------------------------------------
@@ -592,7 +685,7 @@
         '<p class="oc-intro__eyebrow">Enquiry received</p>',
         '<h2 class="oc-intro__heading" tabindex="-1" data-focus>Thank you, ' + escHtml(firstName) + '.</h2>',
         '<p class="oc-intro__copy">Your enquiry has reached us and a senior consultant will be in touch within 2 business hours during 8am–6pm SAST Monday–Friday. Out-of-hours enquiries answered first thing the next business day.</p>',
-        '<div class="oc-conf-slot" data-conf-slot><!-- TASK 5: prefilled content goes here --></div>',
+        renderConfirmationSnippet(),
         '<button type="button" id="oc-conf-close" class="oc-cta">Close</button>',
       '</div>'
     ].join('');
