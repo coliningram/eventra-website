@@ -824,7 +824,9 @@
           var followupPayload = {
             access_key: WEB3FORMS_ACCESS_KEY,
             subject: 'Eventra Group Online Consultant — Phone Number Added',
-            leadEmail: state.contact.email,
+            from_name: state.contact.name,
+            name: state.contact.name,
+            email: state.contact.email,
             phone: phone,
             whatsapp_link: 'https://wa.me/' + cleanPhoneForWa(phone) + '?text=Hi%2C%20re%20your%20Eventra%20enquiry%20-'
           };
