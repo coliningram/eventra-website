@@ -1,4 +1,4 @@
-/* Eventra Online Consultant — widget shell + branching question flow (EVE-250)
+/* Eventra Online Consultant — widget shell + branching question flow + lead capture (EVE-252)
    Self-contained: injects its own styles + DOM into every page.
    No frameworks, no dependencies. Vanilla JS. */
 (function () {
@@ -6,6 +6,9 @@
 
   if (window.__eventraOnlineConsultantLoaded) return;
   window.__eventraOnlineConsultantLoaded = true;
+
+  var LEAD_ENDPOINT = '/api/lead-placeholder';
+  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   var STYLES = [
     '.oc-launcher{',
@@ -213,6 +216,42 @@
     '.oc-continue:hover,.oc-continue:focus-visible{background:#B8966B;border-color:#B8966B;color:#FFFFFF;}',
     '.oc-continue:focus-visible{outline:2px solid #0A3D2E;outline-offset:3px;}',
 
+    '.oc-form{display:block;}',
+    '.oc-form .oc-cta{margin-top:0;}',
+    '.oc-form-field{margin-bottom:6px;}',
+    '.oc-form-field .oc-input,.oc-form-field .oc-textarea{margin-bottom:4px;}',
+    '.oc-textarea{',
+      'appearance:none;width:100%;box-sizing:border-box;',
+      'padding:12px 16px;',
+      'font-family:"Inter",system-ui,sans-serif;',
+      'font-size:14px;font-weight:400;line-height:1.5;',
+      'color:#1A1A1A;background:#FFFFFF;',
+      'border:1px solid rgba(10,61,46,0.22);border-radius:4px;',
+      'min-height:72px;resize:vertical;',
+      'transition:border-color .15s ease,box-shadow .15s ease;',
+    '}',
+    '.oc-textarea:focus-visible{outline:none;border-color:#0A3D2E;box-shadow:0 0 0 3px rgba(184,150,107,0.25);}',
+    '.oc-textarea::placeholder{color:#A0A0A0;}',
+    '.oc-input.is-invalid,.oc-textarea.is-invalid{border-color:#B85A52;box-shadow:0 0 0 3px rgba(184,90,82,0.18);}',
+    '.oc-form-error{',
+      'font-family:"Inter",system-ui,sans-serif;',
+      'font-size:11px;font-weight:500;line-height:1.4;letter-spacing:0.02em;',
+      'color:#B85A52;min-height:14px;margin:0 0 6px;',
+    '}',
+    '.oc-form-subtext{',
+      'font-family:"Inter",system-ui,sans-serif;',
+      'font-size:12px;font-weight:400;line-height:1.55;letter-spacing:0.02em;',
+      'color:#6B6B6B;margin:8px 0 16px;',
+    '}',
+    '.oc-form-disclaimer{',
+      'font-family:"Inter",system-ui,sans-serif;',
+      'font-size:11px;font-weight:400;line-height:1.5;letter-spacing:0.02em;',
+      'color:#8A8A8A;margin:14px 0 0;',
+    '}',
+    '.oc-cta:disabled,.oc-continue:disabled{opacity:0.6;cursor:default;pointer-events:none;}',
+
+    '.oc-conf-slot{min-height:8px;}',
+
     '@media (max-width: 600px){',
       '.oc-launcher{right:16px;bottom:16px;padding:12px 18px;font-size:10px;}',
       '.oc-panel{',
@@ -227,7 +266,7 @@
     '}',
 
     '@media (prefers-reduced-motion: reduce){',
-      '.oc-launcher,.oc-panel,.oc-option,.oc-branch,.oc-cta,.oc-continue,.oc-back,.oc-close,.oc-input{transition:none;}',
+      '.oc-launcher,.oc-panel,.oc-option,.oc-branch,.oc-cta,.oc-continue,.oc-back,.oc-close,.oc-input,.oc-textarea{transition:none;}',
       '.oc-launcher{transform:none;}',
     '}'
   ].join('');
@@ -340,8 +379,12 @@
   var state = window.__eventraOnlineConsultantState || {
     branch: null,
     bespoke: { region: null, when: null, travellers: null, tripType: null },
-    sports:  { sport: null, eventName: '', when: null, party: null }
+    sports:  { sport: null, eventName: '', when: null, party: null },
+    contact: { name: '', email: '', phone: '', notes: '' },
+    submitted: false
   };
+  if (!state.contact) state.contact = { name: '', email: '', phone: '', notes: '' };
+  if (typeof state.submitted !== 'boolean') state.submitted = false;
   window.__eventraOnlineConsultantState = state;
 
   var stack = [];
@@ -428,12 +471,52 @@
     ].join('');
   }
 
-  function renderPlaceholder() {
+  function renderLeadForm() {
+    var c = state.contact;
     return [
-      '<div class="oc-screen oc-screen--placeholder" data-screen="placeholder">',
-        '<p class="oc-intro__eyebrow">Almost there</p>',
-        '<h2 class="oc-intro__heading" tabindex="-1" data-focus>Continuing to your details…</h2>',
-        '<p class="oc-intro__copy">A senior consultant will follow up within two business hours. We’ll just need a few details first — coming up next.</p>',
+      '<div class="oc-screen oc-screen--lead-form" data-screen="lead-form">',
+        '<div class="oc-step-meta">',
+          '<button type="button" class="oc-back" data-back aria-label="Back to previous step">← Back</button>',
+        '</div>',
+        '<h2 class="oc-step-heading" tabindex="-1" data-focus>How can we reach you?</h2>',
+        '<form id="oc-lead-form" class="oc-form" novalidate>',
+          '<div class="oc-form-field">',
+            '<label class="oc-input-label" for="oc-lead-name">Full name *</label>',
+            '<input id="oc-lead-name" type="text" class="oc-input" autocomplete="name" aria-required="true" aria-describedby="oc-lead-name-error" value="' + escAttr(c.name) + '" />',
+            '<p id="oc-lead-name-error" class="oc-form-error" aria-live="polite"></p>',
+          '</div>',
+          '<div class="oc-form-field">',
+            '<label class="oc-input-label" for="oc-lead-email">Email *</label>',
+            '<input id="oc-lead-email" type="email" class="oc-input" autocomplete="email" aria-required="true" aria-describedby="oc-lead-email-error" value="' + escAttr(c.email) + '" />',
+            '<p id="oc-lead-email-error" class="oc-form-error" aria-live="polite"></p>',
+          '</div>',
+          '<div class="oc-form-field">',
+            '<label class="oc-input-label" for="oc-lead-phone">Phone *</label>',
+            '<input id="oc-lead-phone" type="tel" class="oc-input" autocomplete="tel" aria-required="true" aria-describedby="oc-lead-phone-error" value="' + escAttr(c.phone) + '" />',
+            '<p id="oc-lead-phone-error" class="oc-form-error" aria-live="polite"></p>',
+          '</div>',
+          '<div class="oc-form-field">',
+            '<label class="oc-input-label" for="oc-lead-notes">Anything else?</label>',
+            '<textarea id="oc-lead-notes" class="oc-textarea" rows="3">' + escHtml(c.notes) + '</textarea>',
+          '</div>',
+          '<p class="oc-form-subtext">A senior consultant will be in touch within 2 business hours during 8am–6pm SAST Monday–Friday. Out-of-hours enquiries answered first thing the next business day.</p>',
+          '<button type="submit" id="oc-lead-submit" class="oc-cta">Send enquiry</button>',
+          '<p class="oc-form-disclaimer">By submitting, you agree to be contacted by Eventra Group regarding your enquiry.</p>',
+        '</form>',
+      '</div>'
+    ].join('');
+  }
+
+  function renderConfirmation() {
+    var name = (state.contact.name || '').trim();
+    var firstName = name ? name.split(/\s+/)[0] : 'there';
+    return [
+      '<div class="oc-screen oc-screen--confirmation" data-screen="confirmation">',
+        '<p class="oc-intro__eyebrow">Enquiry received</p>',
+        '<h2 class="oc-intro__heading" tabindex="-1" data-focus>Thank you, ' + escHtml(firstName) + '.</h2>',
+        '<p class="oc-intro__copy">Your enquiry has reached us and a senior consultant will be in touch within 2 business hours.</p>',
+        '<div class="oc-conf-slot" data-conf-slot><!-- TASK 5: prefilled content goes here --></div>',
+        '<button type="button" id="oc-conf-close" class="oc-cta">Close</button>',
       '</div>'
     ].join('');
   }
@@ -441,7 +524,8 @@
   function getMarkup(name) {
     if (name === 'welcome') return renderWelcome();
     if (name === 'branch-picker') return renderBranchPicker();
-    if (name === 'placeholder') return renderPlaceholder();
+    if (name === 'lead-form') return renderLeadForm();
+    if (name === 'confirmation') return renderConfirmation();
     var parsed = parseQuestionId(name);
     if (parsed) return renderQuestion(parsed.branch, parsed.idx);
     return renderWelcome();
@@ -516,14 +600,28 @@
       if (idx + 1 < FLOWS[branch].length) {
         navigate(branch + '-' + (idx + 2));
       } else {
-        navigate('placeholder');
+        navigate('lead-form');
       }
+    }
+
+    function reset() {
+      state.branch = null;
+      state.bespoke = { region: null, when: null, travellers: null, tripType: null };
+      state.sports  = { sport: null, eventName: '', when: null, party: null };
+      state.contact = { name: '', email: '', phone: '', notes: '' };
+      state.submitted = false;
+      stack.length = 0;
+      current = 'welcome';
+      render();
     }
 
     function wireScreen() {
       var begin = screenRegion.querySelector('#oc-begin');
       if (begin) {
-        begin.addEventListener('click', function () { navigate('branch-picker'); });
+        begin.addEventListener('click', function () {
+          if (state.submitted) return;
+          navigate('branch-picker');
+        });
       }
 
       var back = screenRegion.querySelector('[data-back]');
@@ -573,6 +671,120 @@
           }
         });
       }
+
+      var leadForm = screenRegion.querySelector('#oc-lead-form');
+      if (leadForm) wireLeadForm(leadForm);
+
+      var confClose = screenRegion.querySelector('#oc-conf-close');
+      if (confClose) {
+        confClose.addEventListener('click', function () {
+          close();
+        });
+      }
+    }
+
+    function setFieldError(input, errorEl, msg) {
+      if (msg) {
+        input.classList.add('is-invalid');
+        input.setAttribute('aria-invalid', 'true');
+        if (errorEl) errorEl.textContent = msg;
+      } else {
+        input.classList.remove('is-invalid');
+        input.removeAttribute('aria-invalid');
+        if (errorEl) errorEl.textContent = '';
+      }
+    }
+
+    function wireLeadForm(form) {
+      var nameInput  = form.querySelector('#oc-lead-name');
+      var emailInput = form.querySelector('#oc-lead-email');
+      var phoneInput = form.querySelector('#oc-lead-phone');
+      var notesInput = form.querySelector('#oc-lead-notes');
+      var submitBtn  = form.querySelector('#oc-lead-submit');
+      var nameErr    = form.querySelector('#oc-lead-name-error');
+      var emailErr   = form.querySelector('#oc-lead-email-error');
+      var phoneErr   = form.querySelector('#oc-lead-phone-error');
+
+      function validate() {
+        var ok = true;
+        var name  = nameInput.value.trim();
+        var email = emailInput.value.trim();
+        var phone = phoneInput.value.trim();
+
+        if (!name) { setFieldError(nameInput, nameErr, 'Please enter your name.'); ok = false; }
+        else setFieldError(nameInput, nameErr, '');
+
+        if (!email) { setFieldError(emailInput, emailErr, 'Please enter your email.'); ok = false; }
+        else if (!EMAIL_RE.test(email)) { setFieldError(emailInput, emailErr, 'Please enter a valid email.'); ok = false; }
+        else setFieldError(emailInput, emailErr, '');
+
+        if (!phone) { setFieldError(phoneInput, phoneErr, 'Please enter your phone number.'); ok = false; }
+        else setFieldError(phoneInput, phoneErr, '');
+
+        return ok;
+      }
+
+      function submitLead() {
+        state.contact.name  = nameInput.value.trim();
+        state.contact.email = emailInput.value.trim();
+        state.contact.phone = phoneInput.value.trim();
+        state.contact.notes = notesInput.value.trim();
+
+        if (!validate()) {
+          var firstInvalid = form.querySelector('.is-invalid');
+          if (firstInvalid && typeof firstInvalid.focus === 'function') firstInvalid.focus();
+          return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending…';
+
+        var branch = state.branch;
+        var answers = {};
+        if (branch && state[branch]) {
+          for (var k in state[branch]) {
+            if (Object.prototype.hasOwnProperty.call(state[branch], k)) {
+              answers[k] = state[branch][k];
+            }
+          }
+        }
+        var payload = {
+          branch: branch,
+          answers: answers,
+          contact: {
+            name:  state.contact.name,
+            email: state.contact.email,
+            phone: state.contact.phone,
+            notes: state.contact.notes
+          },
+          submittedAt: new Date().toISOString()
+        };
+
+        function finalize() {
+          state.submitted = true;
+          navigate('confirmation');
+        }
+
+        try {
+          var p = fetch(LEAD_ENDPOINT, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          if (p && typeof p.then === 'function') {
+            p.then(finalize, finalize);
+          } else {
+            finalize();
+          }
+        } catch (err) {
+          finalize();
+        }
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        submitLead();
+      });
     }
 
     function open() {
@@ -587,6 +799,7 @@
 
     function close() {
       if (!panel.classList.contains('is-open')) return;
+      var shouldReset = (current === 'confirmation' || state.submitted);
       panel.classList.remove('is-open');
       panel.setAttribute('aria-hidden', 'true');
       launcher.setAttribute('aria-expanded', 'false');
@@ -596,6 +809,7 @@
       } else {
         launcher.focus();
       }
+      if (shouldReset) reset();
     }
 
     launcher.addEventListener('click', open);
