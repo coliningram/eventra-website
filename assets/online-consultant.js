@@ -820,8 +820,8 @@
 
         var branch = state.branch;
         var branchLabel = BRANCH_LABELS[branch] || '';
-        var notesValue = state.contact.notes ? state.contact.notes : 'None provided';
-        var phoneValue = state.contact.phone ? state.contact.phone : 'Not provided';
+        var notesValue = state.contact.notes ? state.contact.notes : '';
+        var phoneValue = state.contact.phone ? state.contact.phone : '';
         var whatsappLink = state.contact.phone
           ? ('https://wa.me/' + cleanPhoneForWa(state.contact.phone) + '?text=Hi%2C%20re%20your%20Eventra%20enquiry%20-')
           : '';
