@@ -594,6 +594,75 @@
           { value: 'large-group', label: 'A larger group (9+)' }
         ]
       }
+    ],
+    sports_rugby: [
+      {
+        id: 'sports_rugby-1', stateKey: 'fixture',
+        heading: 'Which Springbok fixture interests you?',
+        // Update annually — fixture list goes stale year to year. Refresh before each new Springbok season.
+        options: [
+          { value: 'all-blacks-2026', label: 'All Blacks tour 2026 — the August Cape Town test' },
+          { value: 'england-2026', label: 'England inbound 2026 — the July test series' },
+          { value: 'scotland-2026', label: 'Scotland inbound 2026 — the July Loftus test' },
+          { value: 'lions-2027', label: 'British & Irish Lions 2027 — the July tour' },
+          { value: 'other-home-2026', label: 'Other 2026 home test — Wallabies, Argentina, France, etc.' },
+          { value: 'away-tour', label: 'Springbok away tour — UK November tour, NZ/Australia' },
+          { value: 'open', label: 'Open to suggestions — flexible on which match' }
+        ]
+      },
+      {
+        id: 'sports_rugby-2', stateKey: 'hospitality',
+        heading: 'What kind of hospitality experience?',
+        options: [
+          { value: 'private-suite', label: 'Private suite for the group — full suite hire, 18-40 pax, dedicated entertaining space' },
+          { value: 'executive', label: 'Executive hospitality — premium hospitality lounge access, smaller groups' },
+          { value: 'premium-seating', label: 'Premium ticketed seating — top-category seats, no formal hospitality' },
+          { value: 'open', label: 'Open to recommendations — show me what works for the match and group size' }
+        ]
+      },
+      {
+        id: 'sports_rugby-3', stateKey: 'travelScope',
+        heading: 'How much of the trip should we handle?',
+        options: [
+          { value: 'match-only', label: "Match day only — tickets and hospitality, we'll handle the rest" },
+          { value: 'match-accom', label: 'Match plus accommodation — hotel in the host city around the fixture' },
+          { value: 'match-extend', label: 'Match plus safari or sightseeing — extend with a Cape Town stay, Garden Route, or safari' },
+          { value: 'full-package', label: 'Full inbound package — flights, transfers, accommodation, multi-day itinerary, the lot' }
+        ]
+      },
+      {
+        id: 'sports_rugby-4', stateKey: 'accommodation',
+        heading: 'What style of accommodation suits you?',
+        options: [
+          { value: 'not-applicable', label: 'Not applicable — match day only, no accommodation needed' },
+          { value: 'excellent-value', label: 'Excellent properties, well-priced — comfortable, well-located, good value' },
+          { value: 'premium', label: 'Premium properties, the better experience — top-tier within their category, often boutique' },
+          { value: 'very-best', label: 'The very best — no compromises — flagship lodges, suites, private villas' },
+          { value: 'mix', label: "Mix across the trip — splash out where it matters, save where it doesn't" }
+        ]
+      },
+      {
+        id: 'sports_rugby-5', stateKey: 'when',
+        heading: 'When are you thinking of travelling?',
+        options: [
+          { value: 'within-3', label: 'Within 3 months' },
+          { value: '3-6', label: '3-6 months' },
+          { value: '6-12', label: '6-12 months' },
+          { value: 'beyond-1y', label: 'More than a year out' },
+          { value: 'flexible', label: 'Flexible' }
+        ]
+      },
+      {
+        id: 'sports_rugby-6', stateKey: 'party',
+        heading: 'How many in your party?',
+        options: [
+          { value: 'just-me', label: 'Just me' },
+          { value: 'couple', label: 'A couple' },
+          { value: 'family', label: 'A family' },
+          { value: 'small-group', label: 'A small group (3-8)' },
+          { value: 'large-group', label: 'A larger group (9+)' }
+        ]
+      }
     ]
   };
 
@@ -603,7 +672,8 @@
     bespoke: { region: 'Region', when: 'Timing', travellers: 'Party size', tripType: 'Trip type' },
     bespoke_africa: { experience: 'Experience', beyondSafari: 'Beyond safari', accommodation: 'Accommodation', when: 'Timing', travellers: 'Party size' },
     bespoke_europe: { subRegion: 'Sub-region', experienceType: 'Experience', accommodation: 'Accommodation', when: 'Timing', travellers: 'Party size' },
-    sports:  { sport: 'Sport', eventName: 'Specific event', when: 'Timing', party: 'Party size' }
+    sports:  { sport: 'Sport', eventName: 'Specific event', when: 'Timing', party: 'Party size' },
+    sports_rugby: { fixture: 'Fixture', hospitality: 'Hospitality', travelScope: 'Travel scope', accommodation: 'Accommodation', when: 'Timing', party: 'Party size' }
   };
 
   function formatAnswers(branch, st) {
@@ -656,6 +726,31 @@
         }
       }
       return euLines.length ? euLines.join('\n') : 'None provided';
+    }
+    if (branch === 'sports' && st.sports && st.sports.sport === 'rugby') {
+      var ruLines = [];
+      var sportQ = FLOWS.sports[0];
+      var sportLabel = null;
+      for (var rsi = 0; rsi < sportQ.options.length; rsi++) {
+        if (sportQ.options[rsi].value === 'rugby') { sportLabel = sportQ.options[rsi].label; break; }
+      }
+      ruLines.push((ANSWER_LABELS.sports.sport || 'Sport') + ': ' + (sportLabel || 'Rugby'));
+      var ruFlow = FLOWS.sports_rugby;
+      var ruLabels = ANSWER_LABELS.sports_rugby || {};
+      var ruState = st.sports_rugby || {};
+      for (var rui = 0; rui < ruFlow.length; rui++) {
+        var rq = ruFlow[rui];
+        var rval = ruState[rq.stateKey];
+        var rLeft = ruLabels[rq.stateKey] || rq.stateKey;
+        if (rval) {
+          var rMatch = null;
+          for (var ruj = 0; ruj < rq.options.length; ruj++) {
+            if (rq.options[ruj].value === rval) { rMatch = rq.options[ruj].label; break; }
+          }
+          if (rMatch) ruLines.push(rLeft + ': ' + rMatch);
+        }
+      }
+      return ruLines.length ? ruLines.join('\n') : 'None provided';
     }
     if (!branch || !FLOWS[branch] || !st[branch]) return 'None provided';
     var flow = FLOWS[branch];
@@ -725,6 +820,7 @@
     bespoke_africa: { experience: null, beyondSafari: null, accommodation: null, when: null, travellers: null },
     bespoke_europe: { subRegion: null, experienceType: null, accommodation: null, when: null, travellers: null },
     sports:  { sport: null, eventName: '', when: null, party: null },
+    sports_rugby: { fixture: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null },
     contact: { name: '', email: '', phone: '', notes: '' },
     submitted: false
   };
@@ -733,6 +829,7 @@
   if (typeof state.submitted !== 'boolean') state.submitted = false;
   if (!state.bespoke_africa) state.bespoke_africa = { experience: null, beyondSafari: null, accommodation: null, when: null, travellers: null };
   if (!state.bespoke_europe) state.bespoke_europe = { subRegion: null, experienceType: null, accommodation: null, when: null, travellers: null };
+  if (!state.sports_rugby) state.sports_rugby = { fixture: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
   window.__eventraOnlineConsultantState = state;
 
   var stack = [];
@@ -742,7 +839,7 @@
   function escHtml(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
   function parseQuestionId(name) {
-    var m = /^(bespoke_africa|bespoke_europe|bespoke|sports)-(\d+)$/.exec(name);
+    var m = /^(bespoke_africa|bespoke_europe|sports_rugby|bespoke|sports)-(\d+)$/.exec(name);
     if (!m) return null;
     var branch = m[1];
     var idx = parseInt(m[2], 10) - 1;
@@ -785,8 +882,8 @@
     ].join('');
   }
 
-  var TOTAL_STEPS = { bespoke: 5, bespoke_africa: 7, bespoke_europe: 7, sports: 5 };
-  var STEP_OFFSET = { bespoke: 2, bespoke_africa: 3, bespoke_europe: 3, sports: 2 };
+  var TOTAL_STEPS = { bespoke: 5, bespoke_africa: 7, bespoke_europe: 7, sports: 5, sports_rugby: 8 };
+  var STEP_OFFSET = { bespoke: 2, bespoke_africa: 3, bespoke_europe: 3, sports: 2, sports_rugby: 3 };
 
   function renderQuestion(branch, idx) {
     var q = FLOWS[branch][idx];
@@ -961,6 +1058,10 @@
         navigate('bespoke_europe-1');
         return;
       }
+      if (branch === 'sports' && idx === 0 && state.sports.sport === 'rugby') {
+        navigate('sports_rugby-1');
+        return;
+      }
       if (idx + 1 < FLOWS[branch].length) {
         navigate(branch + '-' + (idx + 2));
       } else {
@@ -974,6 +1075,7 @@
       state.bespoke_africa = { experience: null, beyondSafari: null, accommodation: null, when: null, travellers: null };
       state.bespoke_europe = { subRegion: null, experienceType: null, accommodation: null, when: null, travellers: null };
       state.sports  = { sport: null, eventName: '', when: null, party: null };
+      state.sports_rugby = { fixture: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
       state.contact = { name: '', email: '', phone: '', notes: '' };
       state.submitted = false;
       stack.length = 0;
