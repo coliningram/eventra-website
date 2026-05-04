@@ -808,6 +808,76 @@
           { value: 'large-group', label: 'A larger group (9+)' }
         ]
       }
+    ],
+    sports_motogp: [
+      {
+        id: 'sports_motogp-1', stateKey: 'race',
+        heading: 'Which MotoGP round interests you?',
+        // Update annually — round list goes stale year to year. Confirm calendar before each new MotoGP season.
+        options: [
+          { value: 'mugello', label: 'Italian GP at Mugello — historic, hospitality-rich' },
+          { value: 'jerez', label: 'Spanish GP at Jerez — early-season classic' },
+          { value: 'barcelona', label: 'Catalan GP at Barcelona — premium hospitality available' },
+          { value: 'silverstone', label: 'British GP at Silverstone — the UK round' },
+          { value: 'austria', label: 'Austrian GP at the Red Bull Ring — sister round to F1' },
+          { value: 'other-round', label: 'Other MotoGP round — most rounds on the calendar are available' },
+          { value: 'open', label: 'Open to suggestions — flexible' }
+        ]
+      },
+      {
+        id: 'sports_motogp-2', stateKey: 'hospitality',
+        heading: 'What kind of experience?',
+        options: [
+          { value: 'vip-lounge', label: 'VIP hospitality / lounge access — premium hospitality with food and drink' },
+          { value: 'vip-village', label: 'MotoGP VIP Village — the official premium experience (where offered)' },
+          { value: 'premium-grandstand', label: 'Premium grandstand — the best fixed seats, no formal hospitality' },
+          { value: 'general-admission', label: 'General admission — flexible' },
+          { value: 'open', label: 'Open to recommendations' }
+        ]
+      },
+      {
+        id: 'sports_motogp-3', stateKey: 'travelScope',
+        heading: 'How much of the trip should we handle?',
+        options: [
+          { value: 'tickets-only', label: "Race weekend tickets only — we'll handle the rest" },
+          { value: 'tickets-accom', label: 'Tickets plus accommodation — hotel near the circuit' },
+          { value: 'tickets-extend', label: 'Tickets plus city/region exploration — extend in the host city' },
+          { value: 'full-package', label: 'Full hosted package — flights, transfers, accommodation, hospitality, the lot' }
+        ]
+      },
+      {
+        id: 'sports_motogp-4', stateKey: 'accommodation',
+        heading: 'What style of accommodation suits you?',
+        options: [
+          { value: 'not-applicable', label: 'Not applicable — race weekend only, no accommodation needed' },
+          { value: 'excellent-value', label: 'Excellent properties, well-priced — comfortable, well-located, good value' },
+          { value: 'premium', label: 'Premium properties, the better experience — top-tier within their category, often boutique' },
+          { value: 'very-best', label: 'The very best — no compromises — flagship lodges, suites, private villas' },
+          { value: 'mix', label: "Mix across the trip — splash out where it matters, save where it doesn't" }
+        ]
+      },
+      {
+        id: 'sports_motogp-5', stateKey: 'when',
+        heading: 'When are you thinking of travelling?',
+        options: [
+          { value: 'within-3', label: 'Within 3 months' },
+          { value: '3-6', label: '3-6 months' },
+          { value: '6-12', label: '6-12 months' },
+          { value: 'beyond-1y', label: 'More than a year out' },
+          { value: 'flexible', label: 'Flexible' }
+        ]
+      },
+      {
+        id: 'sports_motogp-6', stateKey: 'party',
+        heading: 'How many in your party?',
+        options: [
+          { value: 'just-me', label: 'Just me' },
+          { value: 'couple', label: 'A couple' },
+          { value: 'family', label: 'A family' },
+          { value: 'small-group', label: 'A small group (3-8)' },
+          { value: 'large-group', label: 'A larger group (9+)' }
+        ]
+      }
     ]
   };
 
@@ -820,7 +890,8 @@
     sports:  { sport: 'Sport', eventName: 'Specific event', when: 'Timing', party: 'Party size' },
     sports_rugby: { fixture: 'Fixture', hospitality: 'Hospitality', travelScope: 'Travel scope', accommodation: 'Accommodation', when: 'Timing', party: 'Party size' },
     sports_cricket: { fixture: 'Match', hospitality: 'Hospitality', travelScope: 'Travel scope', accommodation: 'Accommodation', when: 'Timing', party: 'Party size' },
-    sports_f1: { race: 'Race', hospitality: 'Hospitality', travelScope: 'Travel scope', accommodation: 'Accommodation', when: 'Timing', party: 'Party size' }
+    sports_f1: { race: 'Race', hospitality: 'Hospitality', travelScope: 'Travel scope', accommodation: 'Accommodation', when: 'Timing', party: 'Party size' },
+    sports_motogp: { race: 'Race', hospitality: 'Hospitality', travelScope: 'Travel scope', accommodation: 'Accommodation', when: 'Timing', party: 'Party size' }
   };
 
   function formatAnswers(branch, st) {
@@ -949,6 +1020,31 @@
       }
       return f1Lines.length ? f1Lines.join('\n') : 'None provided';
     }
+    if (branch === 'sports' && st.sports && st.sports.sport === 'motogp') {
+      var mgpLines = [];
+      var mgpSportQ = FLOWS.sports[0];
+      var mgpSportLabel = null;
+      for (var mgsi = 0; mgsi < mgpSportQ.options.length; mgsi++) {
+        if (mgpSportQ.options[mgsi].value === 'motogp') { mgpSportLabel = mgpSportQ.options[mgsi].label; break; }
+      }
+      mgpLines.push((ANSWER_LABELS.sports.sport || 'Sport') + ': ' + (mgpSportLabel || 'MotoGP'));
+      var mgpFlow = FLOWS.sports_motogp;
+      var mgpLabels = ANSWER_LABELS.sports_motogp || {};
+      var mgpState = st.sports_motogp || {};
+      for (var mgpi = 0; mgpi < mgpFlow.length; mgpi++) {
+        var mgpq = mgpFlow[mgpi];
+        var mgpval = mgpState[mgpq.stateKey];
+        var mgpLeft = mgpLabels[mgpq.stateKey] || mgpq.stateKey;
+        if (mgpval) {
+          var mgpMatch = null;
+          for (var mgpj = 0; mgpj < mgpq.options.length; mgpj++) {
+            if (mgpq.options[mgpj].value === mgpval) { mgpMatch = mgpq.options[mgpj].label; break; }
+          }
+          if (mgpMatch) mgpLines.push(mgpLeft + ': ' + mgpMatch);
+        }
+      }
+      return mgpLines.length ? mgpLines.join('\n') : 'None provided';
+    }
     if (!branch || !FLOWS[branch] || !st[branch]) return 'None provided';
     var flow = FLOWS[branch];
     var labels = ANSWER_LABELS[branch] || {};
@@ -1020,6 +1116,7 @@
     sports_rugby: { fixture: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null },
     sports_cricket: { fixture: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null },
     sports_f1: { race: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null },
+    sports_motogp: { race: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null },
     contact: { name: '', email: '', phone: '', notes: '' },
     submitted: false
   };
@@ -1031,6 +1128,7 @@
   if (!state.sports_rugby) state.sports_rugby = { fixture: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
   if (!state.sports_cricket) state.sports_cricket = { fixture: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
   if (!state.sports_f1) state.sports_f1 = { race: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
+  if (!state.sports_motogp) state.sports_motogp = { race: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
   window.__eventraOnlineConsultantState = state;
 
   var stack = [];
@@ -1040,7 +1138,7 @@
   function escHtml(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
   function parseQuestionId(name) {
-    var m = /^(bespoke_africa|bespoke_europe|sports_rugby|sports_cricket|sports_f1|bespoke|sports)-(\d+)$/.exec(name);
+    var m = /^(bespoke_africa|bespoke_europe|sports_rugby|sports_cricket|sports_f1|sports_motogp|bespoke|sports)-(\d+)$/.exec(name);
     if (!m) return null;
     var branch = m[1];
     var idx = parseInt(m[2], 10) - 1;
@@ -1083,8 +1181,8 @@
     ].join('');
   }
 
-  var TOTAL_STEPS = { bespoke: 5, bespoke_africa: 7, bespoke_europe: 7, sports: 5, sports_rugby: 8, sports_cricket: 8, sports_f1: 8 };
-  var STEP_OFFSET = { bespoke: 2, bespoke_africa: 3, bespoke_europe: 3, sports: 2, sports_rugby: 3, sports_cricket: 3, sports_f1: 3 };
+  var TOTAL_STEPS = { bespoke: 5, bespoke_africa: 7, bespoke_europe: 7, sports: 5, sports_rugby: 8, sports_cricket: 8, sports_f1: 8, sports_motogp: 8 };
+  var STEP_OFFSET = { bespoke: 2, bespoke_africa: 3, bespoke_europe: 3, sports: 2, sports_rugby: 3, sports_cricket: 3, sports_f1: 3, sports_motogp: 3 };
 
   function renderQuestion(branch, idx) {
     var q = FLOWS[branch][idx];
@@ -1271,6 +1369,10 @@
         navigate('sports_f1-1');
         return;
       }
+      if (branch === 'sports' && idx === 0 && state.sports.sport === 'motogp') {
+        navigate('sports_motogp-1');
+        return;
+      }
       if (idx + 1 < FLOWS[branch].length) {
         navigate(branch + '-' + (idx + 2));
       } else {
@@ -1287,6 +1389,7 @@
       state.sports_rugby = { fixture: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
       state.sports_cricket = { fixture: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
       state.sports_f1 = { race: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
+      state.sports_motogp = { race: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
       state.contact = { name: '', email: '', phone: '', notes: '' };
       state.submitted = false;
       stack.length = 0;
