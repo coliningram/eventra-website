@@ -663,6 +663,76 @@
           { value: 'large-group', label: 'A larger group (9+)' }
         ]
       }
+    ],
+    sports_cricket: [
+      {
+        id: 'sports_cricket-1', stateKey: 'fixture',
+        heading: 'Which cricket interests you?',
+        // Update annually — fixture list goes stale year to year. Refresh as the Newlands 2027 fixture passes and new flagship products emerge.
+        options: [
+          { value: 'newlands-2027', label: 'England vs South Africa Test, Newlands, January 2027 — the active flagship product' },
+          { value: 'sa-home-tests', label: "South Africa home test series — other Tests at Wanderers, Centurion, Kingsmead, St George's" },
+          { value: 'sa-white-ball', label: 'South Africa ODI or T20 series — the white-ball game at SA venues' },
+          { value: 'england-home-tests', label: "Lord's, the Oval, or Edgbaston — England home tests" },
+          { value: 'ashes', label: 'The Ashes — England vs Australia, home or away' },
+          { value: 'sa-away-tour', label: 'South Africa away tour — Proteas in Australia, India, NZ, etc.' },
+          { value: 'open', label: 'Open to suggestions — flexible on which match' }
+        ]
+      },
+      {
+        id: 'sports_cricket-2', stateKey: 'hospitality',
+        heading: 'What kind of hospitality experience?',
+        options: [
+          { value: 'private-suite', label: 'Private VIP suite for the group — full suite hire, dedicated space (the Newlands model)' },
+          { value: 'hospitality-package', label: 'Hospitality package — premium ticket plus dining, often shared lounge' },
+          { value: 'premium-seating', label: 'Premium ticketed seating — top-category seats, no formal hospitality' },
+          { value: 'pavilion', label: "Pavilion / Members' access — for Lord's, the Oval, Newlands historic stands" },
+          { value: 'open', label: 'Open to recommendations — show me what works' }
+        ]
+      },
+      {
+        id: 'sports_cricket-3', stateKey: 'travelScope',
+        heading: 'How much of the trip should we handle?',
+        options: [
+          { value: 'match-only', label: "Match day(s) only — tickets and hospitality, we'll handle the rest" },
+          { value: 'match-accom', label: 'Match plus accommodation — hotel for the duration' },
+          { value: 'match-extend', label: 'Match plus city/region exploration — extend in Cape Town, London, etc.' },
+          { value: 'full-package', label: 'Full inbound package — flights, transfers, accommodation, multi-day itinerary, the lot' }
+        ]
+      },
+      {
+        id: 'sports_cricket-4', stateKey: 'accommodation',
+        heading: 'What style of accommodation suits you?',
+        options: [
+          { value: 'not-applicable', label: 'Not applicable — match day only, no accommodation needed' },
+          { value: 'excellent-value', label: 'Excellent properties, well-priced — comfortable, well-located, good value' },
+          { value: 'premium', label: 'Premium properties, the better experience — top-tier within their category, often boutique' },
+          { value: 'very-best', label: 'The very best — no compromises — flagship lodges, suites, private villas' },
+          { value: 'mix', label: "Mix across the trip — splash out where it matters, save where it doesn't" }
+        ]
+      },
+      {
+        id: 'sports_cricket-5', stateKey: 'when',
+        heading: 'When are you thinking of travelling?',
+        options: [
+          { value: 'within-3', label: 'Within 3 months' },
+          { value: '3-6', label: '3-6 months' },
+          { value: '6-12', label: '6-12 months' },
+          { value: 'beyond-1y', label: 'More than a year out' },
+          { value: 'flexible', label: 'Flexible' }
+        ]
+      },
+      {
+        id: 'sports_cricket-6', stateKey: 'party',
+        heading: 'How many in your party?',
+        options: [
+          { value: 'just-me', label: 'Just me' },
+          { value: 'couple', label: 'A couple' },
+          { value: 'family', label: 'A family' },
+          { value: 'small-group', label: 'A small group (3-8)' },
+          { value: 'large-group', label: 'A larger group (9+)' }
+        ]
+      }
     ]
   };
 
@@ -673,7 +743,8 @@
     bespoke_africa: { experience: 'Experience', beyondSafari: 'Beyond safari', accommodation: 'Accommodation', when: 'Timing', travellers: 'Party size' },
     bespoke_europe: { subRegion: 'Sub-region', experienceType: 'Experience', accommodation: 'Accommodation', when: 'Timing', travellers: 'Party size' },
     sports:  { sport: 'Sport', eventName: 'Specific event', when: 'Timing', party: 'Party size' },
-    sports_rugby: { fixture: 'Fixture', hospitality: 'Hospitality', travelScope: 'Travel scope', accommodation: 'Accommodation', when: 'Timing', party: 'Party size' }
+    sports_rugby: { fixture: 'Fixture', hospitality: 'Hospitality', travelScope: 'Travel scope', accommodation: 'Accommodation', when: 'Timing', party: 'Party size' },
+    sports_cricket: { fixture: 'Match', hospitality: 'Hospitality', travelScope: 'Travel scope', accommodation: 'Accommodation', when: 'Timing', party: 'Party size' }
   };
 
   function formatAnswers(branch, st) {
@@ -752,6 +823,31 @@
       }
       return ruLines.length ? ruLines.join('\n') : 'None provided';
     }
+    if (branch === 'sports' && st.sports && st.sports.sport === 'cricket') {
+      var crLines = [];
+      var crSportQ = FLOWS.sports[0];
+      var crSportLabel = null;
+      for (var csi = 0; csi < crSportQ.options.length; csi++) {
+        if (crSportQ.options[csi].value === 'cricket') { crSportLabel = crSportQ.options[csi].label; break; }
+      }
+      crLines.push((ANSWER_LABELS.sports.sport || 'Sport') + ': ' + (crSportLabel || 'Cricket'));
+      var crFlow = FLOWS.sports_cricket;
+      var crLabels = ANSWER_LABELS.sports_cricket || {};
+      var crState = st.sports_cricket || {};
+      for (var cri = 0; cri < crFlow.length; cri++) {
+        var cq = crFlow[cri];
+        var cval = crState[cq.stateKey];
+        var cLeft = crLabels[cq.stateKey] || cq.stateKey;
+        if (cval) {
+          var cMatch = null;
+          for (var crj = 0; crj < cq.options.length; crj++) {
+            if (cq.options[crj].value === cval) { cMatch = cq.options[crj].label; break; }
+          }
+          if (cMatch) crLines.push(cLeft + ': ' + cMatch);
+        }
+      }
+      return crLines.length ? crLines.join('\n') : 'None provided';
+    }
     if (!branch || !FLOWS[branch] || !st[branch]) return 'None provided';
     var flow = FLOWS[branch];
     var labels = ANSWER_LABELS[branch] || {};
@@ -821,6 +917,7 @@
     bespoke_europe: { subRegion: null, experienceType: null, accommodation: null, when: null, travellers: null },
     sports:  { sport: null, eventName: '', when: null, party: null },
     sports_rugby: { fixture: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null },
+    sports_cricket: { fixture: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null },
     contact: { name: '', email: '', phone: '', notes: '' },
     submitted: false
   };
@@ -830,6 +927,7 @@
   if (!state.bespoke_africa) state.bespoke_africa = { experience: null, beyondSafari: null, accommodation: null, when: null, travellers: null };
   if (!state.bespoke_europe) state.bespoke_europe = { subRegion: null, experienceType: null, accommodation: null, when: null, travellers: null };
   if (!state.sports_rugby) state.sports_rugby = { fixture: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
+  if (!state.sports_cricket) state.sports_cricket = { fixture: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
   window.__eventraOnlineConsultantState = state;
 
   var stack = [];
@@ -839,7 +937,7 @@
   function escHtml(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
   function parseQuestionId(name) {
-    var m = /^(bespoke_africa|bespoke_europe|sports_rugby|bespoke|sports)-(\d+)$/.exec(name);
+    var m = /^(bespoke_africa|bespoke_europe|sports_rugby|sports_cricket|bespoke|sports)-(\d+)$/.exec(name);
     if (!m) return null;
     var branch = m[1];
     var idx = parseInt(m[2], 10) - 1;
@@ -882,8 +980,8 @@
     ].join('');
   }
 
-  var TOTAL_STEPS = { bespoke: 5, bespoke_africa: 7, bespoke_europe: 7, sports: 5, sports_rugby: 8 };
-  var STEP_OFFSET = { bespoke: 2, bespoke_africa: 3, bespoke_europe: 3, sports: 2, sports_rugby: 3 };
+  var TOTAL_STEPS = { bespoke: 5, bespoke_africa: 7, bespoke_europe: 7, sports: 5, sports_rugby: 8, sports_cricket: 8 };
+  var STEP_OFFSET = { bespoke: 2, bespoke_africa: 3, bespoke_europe: 3, sports: 2, sports_rugby: 3, sports_cricket: 3 };
 
   function renderQuestion(branch, idx) {
     var q = FLOWS[branch][idx];
@@ -1062,6 +1160,10 @@
         navigate('sports_rugby-1');
         return;
       }
+      if (branch === 'sports' && idx === 0 && state.sports.sport === 'cricket') {
+        navigate('sports_cricket-1');
+        return;
+      }
       if (idx + 1 < FLOWS[branch].length) {
         navigate(branch + '-' + (idx + 2));
       } else {
@@ -1076,6 +1178,7 @@
       state.bespoke_europe = { subRegion: null, experienceType: null, accommodation: null, when: null, travellers: null };
       state.sports  = { sport: null, eventName: '', when: null, party: null };
       state.sports_rugby = { fixture: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
+      state.sports_cricket = { fixture: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
       state.contact = { name: '', email: '', phone: '', notes: '' };
       state.submitted = false;
       stack.length = 0;
