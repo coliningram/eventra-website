@@ -360,6 +360,7 @@
       if (sport === 'rugby') return 'SPRINGBOKS';
       if (sport === 'cricket') return 'CRICKET';
       if (sport === 'f1') return 'F1_MOTOGP';
+      if (sport === 'motogp') return 'F1_MOTOGP';
       if (sport === 'tennis') return 'TENNIS';
       if (sport === 'football') return 'FOOTBALL';
       if (sport === 'concerts-culture') return 'CONCERTS';
@@ -557,7 +558,8 @@
         options: [
           { value: 'rugby', label: 'Rugby' },
           { value: 'cricket', label: 'Cricket' },
-          { value: 'f1', label: 'F1 / Motor Racing' },
+          { value: 'f1', label: 'F1' },
+          { value: 'motogp', label: 'MotoGP' },
           { value: 'tennis', label: 'Tennis' },
           { value: 'football', label: 'Football' },
           { value: 'concerts-culture', label: 'Concerts & Culture' },
@@ -733,6 +735,79 @@
           { value: 'large-group', label: 'A larger group (9+)' }
         ]
       }
+    ],
+    sports_f1: [
+      {
+        id: 'sports_f1-1', stateKey: 'race',
+        heading: 'Which F1 race interests you?',
+        // Update annually — race list goes stale year to year. Confirm calendar before each new F1 season.
+        options: [
+          { value: 'monaco', label: 'Monaco GP — yacht and harbour packages, the iconic round' },
+          { value: 'monza', label: 'Italian GP at Monza — the temple of speed' },
+          { value: 'silverstone', label: 'British GP at Silverstone — Paddock Club, home of British motorsport' },
+          { value: 'austria', label: 'Austrian GP at the Red Bull Ring — Champions Club options' },
+          { value: 'singapore', label: 'Singapore GP — Green Room, the night race' },
+          { value: 'las-vegas', label: 'Las Vegas GP — the Strip, the spectacle' },
+          { value: 'abu-dhabi', label: 'Abu Dhabi GP — the season finale' },
+          { value: 'other-round', label: 'Other F1 round — most rounds on the calendar are available' },
+          { value: 'open', label: 'Open to suggestions — flexible' }
+        ]
+      },
+      {
+        id: 'sports_f1-2', stateKey: 'hospitality',
+        heading: 'What kind of experience?',
+        options: [
+          { value: 'paddock-club', label: "Paddock Club — F1's premium official hospitality" },
+          { value: 'vip-lounge', label: 'VIP hospitality / lounge access — premium hospitality lounge with food and drink' },
+          { value: 'yacht-monaco', label: 'Yacht hospitality (Monaco only) — viewing from a yacht in the harbour' },
+          { value: 'premium-grandstand', label: 'Premium grandstand — the best fixed seats, no formal hospitality' },
+          { value: 'general-admission', label: 'General admission — flexible, walking the track' },
+          { value: 'open', label: 'Open to recommendations' }
+        ]
+      },
+      {
+        id: 'sports_f1-3', stateKey: 'travelScope',
+        heading: 'How much of the trip should we handle?',
+        options: [
+          { value: 'tickets-only', label: "Race weekend tickets only — we'll handle the rest" },
+          { value: 'tickets-accom', label: 'Tickets plus accommodation — hotel near the circuit' },
+          { value: 'tickets-extend', label: 'Tickets plus city/region exploration — extend in the host city' },
+          { value: 'full-package', label: 'Full hosted package — flights, transfers, accommodation, hospitality, the lot' }
+        ]
+      },
+      {
+        id: 'sports_f1-4', stateKey: 'accommodation',
+        heading: 'What style of accommodation suits you?',
+        options: [
+          { value: 'not-applicable', label: 'Not applicable — race weekend only, no accommodation needed' },
+          { value: 'excellent-value', label: 'Excellent properties, well-priced — comfortable, well-located, good value' },
+          { value: 'premium', label: 'Premium properties, the better experience — top-tier within their category, often boutique' },
+          { value: 'very-best', label: 'The very best — no compromises — flagship lodges, suites, private villas' },
+          { value: 'mix', label: "Mix across the trip — splash out where it matters, save where it doesn't" }
+        ]
+      },
+      {
+        id: 'sports_f1-5', stateKey: 'when',
+        heading: 'When are you thinking of travelling?',
+        options: [
+          { value: 'within-3', label: 'Within 3 months' },
+          { value: '3-6', label: '3-6 months' },
+          { value: '6-12', label: '6-12 months' },
+          { value: 'beyond-1y', label: 'More than a year out' },
+          { value: 'flexible', label: 'Flexible' }
+        ]
+      },
+      {
+        id: 'sports_f1-6', stateKey: 'party',
+        heading: 'How many in your party?',
+        options: [
+          { value: 'just-me', label: 'Just me' },
+          { value: 'couple', label: 'A couple' },
+          { value: 'family', label: 'A family' },
+          { value: 'small-group', label: 'A small group (3-8)' },
+          { value: 'large-group', label: 'A larger group (9+)' }
+        ]
+      }
     ]
   };
 
@@ -744,7 +819,8 @@
     bespoke_europe: { subRegion: 'Sub-region', experienceType: 'Experience', accommodation: 'Accommodation', when: 'Timing', travellers: 'Party size' },
     sports:  { sport: 'Sport', eventName: 'Specific event', when: 'Timing', party: 'Party size' },
     sports_rugby: { fixture: 'Fixture', hospitality: 'Hospitality', travelScope: 'Travel scope', accommodation: 'Accommodation', when: 'Timing', party: 'Party size' },
-    sports_cricket: { fixture: 'Match', hospitality: 'Hospitality', travelScope: 'Travel scope', accommodation: 'Accommodation', when: 'Timing', party: 'Party size' }
+    sports_cricket: { fixture: 'Match', hospitality: 'Hospitality', travelScope: 'Travel scope', accommodation: 'Accommodation', when: 'Timing', party: 'Party size' },
+    sports_f1: { race: 'Race', hospitality: 'Hospitality', travelScope: 'Travel scope', accommodation: 'Accommodation', when: 'Timing', party: 'Party size' }
   };
 
   function formatAnswers(branch, st) {
@@ -848,6 +924,31 @@
       }
       return crLines.length ? crLines.join('\n') : 'None provided';
     }
+    if (branch === 'sports' && st.sports && st.sports.sport === 'f1') {
+      var f1Lines = [];
+      var f1SportQ = FLOWS.sports[0];
+      var f1SportLabel = null;
+      for (var fsi = 0; fsi < f1SportQ.options.length; fsi++) {
+        if (f1SportQ.options[fsi].value === 'f1') { f1SportLabel = f1SportQ.options[fsi].label; break; }
+      }
+      f1Lines.push((ANSWER_LABELS.sports.sport || 'Sport') + ': ' + (f1SportLabel || 'F1'));
+      var f1Flow = FLOWS.sports_f1;
+      var f1Labels = ANSWER_LABELS.sports_f1 || {};
+      var f1State = st.sports_f1 || {};
+      for (var f1i = 0; f1i < f1Flow.length; f1i++) {
+        var f1q = f1Flow[f1i];
+        var f1val = f1State[f1q.stateKey];
+        var f1Left = f1Labels[f1q.stateKey] || f1q.stateKey;
+        if (f1val) {
+          var f1Match = null;
+          for (var f1j = 0; f1j < f1q.options.length; f1j++) {
+            if (f1q.options[f1j].value === f1val) { f1Match = f1q.options[f1j].label; break; }
+          }
+          if (f1Match) f1Lines.push(f1Left + ': ' + f1Match);
+        }
+      }
+      return f1Lines.length ? f1Lines.join('\n') : 'None provided';
+    }
     if (!branch || !FLOWS[branch] || !st[branch]) return 'None provided';
     var flow = FLOWS[branch];
     var labels = ANSWER_LABELS[branch] || {};
@@ -918,6 +1019,7 @@
     sports:  { sport: null, eventName: '', when: null, party: null },
     sports_rugby: { fixture: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null },
     sports_cricket: { fixture: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null },
+    sports_f1: { race: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null },
     contact: { name: '', email: '', phone: '', notes: '' },
     submitted: false
   };
@@ -928,6 +1030,7 @@
   if (!state.bespoke_europe) state.bespoke_europe = { subRegion: null, experienceType: null, accommodation: null, when: null, travellers: null };
   if (!state.sports_rugby) state.sports_rugby = { fixture: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
   if (!state.sports_cricket) state.sports_cricket = { fixture: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
+  if (!state.sports_f1) state.sports_f1 = { race: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
   window.__eventraOnlineConsultantState = state;
 
   var stack = [];
@@ -937,7 +1040,7 @@
   function escHtml(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
   function parseQuestionId(name) {
-    var m = /^(bespoke_africa|bespoke_europe|sports_rugby|sports_cricket|bespoke|sports)-(\d+)$/.exec(name);
+    var m = /^(bespoke_africa|bespoke_europe|sports_rugby|sports_cricket|sports_f1|bespoke|sports)-(\d+)$/.exec(name);
     if (!m) return null;
     var branch = m[1];
     var idx = parseInt(m[2], 10) - 1;
@@ -980,8 +1083,8 @@
     ].join('');
   }
 
-  var TOTAL_STEPS = { bespoke: 5, bespoke_africa: 7, bespoke_europe: 7, sports: 5, sports_rugby: 8, sports_cricket: 8 };
-  var STEP_OFFSET = { bespoke: 2, bespoke_africa: 3, bespoke_europe: 3, sports: 2, sports_rugby: 3, sports_cricket: 3 };
+  var TOTAL_STEPS = { bespoke: 5, bespoke_africa: 7, bespoke_europe: 7, sports: 5, sports_rugby: 8, sports_cricket: 8, sports_f1: 8 };
+  var STEP_OFFSET = { bespoke: 2, bespoke_africa: 3, bespoke_europe: 3, sports: 2, sports_rugby: 3, sports_cricket: 3, sports_f1: 3 };
 
   function renderQuestion(branch, idx) {
     var q = FLOWS[branch][idx];
@@ -1164,6 +1267,10 @@
         navigate('sports_cricket-1');
         return;
       }
+      if (branch === 'sports' && idx === 0 && state.sports.sport === 'f1') {
+        navigate('sports_f1-1');
+        return;
+      }
       if (idx + 1 < FLOWS[branch].length) {
         navigate(branch + '-' + (idx + 2));
       } else {
@@ -1179,6 +1286,7 @@
       state.sports  = { sport: null, eventName: '', when: null, party: null };
       state.sports_rugby = { fixture: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
       state.sports_cricket = { fixture: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
+      state.sports_f1 = { race: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
       state.contact = { name: '', email: '', phone: '', notes: '' };
       state.submitted = false;
       stack.length = 0;
