@@ -878,6 +878,74 @@
           { value: 'large-group', label: 'A larger group (9+)' }
         ]
       }
+    ],
+    sports_tennis: [
+      {
+        id: 'sports_tennis-1', stateKey: 'slam',
+        heading: 'Which tennis interests you?',
+        // Eventra currently offers three of the four Grand Slams — Wimbledon, Roland Garros, US Open. Australian Open is not in current scope. Update if scope changes.
+        options: [
+          { value: 'wimbledon', label: 'Wimbledon — debenture seats, Centre Court, the historic championships' },
+          { value: 'roland-garros', label: 'Roland Garros (French Open) — La Mezzanine, the clay courts of Paris' },
+          { value: 'us-open', label: 'US Open (Flushing Meadows) — premium upper-tier, Arthur Ashe night sessions' },
+          { value: 'multiple', label: 'Multiple Slams — combined hospitality across two or more' },
+          { value: 'open', label: 'Open to suggestions — flexible' }
+        ]
+      },
+      {
+        id: 'sports_tennis-2', stateKey: 'hospitality',
+        heading: 'What kind of experience?',
+        options: [
+          { value: 'wimbledon-debenture', label: 'Wimbledon debenture seats — the historic premium seats with hospitality' },
+          { value: 'on-court-premium', label: 'On-court premium hospitality — Roland Garros La Mezzanine, US Open premium suites' },
+          { value: 'premium-ticketed', label: 'Premium ticketed seating — top-category seats, no formal hospitality' },
+          { value: 'box-suite', label: 'Box / suite hire — dedicated entertaining space for groups' },
+          { value: 'open-recommendations', label: 'Open to recommendations — show me what works for the match and group size' }
+        ]
+      },
+      {
+        id: 'sports_tennis-3', stateKey: 'travelScope',
+        heading: 'How much of the trip should we handle?',
+        options: [
+          { value: 'tickets-only', label: "Race weekend tickets only — we'll handle the rest" },
+          { value: 'tickets-accom', label: 'Tickets plus accommodation — hotel near the circuit' },
+          { value: 'tickets-extend', label: 'Tickets plus city/region exploration — extend in the host city' },
+          { value: 'full-package', label: 'Full hosted package — flights, transfers, accommodation, hospitality, the lot' }
+        ]
+      },
+      {
+        id: 'sports_tennis-4', stateKey: 'accommodation',
+        heading: 'What style of accommodation suits you?',
+        options: [
+          { value: 'not-applicable', label: 'Not applicable — race weekend only, no accommodation needed' },
+          { value: 'excellent-value', label: 'Excellent properties, well-priced — comfortable, well-located, good value' },
+          { value: 'premium', label: 'Premium properties, the better experience — top-tier within their category, often boutique' },
+          { value: 'very-best', label: 'The very best — no compromises — flagship lodges, suites, private villas' },
+          { value: 'mix', label: "Mix across the trip — splash out where it matters, save where it doesn't" }
+        ]
+      },
+      {
+        id: 'sports_tennis-5', stateKey: 'when',
+        heading: 'When are you thinking of travelling?',
+        options: [
+          { value: 'within-3', label: 'Within 3 months' },
+          { value: '3-6', label: '3-6 months' },
+          { value: '6-12', label: '6-12 months' },
+          { value: 'beyond-1y', label: 'More than a year out' },
+          { value: 'flexible', label: 'Flexible' }
+        ]
+      },
+      {
+        id: 'sports_tennis-6', stateKey: 'party',
+        heading: 'How many in your party?',
+        options: [
+          { value: 'just-me', label: 'Just me' },
+          { value: 'couple', label: 'A couple' },
+          { value: 'family', label: 'A family' },
+          { value: 'small-group', label: 'A small group (3-8)' },
+          { value: 'large-group', label: 'A larger group (9+)' }
+        ]
+      }
     ]
   };
 
@@ -891,7 +959,8 @@
     sports_rugby: { fixture: 'Fixture', hospitality: 'Hospitality', travelScope: 'Travel scope', accommodation: 'Accommodation', when: 'Timing', party: 'Party size' },
     sports_cricket: { fixture: 'Match', hospitality: 'Hospitality', travelScope: 'Travel scope', accommodation: 'Accommodation', when: 'Timing', party: 'Party size' },
     sports_f1: { race: 'Race', hospitality: 'Hospitality', travelScope: 'Travel scope', accommodation: 'Accommodation', when: 'Timing', party: 'Party size' },
-    sports_motogp: { race: 'Race', hospitality: 'Hospitality', travelScope: 'Travel scope', accommodation: 'Accommodation', when: 'Timing', party: 'Party size' }
+    sports_motogp: { race: 'Race', hospitality: 'Hospitality', travelScope: 'Travel scope', accommodation: 'Accommodation', when: 'Timing', party: 'Party size' },
+    sports_tennis: { slam: 'Slam', hospitality: 'Hospitality', travelScope: 'Travel scope', accommodation: 'Accommodation', when: 'Timing', party: 'Party size' }
   };
 
   function formatAnswers(branch, st) {
@@ -1045,6 +1114,31 @@
       }
       return mgpLines.length ? mgpLines.join('\n') : 'None provided';
     }
+    if (branch === 'sports' && st.sports && st.sports.sport === 'tennis') {
+      var tnsLines = [];
+      var tnsSportQ = FLOWS.sports[0];
+      var tnsSportLabel = null;
+      for (var tnsi = 0; tnsi < tnsSportQ.options.length; tnsi++) {
+        if (tnsSportQ.options[tnsi].value === 'tennis') { tnsSportLabel = tnsSportQ.options[tnsi].label; break; }
+      }
+      tnsLines.push((ANSWER_LABELS.sports.sport || 'Sport') + ': ' + (tnsSportLabel || 'Tennis'));
+      var tnsFlow = FLOWS.sports_tennis;
+      var tnsLabels = ANSWER_LABELS.sports_tennis || {};
+      var tnsState = st.sports_tennis || {};
+      for (var tnsii = 0; tnsii < tnsFlow.length; tnsii++) {
+        var tnsq = tnsFlow[tnsii];
+        var tnsval = tnsState[tnsq.stateKey];
+        var tnsLeft = tnsLabels[tnsq.stateKey] || tnsq.stateKey;
+        if (tnsval) {
+          var tnsMatch = null;
+          for (var tnsj = 0; tnsj < tnsq.options.length; tnsj++) {
+            if (tnsq.options[tnsj].value === tnsval) { tnsMatch = tnsq.options[tnsj].label; break; }
+          }
+          if (tnsMatch) tnsLines.push(tnsLeft + ': ' + tnsMatch);
+        }
+      }
+      return tnsLines.length ? tnsLines.join('\n') : 'None provided';
+    }
     if (!branch || !FLOWS[branch] || !st[branch]) return 'None provided';
     var flow = FLOWS[branch];
     var labels = ANSWER_LABELS[branch] || {};
@@ -1117,6 +1211,7 @@
     sports_cricket: { fixture: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null },
     sports_f1: { race: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null },
     sports_motogp: { race: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null },
+    sports_tennis: { slam: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null },
     contact: { name: '', email: '', phone: '', notes: '' },
     submitted: false
   };
@@ -1129,6 +1224,7 @@
   if (!state.sports_cricket) state.sports_cricket = { fixture: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
   if (!state.sports_f1) state.sports_f1 = { race: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
   if (!state.sports_motogp) state.sports_motogp = { race: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
+  if (!state.sports_tennis) state.sports_tennis = { slam: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
   window.__eventraOnlineConsultantState = state;
 
   var stack = [];
@@ -1138,7 +1234,7 @@
   function escHtml(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
   function parseQuestionId(name) {
-    var m = /^(bespoke_africa|bespoke_europe|sports_rugby|sports_cricket|sports_f1|sports_motogp|bespoke|sports)-(\d+)$/.exec(name);
+    var m = /^(bespoke_africa|bespoke_europe|sports_rugby|sports_cricket|sports_f1|sports_motogp|sports_tennis|bespoke|sports)-(\d+)$/.exec(name);
     if (!m) return null;
     var branch = m[1];
     var idx = parseInt(m[2], 10) - 1;
@@ -1181,8 +1277,8 @@
     ].join('');
   }
 
-  var TOTAL_STEPS = { bespoke: 5, bespoke_africa: 7, bespoke_europe: 7, sports: 5, sports_rugby: 8, sports_cricket: 8, sports_f1: 8, sports_motogp: 8 };
-  var STEP_OFFSET = { bespoke: 2, bespoke_africa: 3, bespoke_europe: 3, sports: 2, sports_rugby: 3, sports_cricket: 3, sports_f1: 3, sports_motogp: 3 };
+  var TOTAL_STEPS = { bespoke: 5, bespoke_africa: 7, bespoke_europe: 7, sports: 5, sports_rugby: 8, sports_cricket: 8, sports_f1: 8, sports_motogp: 8, sports_tennis: 8 };
+  var STEP_OFFSET = { bespoke: 2, bespoke_africa: 3, bespoke_europe: 3, sports: 2, sports_rugby: 3, sports_cricket: 3, sports_f1: 3, sports_motogp: 3, sports_tennis: 3 };
 
   function renderQuestion(branch, idx) {
     var q = FLOWS[branch][idx];
@@ -1373,6 +1469,10 @@
         navigate('sports_motogp-1');
         return;
       }
+      if (branch === 'sports' && idx === 0 && state.sports.sport === 'tennis') {
+        navigate('sports_tennis-1');
+        return;
+      }
       if (idx + 1 < FLOWS[branch].length) {
         navigate(branch + '-' + (idx + 2));
       } else {
@@ -1390,6 +1490,7 @@
       state.sports_cricket = { fixture: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
       state.sports_f1 = { race: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
       state.sports_motogp = { race: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
+      state.sports_tennis = { slam: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
       state.contact = { name: '', email: '', phone: '', notes: '' };
       state.submitted = false;
       stack.length = 0;
