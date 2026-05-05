@@ -1046,16 +1046,11 @@
         ]
       }
     ],
-    // Concerts & Culture (Brief A1, EVE-302) is a partial sub-flow: it owns Step 3
-    // (sports_concerts-1, tour) plus a conditional Step 3a (sports_concerts-2, free-text
-    // artist for "Other UK tour"), then exits the sub-flow back into the generic sports
-    // path at sports-3 (timing) and sports-4 (party). Brief A2 (EVE-303) will replace
-    // those generic steps with Concerts-specific timing/party/hospitality screens.
-    // Cross-flow specifics: the "exit to sports-3" navigation lives in
-    // goNextFromQuestion; the path-aware progress indicator (5 vs 6 total) lives in
-    // renderQuestion for both sports_concerts-1/2 AND sports-3/sports-4 when on this
-    // subpath. The conditional Step 3a reuses the Football pattern (gated FLOWS entry,
-    // skip in goNext) but Step 3a is a text input rather than a single-select.
+    // Concerts & Culture is a full standalone sub-flow that mirrors Football's shape:
+    // Step 3 (tour) plus a conditional Step 3a (sports_concerts-2, free-text artist for
+    // "Other UK tour") gated like Football's Premier League club question, then Steps
+    // 4-8 (hospitality, travel scope, accommodation, when, party). Visitors flow end-to-end
+    // within sports_concerts and exit directly to lead-form — no cross-flow handoff.
     sports_concerts: [
       {
         id: 'sports_concerts-1', stateKey: 'tour',
@@ -1077,6 +1072,60 @@
         inputLabel: 'Artist or tour name',
         ariaLabel: 'Artist or tour name',
         placeholder: 'e.g. Coldplay, Taylor Swift, Beyoncé...'
+      },
+      {
+        id: 'sports_concerts-3', stateKey: 'hospitality',
+        heading: 'What kind of experience?',
+        options: [
+          { value: 'boxes-suites', label: 'Hospitality box / suite — full box at the venue, dedicated entertaining space' },
+          { value: 'vip-package', label: 'VIP hospitality package — premium tickets, lounge access, drinks and dining' },
+          { value: 'premium-ticketed', label: 'Premium ticketed seating — best seats, no formal hospitality' },
+          { value: 'meet-greet', label: 'Backstage / meet-and-greet — where the artist offers it (not always available)' },
+          { value: 'open-recommendations', label: 'Open to recommendations' }
+        ]
+      },
+      {
+        id: 'sports_concerts-4', stateKey: 'travelScope',
+        heading: 'How much of the trip should we handle?',
+        options: [
+          { value: 'concert-night-only', label: "Concert night only — tickets and hospitality, we'll handle the rest" },
+          { value: 'concert-plus-accommodation', label: 'Concert plus accommodation — hotel near the venue' },
+          { value: 'london-weekend', label: 'Concert plus a London weekend — extend with theatre, dining, sightseeing' },
+          { value: 'full-package', label: 'Full hosted package — flights, transfers, accommodation, hospitality, the lot' }
+        ]
+      },
+      {
+        id: 'sports_concerts-5', stateKey: 'accommodation',
+        heading: 'What style of accommodation suits you?',
+        options: [
+          { value: 'not-applicable', label: 'Not applicable — concert night only, no accommodation needed' },
+          { value: 'excellent-value', label: 'Excellent properties, well-priced — comfortable, well-located, good value' },
+          { value: 'premium', label: 'Premium properties, the better experience — top-tier within their category, often boutique' },
+          { value: 'very-best', label: 'The very best — no compromises — flagship lodges, suites, private villas' },
+          { value: 'mix', label: "Mix across the trip — splash out where it matters, save where it doesn't" }
+        ]
+      },
+      {
+        id: 'sports_concerts-6', stateKey: 'when',
+        heading: 'When are you thinking of travelling?',
+        options: [
+          { value: 'within-3', label: 'Within 3 months' },
+          { value: '3-6', label: '3-6 months' },
+          { value: '6-12', label: '6-12 months' },
+          { value: 'beyond-1y', label: 'More than a year out' },
+          { value: 'flexible', label: 'Flexible' }
+        ]
+      },
+      {
+        id: 'sports_concerts-7', stateKey: 'party',
+        heading: 'How many in your party?',
+        options: [
+          { value: 'just-me', label: 'Just me' },
+          { value: 'couple', label: 'A couple' },
+          { value: 'family', label: 'A family' },
+          { value: 'small-group', label: 'A small group (3-8)' },
+          { value: 'large-group', label: 'A larger group (9+)' }
+        ]
       }
     ]
   };
@@ -1094,7 +1143,7 @@
     sports_motogp: { race: 'Race', hospitality: 'Hospitality', travelScope: 'Travel scope', accommodation: 'Accommodation', when: 'Timing', party: 'Party size' },
     sports_tennis: { slam: 'Slam', hospitality: 'Hospitality', travelScope: 'Travel scope', accommodation: 'Accommodation', when: 'Timing', party: 'Party size' },
     sports_football: { competition: 'Competition', club: 'Club', hospitality: 'Hospitality', travelScope: 'Travel scope', accommodation: 'Accommodation', when: 'Timing', party: 'Party size' },
-    sports_concerts: { tour: 'Concert/Tour', tourOther: 'Artist/Tour name' }
+    sports_concerts: { tour: 'Concert/Tour', tourOther: 'Artist/Tour name', hospitality: 'Hospitality', travelScope: 'Travel scope', accommodation: 'Accommodation', when: 'Timing', party: 'Party size' }
   };
 
   function formatAnswers(branch, st) {
@@ -1408,7 +1457,7 @@
     sports_motogp: { race: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null },
     sports_tennis: { slam: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null },
     sports_football: { competition: null, club: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null },
-    sports_concerts: { tour: null, tourOther: '' },
+    sports_concerts: { tour: null, tourOther: '', hospitality: null, travelScope: null, accommodation: null, when: null, party: null },
     contact: { name: '', email: '', phone: '', notes: '' },
     submitted: false
   };
@@ -1423,7 +1472,7 @@
   if (!state.sports_motogp) state.sports_motogp = { race: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
   if (!state.sports_tennis) state.sports_tennis = { slam: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
   if (!state.sports_football) state.sports_football = { competition: null, club: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
-  if (!state.sports_concerts) state.sports_concerts = { tour: null, tourOther: '' };
+  if (!state.sports_concerts) state.sports_concerts = { tour: null, tourOther: '', hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
   window.__eventraOnlineConsultantState = state;
 
   var stack = [];
@@ -1479,7 +1528,7 @@
   // sports_football TOTAL_STEPS is the non-Premier-League default (6 questions + 2 setup steps).
   // The Premier League path adds Step 3a (the club question), and renderQuestion bumps the
   // count to 9 dynamically when state.sports_football.competition === 'premier-league'.
-  var TOTAL_STEPS = { bespoke: 5, bespoke_africa: 7, bespoke_europe: 7, sports: 5, sports_rugby: 8, sports_cricket: 8, sports_f1: 8, sports_motogp: 8, sports_tennis: 8, sports_football: 8, sports_concerts: 5 };
+  var TOTAL_STEPS = { bespoke: 5, bespoke_africa: 7, bespoke_europe: 7, sports: 5, sports_rugby: 8, sports_cricket: 8, sports_f1: 8, sports_motogp: 8, sports_tennis: 8, sports_football: 8, sports_concerts: 8 };
   var STEP_OFFSET = { bespoke: 2, bespoke_africa: 3, bespoke_europe: 3, sports: 2, sports_rugby: 3, sports_cricket: 3, sports_f1: 3, sports_motogp: 3, sports_tennis: 3, sports_football: 3, sports_concerts: 3 };
 
   function renderQuestion(branch, idx) {
@@ -1503,31 +1552,17 @@
       }
     }
 
-    // Concerts is a partial sub-flow that hands off to the generic sports flow at
-    // sports-3. The progress indicator therefore spans two flows: the sports_concerts
-    // entries (idx 0 = tour at Step 3, idx 1 = artist text at Step 4 when Other-UK)
-    // and the generic sports-3 / sports-4 continuation. Total is 5 (non-Other) or 6
-    // (Other-UK), and the offset for sports_concerts entries is +3 in both cases.
+    // Concerts: Step 3a (tourOther, idx 1) is conditional. Render the progress indicator
+    // dynamically so Other-UK visitors see "of 9" with sequential step numbers
+    // 3, 4, 5, 6, 7, 8, 9 across the 7 questions, and other-tour visitors see "of 8"
+    // with the tourOther slot skipped (idx 0 -> step 3, idx 2 -> step 4, idx 3 -> step 5, ...).
     if (branch === 'sports_concerts') {
       var ccIsOther = state.sports_concerts && state.sports_concerts.tour === 'other-uk';
-      totalSteps = ccIsOther ? 6 : 5;
-      stepNum = idx + 3;
-    }
-
-    // Cross-flow indicator: when the visitor is on the generic sports-3 (timing) or
-    // sports-4 (party) screen but reached them via the Concerts subpath, the indicator
-    // must reflect Concerts totals (5 or 6) and Concerts-aware step numbers, not the
-    // generic sports defaults (5 with sports-3 = Step 4 / sports-4 = Step 5).
-    if (branch === 'sports' && state.sports && state.sports.sport === 'concerts-culture') {
-      var ccIsOther2 = state.sports_concerts && state.sports_concerts.tour === 'other-uk';
-      if (idx === 2) {
-        // sports-3 (timing): non-Other → Step 4 of 5; Other-UK → Step 5 of 6
-        totalSteps = ccIsOther2 ? 6 : 5;
-        stepNum = ccIsOther2 ? 5 : 4;
-      } else if (idx === 3) {
-        // sports-4 (party): non-Other → Step 5 of 5; Other-UK → Step 6 of 6
-        totalSteps = ccIsOther2 ? 6 : 5;
-        stepNum = ccIsOther2 ? 6 : 5;
+      totalSteps = ccIsOther ? 9 : 8;
+      if (ccIsOther) {
+        stepNum = idx + 3;
+      } else {
+        stepNum = idx === 0 ? 3 : idx + 2;
       }
     }
 
@@ -1746,21 +1781,13 @@
         navigate('sports_football-3');
         return;
       }
-      // Concerts cross-flow exit: after sports_concerts-1 (tour, idx 0), if the user
-      // did NOT pick 'Other UK tour', skip the conditional Step 3a (sports_concerts-2)
-      // and jump straight to the generic sports-3 (timing). Clear any stale tourOther
+      // Concerts: after sports_concerts-1 (tour, idx 0), if the user did NOT pick
+      // 'Other UK tour', skip the conditional Step 3a (sports_concerts-2) and jump
+      // straight to Step 4 (sports_concerts-3, hospitality). Clear any stale tourOther
       // value so a previous Other-UK entry doesn't leak into the lead payload.
       if (branch === 'sports_concerts' && idx === 0 && state.sports_concerts.tour !== 'other-uk') {
         state.sports_concerts.tourOther = '';
-        navigate('sports-3');
-        return;
-      }
-      // After sports_concerts-2 (artist text, last in sub-flow), jump to sports-3
-      // not lead-form. The generic flow continuation (sports-3 → sports-4 → lead-form)
-      // then handles the rest until Brief A2 replaces sports-3/sports-4 with full
-      // Concerts-specific steps.
-      if (branch === 'sports_concerts' && idx === FLOWS.sports_concerts.length - 1) {
-        navigate('sports-3');
+        navigate('sports_concerts-3');
         return;
       }
       if (idx + 1 < FLOWS[branch].length) {
@@ -1782,7 +1809,7 @@
       state.sports_motogp = { race: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
       state.sports_tennis = { slam: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
       state.sports_football = { competition: null, club: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
-      state.sports_concerts = { tour: null, tourOther: '' };
+      state.sports_concerts = { tour: null, tourOther: '', hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
       state.contact = { name: '', email: '', phone: '', notes: '' };
       state.submitted = false;
       stack.length = 0;
