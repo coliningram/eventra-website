@@ -152,6 +152,7 @@
     '}',
 
     '.oc-options{display:flex;flex-direction:column;gap:10px;margin-bottom:18px;}',
+    '.oc-options.oc-options--two-col{display:grid;grid-template-columns:1fr 1fr;gap:10px;}',
     '.oc-option{',
       'appearance:none;cursor:pointer;',
       'display:block;width:100%;text-align:left;',
@@ -283,6 +284,7 @@
       '.oc-intro__heading{font-size:24px;}',
       '.oc-step-heading{font-size:22px;}',
       '.oc-options,.oc-branch-options{flex-direction:column;}',
+      '.oc-options.oc-options--two-col{grid-template-columns:1fr;}',
     '}',
 
     '@media (prefers-reduced-motion: reduce){',
@@ -946,6 +948,103 @@
           { value: 'large-group', label: 'A larger group (9+)' }
         ]
       }
+    ],
+    // Football flow uses the standard sports sub-flow shape but adds the widget's first
+    // conditional question — sports_football-2 (Premier League club) is shown only when
+    // sports_football-1 (competition) === 'premier-league'. The skip logic lives in
+    // goNextFromQuestion, the dynamic progress count lives in renderQuestion. Future
+    // conditional questions on other paths can follow the same template: define the
+    // gated question as a normal FLOWS entry, then short-circuit it in goNextFromQuestion
+    // when the gate is closed.
+    sports_football: [
+      {
+        id: 'sports_football-1', stateKey: 'competition',
+        heading: 'Which football interests you?',
+        // Update annually — fixture list reflects current P1 Travel scope. Refresh as new competitions are added or focus shifts.
+        options: [
+          { value: 'premier-league', label: 'Premier League — Manchester clubs, Liverpool, the London clubs and beyond' },
+          { value: 'champions-league', label: 'Champions League — group stage, knockouts, the final' },
+          { value: 'europa-league', label: 'Europa League — including the final' },
+          { value: 'fa-cup', label: 'FA Cup — semi-finals and final at Wembley' },
+          { value: 'england-internationals', label: 'England internationals — Wembley fixtures' },
+          { value: 'la-liga-serie-a', label: 'La Liga or Serie A — Spanish or Italian top-flight' },
+          { value: 'multi-match-weekend', label: 'Multiple matches over a weekend — combined football trip' },
+          { value: 'open', label: 'Open to suggestions — flexible' }
+        ]
+      },
+      {
+        id: 'sports_football-2', stateKey: 'club',
+        heading: 'Which Premier League club?',
+        // Premier League clubs reflect commercial focus — top 6 plus growing-hospitality clubs (Newcastle, Aston Villa, West Ham). Update if scope expands.
+        optionsClass: 'oc-options--two-col',
+        options: [
+          { value: 'manchester-united', label: 'Manchester United' },
+          { value: 'manchester-city', label: 'Manchester City' },
+          { value: 'liverpool', label: 'Liverpool' },
+          { value: 'arsenal', label: 'Arsenal' },
+          { value: 'chelsea', label: 'Chelsea' },
+          { value: 'tottenham', label: 'Tottenham Hotspur' },
+          { value: 'newcastle', label: 'Newcastle United' },
+          { value: 'aston-villa', label: 'Aston Villa' },
+          { value: 'west-ham', label: 'West Ham United' },
+          { value: 'other-pl', label: 'Other Premier League club' },
+          { value: 'no-preference', label: 'No preference / multiple clubs' }
+        ]
+      },
+      {
+        id: 'sports_football-3', stateKey: 'hospitality',
+        heading: 'What kind of experience?',
+        options: [
+          { value: 'boxes-suites', label: 'Hospitality boxes / suites at the stadium — full suite hire, dedicated entertaining space' },
+          { value: 'premium-lounge', label: 'Premium hospitality lounge — pre and post-match dining, drinks, premium seats' },
+          { value: 'premium-ticketed', label: 'Premium ticketed seating — top-category seats, no formal hospitality' },
+          { value: 'meet-greet', label: 'Player meet-and-greets — where access is available with your fixture' },
+          { value: 'open-recommendations', label: 'Open to recommendations — show me what works' }
+        ]
+      },
+      {
+        id: 'sports_football-4', stateKey: 'travelScope',
+        heading: 'How much of the trip should we handle?',
+        options: [
+          { value: 'match-day-only', label: "Match day only — tickets and hospitality, we'll handle the rest" },
+          { value: 'weekend-host-city', label: 'Weekend in the host city — match plus hotel for one or two nights' },
+          { value: 'multi-match-weekend', label: 'Multi-match weekend — see two or three matches across consecutive days' },
+          { value: 'full-package', label: 'Full hosted package — flights, transfers, accommodation, hospitality, the lot' }
+        ]
+      },
+      {
+        id: 'sports_football-5', stateKey: 'accommodation',
+        heading: 'What style of accommodation suits you?',
+        options: [
+          { value: 'not-applicable', label: 'Not applicable — match day only, no accommodation needed' },
+          { value: 'excellent-value', label: 'Excellent properties, well-priced — comfortable, well-located, good value' },
+          { value: 'premium', label: 'Premium properties, the better experience — top-tier within their category, often boutique' },
+          { value: 'very-best', label: 'The very best — no compromises — flagship lodges, suites, private villas' },
+          { value: 'mix', label: "Mix across the trip — splash out where it matters, save where it doesn't" }
+        ]
+      },
+      {
+        id: 'sports_football-6', stateKey: 'when',
+        heading: 'When are you thinking of travelling?',
+        options: [
+          { value: 'within-3', label: 'Within 3 months' },
+          { value: '3-6', label: '3-6 months' },
+          { value: '6-12', label: '6-12 months' },
+          { value: 'beyond-1y', label: 'More than a year out' },
+          { value: 'flexible', label: 'Flexible' }
+        ]
+      },
+      {
+        id: 'sports_football-7', stateKey: 'party',
+        heading: 'How many in your party?',
+        options: [
+          { value: 'just-me', label: 'Just me' },
+          { value: 'couple', label: 'A couple' },
+          { value: 'family', label: 'A family' },
+          { value: 'small-group', label: 'A small group (3-8)' },
+          { value: 'large-group', label: 'A larger group (9+)' }
+        ]
+      }
     ]
   };
 
@@ -960,7 +1059,8 @@
     sports_cricket: { fixture: 'Match', hospitality: 'Hospitality', travelScope: 'Travel scope', accommodation: 'Accommodation', when: 'Timing', party: 'Party size' },
     sports_f1: { race: 'Race', hospitality: 'Hospitality', travelScope: 'Travel scope', accommodation: 'Accommodation', when: 'Timing', party: 'Party size' },
     sports_motogp: { race: 'Race', hospitality: 'Hospitality', travelScope: 'Travel scope', accommodation: 'Accommodation', when: 'Timing', party: 'Party size' },
-    sports_tennis: { slam: 'Slam', hospitality: 'Hospitality', travelScope: 'Travel scope', accommodation: 'Accommodation', when: 'Timing', party: 'Party size' }
+    sports_tennis: { slam: 'Slam', hospitality: 'Hospitality', travelScope: 'Travel scope', accommodation: 'Accommodation', when: 'Timing', party: 'Party size' },
+    sports_football: { competition: 'Competition', club: 'Club', hospitality: 'Hospitality', travelScope: 'Travel scope', accommodation: 'Accommodation', when: 'Timing', party: 'Party size' }
   };
 
   function formatAnswers(branch, st) {
@@ -1139,6 +1239,34 @@
       }
       return tnsLines.length ? tnsLines.join('\n') : 'None provided';
     }
+    if (branch === 'sports' && st.sports && st.sports.sport === 'football') {
+      var fbLines = [];
+      var fbSportQ = FLOWS.sports[0];
+      var fbSportLabel = null;
+      for (var fbsi = 0; fbsi < fbSportQ.options.length; fbsi++) {
+        if (fbSportQ.options[fbsi].value === 'football') { fbSportLabel = fbSportQ.options[fbsi].label; break; }
+      }
+      fbLines.push((ANSWER_LABELS.sports.sport || 'Sport') + ': ' + (fbSportLabel || 'Football'));
+      var fbFlow = FLOWS.sports_football;
+      var fbLabels = ANSWER_LABELS.sports_football || {};
+      var fbState = st.sports_football || {};
+      var fbIsPL = fbState.competition === 'premier-league';
+      for (var fbi = 0; fbi < fbFlow.length; fbi++) {
+        var fbq = fbFlow[fbi];
+        // Step 3a (club) is conditional — only emit when Premier League is selected.
+        if (fbq.stateKey === 'club' && !fbIsPL) continue;
+        var fbval = fbState[fbq.stateKey];
+        var fbLeft = fbLabels[fbq.stateKey] || fbq.stateKey;
+        if (fbval) {
+          var fbMatch = null;
+          for (var fbj = 0; fbj < fbq.options.length; fbj++) {
+            if (fbq.options[fbj].value === fbval) { fbMatch = fbq.options[fbj].label; break; }
+          }
+          if (fbMatch) fbLines.push(fbLeft + ': ' + fbMatch);
+        }
+      }
+      return fbLines.length ? fbLines.join('\n') : 'None provided';
+    }
     if (!branch || !FLOWS[branch] || !st[branch]) return 'None provided';
     var flow = FLOWS[branch];
     var labels = ANSWER_LABELS[branch] || {};
@@ -1212,6 +1340,7 @@
     sports_f1: { race: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null },
     sports_motogp: { race: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null },
     sports_tennis: { slam: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null },
+    sports_football: { competition: null, club: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null },
     contact: { name: '', email: '', phone: '', notes: '' },
     submitted: false
   };
@@ -1225,6 +1354,7 @@
   if (!state.sports_f1) state.sports_f1 = { race: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
   if (!state.sports_motogp) state.sports_motogp = { race: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
   if (!state.sports_tennis) state.sports_tennis = { slam: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
+  if (!state.sports_football) state.sports_football = { competition: null, club: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
   window.__eventraOnlineConsultantState = state;
 
   var stack = [];
@@ -1234,7 +1364,7 @@
   function escHtml(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
   function parseQuestionId(name) {
-    var m = /^(bespoke_africa|bespoke_europe|sports_rugby|sports_cricket|sports_f1|sports_motogp|sports_tennis|bespoke|sports)-(\d+)$/.exec(name);
+    var m = /^(bespoke_africa|bespoke_europe|sports_rugby|sports_cricket|sports_f1|sports_motogp|sports_tennis|sports_football|bespoke|sports)-(\d+)$/.exec(name);
     if (!m) return null;
     var branch = m[1];
     var idx = parseInt(m[2], 10) - 1;
@@ -1277,14 +1407,33 @@
     ].join('');
   }
 
-  var TOTAL_STEPS = { bespoke: 5, bespoke_africa: 7, bespoke_europe: 7, sports: 5, sports_rugby: 8, sports_cricket: 8, sports_f1: 8, sports_motogp: 8, sports_tennis: 8 };
-  var STEP_OFFSET = { bespoke: 2, bespoke_africa: 3, bespoke_europe: 3, sports: 2, sports_rugby: 3, sports_cricket: 3, sports_f1: 3, sports_motogp: 3, sports_tennis: 3 };
+  // sports_football TOTAL_STEPS is the non-Premier-League default (6 questions + 2 setup steps).
+  // The Premier League path adds Step 3a (the club question), and renderQuestion bumps the
+  // count to 9 dynamically when state.sports_football.competition === 'premier-league'.
+  var TOTAL_STEPS = { bespoke: 5, bespoke_africa: 7, bespoke_europe: 7, sports: 5, sports_rugby: 8, sports_cricket: 8, sports_f1: 8, sports_motogp: 8, sports_tennis: 8, sports_football: 8 };
+  var STEP_OFFSET = { bespoke: 2, bespoke_africa: 3, bespoke_europe: 3, sports: 2, sports_rugby: 3, sports_cricket: 3, sports_f1: 3, sports_motogp: 3, sports_tennis: 3, sports_football: 3 };
 
   function renderQuestion(branch, idx) {
     var q = FLOWS[branch][idx];
     var offset = STEP_OFFSET[branch] || 2;
     var totalSteps = TOTAL_STEPS[branch] || 5;
     var stepNum = idx + offset;
+
+    // Football: Step 3a (club, idx 1) is conditional. Render the progress indicator
+    // dynamically so Premier League visitors see "of 9" with sequential step numbers
+    // 3, 4, 5, 6, 7, 8, 9 across the 7 questions (Step 3a renders as step 4 in the
+    // indicator), and other-football visitors see "of 8" with the club slot skipped
+    // (idx 0 -> step 3, idx 2 -> step 4, idx 3 -> step 5, ...).
+    if (branch === 'sports_football') {
+      var fbIsPL = state.sports_football && state.sports_football.competition === 'premier-league';
+      totalSteps = fbIsPL ? 9 : 8;
+      if (fbIsPL) {
+        stepNum = idx + 3;
+      } else {
+        stepNum = idx === 0 ? 3 : idx + 2;
+      }
+    }
+
     var body;
 
     if (q.type === 'text') {
@@ -1304,7 +1453,8 @@
         var o = q.options[i];
         opts += '<button type="button" class="oc-option" data-option="' + escAttr(o.value) + '">' + escHtml(o.label) + '</button>';
       }
-      body = '<div class="oc-options" role="group" aria-label="' + escAttr(q.heading) + '">' + opts + '</div>';
+      var optionsExtraClass = q.optionsClass ? ' ' + escAttr(q.optionsClass) : '';
+      body = '<div class="oc-options' + optionsExtraClass + '" role="group" aria-label="' + escAttr(q.heading) + '">' + opts + '</div>';
     }
 
     return [
@@ -1473,6 +1623,28 @@
         navigate('sports_tennis-1');
         return;
       }
+      if (branch === 'sports' && idx === 0 && state.sports.sport === 'football') {
+        navigate('sports_football-1');
+        return;
+      }
+      // Football conditional skip: when the user does NOT pick Premier League at Step 3
+      // (sports_football-1, idx 0), skip the conditional Step 3a (club, idx 1) and
+      // jump straight to Step 4 (hospitality, idx 2). The stack-based goBack handles
+      // both back-paths for free — Step 4's Back returns to whichever screen was
+      // pushed last (Step 3a for PL visitors, Step 3 for everyone else).
+      // This is the widget's first conditional question. Future conditional questions
+      // on other paths can follow the same template:
+      //   1. Define the gated question as a regular FLOWS entry
+      //   2. After the prior question, check the gate condition here
+      //   3. If closed, navigate to the index after the gated question and (optionally)
+      //      clear any stale state on the gated question's stateKey
+      if (branch === 'sports_football' && idx === 0 && state.sports_football.competition !== 'premier-league') {
+        // Clear any stale club state from a prior PL selection so it doesn't leak
+        // into the lead payload if the user goes back and changes competition.
+        state.sports_football.club = null;
+        navigate('sports_football-3');
+        return;
+      }
       if (idx + 1 < FLOWS[branch].length) {
         navigate(branch + '-' + (idx + 2));
       } else {
@@ -1491,6 +1663,7 @@
       state.sports_f1 = { race: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
       state.sports_motogp = { race: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
       state.sports_tennis = { slam: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
+      state.sports_football = { competition: null, club: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
       state.contact = { name: '', email: '', phone: '', notes: '' };
       state.submitted = false;
       stack.length = 0;
