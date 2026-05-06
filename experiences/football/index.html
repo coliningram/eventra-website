@@ -254,6 +254,10 @@
     @media (max-width: 1024px) { .exp-card-grid--four { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 768px) { .exp-card-grid--four { grid-template-columns: 1fr; } }
 
+    /* SEVEN-CARD VARIANT — 3-3-1 with last card centered on desktop */
+    .exp-card-grid--seven > .exp-card:last-child { grid-column-start: 2; }
+    @media (max-width: 1024px) { .exp-card-grid--seven > .exp-card:last-child { grid-column-start: auto; } }
+
     /* CTA BAND */
     .cta-band { background: var(--eg-charcoal); padding: 100px 0; }
     .cta-band-content { text-align: center; }
@@ -371,25 +375,75 @@
         <p class="eyebrow">Available Now</p>
         <h2 class="card-section-title">Bookable for the 2025/26 season.</h2>
       </div>
-      <div class="exp-card-grid">
-        <a href="/experiences/football/manchester-united-vs-liverpool-2026" class="exp-card">
+      <div class="exp-card-grid exp-card-grid--seven">
+        <a href="/enquire" class="exp-card">
           <div class="exp-card-img">
-            <img src="https://images.unsplash.com/photo-1642763907630-17bad0853f15?w=800&q=75&auto=format&fit=crop" alt="Old Trafford stadium Manchester &mdash; Manchester United vs Liverpool 500 Club hospitality with Eventra" loading="lazy">
+            <img src="/images/experiences/football/etihad-stadium-manchester-city.webp" alt="Etihad Stadium Manchester &mdash; Manchester City vs Aston Villa hospitality with Eventra" loading="lazy">
           </div>
           <div class="exp-card-body">
-            <p class="exp-card-eyebrow">Manchester &mdash; 3 May 2026</p>
-            <h3 class="exp-card-title">Manchester United vs Liverpool &mdash; 500 Club</h3>
-            <p class="exp-card-desc">The greatest club rivalry in English football. Old Trafford, 3 May 2026. Padded seats, Sports Bar lounge access, hot food and matchday programme included.</p>
+            <p class="exp-card-eyebrow">Manchester &mdash; 24 May 2026</p>
+            <h3 class="exp-card-title">Manchester City vs Aston Villa</h3>
+            <p class="exp-card-desc">The Etihad in late May. 93:20 Lounge Premium and Vermillion Hospitality available &mdash; premium seats, lounge access, three-course dining.</p>
           </div>
         </a>
-        <a href="/experiences/football/liverpool-vs-chelsea-2026" class="exp-card">
+        <a href="/enquire" class="exp-card">
           <div class="exp-card-img">
-            <img src="https://images.unsplash.com/photo-pa447fb59MI?w=800&q=75&auto=format&fit=crop" alt="Anfield stadium Liverpool &mdash; Liverpool vs Chelsea Founders Lounge hospitality with Eventra" loading="lazy">
+            <img src="/images/experiences/football/london-stadium-west-ham.webp" alt="London Stadium West Ham &mdash; West Ham United vs Leeds United hospitality with Eventra" loading="lazy">
           </div>
           <div class="exp-card-body">
-            <p class="exp-card-eyebrow">Liverpool &mdash; 9 May 2026</p>
-            <h3 class="exp-card-title">Liverpool vs Chelsea &mdash; Founders Lounge</h3>
-            <p class="exp-card-desc">Anfield at its finest. Champagne reception, multicourse dinner, complimentary drinks and premium seats for one of the Premier League&rsquo;s great fixtures. 9 May 2026.</p>
+            <p class="exp-card-eyebrow">London &mdash; 24 May 2026</p>
+            <h3 class="exp-card-title">West Ham United vs Leeds United</h3>
+            <p class="exp-card-desc">The London Stadium. Royal East All-Inclusive and Great Briton Lounge available &mdash; VIP entrance, lounge dining, halfway-line seats.</p>
+          </div>
+        </a>
+        <a href="/enquire" class="exp-card">
+          <div class="exp-card-img">
+            <img src="/images/experiences/football/anfield-liverpool-stadium.webp" alt="Anfield stadium Liverpool &mdash; Liverpool vs Brentford hospitality with Eventra" loading="lazy">
+          </div>
+          <div class="exp-card-body">
+            <p class="exp-card-eyebrow">Liverpool &mdash; 24 May 2026</p>
+            <h3 class="exp-card-title">Liverpool vs Brentford</h3>
+            <p class="exp-card-desc">Anfield in the final week. Founders Lounge and Anfield Beat Lounge available &mdash; champagne reception, multicourse dining, premium main-stand seats.</p>
+          </div>
+        </a>
+        <a href="/enquire" class="exp-card">
+          <div class="exp-card-img">
+            <img src="/images/experiences/football/jan-breydel-stadium-bruges.webp" alt="Jan Breydel Stadion Bruges &mdash; Club Brugge vs KAA Gent hospitality with Eventra" loading="lazy">
+          </div>
+          <div class="exp-card-body">
+            <p class="exp-card-eyebrow">Bruges &mdash; 24 May 2026</p>
+            <h3 class="exp-card-title">Club Brugge vs KAA Gent</h3>
+            <p class="exp-card-desc">The Belgian top-flight rivalry at Jan Breydel Stadion. Match-day hospitality available, paired with Bruges as a long-weekend destination.</p>
+          </div>
+        </a>
+        <a href="/enquire" class="exp-card">
+          <div class="exp-card-img">
+            <img src="/images/experiences/football/mestalla-valencia-barcelona.webp" alt="Estadio Mestalla Valencia &mdash; Valencia vs FC Barcelona hospitality with Eventra" loading="lazy">
+          </div>
+          <div class="exp-card-body">
+            <p class="exp-card-eyebrow">Valencia &mdash; 24 May 2026</p>
+            <h3 class="exp-card-title">Valencia vs FC Barcelona</h3>
+            <p class="exp-card-desc">La Liga at Estadio Mestalla. Premium longside and lower-tier seats available &mdash; Barcelona on the road in their late-season run.</p>
+          </div>
+        </a>
+        <a href="/enquire" class="exp-card">
+          <div class="exp-card-img">
+            <img src="/images/experiences/football/wembley-stadium-cup-final.webp" alt="Wembley Stadium &mdash; EFL League Two Play-Off Final hospitality with Eventra" loading="lazy">
+          </div>
+          <div class="exp-card-body">
+            <p class="exp-card-eyebrow">London &mdash; 25 May 2026</p>
+            <h3 class="exp-card-title">EFL League Two Play-Off Final</h3>
+            <p class="exp-card-desc">Wembley on a Bank Holiday Monday. Taphouse Social Club hospitality available &mdash; VIP entrance, padded seats, the full Wembley match-day experience.</p>
+          </div>
+        </a>
+        <a href="/enquire" class="exp-card">
+          <div class="exp-card-img">
+            <img src="/images/experiences/football/wembley-womens-fa-cup.webp" alt="Wembley Stadium &mdash; Adobe Women&rsquo;s FA Cup Final hospitality with Eventra" loading="lazy">
+          </div>
+          <div class="exp-card-body">
+            <p class="exp-card-eyebrow">London &mdash; 31 May 2026</p>
+            <h3 class="exp-card-title">Adobe Women&rsquo;s FA Cup Final</h3>
+            <p class="exp-card-desc">The women&rsquo;s domestic showcase at Wembley. Private box hospitality available &mdash; exclusive corporate boxes overlooking the pitch.</p>
           </div>
         </a>
       </div>
