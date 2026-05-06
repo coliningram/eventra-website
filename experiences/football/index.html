@@ -76,6 +76,8 @@
       --eg-mid-grey:      #6B6B6B;
       --eg-gold:          #B8966B;
       --eg-gold-hover:    #9E7D55;
+      --eg-racing-green:  #0A4D2C;
+      --eg-navy:          #1B3A5C;
       --font-display:     'Cormorant Garamond', serif;
       --font-body:        'Inter', sans-serif;
       --section-pad-v:    100px;
@@ -256,7 +258,26 @@
 
     /* SEVEN-CARD VARIANT — 3-3-1 with last card centered on desktop */
     .exp-card-grid--seven > .exp-card:last-child { grid-column-start: 2; }
-    @media (max-width: 1024px) { .exp-card-grid--seven > .exp-card:last-child { grid-column-start: auto; } }
+    .exp-card-grid--seven > .fixture-card:last-child { grid-column-start: 2; }
+    @media (max-width: 1024px) {
+      .exp-card-grid--seven > .exp-card:last-child { grid-column-start: auto; }
+      .exp-card-grid--seven > .fixture-card:last-child { grid-column-start: auto; }
+    }
+
+    /* TYPOGRAPHIC FIXTURE CARDS — reusable for fixture-led sections */
+    .fixture-card { display: flex; flex-direction: column; justify-content: space-between; padding: 22px 20px; min-height: 240px; border-radius: 4px; transition: background 0.3s ease; }
+    .fixture-card--green { background: var(--eg-racing-green); color: #FFFFFF; }
+    .fixture-card--navy  { background: var(--eg-navy); color: #FFFFFF; }
+    .fixture-card--green:hover { background: #083E22; }
+    .fixture-card--navy:hover  { background: #15304D; }
+    .fixture-card-eyebrow { color: var(--eg-gold); font-family: var(--font-body); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; margin-bottom: 20px; }
+    .fixture-card-title { color: #FFFFFF; font-family: var(--font-body); font-size: 21px; line-height: 1.18; letter-spacing: -0.01em; font-weight: 500; margin-bottom: 12px; }
+    .fixture-card-desc { color: #ECEFED; font-family: var(--font-body); font-size: 13px; line-height: 1.55; opacity: 0.85; }
+    .fixture-card-cta { color: var(--eg-gold); font-family: var(--font-body); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; margin-top: 16px; }
+    @media (max-width: 768px) {
+      .fixture-card { padding: 18px 16px; }
+      .fixture-card-title { font-size: 18px; }
+    }
 
     /* CTA BAND */
     .cta-band { background: var(--eg-charcoal); padding: 100px 0; }
@@ -376,75 +397,61 @@
         <h2 class="card-section-title">Bookable for the 2025/26 season.</h2>
       </div>
       <div class="exp-card-grid exp-card-grid--seven">
-        <a href="/enquire" class="exp-card">
-          <div class="exp-card-img">
-            <img src="/images/experiences/football/etihad-stadium-manchester-city.webp" alt="Etihad Stadium Manchester &mdash; Manchester City vs Aston Villa hospitality with Eventra" loading="lazy">
+        <a href="/enquire" class="fixture-card fixture-card--green">
+          <div>
+            <p class="fixture-card-eyebrow">Manchester &mdash; 24 May 2026</p>
+            <h3 class="fixture-card-title">Manchester City vs Aston Villa</h3>
+            <p class="fixture-card-desc">The Etihad in late May. 93:20 Lounge Premium and Vermillion Hospitality available &mdash; premium seats, lounge access, three-course dining.</p>
           </div>
-          <div class="exp-card-body">
-            <p class="exp-card-eyebrow">Manchester &mdash; 24 May 2026</p>
-            <h3 class="exp-card-title">Manchester City vs Aston Villa</h3>
-            <p class="exp-card-desc">The Etihad in late May. 93:20 Lounge Premium and Vermillion Hospitality available &mdash; premium seats, lounge access, three-course dining.</p>
-          </div>
+          <span class="fixture-card-cta">Enquire &rarr;</span>
         </a>
-        <a href="/enquire" class="exp-card">
-          <div class="exp-card-img">
-            <img src="/images/experiences/football/london-stadium-west-ham.webp" alt="London Stadium West Ham &mdash; West Ham United vs Leeds United hospitality with Eventra" loading="lazy">
+        <a href="/enquire" class="fixture-card fixture-card--navy">
+          <div>
+            <p class="fixture-card-eyebrow">London &mdash; 24 May 2026</p>
+            <h3 class="fixture-card-title">West Ham United vs Leeds United</h3>
+            <p class="fixture-card-desc">The London Stadium. Royal East All-Inclusive and Great Briton Lounge available &mdash; VIP entrance, lounge dining, halfway-line seats.</p>
           </div>
-          <div class="exp-card-body">
-            <p class="exp-card-eyebrow">London &mdash; 24 May 2026</p>
-            <h3 class="exp-card-title">West Ham United vs Leeds United</h3>
-            <p class="exp-card-desc">The London Stadium. Royal East All-Inclusive and Great Briton Lounge available &mdash; VIP entrance, lounge dining, halfway-line seats.</p>
-          </div>
+          <span class="fixture-card-cta">Enquire &rarr;</span>
         </a>
-        <a href="/enquire" class="exp-card">
-          <div class="exp-card-img">
-            <img src="/images/experiences/football/anfield-liverpool-stadium.webp" alt="Anfield stadium Liverpool &mdash; Liverpool vs Brentford hospitality with Eventra" loading="lazy">
+        <a href="/enquire" class="fixture-card fixture-card--green">
+          <div>
+            <p class="fixture-card-eyebrow">Liverpool &mdash; 24 May 2026</p>
+            <h3 class="fixture-card-title">Liverpool vs Brentford</h3>
+            <p class="fixture-card-desc">Anfield in the final week. Founders Lounge and Anfield Beat Lounge available &mdash; champagne reception, multicourse dining, premium main-stand seats.</p>
           </div>
-          <div class="exp-card-body">
-            <p class="exp-card-eyebrow">Liverpool &mdash; 24 May 2026</p>
-            <h3 class="exp-card-title">Liverpool vs Brentford</h3>
-            <p class="exp-card-desc">Anfield in the final week. Founders Lounge and Anfield Beat Lounge available &mdash; champagne reception, multicourse dining, premium main-stand seats.</p>
-          </div>
+          <span class="fixture-card-cta">Enquire &rarr;</span>
         </a>
-        <a href="/enquire" class="exp-card">
-          <div class="exp-card-img">
-            <img src="/images/experiences/football/jan-breydel-stadium-bruges.webp" alt="Jan Breydel Stadion Bruges &mdash; Club Brugge vs KAA Gent hospitality with Eventra" loading="lazy">
+        <a href="/enquire" class="fixture-card fixture-card--navy">
+          <div>
+            <p class="fixture-card-eyebrow">Bruges &mdash; 24 May 2026</p>
+            <h3 class="fixture-card-title">Club Brugge vs KAA Gent</h3>
+            <p class="fixture-card-desc">The Belgian top-flight rivalry at Jan Breydel Stadion. Match-day hospitality available, paired with Bruges as a long-weekend destination.</p>
           </div>
-          <div class="exp-card-body">
-            <p class="exp-card-eyebrow">Bruges &mdash; 24 May 2026</p>
-            <h3 class="exp-card-title">Club Brugge vs KAA Gent</h3>
-            <p class="exp-card-desc">The Belgian top-flight rivalry at Jan Breydel Stadion. Match-day hospitality available, paired with Bruges as a long-weekend destination.</p>
-          </div>
+          <span class="fixture-card-cta">Enquire &rarr;</span>
         </a>
-        <a href="/enquire" class="exp-card">
-          <div class="exp-card-img">
-            <img src="/images/experiences/football/mestalla-valencia-barcelona.webp" alt="Estadio Mestalla Valencia &mdash; Valencia vs FC Barcelona hospitality with Eventra" loading="lazy">
+        <a href="/enquire" class="fixture-card fixture-card--green">
+          <div>
+            <p class="fixture-card-eyebrow">Valencia &mdash; 24 May 2026</p>
+            <h3 class="fixture-card-title">Valencia vs FC Barcelona</h3>
+            <p class="fixture-card-desc">La Liga at Estadio Mestalla. Premium longside and lower-tier seats available &mdash; Barcelona on the road in their late-season run.</p>
           </div>
-          <div class="exp-card-body">
-            <p class="exp-card-eyebrow">Valencia &mdash; 24 May 2026</p>
-            <h3 class="exp-card-title">Valencia vs FC Barcelona</h3>
-            <p class="exp-card-desc">La Liga at Estadio Mestalla. Premium longside and lower-tier seats available &mdash; Barcelona on the road in their late-season run.</p>
-          </div>
+          <span class="fixture-card-cta">Enquire &rarr;</span>
         </a>
-        <a href="/enquire" class="exp-card">
-          <div class="exp-card-img">
-            <img src="/images/experiences/football/wembley-stadium-cup-final.webp" alt="Wembley Stadium &mdash; EFL League Two Play-Off Final hospitality with Eventra" loading="lazy">
+        <a href="/enquire" class="fixture-card fixture-card--navy">
+          <div>
+            <p class="fixture-card-eyebrow">London &mdash; 25 May 2026</p>
+            <h3 class="fixture-card-title">EFL League Two Play-Off Final</h3>
+            <p class="fixture-card-desc">Wembley on a Bank Holiday Monday. Taphouse Social Club hospitality available &mdash; VIP entrance, padded seats, the full Wembley match-day experience.</p>
           </div>
-          <div class="exp-card-body">
-            <p class="exp-card-eyebrow">London &mdash; 25 May 2026</p>
-            <h3 class="exp-card-title">EFL League Two Play-Off Final</h3>
-            <p class="exp-card-desc">Wembley on a Bank Holiday Monday. Taphouse Social Club hospitality available &mdash; VIP entrance, padded seats, the full Wembley match-day experience.</p>
-          </div>
+          <span class="fixture-card-cta">Enquire &rarr;</span>
         </a>
-        <a href="/enquire" class="exp-card">
-          <div class="exp-card-img">
-            <img src="/images/experiences/football/wembley-womens-fa-cup.webp" alt="Wembley Stadium &mdash; Adobe Women&rsquo;s FA Cup Final hospitality with Eventra" loading="lazy">
+        <a href="/enquire" class="fixture-card fixture-card--green">
+          <div>
+            <p class="fixture-card-eyebrow">London &mdash; 31 May 2026</p>
+            <h3 class="fixture-card-title">Adobe Women&rsquo;s FA Cup Final</h3>
+            <p class="fixture-card-desc">The women&rsquo;s domestic showcase at Wembley. Private box hospitality available &mdash; exclusive corporate boxes overlooking the pitch.</p>
           </div>
-          <div class="exp-card-body">
-            <p class="exp-card-eyebrow">London &mdash; 31 May 2026</p>
-            <h3 class="exp-card-title">Adobe Women&rsquo;s FA Cup Final</h3>
-            <p class="exp-card-desc">The women&rsquo;s domestic showcase at Wembley. Private box hospitality available &mdash; exclusive corporate boxes overlooking the pitch.</p>
-          </div>
+          <span class="fixture-card-cta">Enquire &rarr;</span>
         </a>
       </div>
     </div>
