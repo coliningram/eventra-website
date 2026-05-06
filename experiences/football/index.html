@@ -260,6 +260,28 @@
     .cta-band-title { font-family: var(--font-display); font-weight: 300; font-size: 48px; color: var(--eg-white); margin-bottom: 20px; line-height: 1.15; }
     .cta-band-sub { font-family: var(--font-body); font-size: 16px; color: rgba(255,255,255,0.65); max-width: 560px; margin: 0 auto 40px; line-height: 1.7; }
     @media (max-width: 768px) { .cta-band { padding: 80px 0; } .cta-band-title { font-size: 32px; } }
+
+    /* EDITORIAL SECTION */
+    .editorial-section { background: var(--eg-white); padding: var(--section-pad-v) 0; }
+    .editorial-section-inner { max-width: 760px; margin: 0 auto; text-align: center; }
+    .editorial-section-title { font-family: var(--font-display); font-weight: 300; font-size: 44px; line-height: 1.15; color: var(--eg-charcoal); margin-bottom: 32px; }
+    .editorial-section-body { font-family: var(--font-body); font-size: 17px; line-height: 1.75; color: var(--eg-charcoal); }
+    .editorial-section-body p + p { margin-top: 20px; }
+    .editorial-section-divider { width: 48px; height: 1px; background: var(--eg-gold); margin: 40px auto 0; }
+    @media (max-width: 768px) { .editorial-section { padding: var(--section-pad-v-sm) 0; } .editorial-section-title { font-size: 32px; } }
+
+    /* SERVICES */
+    .services-section { background: var(--eg-charcoal); padding: var(--section-pad-v) 0; }
+    .services-section .section-header { text-align: center; margin-bottom: 60px; }
+    .services-section .section-header .eyebrow { color: var(--eg-gold); margin-bottom: 16px; display: block; }
+    .services-section .section-title { color: var(--eg-white); }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gutter); margin-top: 56px; }
+    .service-item { border-top: 1px solid rgba(255,255,255,0.12); padding-top: 28px; }
+    .service-marker { width: 6px; height: 6px; background: var(--eg-gold); border-radius: 50%; margin-bottom: 20px; }
+    .service-name { font-family: var(--font-display); font-weight: 400; font-size: 20px; color: var(--eg-white); line-height: 1.2; }
+    .service-detail { font-family: var(--font-body); font-size: 0.875rem; font-weight: 400; line-height: 1.55; color: rgba(255,255,255,0.72); margin-top: 10px; }
+    @media (max-width: 1024px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 768px) { .services-grid { grid-template-columns: 1fr; } .services-section { padding: var(--section-pad-v-sm) 0; } }
   </style>
 </head>
 <body>
@@ -431,6 +453,23 @@
     </div>
   </section>
 
+  <!-- EDITORIAL SECTION -->
+  <section class="editorial-section" aria-label="About Eventra football hospitality">
+    <div class="container">
+      <div class="editorial-section-inner">
+        <h2 class="editorial-section-title">Football, properly arranged</h2>
+        <div class="editorial-section-body">
+          <p>Football is the only sport where the same fixture means something different in three different cities. Old Trafford on a Saturday afternoon. Anfield under European lights. The Bernabéu when Madrid host the visiting clásico. The match is the same; the weekend is not.</p>
+          <p>Eventra arranges premium football hospitality across England's Premier League, the Champions League and Europa League, the FA Cup at Wembley, and the great clubs of La Liga and Serie A. Hospitality boxes, premium lounges, and the seats that matter at every level of the European calendar.</p>
+          <p>In England, we work with most of the Premier League's major clubs through our UK football partners &mdash; Manchester United, Manchester City, Liverpool, Arsenal, Chelsea, Tottenham, plus Newcastle, Aston Villa, West Ham, and beyond. Wembley for the FA Cup, the EFL Cup, the Adobe Women's FA Cup, and England internationals. The Champions League and Europa League finals when they reach English ground.</p>
+          <p>In Europe, the Spanish and Italian top flights &mdash; Barcelona, Real Madrid, Atlético, Inter, Milan, Juventus &mdash; plus Champions League knockout fixtures at every major stage. The continental calendar's most-watched matches, accessed through partners established at each ground.</p>
+          <p>Eventra arranges the match, the hospitality, the transfers, and the trip around it. Hotels through our bespoke travel team where the weekend warrants it. Group entertaining where the trip is for a client party. The match is the reason for the trip; everything around it is what we coordinate.</p>
+        </div>
+        <div class="editorial-section-divider" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
   <!-- OTHER SPORTS -->
   <section class="other-sports">
     <div class="container">
@@ -476,6 +515,56 @@
             <a href="/experiences/f1" class="sport-card-link">View Formula 1</a>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE ARRANGE -->
+  <section class="services-section" aria-label="Football hospitality services">
+    <div class="container">
+      <header class="section-header">
+        <p class="eyebrow">What We Arrange</p>
+        <h2 class="section-title">What every football trip requires.</h2>
+      </header>
+
+      <div class="services-grid">
+
+        <div class="service-item">
+          <div class="service-marker"></div>
+          <p class="service-name">Hospitality boxes and suites</p>
+          <p class="service-detail">Match-by-match availability across the Premier League, the European competitions, and Wembley fixtures. We source through our UK and European football partners.</p>
+        </div>
+
+        <div class="service-item">
+          <div class="service-marker"></div>
+          <p class="service-name">Premium hospitality lounges</p>
+          <p class="service-detail">Founders Lounge at Anfield, 93:20 at the Etihad, Academy Bar at the London Stadium, Royal East at West Ham, and equivalent products at most major clubs. Pre and post-match dining, drinks, and premium seats.</p>
+        </div>
+
+        <div class="service-item">
+          <div class="service-marker"></div>
+          <p class="service-name">Premium ticketed seating</p>
+          <p class="service-detail">Top-category match seats without formal hospitality, where a client wants the match without the lounge access.</p>
+        </div>
+
+        <div class="service-item">
+          <div class="service-marker"></div>
+          <p class="service-name">Match transfers and ground logistics</p>
+          <p class="service-detail">Private transfers to and from the stadium, multi-vehicle coordination for groups, and the on-ground arrangements that make a match-day move smoothly.</p>
+        </div>
+
+        <div class="service-item">
+          <div class="service-marker"></div>
+          <p class="service-name">Hotels and travel arrangements</p>
+          <p class="service-detail">Through Eventra Bespoke. Premium hotels selected for the match weekend, plus extension into the host city when the trip warrants it.</p>
+        </div>
+
+        <div class="service-item">
+          <div class="service-marker"></div>
+          <p class="service-name">Group entertaining around the match</p>
+          <p class="service-detail">Pre-match dinners, hospitality coordination for client groups, and the kind of weekend that turns a match into a trip.</p>
+        </div>
+
       </div>
     </div>
   </section>
