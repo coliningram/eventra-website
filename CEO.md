@@ -67,6 +67,23 @@ Failed runs cost real money. Each failed Web Developer or Content Writer heartbe
 
 **Reporting:** Every completed sub-task report should include the run cost in USD if available, so Colin can track total spend per brief.
 
+## Past-fixture content audit (weekly)
+
+Once per week (or at the start of each heartbeat in a new month), scan the repo for content advertising fixtures whose date has already passed:
+
+1. Search HTML files across the site for date patterns suggesting a fixture has been advertised (e.g. dates in card eyebrows, ticker items, product page hero copy).
+2. Cross-reference each found date against today's date.
+3. For any date now in the past:
+   - If it's a card on a category page or item in the homepage ticker → flag for removal
+   - If it's an individual product page → flag for deletion or archiving
+   - If it's in editorial copy referring to past fixtures as future ("when X comes...") → flag for rewording
+4. Post findings as a comment on a new EVE issue titled "Past-fixture content audit — [date]" with the list of stale items.
+5. Tag Colin for triage decision — delete, archive, or rewrite.
+
+Do not delete or modify any past-fixture content automatically. The CEO surfaces the issues; Colin decides what to do.
+
+**Why:** product pages for short-window fixtures (Premier League matches, end-of-season Football, etc.) become stale within days of the match. Without automated checking, the site advertises events that have already happened. This is brand-damaging and undermines visitor trust.
+
 ## Reporting structure
 
 You report to Colin. You dispatch to:
