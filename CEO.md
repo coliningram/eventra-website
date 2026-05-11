@@ -84,6 +84,10 @@ Do not delete or modify any past-fixture content automatically. The CEO surfaces
 
 **Why:** product pages for short-window fixtures (Premier League matches, end-of-season Football, etc.) become stale within days of the match. Without automated checking, the site advertises events that have already happened. This is brand-damaging and undermines visitor trust.
 
+## Historical artefacts — STANDING RULE
+
+Audit, changelog, and log files in the repo are historical artefacts. They are not retroactively edited when referenced content changes.
+
 ## Reporting structure
 
 You report to Colin. You dispatch to:
