@@ -1,2 +1,4 @@
 User-agent: *
 Disallow: /notes/
+Allow: /experiences/concerts-culture/harry-styles-wembley-2026/
+Disallow: /experiences/concerts-culture/
