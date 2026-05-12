@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Notes — Eventra Group</title>
+  <link rel="icon" type="image/png" href="/images/logos/Eventra-Logo-Gold.png">
+  <link rel="apple-touch-icon" href="/images/logos/Eventra-Logo-Gold.png">
+  <meta name="description" content="Considered writing on the experiences we arrange — the venues, the moments, and the company you keep.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --eg-white:         #FFFFFF;
+      --eg-warm-neutral:  #F8F5F0;
+      --eg-charcoal:      #1A1A1A;
+      --eg-mid-grey:      #6B6B6B;
+      --eg-gold:          #B8966B;
+      --eg-gold-hover:    #9E7D55;
+      --eg-overlay-dark:  rgba(0,0,0,0.35);
+      --eg-racing-green:  #0A4D2C;
+      --eg-navy:          #1B3A5C;
+
+      --font-display:     'Cormorant Garamond', serif;
+      --font-body:        'Inter', sans-serif;
+
+      --section-pad-v:    100px;
+      --section-pad-v-sm: 60px;
+      --max-width:        1240px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: var(--eg-charcoal);
+      background: var(--eg-white);
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .eyebrow {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--eg-gold);
+    }
+
+    .btn {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 16px 40px;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+      border: 1.5px solid transparent;
+    }
+    .btn-primary {
+      background: var(--eg-gold);
+      color: var(--eg-white);
+      border-color: var(--eg-gold);
+    }
+    .btn-primary:hover {
+      background: var(--eg-gold-hover);
+      border-color: var(--eg-gold-hover);
+    }
+    .btn-sm { padding: 12px 28px; font-size: 12px; }
+
+    /* Header */
+    .site-header {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100; height: 72px;
+      display: flex; align-items: center;
+      background: var(--eg-white);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    }
+    .site-header .container {
+      width: 100%;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .site-logo { flex-shrink: 0; display: flex; align-items: center; gap: 10px; }
+    .logo-img { display: block; width: auto; height: 40px; max-height: 40px; }
+    .logo-text {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 22px;
+      letter-spacing: 0.04em;
+      color: var(--eg-charcoal);
+      white-space: nowrap;
+    }
+    .logo-subtitle {
+      font-family: var(--font-body);
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--eg-mid-grey);
+      margin-top: 2px;
+    }
+    .site-nav { display: flex; align-items: center; gap: 36px; }
+    .nav-link {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--eg-charcoal);
+      transition: color 0.25s ease;
+    }
+    .nav-link:hover { color: var(--eg-gold); }
+    .nav-cta {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 10px 24px;
+      border-radius: 2px;
+      border: 1.5px solid var(--eg-gold);
+      color: var(--eg-gold);
+      transition: all 0.25s ease;
+    }
+    .nav-cta:hover {
+      background: var(--eg-gold);
+      color: var(--eg-white);
+    }
+
+    /* Intro / hero */
+    .notes-intro {
+      padding: 180px 0 80px;
+      background: var(--eg-warm-neutral);
+      text-align: center;
+    }
+    .notes-intro .container { max-width: 760px; }
+    .notes-intro .eyebrow { margin-bottom: 24px; display: block; }
+    .notes-intro h1 {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: 64px;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      color: var(--eg-charcoal);
+      margin-bottom: 28px;
+    }
+    .notes-intro p.intro-lede {
+      font-family: var(--font-body);
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--eg-mid-grey);
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    /* Empty state */
+    .notes-empty {
+      padding: 120px 0 160px;
+      background: var(--eg-white);
+      text-align: center;
+    }
+    .notes-empty .container { max-width: 640px; }
+    .notes-empty-rule {
+      width: 48px;
+      height: 1px;
+      background: var(--eg-gold);
+      margin: 0 auto 40px;
+    }
+    .notes-empty-message {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-style: italic;
+      font-size: 26px;
+      line-height: 1.4;
+      color: var(--eg-charcoal);
+    }
+
+    /* Footer */
+    .site-footer { background: var(--eg-charcoal); }
+    .footer-main {
+      padding: 80px 0 60px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 3fr 2fr 2fr 3fr;
+      gap: 48px;
+    }
+    .footer-logo-img {
+      display: block; width: auto; height: 36px; max-height: 36px;
+      margin-bottom: 12px;
+    }
+    .footer-tagline {
+      font-family: var(--font-body);
+      font-size: 13px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 24px;
+    }
+    .footer-col-title {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--eg-white);
+      margin-bottom: 20px;
+    }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+      transition: color 0.25s;
+    }
+    .footer-links a:hover { color: var(--eg-gold); }
+    .footer-contact-item {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 8px;
+    }
+    .footer-contact-item a { color: rgba(255,255,255,0.5); transition: color 0.25s; }
+    .footer-contact-item a:hover { color: var(--eg-gold); }
+    .footer-enquire { margin-top: 20px; }
+    .footer-legal { padding: 20px 0; background: #111111; }
+    .footer-legal .container {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .legal-text {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: var(--eg-mid-grey);
+    }
+    .legal-links { display: flex; gap: 24px; }
+    .legal-links a {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: var(--eg-mid-grey);
+      transition: color 0.25s;
+    }
+    .legal-links a:hover { color: var(--eg-gold); }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .notes-intro h1 { font-size: 52px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+    }
+    @media (max-width: 768px) {
+      .container { padding: 0 24px; }
+      .site-header { height: 60px; }
+      .site-nav { display: none; }
+      .notes-intro { padding: 140px 0 60px; }
+      .notes-intro h1 { font-size: 38px; }
+      .notes-intro p.intro-lede { font-size: 16px; }
+      .notes-empty { padding: 80px 0 100px; }
+      .notes-empty-message { font-size: 22px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="site-header">
+    <div class="container">
+      <a href="/" class="site-logo">
+        <img src="/EVENTRA_FINAL_LOGOS_20_JUNE_2025-02.png" alt="" class="logo-img" aria-hidden="true">
+        <div class="logo-wordmark">
+          <div class="logo-text">Eventra Group</div>
+          <div class="logo-subtitle">Sports Hospitality &amp; Luxury Travel</div>
+        </div>
+      </a>
+
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="/experiences" class="nav-link">Experiences</a>
+        <a href="/bespoke" class="nav-link">Bespoke Travel</a>
+        <a href="/about" class="nav-link">About</a>
+        <a href="/contact" class="nav-link">Contact</a>
+        <a href="/enquire" class="nav-cta">Enquire</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="notes-intro" aria-label="Notes from Eventra">
+      <div class="container">
+        <span class="eyebrow">Notes from Eventra</span>
+        <h1>Notes from the field.</h1>
+        <p class="intro-lede">Considered writing on the experiences we arrange — the venues, the moments, and the company you keep.</p>
+      </div>
+    </section>
+
+    <section class="notes-empty" aria-label="Coming soon">
+      <div class="container">
+        <div class="notes-empty-rule" aria-hidden="true"></div>
+        <p class="notes-empty-message">New writing arriving. Check back soon.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="container">
+        <div class="footer-grid">
+
+          <div>
+            <img src="/EVENTRA_FINAL_LOGOS_20_JUNE_2025-03.png" alt="Eventra Group" class="footer-logo-img" loading="lazy">
+            <p class="footer-tagline">The company you keep.<br>Luxury sports hospitality and experiential travel, curated from Cape Town for the world.</p>
+          </div>
+
+          <div>
+            <h3 class="footer-col-title">Experiences</h3>
+            <ul class="footer-links">
+              <li><a href="/experiences/rugby">Rugby</a></li>
+              <li><a href="/experiences/cricket">Cricket</a></li>
+              <li><a href="/experiences/f1">Formula 1</a></li>
+              <li><a href="/experiences/football">Football</a></li>
+              <li><a href="/experiences/tennis">Tennis</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="footer-col-title">Explore</h3>
+            <ul class="footer-links">
+              <li><a href="/about">About Eventra Group</a></li>
+              <li><a href="/bespoke">Bespoke Travel</a></li>
+              <li><a href="/contact">Contact</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="footer-col-title">Get in Touch</h3>
+            <p class="footer-contact-item"><a href="mailto:info@eventragroup.com">info@eventragroup.com</a></p>
+            <p class="footer-contact-item">Cape Town, South Africa</p>
+            <div class="footer-enquire">
+              <a href="/enquire" class="btn btn-primary btn-sm">Enquire Now</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-legal">
+      <div class="container">
+        <p class="legal-text">&copy; 2026 Eventra Group (Pty) Ltd &mdash; Reg. 2023/183233/07. All rights reserved.</p>
+        <div class="legal-links">
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/terms">Terms &amp; Conditions</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
