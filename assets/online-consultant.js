@@ -353,7 +353,7 @@
     var branch = state && state.branch;
     if (branch === 'bespoke') {
       var region = state.bespoke && state.bespoke.region;
-      if (region === 'africa' || region === 'multi-region') return 'BESPOKE_AFRICA';
+      if (region === 'africa') return 'BESPOKE_AFRICA';
       if (region === 'europe') return 'BESPOKE_EUROPE';
       return 'BESPOKE_GENERAL';
     }
@@ -391,9 +391,6 @@
         options: [
           { value: 'africa', label: 'Africa' },
           { value: 'europe', label: 'Europe' },
-          { value: 'asia', label: 'Asia' },
-          { value: 'americas', label: 'Americas' },
-          { value: 'multi-region', label: 'Multi-region' },
           { value: 'open', label: 'Open to suggestions' }
         ]
       },
