@@ -510,35 +510,26 @@
     }
     .category-card {
       display: block;
+      background: var(--eg-white);
+      overflow: hidden;
+      transition: box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .category-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.12); }
+    .category-card-image {
       position: relative;
       overflow: hidden;
       aspect-ratio: 4/3;
-      cursor: pointer;
     }
     .category-card-img {
-      position: absolute;
-      inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform 0.5s ease;
     }
     .category-card:hover .category-card-img { transform: scale(1.05); }
-    .category-card-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.18) 60%);
-      transition: background 0.3s ease;
-    }
-    .category-card:hover .category-card-overlay {
-      background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.28) 60%);
-    }
     .category-card-body {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 32px;
+      padding: 28px;
     }
     .category-card-label {
       font-family: var(--font-body);
@@ -553,14 +544,9 @@
       font-family: var(--font-display);
       font-weight: 300;
       font-size: 34px;
-      color: var(--eg-white);
+      color: var(--eg-charcoal);
       line-height: 1.1;
       margin-bottom: 16px;
-    }
-    .category-card-count {
-      font-family: var(--font-body);
-      font-size: 13px;
-      color: rgba(255,255,255,0.7);
     }
     .category-card-arrow {
       display: inline-flex;
@@ -571,9 +557,8 @@
       font-size: 12px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--eg-white);
-      margin-top: 16px;
-      border-bottom: 1px solid rgba(255,255,255,0.4);
+      color: var(--eg-charcoal);
+      border-bottom: 1px solid rgba(0,0,0,0.4);
       padding-bottom: 2px;
       transition: color 0.25s, border-color 0.25s;
     }
@@ -1055,52 +1040,52 @@
 
         <!-- Rugby -->
         <a href="/experiences/rugby" class="category-card">
-          <img
-            src="/images/experiences/rugby/stade-de-france-springboks-world-cup-2023.webp"
-            alt="View from the stands at Stade de France Paris during South Africa vs France Rugby World Cup 2023 — premium rugby hospitality with Eventra"
-            class="category-card-img"
-            loading="lazy"
-          >
-          <div class="category-card-overlay"></div>
+          <div class="category-card-image">
+            <img
+              src="/images/experiences/rugby/stade-de-france-springboks-world-cup-2023.webp"
+              alt="View from the stands at Stade de France Paris during South Africa vs France Rugby World Cup 2023 — premium rugby hospitality with Eventra"
+              class="category-card-img"
+              loading="lazy"
+            >
+          </div>
           <div class="category-card-body">
-            <p class="category-card-label">Eventra Experiences</p>
+            <p class="category-card-label">EVENTRA EXPERIENCES</p>
             <h3 class="category-card-title">Rugby</h3>
-            <p class="category-card-count">4 experiences &mdash; 2026–2027</p>
-            <span class="category-card-arrow">View all rugby &rarr;</span>
+            <span class="category-card-arrow">VIEW ALL RUGBY &rarr;</span>
           </div>
         </a>
 
         <!-- Cricket -->
         <a href="/experiences/cricket" class="category-card">
-          <img
-            src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=800&q=70&auto=format&fit=crop"
-            alt="Cricket hospitality — England vs South Africa at Newlands Cricket Ground, Cape Town"
-            class="category-card-img"
-            loading="lazy"
-          >
-          <div class="category-card-overlay"></div>
+          <div class="category-card-image">
+            <img
+              src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=800&q=70&auto=format&fit=crop"
+              alt="Cricket hospitality — England vs South Africa at Newlands Cricket Ground, Cape Town"
+              class="category-card-img"
+              loading="lazy"
+            >
+          </div>
           <div class="category-card-body">
-            <p class="category-card-label">Eventra Experiences</p>
+            <p class="category-card-label">EVENTRA EXPERIENCES</p>
             <h3 class="category-card-title">Cricket</h3>
-            <p class="category-card-count">1 experience &mdash; January 2027</p>
-            <span class="category-card-arrow">View all cricket &rarr;</span>
+            <span class="category-card-arrow">VIEW ALL CRICKET &rarr;</span>
           </div>
         </a>
 
         <!-- Formula 1 -->
         <a href="/experiences/f1" class="category-card">
-          <img
-            src="/images/experiences/monaco-harbour-aerial-f1-grand-prix.webp"
-            alt="Aerial view of Monaco harbour with yachts — Formula 1 Grand Prix hospitality with Eventra"
-            class="category-card-img"
-            loading="lazy"
-          >
-          <div class="category-card-overlay"></div>
+          <div class="category-card-image">
+            <img
+              src="/images/experiences/monaco-harbour-aerial-f1-grand-prix.webp"
+              alt="Aerial view of Monaco harbour with yachts — Formula 1 Grand Prix hospitality with Eventra"
+              class="category-card-img"
+              loading="lazy"
+            >
+          </div>
           <div class="category-card-body">
-            <p class="category-card-label">Eventra Experiences</p>
+            <p class="category-card-label">EVENTRA EXPERIENCES</p>
             <h3 class="category-card-title">Formula 1</h3>
-            <p class="category-card-count">1 experience &mdash; Monaco 2026</p>
-            <span class="category-card-arrow">View all F1 &rarr;</span>
+            <span class="category-card-arrow">VIEW ALL F1 &rarr;</span>
           </div>
         </a>
 
