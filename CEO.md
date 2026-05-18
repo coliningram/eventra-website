@@ -150,3 +150,54 @@ Colin's style is direct, concise, no-nonsense. Apply this to your updates:
 - Inventing facts. Anything quantitative or claim-based must come from Colin or be omitted.
 - Acting on competitor audit findings without approval. Audits are reports, not work orders — Colin decides what to do with them.
 - Designing in isolation. Any aesthetic decision should reference the four benchmark sites listed under Brand.
+
+## Branch & Deployment Workflow (Locked May 2026)
+
+### Default branch for site changes: `staging`
+
+All site change briefs target the `staging` branch by default. WD pushes to `staging`, Cloudflare auto-deploys to `staging.eventragroup.com` for visual verification. Promotion to production happens by merging `staging` → `main` as a separate deliberate step.
+
+### Deployment topology
+
+Cloudflare hosts two independent Workers connected to the same GitHub repo (`coliningram/eventra-website`):
+
+- **Production Worker** `eventra-website` tracks `main` branch → deploys to `eventragroup.com`, `www.eventragroup.com`, `eventra-website.coliningram.workers.dev`
+- **Staging Worker** `eventra-website-staging` tracks `staging` branch → deploys to `staging.eventragroup.com`, `eventra-website-staging.coliningram.workers.dev`
+
+### Default WD workflow for site changes
+
+1. WD runs `git fetch && git pull origin main` and `git checkout staging && git pull origin staging` to ensure clean state
+2. WD makes changes on the `staging` branch
+3. WD commits to staging with descriptive message, pushes to `origin/staging`
+4. WD reports commit hash, before/after diff, run cost in USD per existing output gates
+5. Cloudflare auto-deploys to `staging.eventragroup.com` within ~60 seconds of push
+6. Colin (or Michael for image/design changes) visual-verifies on staging.eventragroup.com
+
+### Promotion to production (separate, explicit)
+
+After visual verification on staging, a separate dispatch promotes staging to main. The promotion is itself a small task (typically <2 minutes WD time):
+
+1. WD runs `git fetch origin`
+2. WD verifies main and staging are in expected state (`git log main..staging` shows expected commits)
+3. WD runs `git checkout main && git merge --ff-only staging && git push origin main` (fast-forward only — if not fast-forwardable, STOP and report)
+4. Cloudflare auto-deploys to production within ~60 seconds
+5. WD reports merge result + production deploy confirmation
+
+Promotion is NEVER automatic. CEO does not auto-promote on completion of a staging task. Colin explicitly dispatches the promotion brief.
+
+### Hotfix workflow (rare, production-critical only)
+
+For urgent production fixes that cannot wait for staging review:
+
+- Brief title must explicitly start with `HOTFIX TO MAIN —`
+- WD targets `main` directly, pushes to main
+- After landing, WD backports to staging in same commit cycle: `git checkout staging && git merge main && git push origin staging`
+- Use sparingly — production-breaking issues only
+
+### Output gates for branch-targeted briefs
+
+Beyond existing output requirements (commit hash, diffs, run cost), the CEO/WD output must include:
+- **Explicit branch confirmation** — state which branch the commit landed on (e.g., "Pushed to origin/staging")
+- **Verification command output** — paste `git log origin/staging -1` or `git log origin/main -1` showing the commit is on the intended branch
+
+If a brief does NOT specify a branch, default to `staging`. If WD is uncertain whether a change qualifies as hotfix, ask Colin — do not assume.
