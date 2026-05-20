@@ -535,6 +535,32 @@
       .legal-body h2 { font-size: 28px; margin-top: 48px; }
 
     }
+
+    /* ───────────────────────────────────────────────
+       BREADCRUMB
+    ─────────────────────────────────────────────── */
+    .breadcrumb {
+      background: var(--eg-warm-neutral);
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .breadcrumb-list {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      list-style: none;
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: var(--eg-mid-grey);
+    }
+    .breadcrumb-list li + li::before {
+      content: '/';
+      opacity: 0.4;
+      margin-right: 8px;
+    }
+    .breadcrumb-list a { color: var(--eg-mid-grey); transition: color 0.2s; }
+    .breadcrumb-list a:hover { color: var(--eg-gold); }
+    .breadcrumb-list .current { color: var(--eg-charcoal); }
   </style>
 </head>
 <body>
@@ -605,6 +631,19 @@
       <h1 class="page-hero-title">Terms &amp; Conditions</h1>
     </div>
   </section>
+
+
+  <!-- ────────────────────────────────────────────
+       BREADCRUMB
+  ──────────────────────────────────────────── -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="container">
+      <ol class="breadcrumb-list">
+        <li><a href="/">Home</a></li>
+        <li><span class="current" aria-current="page">Terms</span></li>
+      </ol>
+    </div>
+  </nav>
 
 
   <!-- ────────────────────────────────────────────
