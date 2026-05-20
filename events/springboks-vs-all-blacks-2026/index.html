@@ -413,22 +413,31 @@
       max-width: 760px;
     }
 
-    .hero-breadcrumb {
+    /* ───────────────────────────────────────────────
+       BREADCRUMB
+    ─────────────────────────────────────────────── */
+    .breadcrumb {
+      background: var(--eg-warm-neutral);
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .breadcrumb-list {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      list-style: none;
       font-family: var(--font-body);
-      font-weight: 500;
-      font-size: 11px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.6);
-      margin-bottom: 20px;
+      font-size: 12px;
+      color: var(--eg-mid-grey);
     }
-
-    .hero-breadcrumb a {
-      color: rgba(255,255,255,0.6);
-      transition: color 0.2s ease;
+    .breadcrumb-list li + li::before {
+      content: '/';
+      opacity: 0.4;
+      margin-right: 8px;
     }
-    .hero-breadcrumb a:hover { color: var(--eg-gold); }
-    .hero-breadcrumb span { margin: 0 10px; opacity: 0.4; }
+    .breadcrumb-list a { color: var(--eg-mid-grey); transition: color 0.2s; }
+    .breadcrumb-list a:hover { color: var(--eg-gold); }
+    .breadcrumb-list .current { color: var(--eg-charcoal); }
 
     .hero-eyebrow {
       font-family: var(--font-body);
@@ -1066,12 +1075,6 @@
       <div class="hero-content">
         <div class="hero-inner">
 
-          <p class="hero-breadcrumb">
-            <a href="/experiences">Experiences</a><span>/</span>
-            <a href="/experiences/rugby">Rugby</a><span>/</span>
-            Springboks vs All Blacks 2026
-          </p>
-
           <p class="hero-eyebrow">Eventra Experiences &mdash; Private Suite Hospitality</p>
 
           <h1 class="hero-headline">
@@ -1105,6 +1108,20 @@
         </div>
       </div>
     </section>
+
+    <!-- ────────────────────────────────────────────
+         BREADCRUMB
+    ──────────────────────────────────────────── -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb-list">
+          <li><a href="/">Home</a></li>
+          <li><a href="/experiences">Experiences</a></li>
+          <li><a href="/experiences/rugby">Rugby</a></li>
+          <li><span class="current" aria-current="page">Springboks vs All Blacks 2026</span></li>
+        </ol>
+      </div>
+    </nav>
 
 
     <!-- ────────────────────────────────────────────
