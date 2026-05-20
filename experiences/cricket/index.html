@@ -179,14 +179,31 @@
     .mobile-subnav { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-top: 14px; }
     .mobile-sublink { font-size: 12px !important; opacity: 0.72; }
 
-    /* BREADCRUMB */
-    .breadcrumb-bar { background: var(--eg-charcoal); padding: 14px 0; }
-    .breadcrumb { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-    .breadcrumb-item { font-family: var(--font-body); font-size: 12px; letter-spacing: 0.08em; color: rgba(255,255,255,0.45); }
-    .breadcrumb-item a { color: rgba(255,255,255,0.55); transition: color 0.2s; }
-    .breadcrumb-item a:hover { color: var(--eg-gold); }
-    .breadcrumb-sep { color: rgba(255,255,255,0.25); font-size: 10px; }
-    .breadcrumb-item.current { color: var(--eg-gold); }
+    /* ───────────────────────────────────────────────
+       BREADCRUMB
+    ─────────────────────────────────────────────── */
+    .breadcrumb {
+      background: var(--eg-warm-neutral);
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .breadcrumb-list {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      list-style: none;
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: var(--eg-mid-grey);
+    }
+    .breadcrumb-list li + li::before {
+      content: '/';
+      opacity: 0.4;
+      margin-right: 8px;
+    }
+    .breadcrumb-list a { color: var(--eg-mid-grey); transition: color 0.2s; }
+    .breadcrumb-list a:hover { color: var(--eg-gold); }
+    .breadcrumb-list .current { color: var(--eg-charcoal); }
 
     /* HERO */
     .hero {
@@ -463,20 +480,6 @@
   </nav>
 
 
-  <!-- BREADCRUMB -->
-  <div class="breadcrumb-bar" style="padding-top: 72px;">
-    <div class="container">
-      <nav class="breadcrumb" aria-label="Breadcrumb">
-        <span class="breadcrumb-item"><a href="/">Home</a></span>
-        <span class="breadcrumb-sep">&rsaquo;</span>
-        <span class="breadcrumb-item"><a href="/experiences">Experiences</a></span>
-        <span class="breadcrumb-sep">&rsaquo;</span>
-        <span class="breadcrumb-item current" aria-current="page">Cricket</span>
-      </nav>
-    </div>
-  </div>
-
-
   <!-- HERO -->
   <section class="hero" aria-label="Cricket experiences hero">
     <div class="hero-bg" id="hero-bg"></div>
@@ -493,6 +496,18 @@
     </div>
   </section>
 
+  <!-- ────────────────────────────────────────────
+       BREADCRUMB
+  ──────────────────────────────────────────── -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="container">
+      <ol class="breadcrumb-list">
+        <li><a href="/">Home</a></li>
+        <li><a href="/experiences">Experiences</a></li>
+        <li><span class="current" aria-current="page">Cricket</span></li>
+      </ol>
+    </div>
+  </nav>
 
   <!-- FEATURED EXPERIENCE -->
   <section class="feature-section" aria-label="England vs South Africa New Year Test Series">
