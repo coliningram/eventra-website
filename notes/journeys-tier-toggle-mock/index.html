@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Tier-Toggle Mock — Internal — Eventra</title>
+  <link rel="icon" type="image/png" href="/images/logos/Eventra-Logo-Gold.png">
+  <meta name="description" content="Internal design mock — tier-toggle UI variants for /journeys/ detail pages. Not for external review.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --eg-white:         #FFFFFF;
+      --eg-warm-neutral:  #F8F5F0;
+      --eg-charcoal:      #1A1A1A;
+      --eg-mid-grey:      #6B6B6B;
+      --eg-gold:          #B8966B;
+      --eg-gold-hover:    #9E7D55;
+
+      --font-display:     'Cormorant Garamond', serif;
+      --font-body:        'Inter', sans-serif;
+
+      --max-width:        1080px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: var(--eg-charcoal);
+      background: var(--eg-white);
+      -webkit-font-smoothing: antialiased;
+      padding: 60px 0 120px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    a { color: var(--eg-gold); text-decoration: underline; }
+
+    /* ───────────────────────────────────────────────
+       INTERNAL-MOCK BANNERS / TYPOGRAPHY
+    ─────────────────────────────────────────────── */
+    .internal-badge {
+      display: inline-block;
+      background: var(--eg-charcoal);
+      color: var(--eg-white);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      border-radius: 2px;
+      margin-bottom: 16px;
+    }
+    .page-title {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: 44px;
+      line-height: 1.1;
+      color: var(--eg-charcoal);
+      margin-bottom: 16px;
+    }
+    .page-intro {
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--eg-mid-grey);
+      max-width: 720px;
+      margin-bottom: 12px;
+    }
+    .page-intro strong { color: var(--eg-charcoal); }
+    .page-meta {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: var(--eg-mid-grey);
+      margin-top: 24px;
+      padding: 12px 16px;
+      background: var(--eg-warm-neutral);
+      border-left: 3px solid var(--eg-gold);
+    }
+
+    .variant-section {
+      margin-top: 80px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(0,0,0,0.08);
+    }
+    .variant-heading {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 30px;
+      color: var(--eg-charcoal);
+      margin-bottom: 8px;
+    }
+    .variant-blurb {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--eg-mid-grey);
+      margin-bottom: 32px;
+      max-width: 640px;
+      line-height: 1.6;
+    }
+
+    .config-heading {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--eg-gold);
+      margin: 36px 0 16px;
+    }
+
+    /* ───────────────────────────────────────────────
+       TOGGLE WRAPPER (shared)
+    ─────────────────────────────────────────────── */
+    .toggle-wrap {
+      position: relative;
+      padding: 32px;
+      background: var(--eg-white);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 4px;
+      margin-bottom: 16px;
+    }
+    .toggle-wrap input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+      pointer-events: none;
+    }
+
+    /* ───────────────────────────────────────────────
+       SHARED "Where you stay" PANEL
+    ─────────────────────────────────────────────── */
+    .panel { display: none; }
+    .panel-note {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-style: italic;
+      color: var(--eg-mid-grey);
+      margin-bottom: 20px;
+      padding: 10px 14px;
+      background: var(--eg-warm-neutral);
+      border-left: 2px solid var(--eg-gold);
+    }
+    .panel-title {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 22px;
+      color: var(--eg-charcoal);
+      margin-bottom: 20px;
+    }
+    .property-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .property-card {
+      display: flex;
+      gap: 14px;
+      padding: 14px;
+      background: var(--eg-warm-neutral);
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    .property-thumb {
+      flex: 0 0 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #d8d2c4 0%, #b9b0a0 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-body);
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.4);
+    }
+    .property-body { flex: 1; }
+    .property-title {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 18px;
+      color: var(--eg-charcoal);
+      margin-bottom: 4px;
+    }
+    .property-teaser {
+      font-family: var(--font-body);
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--eg-mid-grey);
+    }
+
+    /* ───────────────────────────────────────────────
+       V1 — HORIZONTAL TAB BAR
+    ─────────────────────────────────────────────── */
+    .v1-tabs {
+      display: flex;
+      gap: 32px;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      margin-bottom: 28px;
+    }
+    .v1-tabs label {
+      padding: 12px 0;
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--eg-mid-grey);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .v1-tabs label:hover { color: var(--eg-charcoal); }
+
+    /* V1 Cape — 3 tiers */
+    #v1c-classic:checked   ~ .v1-tabs label[for="v1c-classic"],
+    #v1c-signature:checked ~ .v1-tabs label[for="v1c-signature"],
+    #v1c-prestige:checked  ~ .v1-tabs label[for="v1c-prestige"] {
+      color: var(--eg-charcoal);
+      border-bottom-color: var(--eg-gold);
+    }
+    #v1c-classic:checked   ~ .panels .panel-classic,
+    #v1c-signature:checked ~ .panels .panel-signature,
+    #v1c-prestige:checked  ~ .panels .panel-prestige { display: block; }
+
+    /* V1 Rwanda — 2 tiers */
+    #v1r-4star:checked ~ .v1-tabs label[for="v1r-4star"],
+    #v1r-5star:checked ~ .v1-tabs label[for="v1r-5star"] {
+      color: var(--eg-charcoal);
+      border-bottom-color: var(--eg-gold);
+    }
+    #v1r-4star:checked ~ .panels .panel-4star,
+    #v1r-5star:checked ~ .panels .panel-5star { display: block; }
+
+    /* ───────────────────────────────────────────────
+       V2 — PILL BUTTON GROUP
+    ─────────────────────────────────────────────── */
+    .v2-pills {
+      display: inline-flex;
+      gap: 0;
+      margin-bottom: 28px;
+      padding: 4px;
+      background: var(--eg-warm-neutral);
+      border-radius: 999px;
+    }
+    .v2-pills label {
+      padding: 10px 24px;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--eg-gold);
+      cursor: pointer;
+      border-radius: 999px;
+      border: 1.5px solid transparent;
+      transition: all 0.2s;
+    }
+    .v2-pills label:hover { color: var(--eg-charcoal); }
+
+    /* V2 Cape — 3 tiers */
+    #v2c-classic:checked   ~ .v2-pills label[for="v2c-classic"],
+    #v2c-signature:checked ~ .v2-pills label[for="v2c-signature"],
+    #v2c-prestige:checked  ~ .v2-pills label[for="v2c-prestige"] {
+      background: var(--eg-gold);
+      color: var(--eg-white);
+      border-color: var(--eg-gold);
+    }
+    #v2c-classic:checked   ~ .panels .panel-classic,
+    #v2c-signature:checked ~ .panels .panel-signature,
+    #v2c-prestige:checked  ~ .panels .panel-prestige { display: block; }
+
+    /* V2 Rwanda — 2 tiers */
+    #v2r-4star:checked ~ .v2-pills label[for="v2r-4star"],
+    #v2r-5star:checked ~ .v2-pills label[for="v2r-5star"] {
+      background: var(--eg-gold);
+      color: var(--eg-white);
+      border-color: var(--eg-gold);
+    }
+    #v2r-4star:checked ~ .panels .panel-4star,
+    #v2r-5star:checked ~ .panels .panel-5star { display: block; }
+
+    /* ───────────────────────────────────────────────
+       V3 — CARDS-AS-TOGGLE
+    ─────────────────────────────────────────────── */
+    .v3-cards {
+      display: grid;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .v3-cards.v3-3col { grid-template-columns: repeat(3, 1fr); }
+    .v3-cards.v3-2col { grid-template-columns: repeat(2, 1fr); }
+    .v3-cards label {
+      display: block;
+      padding: 22px 24px;
+      background: var(--eg-white);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-top: 2px solid transparent;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: all 0.25s ease;
+    }
+    .v3-cards label:hover { opacity: 0.95; }
+    .v3-card-title {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 26px;
+      color: var(--eg-charcoal);
+      margin-bottom: 6px;
+      line-height: 1.1;
+    }
+    .v3-card-essence {
+      font-family: var(--font-body);
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--eg-mid-grey);
+    }
+
+    /* V3 Cape — 3 tiers */
+    #v3c-classic:checked   ~ .v3-cards label[for="v3c-classic"],
+    #v3c-signature:checked ~ .v3-cards label[for="v3c-signature"],
+    #v3c-prestige:checked  ~ .v3-cards label[for="v3c-prestige"] {
+      opacity: 1;
+      border-top-color: var(--eg-gold);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      transform: translateY(-2px);
+    }
+    #v3c-classic:checked   ~ .panels .panel-classic,
+    #v3c-signature:checked ~ .panels .panel-signature,
+    #v3c-prestige:checked  ~ .panels .panel-prestige { display: block; }
+
+    /* V3 Rwanda — 2 tiers */
+    #v3r-4star:checked ~ .v3-cards label[for="v3r-4star"],
+    #v3r-5star:checked ~ .v3-cards label[for="v3r-5star"] {
+      opacity: 1;
+      border-top-color: var(--eg-gold);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      transform: translateY(-2px);
+    }
+    #v3r-4star:checked ~ .panels .panel-4star,
+    #v3r-5star:checked ~ .panels .panel-5star { display: block; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .page-title { font-size: 32px; }
+      .property-grid { grid-template-columns: 1fr; }
+      .v3-cards.v3-3col, .v3-cards.v3-2col { grid-template-columns: 1fr; }
+      .v1-tabs { gap: 20px; overflow-x: auto; }
+      .v2-pills { flex-wrap: wrap; }
+      .container { padding: 0 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- ────────────────────────────────────────────
+         INTRO
+    ──────────────────────────────────────────── -->
+    <span class="internal-badge">Internal · Noindex</span>
+    <h1 class="page-title">Tier-Toggle Mock</h1>
+    <p class="page-intro">Internal design mock — <strong>three tier-toggle UI proposals</strong> for /journeys/ detail pages. Pick one; sub-task C builds the chosen variant on the Rwanda detail page.</p>
+    <p class="page-intro">Each variant is rendered with both a 3-tier (Cape: Classic / Signature / Prestige) and 2-tier (Rwanda: 4★ / 5★) configuration, so you can see how each pattern handles both row counts.</p>
+    <div class="page-meta">
+      NOT for external review · noindex,nofollow · disallowed in robots.txt · property labels are placeholders, not real K&amp;D content
+    </div>
+
+    <!-- ════════════════════════════════════════════
+         VARIANT 1 — TAB BAR
+    ════════════════════════════════════════════ -->
+    <section class="variant-section" data-toggle-variant="V1">
+      <h2 class="variant-heading">Variant 1 — Tab Bar</h2>
+      <p class="variant-blurb">Horizontal tab bar with gold underline on the active tier. Editorial, restrained, easy to read at a glance. Closest pattern to the existing Bespoke nav language.</p>
+
+      <!-- V1 · Cape 3-tier -->
+      <p class="config-heading">Cape — 3 tiers</p>
+      <div class="toggle-wrap" data-config="cape-3tier">
+        <input type="radio" id="v1c-classic"   name="v1-cape" checked>
+        <input type="radio" id="v1c-signature" name="v1-cape">
+        <input type="radio" id="v1c-prestige"  name="v1-cape">
+
+        <div class="v1-tabs">
+          <label for="v1c-classic">Classic</label>
+          <label for="v1c-signature">Signature</label>
+          <label for="v1c-prestige">Prestige</label>
+        </div>
+
+        <p class="panel-note">Activities, day-by-day, and inclusions stay the same across tiers — only the properties below change.</p>
+
+        <div class="panels">
+          <div class="panel panel-classic">
+            <h3 class="panel-title">Where you stay — Classic</h3>
+            <div class="property-grid">
+              <div class="property-card">
+                <div class="property-thumb">[image]</div>
+                <div class="property-body">
+                  <p class="property-title">Property A — Classic (4★ equivalent)</p>
+                  <p class="property-teaser">Editorial luxury at well-known properties — placeholder copy.</p>
+                </div>
+              </div>
+              <div class="property-card">
+                <div class="property-thumb">[image]</div>
+                <div class="property-body">
+                  <p class="property-title">Property B — Classic</p>
+                  <p class="property-teaser">Two-line placeholder teaser for the second Classic-tier property.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-signature">
+            <h3 class="panel-title">Where you stay — Signature</h3>
+            <div class="property-grid">
+              <div class="property-card">
+                <div class="property-thumb">[image]</div>
+                <div class="property-body">
+                  <p class="property-title">Property C — Signature (5★ equivalent)</p>
+                  <p class="property-teaser">Best-in-class signature houses — placeholder copy.</p>
+                </div>
+              </div>
+              <div class="property-card">
+                <div class="property-thumb">[image]</div>
+                <div class="property-body">
+                  <p class="property-title">Property D — Signature</p>
+                  <p class="property-teaser">Two-line placeholder teaser for the second Signature-tier property.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-prestige">
+            <h3 class="panel-title">Where you stay — Prestige</h3>
+            <div class="property-grid">
+              <div class="property-card">
+                <div class="property-thumb">[image]</div>
+                <div class="property-body">
+                  <p class="property-title">Property E — Prestige</p>
+                  <p class="property-teaser">Most exclusive private estates — placeholder copy.</p>
+                </div>
+              </div>
+              <div class="property-card">
+                <div class="property-thumb">[image]</div>
+                <div class="property-body">
+                  <p class="property-title">Property F — Prestige</p>
+                  <p class="property-teaser">Two-line placeholder teaser for the second Prestige-tier property.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- V1 · Rwanda 2-tier -->
+      <p class="config-heading">Rwanda — 2 tiers</p>
+      <div class="toggle-wrap" data-config="rwanda-2tier">
+        <input type="radio" id="v1r-4star" name="v1-rwanda" checked>
+        <input type="radio" id="v1r-5star" name="v1-rwanda">
+
+        <div class="v1-tabs">
+          <label for="v1r-4star">4★</label>
+          <label for="v1r-5star">5★</label>
+        </div>
+
+        <p class="panel-note">Activities, day-by-day, and inclusions stay the same across tiers — only the properties below change.</p>
+
+        <div class="panels">
+          <div class="panel panel-4star">
+            <h3 class="panel-title">Where you stay — 4★</h3>
+            <div class="property-grid">
+              <div class="property-card">
+                <div class="property-thumb">[image]</div>
+                <div class="property-body">
+                  <p class="property-title">Property A — Classic (4★ equivalent)</p>
+                  <p class="property-teaser">Placeholder property for the 4-star Rwanda tier.</p>
+                </div>
+              </div>
+              <div class="property-card">
+                <div class="property-thumb">[image]</div>
+                <div class="property-body">
+                  <p class="property-title">Property B — Classic</p>
+                  <p class="property-teaser">Placeholder second 4-star Rwanda property.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-5star">
+            <h3 class="panel-title">Where you stay — 5★</h3>
+            <div class="property-grid">
+              <div class="property-card">
+                <div class="property-thumb">[image]</div>
+                <div class="property-body">
+                  <p class="property-title">Property C — Signature (5★ equivalent)</p>
+                  <p class="property-teaser">Placeholder property for the 5-star Rwanda tier.</p>
+                </div>
+              </div>
+              <div class="property-card">
+                <div class="property-thumb">[image]</div>
+                <div class="property-body">
+                  <p class="property-title">Property D — Signature</p>
+                  <p class="property-teaser">Placeholder second 5-star Rwanda property.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ════════════════════════════════════════════
+         VARIANT 2 — PILL BUTTONS
+    ════════════════════════════════════════════ -->
+    <section class="variant-section" data-toggle-variant="V2">
+      <h2 class="variant-heading">Variant 2 — Pill Buttons</h2>
+      <p class="variant-blurb">Rounded-pill button group, gold-filled active state. Echoes the existing primary / secondary button system. More obvious as a control; slightly louder visually than the tab bar.</p>
+
+      <!-- V2 · Cape 3-tier -->
+      <p class="config-heading">Cape — 3 tiers</p>
+      <div class="toggle-wrap" data-config="cape-3tier">
+        <input type="radio" id="v2c-classic"   name="v2-cape" checked>
+        <input type="radio" id="v2c-signature" name="v2-cape">
+        <input type="radio" id="v2c-prestige"  name="v2-cape">
+
+        <div class="v2-pills">
+          <label for="v2c-classic">Classic</label>
+          <label for="v2c-signature">Signature</label>
+          <label for="v2c-prestige">Prestige</label>
+        </div>
+
+        <p class="panel-note">Activities, day-by-day, and inclusions stay the same across tiers — only the properties below change.</p>
+
+        <div class="panels">
+          <div class="panel panel-classic">
+            <h3 class="panel-title">Where you stay — Classic</h3>
+            <div class="property-grid">
+              <div class="property-card">
+                <div class="property-thumb">[image]</div>
+                <div class="property-body">
+                  <p class="property-title">Property A — Classic (4★ equivalent)</p>
+                  <p class="property-teaser">Editorial luxury at well-known properties — placeholder copy.</p>
+                </div>
+              </div>
+              <div class="property-card">
+                <div class="property-thumb">[image]</div>
+                <div class="property-body">
+                  <p class="property-title">Property B — Classic</p>
+                  <p class="property-teaser">Two-line placeholder teaser for the second Classic-tier property.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-signature">
+            <h3 class="panel-title">Where you stay — Signature</h3>
+            <div class="property-grid">
+              <div class="property-card">
+                <div class="property-thumb">[image]</div>
+                <div class="property-body">
+                  <p class="property-title">Property C — Signature (5★ equivalent)</p>
+                  <p class="property-teaser">Best-in-class signature houses — placeholder copy.</p>
+                </div>
+              </div>
+              <div class="property-card">
+                <div class="property-thumb">[image]</div>
+                <div class="property-body">
+                  <p class="property-title">Property D — Signature</p>
+                  <p class="property-teaser">Two-line placeholder teaser for the second Signature-tier property.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-prestige">
+            <h3 class="panel-title">Where you stay — Prestige</h3>
+            <div class="property-grid">
+              <div class="property-card">
+                <div class="property-thumb">[image]</div>
+                <div class="property-body">
+                  <p class="property-title">Property E — Prestige</p>
+                  <p class="property-teaser">Most exclusive private estates — placeholder copy.</p>
+                </div>
+              </div>
+              <div class="property-card">
+                <div class="property-thumb">[image]</div>
+                <div class="property-body">
+                  <p class="property-title">Property F — Prestige</p>
+                  <p class="property-teaser">Two-line placeholder teaser for the second Prestige-tier property.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- V2 · Rwanda 2-tier -->
+      <p class="config-heading">Rwanda — 2 tiers</p>
+      <div class="toggle-wrap" data-config="rwanda-2tier">
+        <input type="radio" id="v2r-4star" name="v2-rwanda" checked>
+        <input type="radio" id="v2r-5star" name="v2-rwanda">
+
+        <div class="v2-pills">
+          <label for="v2r-4star">4★</label>
+          <label for="v2r-5star">5★</label>
+        </div>
+
+        <p class="panel-note">Activities, day-by-day, and inclusions stay the same across tiers — only the properties below change.</p>
+
+        <div class="panels">
+          <div class="panel panel-4star">
+            <h3 class="panel-title">Where you stay — 4★</h3>
+            <div class="property-grid">
+              <div class="property-card">
+                <div class="property-thumb">[image]</div>
+                <div class="property-body">
+                  <p class="property-title">Property A — Classic (4★ equivalent)</p>
+                  <p class="property-teaser">Placeholder property for the 4-star Rwanda tier.</p>
+                </div>
+              </div>
+              <div class="property-card">
+                <div class="property-thumb">[image]</div>
+                <div class="property-body">
+                  <p class="property-title">Property B — Classic</p>
+                  <p class="property-teaser">Placeholder second 4-star Rwanda property.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-5star">
+            <h3 class="panel-title">Where you stay — 5★</h3>
+            <div class="property-grid">
+              <div class="property-card">
+                <div class="property-thumb">[image]</div>
+                <div class="property-body">
+                  <p class="property-title">Property C — Signature (5★ equivalent)</p>
+                  <p class="property-teaser">Placeholder property for the 5-star Rwanda tier.</p>
+                </div>
+              </div>
+              <div class="property-card">
+                <div class="property-thumb">[image]</div>
+                <div class="property-body">
+                  <p class="property-title">Property D — Signature</p>
+                  <p class="property-teaser">Placeholder second 5-star Rwanda property.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ════════════════════════════════════════════
+         VARIANT 3 — CARDS-AS-TOGGLE
+    ════════════════════════════════════════════ -->
+    <section class="variant-section" data-toggle-variant="V3">
+      <h2 class="variant-heading">Variant 3 — Cards-as-Toggle</h2>
+      <p class="variant-blurb">Tier itself becomes the editorial decision. Each tier renders as a card with a one-line essence; active card lifts and gains the gold top-border. More commitment, more brand voice — but uses more vertical space.</p>
+
+      <!-- V3 · Cape 3-tier -->
+      <p class="config-heading">Cape — 3 tiers</p>
+      <div class="toggle-wrap" data-config="cape-3tier">
+        <input type="radio" id="v3c-classic"   name="v3-cape" checked>
+        <input type="radio" id="v3c-signature" name="v3-cape">
+        <input type="radio" id="v3c-prestige"  name="v3-cape">
+
+        <div class="v3-cards v3-3col">
+          <label for="v3c-classic">
+            <p class="v3-card-title">Classic</p>
+            <p class="v3-card-essence">Editorial luxury at well-known properties.</p>
+          </label>
+          <label for="v3c-signature">
+            <p class="v3-card-title">Signature</p>
+            <p class="v3-card-essence">Best-in-class signature houses.</p>
+          </label>
+          <label for="v3c-prestige">
+            <p class="v3-card-title">Prestige</p>
+            <p class="v3-card-essence">Most exclusive private estates.</p>
+          </label>
+        </div>
+
+        <p class="panel-note">Activities, day-by-day, and inclusions stay the same across tiers — only the properties below change.</p>
+
+        <div class="panels">
+          <div class="panel panel-classic">
+            <h3 class="panel-title">Where you stay — Classic</h3>
+            <div class="property-grid">
+              <div class="property-card">
+                <div class="property-thumb">[image]</div>
+                <div class="property-body">
+                  <p class="property-title">Property A — Classic (4★ equivalent)</p>
+                  <p class="property-teaser">Editorial luxury at well-known properties — placeholder copy.</p>
+                </div>
+              </div>
+              <div class="property-card">
+                <div class="property-thumb">[image]</div>
+                <div class="property-body">
+                  <p class="property-title">Property B — Classic</p>
+                  <p class="property-teaser">Two-line placeholder teaser for the second Classic-tier property.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-signature">
+            <h3 class="panel-title">Where you stay — Signature</h3>
+            <div class="property-grid">
+              <div class="property-card">
+                <div class="property-thumb">[image]</div>
+                <div class="property-body">
+                  <p class="property-title">Property C — Signature (5★ equivalent)</p>
+                  <p class="property-teaser">Best-in-class signature houses — placeholder copy.</p>
+                </div>
+              </div>
+              <div class="property-card">
+                <div class="property-thumb">[image]</div>
+                <div class="property-body">
+                  <p class="property-title">Property D — Signature</p>
+                  <p class="property-teaser">Two-line placeholder teaser for the second Signature-tier property.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-prestige">
+            <h3 class="panel-title">Where you stay — Prestige</h3>
+            <div class="property-grid">
+              <div class="property-card">
+                <div class="property-thumb">[image]</div>
+                <div class="property-body">
+                  <p class="property-title">Property E — Prestige</p>
+                  <p class="property-teaser">Most exclusive private estates — placeholder copy.</p>
+                </div>
+              </div>
+              <div class="property-card">
+                <div class="property-thumb">[image]</div>
+                <div class="property-body">
+                  <p class="property-title">Property F — Prestige</p>
+                  <p class="property-teaser">Two-line placeholder teaser for the second Prestige-tier property.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- V3 · Rwanda 2-tier -->
+      <p class="config-heading">Rwanda — 2 tiers</p>
+      <div class="toggle-wrap" data-config="rwanda-2tier">
+        <input type="radio" id="v3r-4star" name="v3-rwanda" checked>
+        <input type="radio" id="v3r-5star" name="v3-rwanda">
+
+        <div class="v3-cards v3-2col">
+          <label for="v3r-4star">
+            <p class="v3-card-title">4★</p>
+            <p class="v3-card-essence">Editorial luxury at well-known properties.</p>
+          </label>
+          <label for="v3r-5star">
+            <p class="v3-card-title">5★</p>
+            <p class="v3-card-essence">Best-in-class signature houses.</p>
+          </label>
+        </div>
+
+        <p class="panel-note">Activities, day-by-day, and inclusions stay the same across tiers — only the properties below change.</p>
+
+        <div class="panels">
+          <div class="panel panel-4star">
+            <h3 class="panel-title">Where you stay — 4★</h3>
+            <div class="property-grid">
+              <div class="property-card">
+                <div class="property-thumb">[image]</div>
+                <div class="property-body">
+                  <p class="property-title">Property A — Classic (4★ equivalent)</p>
+                  <p class="property-teaser">Placeholder property for the 4-star Rwanda tier.</p>
+                </div>
+              </div>
+              <div class="property-card">
+                <div class="property-thumb">[image]</div>
+                <div class="property-body">
+                  <p class="property-title">Property B — Classic</p>
+                  <p class="property-teaser">Placeholder second 4-star Rwanda property.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-5star">
+            <h3 class="panel-title">Where you stay — 5★</h3>
+            <div class="property-grid">
+              <div class="property-card">
+                <div class="property-thumb">[image]</div>
+                <div class="property-body">
+                  <p class="property-title">Property C — Signature (5★ equivalent)</p>
+                  <p class="property-teaser">Placeholder property for the 5-star Rwanda tier.</p>
+                </div>
+              </div>
+              <div class="property-card">
+                <div class="property-thumb">[image]</div>
+                <div class="property-body">
+                  <p class="property-title">Property D — Signature</p>
+                  <p class="property-teaser">Placeholder second 5-star Rwanda property.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+</body>
+</html>
