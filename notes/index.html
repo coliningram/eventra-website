@@ -84,47 +84,112 @@
     }
     .btn-sm { padding: 12px 28px; font-size: 12px; }
 
-    /* Header */
+    /* ───────────────────────────────────────────────
+       NAVIGATION
+    ─────────────────────────────────────────────── */
     .site-header {
-      position: fixed; top: 0; left: 0; right: 0;
-      z-index: 100; height: 72px;
-      display: flex; align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      background: transparent;
+      transition: background 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .site-header.scrolled {
       background: var(--eg-white);
       box-shadow: 0 2px 20px rgba(0,0,0,0.08);
     }
+
     .site-header .container {
       width: 100%;
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
-    .site-logo { flex-shrink: 0; display: flex; align-items: center; gap: 10px; }
-    .logo-img { display: block; width: auto; height: 40px; max-height: 40px; }
+
+    .site-logo {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-img {
+      display: block;
+      width: auto;
+      height: 40px;
+      max-height: 40px;
+    }
+
+    .logo-dark {
+      display: none;
+    }
+
+    .site-header.scrolled .logo-white {
+      display: none;
+    }
+
+    .site-header.scrolled .logo-dark {
+      display: block;
+    }
+
     .logo-text {
       font-family: var(--font-display);
       font-weight: 400;
       font-size: 22px;
       letter-spacing: 0.04em;
-      color: var(--eg-charcoal);
+      color: var(--eg-white);
+      transition: color 0.35s ease;
       white-space: nowrap;
     }
+
+    .site-header.scrolled .logo-text {
+      color: var(--eg-charcoal);
+    }
+
     .logo-subtitle {
       font-family: var(--font-body);
       font-size: 9px;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--eg-mid-grey);
+      color: rgba(255,255,255,0.7);
+      transition: color 0.35s ease;
       margin-top: 2px;
     }
-    .site-nav { display: flex; align-items: center; gap: 36px; }
+
+    .site-header.scrolled .logo-subtitle {
+      color: var(--eg-mid-grey);
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+
     .nav-link {
       font-family: var(--font-body);
       font-weight: 500;
       font-size: 12px;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--eg-charcoal);
+      color: rgba(255,255,255,0.88);
       transition: color 0.25s ease;
     }
-    .nav-link:hover { color: var(--eg-gold); }
+
+    .site-header.scrolled .nav-link {
+      color: var(--eg-charcoal);
+    }
+
+    .nav-link:hover {
+      color: var(--eg-gold);
+    }
+
     .nav-cta {
       font-family: var(--font-body);
       font-weight: 600;
@@ -133,14 +198,113 @@
       text-transform: uppercase;
       padding: 10px 24px;
       border-radius: 2px;
-      border: 1.5px solid var(--eg-gold);
-      color: var(--eg-gold);
+      border: 1.5px solid rgba(255,255,255,0.7);
+      color: var(--eg-white);
       transition: all 0.25s ease;
     }
+
+    .site-header.scrolled .nav-cta {
+      border-color: var(--eg-gold);
+      color: var(--eg-gold);
+    }
+
     .nav-cta:hover {
+      background: var(--eg-white);
+      color: var(--eg-charcoal);
+      border-color: var(--eg-white);
+    }
+
+    .site-header.scrolled .nav-cta:hover {
       background: var(--eg-gold);
       color: var(--eg-white);
+      border-color: var(--eg-gold);
     }
+
+    /* Mobile nav toggle */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 1.5px;
+      background: var(--eg-white);
+      transition: background 0.35s ease;
+    }
+
+    .site-header.scrolled .nav-hamburger span {
+      background: var(--eg-charcoal);
+    }
+
+    /* Mobile overlay nav */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--eg-charcoal);
+      z-index: 99;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+    }
+
+    .mobile-nav.open {
+      display: flex;
+    }
+
+    .mobile-nav .nav-link {
+      color: var(--eg-white);
+      font-size: 14px;
+    }
+
+    .mobile-nav .nav-cta {
+      border-color: var(--eg-gold);
+      color: var(--eg-gold);
+    }
+
+    .mobile-nav-close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      cursor: pointer;
+      font-size: 28px;
+      color: var(--eg-white);
+      line-height: 1;
+    }
+
+    /* Experiences dropdown — desktop */
+    .nav-dropdown-wrap { position: relative; display: flex; align-items: center; }
+    .nav-dropdown { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); background: var(--eg-white); min-width: 180px; border-top: 2px solid var(--eg-gold); box-shadow: 0 8px 32px rgba(0,0,0,0.12); opacity: 0; visibility: hidden; transition: opacity 0.2s ease, visibility 0.2s ease; transition-delay: 0.2s; z-index: 200; pointer-events: none; padding-top: 14px; }
+    .nav-dropdown-wrap:hover .nav-dropdown { opacity: 1; visibility: visible; pointer-events: auto; transition-delay: 0s; }
+    .nav-dropdown a { display: block; padding: 11px 20px; font-family: var(--font-body); font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--eg-charcoal); transition: background 0.15s, color 0.15s; text-decoration: none; }
+    .nav-dropdown a:hover { background: var(--eg-warm-neutral); color: var(--eg-gold); }
+    .nav-dropdown .nav-dropdown-view-all { border-top: 1px solid #eee; color: var(--eg-gold); }
+    /* Experiences expand — mobile */
+    .mobile-exp-wrap { display: flex; flex-direction: column; align-items: center; }
+    .mobile-exp-btn { background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 8px; padding: 0; }
+    .mobile-exp-chevron { font-size: 9px; transition: transform 0.2s; display: inline-block; }
+    .mobile-exp-btn[aria-expanded="true"] .mobile-exp-chevron { transform: rotate(180deg); }
+    .mobile-subnav { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-top: 14px; }
+    .mobile-sublink { font-size: 12px !important; opacity: 0.72; }
+    /* Bespoke nested dropdown — desktop */
+    .nav-dropdown-item { position: relative; }
+    .nav-subnav { position: absolute; top: 0; left: 100%; background: var(--eg-white); min-width: 200px; border-top: 2px solid var(--eg-gold); box-shadow: 0 8px 32px rgba(0,0,0,0.12); opacity: 0; visibility: hidden; transition: opacity 0.2s ease, visibility 0.2s ease; transition-delay: 0.2s; z-index: 210; pointer-events: none; padding-top: 14px; }
+    .nav-dropdown-item:hover .nav-subnav { opacity: 1; visibility: visible; pointer-events: auto; transition-delay: 0s; }
+    .nav-subnav a { display: block; padding: 11px 20px; font-family: var(--font-body); font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--eg-charcoal); transition: background 0.15s, color 0.15s; text-decoration: none; }
+    .nav-subnav a:hover { background: var(--eg-warm-neutral); color: var(--eg-gold); }
+    .nav-subnav .nav-subnav-design { border-top: 1px solid #eee; color: var(--eg-gold); }
+    .nav-dropdown-arrow { font-size: 10px; opacity: 0.55; margin-left: 4px; }
+    /* Bespoke mobile nested accordion */
+    .mobile-sub-group { display: flex; flex-direction: column; align-items: center; width: 100%; gap: 0; }
+    .mobile-sub-group-btn { font-size: 12px !important; opacity: 0.72; background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 6px; padding: 0; color: var(--eg-white); font-family: var(--font-body); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; }
+    .mobile-sub-sub-nav { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 10px; margin-bottom: 4px; }
+    .mobile-sub-sublink { font-size: 11px !important; opacity: 0.55; }
 
     /* Intro / hero */
     .notes-intro {
@@ -298,11 +462,103 @@
       .container { padding: 0 24px; }
       .site-header { height: 60px; }
       .site-nav { display: none; }
+      .nav-hamburger { display: flex; }
       .notes-intro { padding: 140px 0 60px; }
       .notes-intro h1 { font-size: 38px; }
       .notes-intro p.intro-lede { font-size: 16px; }
       .notes-empty { padding: 80px 0 100px; }
       .notes-empty-message { font-size: 22px; }
+    }
+
+    /* ───────────────────────────────────────────────
+       NOTES CARD (editorial, grid-ready)
+    ─────────────────────────────────────────────── */
+    .notes-card-list {
+      padding: 80px 0 140px;
+      background: var(--eg-white);
+    }
+    .notes-card-rule {
+      width: 48px;
+      height: 1px;
+      background: var(--eg-gold);
+      margin: 0 auto 56px;
+    }
+    .notes-card-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      max-width: 720px;
+      margin: 0 auto;
+      /* GRID READY: when a 2nd post arrives, switch to:
+           max-width: 1100px;
+           grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+         No card markup changes required. */
+    }
+    .notes-card {
+      display: block;
+      background: var(--eg-white);
+      border: 1px solid var(--eg-gold);
+      padding: 40px 36px;
+      text-align: left;
+      color: var(--eg-charcoal);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .notes-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+      border-color: var(--eg-gold-hover);
+    }
+    .notes-card-eyebrow {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--eg-gold);
+      display: block;
+      margin-bottom: 18px;
+    }
+    .notes-card-title {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 28px;
+      line-height: 1.2;
+      color: var(--eg-charcoal);
+      margin-bottom: 18px;
+    }
+    .notes-card-lede {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--eg-mid-grey);
+      margin-bottom: 24px;
+    }
+    .notes-card-meta {
+      font-family: var(--font-body);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--eg-mid-grey);
+      margin-bottom: 20px;
+    }
+    .notes-card-meta span + span::before {
+      content: "·";
+      margin: 0 10px;
+      color: var(--eg-mid-grey);
+      opacity: 0.5;
+    }
+    .notes-card-cta {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--eg-gold);
+    }
+    @media (max-width: 768px) {
+      .notes-card-list { padding: 60px 0 100px; }
+      .notes-card { padding: 32px 24px; }
+      .notes-card-title { font-size: 24px; }
     }
 
     /* ───────────────────────────────────────────────
@@ -334,10 +590,11 @@
 </head>
 <body>
 
-  <header class="site-header" id="site-header">
+  <header class="site-header scrolled" id="site-header">
     <div class="container">
       <a href="/" class="site-logo">
-        <img src="/EVENTRA_FINAL_LOGOS_20_JUNE_2025-02.png" alt="" class="logo-img" aria-hidden="true">
+        <img src="/EVENTRA_FINAL_LOGOS_20_JUNE_2025-03.png" alt="" class="logo-img logo-white" aria-hidden="true">
+        <img src="/EVENTRA_FINAL_LOGOS_20_JUNE_2025-02.png" alt="" class="logo-img logo-dark" aria-hidden="true">
         <div class="logo-wordmark">
           <div class="logo-text">Eventra Group</div>
           <div class="logo-subtitle">Sports Hospitality &amp; Luxury Travel</div>
@@ -345,14 +602,90 @@
       </a>
 
       <nav class="site-nav" aria-label="Main navigation">
+        <div class="nav-dropdown-wrap">
         <a href="/experiences" class="nav-link">Experiences</a>
-        <a href="/bespoke" class="nav-link">Bespoke Travel</a>
-        <a href="/about" class="nav-link">About</a>
-        <a href="/contact" class="nav-link">Contact</a>
+        <div class="nav-dropdown">
+          <a href="/experiences/rugby">Rugby</a>
+          <a href="/experiences/cricket">Cricket</a>
+          <a href="/experiences/f1">Formula 1</a>
+          <a href="/experiences/football">Football</a>
+          <a href="/experiences/tennis">Tennis</a>
+          <a href="/experiences" class="nav-dropdown-view-all">View All</a>
+        </div>
+      </div>
+        <div class="nav-dropdown-wrap">
+          <a href="/bespoke" class="nav-link">Bespoke Travel</a>
+          <div class="nav-dropdown">
+            <div class="nav-dropdown-item">
+              <a href="/bespoke/africa">Africa <span class="nav-dropdown-arrow">›</span></a>
+              <div class="nav-subnav">
+                <a href="/bespoke/africa/southern-africa">Southern Africa</a>
+                <a href="/bespoke/africa/east-africa">East Africa &amp; Islands</a>
+                <a href="/bespoke/africa/north-africa">North Africa</a>
+                <a href="/enquire" class="nav-subnav-design">Design Your Journey</a>
+              </div>
+            </div>
+            <div class="nav-dropdown-item">
+              <a href="/bespoke/europe">Europe <span class="nav-dropdown-arrow">›</span></a>
+              <div class="nav-subnav">
+                <a href="/bespoke/europe/western-europe">Western Europe</a>
+                <a href="/bespoke/europe/mediterranean">Mediterranean</a>
+                <a href="/bespoke/europe/uk-ireland">UK &amp; Ireland</a>
+                <a href="/bespoke/europe/nordic-eastern">Nordic &amp; Eastern Europe</a>
+                <a href="/enquire" class="nav-subnav-design">Design Your Journey</a>
+              </div>
+            </div>
+          </div>
+        </div>
         <a href="/enquire" class="nav-cta">Enquire</a>
       </nav>
+
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
+
+  <!-- Mobile nav overlay -->
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+    <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close menu">&times;</button>
+    <div class="mobile-exp-wrap">
+      <button class="nav-link mobile-exp-btn" aria-expanded="false" id="mobile-exp-trigger">Experiences <span class="mobile-exp-chevron">&#9662;</span></button>
+      <div class="mobile-subnav" id="mobile-subnav" hidden>
+        <a href="/experiences/rugby" class="nav-link mobile-sublink">Rugby</a>
+        <a href="/experiences/cricket" class="nav-link mobile-sublink">Cricket</a>
+        <a href="/experiences/f1" class="nav-link mobile-sublink">Formula 1</a>
+        <a href="/experiences/football" class="nav-link mobile-sublink">Football</a>
+        <a href="/experiences/tennis" class="nav-link mobile-sublink">Tennis</a>
+        <a href="/experiences" class="nav-link mobile-sublink">View All</a>
+      </div>
+    </div>
+    <div class="mobile-exp-wrap">
+      <button class="nav-link mobile-exp-btn" aria-expanded="false" id="mobile-bespoke-trigger">Bespoke Travel <span class="mobile-exp-chevron">&#9662;</span></button>
+      <div class="mobile-subnav" id="mobile-bespoke-subnav" hidden>
+        <div class="mobile-sub-group">
+          <button class="mobile-sub-group-btn" aria-expanded="false" id="mobile-bespoke-africa-trigger">Africa <span class="mobile-exp-chevron">&#9662;</span></button>
+          <div class="mobile-sub-sub-nav" id="mobile-bespoke-africa-subnav" hidden>
+            <a href="/bespoke/africa/southern-africa" class="nav-link mobile-sub-sublink">Southern Africa</a>
+            <a href="/bespoke/africa/east-africa" class="nav-link mobile-sub-sublink">East Africa &amp; Islands</a>
+            <a href="/bespoke/africa/north-africa" class="nav-link mobile-sub-sublink">North Africa</a>
+            <a href="/enquire" class="nav-link mobile-sub-sublink">Design Your Journey</a>
+          </div>
+        </div>
+        <div class="mobile-sub-group">
+          <button class="mobile-sub-group-btn" aria-expanded="false" id="mobile-bespoke-europe-trigger">Europe <span class="mobile-exp-chevron">&#9662;</span></button>
+          <div class="mobile-sub-sub-nav" id="mobile-bespoke-europe-subnav" hidden>
+            <a href="/bespoke/europe/western-europe" class="nav-link mobile-sub-sublink">Western Europe</a>
+            <a href="/bespoke/europe/mediterranean" class="nav-link mobile-sub-sublink">Mediterranean</a>
+            <a href="/bespoke/europe/uk-ireland" class="nav-link mobile-sub-sublink">UK &amp; Ireland</a>
+            <a href="/bespoke/europe/nordic-eastern" class="nav-link mobile-sub-sublink">Nordic &amp; Eastern Europe</a>
+            <a href="/enquire" class="nav-link mobile-sub-sublink">Design Your Journey</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="/enquire" class="nav-cta btn btn-secondary">Enquire Now</a>
+  </nav>
 
   <main>
     <section class="notes-intro" aria-label="Notes from Eventra">
@@ -375,10 +708,18 @@
       </div>
     </nav>
 
-    <section class="notes-empty" aria-label="Coming soon">
+    <section class="notes-card-list" aria-label="Notes">
       <div class="container">
-        <div class="notes-empty-rule" aria-hidden="true"></div>
-        <p class="notes-empty-message">New writing arriving. Check back soon.</p>
+        <div class="notes-card-rule" aria-hidden="true"></div>
+        <div class="notes-card-grid">
+          <a href="/notes/2027-cricket-world-cup-planning-guide/" class="notes-card">
+            <span class="notes-card-eyebrow">Cricket World Cup 2027</span>
+            <h2 class="notes-card-title">The 2027 Cricket World Cup in South Africa: An Honest Planning Guide</h2>
+            <p class="notes-card-lede">When the 2027 Cricket World Cup is, where it is played across South Africa, Zimbabwe and Namibia, when to book, and how to combine it with a safari.</p>
+            <p class="notes-card-meta"><span>2 June 2026</span><span>5 minute read</span></p>
+            <span class="notes-card-cta">Read the guide →</span>
+          </a>
+        </div>
       </div>
     </section>
   </main>
@@ -442,5 +783,63 @@
     </div>
   </footer>
 
+  <script>
+    // Mobile nav
+    const hamburger = document.getElementById('nav-hamburger');
+    const mobileNav = document.getElementById('mobile-nav');
+    const mobileClose = document.getElementById('mobile-nav-close');
+
+    if (hamburger && mobileNav) {
+      hamburger.addEventListener('click', () => mobileNav.classList.add('open'));
+      mobileClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+      mobileNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => mobileNav.classList.remove('open'));
+      });
+    }
+
+    // Mobile Experiences expand
+    const expTrigger = document.getElementById('mobile-exp-trigger');
+    const expSubnav = document.getElementById('mobile-subnav');
+    if (expTrigger && expSubnav) {
+      expTrigger.addEventListener('click', () => {
+        const isExp = expTrigger.getAttribute('aria-expanded') === 'true';
+        expTrigger.setAttribute('aria-expanded', String(!isExp));
+        expSubnav.hidden = isExp;
+      });
+    }
+
+    // Mobile Bespoke expand
+    const bespokeTrigger = document.getElementById('mobile-bespoke-trigger');
+    const bespokeSubnav = document.getElementById('mobile-bespoke-subnav');
+    if (bespokeTrigger && bespokeSubnav) {
+      bespokeTrigger.addEventListener('click', () => {
+        const isOpen = bespokeTrigger.getAttribute('aria-expanded') === 'true';
+        bespokeTrigger.setAttribute('aria-expanded', String(!isOpen));
+        bespokeSubnav.hidden = isOpen;
+      });
+    }
+
+    // Mobile Bespoke — Africa sub-accordion
+    const bespokeAfricaTrigger = document.getElementById('mobile-bespoke-africa-trigger');
+    const bespokeAfricaSubnav = document.getElementById('mobile-bespoke-africa-subnav');
+    if (bespokeAfricaTrigger && bespokeAfricaSubnav) {
+      bespokeAfricaTrigger.addEventListener('click', () => {
+        const isOpen = bespokeAfricaTrigger.getAttribute('aria-expanded') === 'true';
+        bespokeAfricaTrigger.setAttribute('aria-expanded', String(!isOpen));
+        bespokeAfricaSubnav.hidden = isOpen;
+      });
+    }
+
+    // Mobile Bespoke — Europe sub-accordion
+    const bespokeEuropeTrigger = document.getElementById('mobile-bespoke-europe-trigger');
+    const bespokeEuropeSubnav = document.getElementById('mobile-bespoke-europe-subnav');
+    if (bespokeEuropeTrigger && bespokeEuropeSubnav) {
+      bespokeEuropeTrigger.addEventListener('click', () => {
+        const isOpen = bespokeEuropeTrigger.getAttribute('aria-expanded') === 'true';
+        bespokeEuropeTrigger.setAttribute('aria-expanded', String(!isOpen));
+        bespokeEuropeSubnav.hidden = isOpen;
+      });
+    }
+  </script>
 </body>
 </html>
