@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Kenya | Journeys | Eventra Group</title>
+  <link rel="icon" type="image/png" href="/images/logos/Eventra-Logo-Gold.png">
+  <link rel="apple-touch-icon" href="/images/logos/Eventra-Logo-Gold.png">
+  <meta name="description" content="Kenya is where the safari began. Nairobi, Amboseli and the Maasai Mara, in three tiers. Example itineraries from Eventra Group.">
+  <link rel="canonical" href="https://eventragroup.com/journeys/kenya/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Kenya | Journeys | Eventra Group">
+  <meta property="og:description" content="Kenya is where the safari began. Nairobi, Amboseli and the Maasai Mara, in three tiers. Example itineraries from Eventra Group.">
+  <meta property="og:url" content="https://eventragroup.com/journeys/kenya/">
+  <meta property="og:image" content="https://eventragroup.com/images/logos/Eventra-Logo-Gold.png">
+  <meta property="og:site_name" content="Eventra Group">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ───────────────────────────────────────────────
+       DESIGN TOKENS
+    ─────────────────────────────────────────────── */
+    :root {
+      --eg-white:         #FFFFFF;
+      --eg-warm-neutral:  #F8F5F0;
+      --eg-charcoal:      #1A1A1A;
+      --eg-mid-grey:      #6B6B6B;
+      --eg-gold:          #B8966B;
+      --eg-gold-hover:    #9E7D55;
+      --eg-overlay-dark:  rgba(0,0,0,0.35);
+
+      --font-display:     'Cormorant Garamond', serif;
+      --font-body:        'Inter', sans-serif;
+
+      --section-pad-v:    100px;
+      --section-pad-v-sm: 60px;
+      --max-width:        1240px;
+      --gutter:           32px;
+    }
+
+    /* ───────────────────────────────────────────────
+       RESET & BASE
+    ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: var(--eg-charcoal);
+      background: var(--eg-white);
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ───────────────────────────────────────────────
+       UTILITY
+    ─────────────────────────────────────────────── */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+    .eyebrow {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--eg-gold);
+    }
+    .btn {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 16px 40px;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+      border: 1.5px solid transparent;
+    }
+    .btn-primary {
+      background: var(--eg-gold);
+      color: var(--eg-white);
+      border-color: var(--eg-gold);
+    }
+    .btn-primary:hover {
+      background: var(--eg-gold-hover);
+      border-color: var(--eg-gold-hover);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--eg-gold);
+      border-color: var(--eg-gold);
+    }
+    .btn-secondary:hover {
+      background: var(--eg-gold);
+      color: var(--eg-white);
+    }
+    .btn-white-outline {
+      background: transparent;
+      color: var(--eg-white);
+      border-color: var(--eg-white);
+    }
+    .btn-white-outline:hover {
+      background: var(--eg-white);
+      color: var(--eg-charcoal);
+    }
+    .btn-sm { padding: 12px 28px; font-size: 12px; }
+
+    /* ───────────────────────────────────────────────
+       NAVIGATION
+    ─────────────────────────────────────────────── */
+    .site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      background: transparent;
+      transition: background 0.35s ease, box-shadow 0.35s ease;
+    }
+    .site-header.scrolled {
+      background: var(--eg-white);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    }
+    .site-header .container {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .site-logo {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-img { display: block; width: auto; height: 40px; max-height: 40px; }
+    .logo-dark { display: none; }
+    .site-header.scrolled .logo-white { display: none; }
+    .site-header.scrolled .logo-dark { display: block; }
+    .logo-text {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 22px;
+      letter-spacing: 0.04em;
+      color: var(--eg-white);
+      transition: color 0.35s ease;
+      white-space: nowrap;
+    }
+    .site-header.scrolled .logo-text { color: var(--eg-charcoal); }
+    .logo-subtitle {
+      font-family: var(--font-body);
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      transition: color 0.35s ease;
+      margin-top: 2px;
+    }
+    .site-header.scrolled .logo-subtitle { color: var(--eg-mid-grey); }
+    .site-nav { display: flex; align-items: center; gap: 36px; }
+    .nav-link {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.88);
+      transition: color 0.25s ease;
+    }
+    .site-header.scrolled .nav-link { color: var(--eg-charcoal); }
+    .nav-link:hover { color: var(--eg-gold); }
+    .nav-cta {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 10px 24px;
+      border-radius: 2px;
+      border: 1.5px solid rgba(255,255,255,0.7);
+      color: var(--eg-white);
+      transition: all 0.25s ease;
+    }
+    .site-header.scrolled .nav-cta { border-color: var(--eg-gold); color: var(--eg-gold); }
+    .nav-cta:hover { background: var(--eg-white); color: var(--eg-charcoal); border-color: var(--eg-white); }
+    .site-header.scrolled .nav-cta:hover { background: var(--eg-gold); color: var(--eg-white); border-color: var(--eg-gold); }
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .nav-hamburger span { display: block; width: 24px; height: 1.5px; background: var(--eg-white); transition: background 0.35s ease; }
+    .site-header.scrolled .nav-hamburger span { background: var(--eg-charcoal); }
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--eg-charcoal);
+      z-index: 99;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav .nav-link { color: var(--eg-white); font-size: 14px; }
+    .mobile-nav .nav-cta { border-color: var(--eg-gold); color: var(--eg-gold); }
+    .mobile-nav-close {
+      position: absolute;
+      top: 24px; right: 24px;
+      cursor: pointer;
+      font-size: 28px;
+      color: var(--eg-white);
+      line-height: 1;
+      background: none;
+      border: none;
+    }
+
+    /* Dropdown — desktop */
+    .nav-dropdown-wrap { position: relative; display: flex; align-items: center; }
+    .nav-dropdown { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); background: var(--eg-white); min-width: 180px; border-top: 2px solid var(--eg-gold); box-shadow: 0 8px 32px rgba(0,0,0,0.12); opacity: 0; visibility: hidden; transition: opacity 0.2s ease, visibility 0.2s ease; transition-delay: 0.2s; z-index: 200; pointer-events: none; padding-top: 14px; }
+    .nav-dropdown-wrap:hover .nav-dropdown { opacity: 1; visibility: visible; pointer-events: auto; transition-delay: 0s; }
+    .nav-dropdown a { display: block; padding: 11px 20px; font-family: var(--font-body); font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--eg-charcoal); transition: background 0.15s, color 0.15s; text-decoration: none; }
+    .nav-dropdown a:hover { background: var(--eg-warm-neutral); color: var(--eg-gold); }
+    .nav-dropdown .nav-dropdown-view-all { border-top: 1px solid #eee; color: var(--eg-gold); }
+    /* Mobile expand */
+    .mobile-exp-wrap { display: flex; flex-direction: column; align-items: center; }
+    .mobile-exp-btn { background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 8px; padding: 0; }
+    .mobile-exp-chevron { font-size: 9px; transition: transform 0.2s; display: inline-block; }
+    .mobile-exp-btn[aria-expanded="true"] .mobile-exp-chevron { transform: rotate(180deg); }
+    .mobile-subnav { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-top: 14px; }
+    .mobile-sublink { font-size: 12px !important; opacity: 0.72; }
+
+    /* ───────────────────────────────────────────────
+       BREADCRUMB
+    ─────────────────────────────────────────────── */
+    .breadcrumb {
+      background: var(--eg-warm-neutral);
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .breadcrumb-list {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      list-style: none;
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: var(--eg-mid-grey);
+    }
+    .breadcrumb-list li + li::before {
+      content: '/';
+      opacity: 0.4;
+      margin-right: 8px;
+    }
+    .breadcrumb-list a { color: var(--eg-mid-grey); transition: color 0.2s; }
+    .breadcrumb-list a:hover { color: var(--eg-gold); }
+    .breadcrumb-list .current { color: var(--eg-charcoal); }
+
+    /* ───────────────────────────────────────────────
+       CTA BAND
+    ─────────────────────────────────────────────── */
+    .cta-band {
+      background: var(--eg-charcoal);
+      padding: 80px 0;
+      text-align: center;
+    }
+    .cta-band-eyebrow {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--eg-gold);
+      margin-bottom: 20px;
+    }
+    .cta-band-title {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: 48px;
+      color: var(--eg-white);
+      margin-bottom: 16px;
+      line-height: 1.1;
+    }
+    .cta-band-sub {
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 40px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.65;
+    }
+
+    /* ───────────────────────────────────────────────
+       FOOTER (canonical — EVE-430)
+    ─────────────────────────────────────────────── */
+    .site-footer { background: #1A1A1A; }
+    .footer-main { padding: 64px 0 48px; }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+    }
+    .footer-brand-logo {
+      height: 48px;
+      width: auto;
+      display: block;
+      margin-bottom: 20px;
+    }
+    .footer-brand-text {
+      font-family: var(--font-body);
+      font-size: 13px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.55);
+      max-width: 320px;
+      margin-bottom: 24px;
+    }
+    .social-links { display: flex; gap: 12px; }
+    .social-link {
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.75);
+      transition: border-color 0.25s, color 0.25s;
+    }
+    .social-link:hover {
+      border-color: var(--eg-gold);
+      color: var(--eg-gold);
+    }
+    .footer-col-title {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--eg-gold);
+      margin-bottom: 20px;
+    }
+    .footer-links { list-style: none; }
+    .footer-links li + li { margin-top: 12px; }
+    .footer-links a {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      transition: color 0.25s;
+    }
+    .footer-links a:hover { color: var(--eg-gold); }
+    .footer-contact-item {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    .footer-contact-item a { color: rgba(255,255,255,0.6); transition: color 0.25s; }
+    .footer-contact-item a:hover { color: var(--eg-gold); }
+    .footer-enquire { margin-top: 24px; }
+    .footer-legal {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 20px 0;
+    }
+    .footer-legal .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .legal-text {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+    }
+    .legal-links { display: flex; gap: 20px; }
+    .legal-links a {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+      transition: color 0.25s;
+    }
+    .legal-links a:hover { color: var(--eg-gold); }
+    @media (max-width: 1024px) {
+    }
+    @media (max-width: 640px) {
+      .footer-legal .container { justify-content: flex-start; }
+    }
+
+    /* ───────────────────────────────────────────────
+       RESPONSIVE
+    ─────────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .destinations-grid { grid-template-columns: 1fr; gap: 24px; }
+      .dest-card { aspect-ratio: auto; min-height: 480px; }
+    }
+    @media (max-width: 768px) {
+      .nav-hamburger { display: flex; }
+      .site-nav { display: none; }
+      .hero { min-height: 75vh; }
+      .hero-headline { font-size: 44px; }
+      .hero-content { padding: 0 24px; padding-top: 100px; }
+      .hero-subhead { font-size: 15px; }
+      .intro-title { font-size: 34px; }
+      .intro-body { font-size: 15px; }
+      .section-title { font-size: 32px; }
+      .dest-card-title { font-size: 26px; }
+      .dest-card-body { padding: 28px; }
+      .cta-band-title { font-size: 32px; }
+      .partnership-text { font-size: 24px; }
+      .container { padding: 0 24px; }
+    }
+    @media (max-width: 375px) {
+      .hero-headline { font-size: 36px; }
+      .intro-title { font-size: 28px; }
+    }
+
+    /* ───────────────────────────────────────────────
+       HERO (content-only, dark placeholder)
+    ─────────────────────────────────────────────── */
+    .detail-hero {
+      position: relative;
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      background: var(--eg-charcoal);
+    }
+    .detail-hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: 0 80px;
+      padding-top: 100px;
+    }
+    .detail-hero-inner { max-width: 680px; }
+    .detail-hero-eyebrow {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 20px;
+    }
+    .detail-hero-headline {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: 72px;
+      line-height: 1.02;
+      color: var(--eg-white);
+      margin-bottom: 28px;
+    }
+    .detail-hero-subhead {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.8);
+      max-width: 480px;
+    }
+
+    /* ───────────────────────────────────────────────
+       OVERVIEW
+    ─────────────────────────────────────────────── */
+    .overview-section {
+      background: var(--eg-white);
+      padding: var(--section-pad-v) 0;
+    }
+    .overview-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .overview-inner .eyebrow { margin-bottom: 20px; }
+    .overview-title {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: 50px;
+      line-height: 1.1;
+      color: var(--eg-charcoal);
+      margin-bottom: 28px;
+    }
+    .overview-body {
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--eg-mid-grey);
+    }
+    .overview-divider {
+      width: 48px;
+      height: 1px;
+      background: var(--eg-gold);
+      margin: 40px auto 0;
+    }
+
+    /* ───────────────────────────────────────────────
+       TIER TOGGLE (V3 Cards-as-Toggle, namespaced as kenya-tier-*)
+       Pattern lifted verbatim from notes/journeys-tier-toggle-mock V3.
+    ─────────────────────────────────────────────── */
+    .tier-toggle-section {
+      background: var(--eg-warm-neutral);
+      padding: var(--section-pad-v) 0;
+    }
+    .tier-toggle-section .section-header { margin-bottom: 40px; }
+    .tier-toggle-wrap { position: relative; }
+    .tier-toggle-wrap input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+      pointer-events: none;
+    }
+    .tier-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .tier-cards label {
+      display: block;
+      padding: 22px 24px;
+      background: var(--eg-white);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-top: 2px solid transparent;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: all 0.25s ease;
+    }
+    .tier-cards label:hover { opacity: 0.95; }
+    .tier-card-title {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 26px;
+      color: var(--eg-charcoal);
+      margin-bottom: 6px;
+      line-height: 1.1;
+    }
+    .tier-card-essence {
+      font-family: var(--font-body);
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--eg-mid-grey);
+    }
+    #kenya-tier-classic:checked   ~ .tier-cards label[for="kenya-tier-classic"],
+    #kenya-tier-signature:checked ~ .tier-cards label[for="kenya-tier-signature"],
+    #kenya-tier-prestige:checked  ~ .tier-cards label[for="kenya-tier-prestige"] {
+      opacity: 1;
+      border-top-color: var(--eg-gold);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      transform: translateY(-2px);
+    }
+
+    /* Panels (only the :checked tier's panel renders) */
+    .tier-panel { display: none; }
+    #kenya-tier-classic:checked   ~ .tier-panels .tier-panel-classic,
+    #kenya-tier-signature:checked ~ .tier-panels .tier-panel-signature,
+    #kenya-tier-prestige:checked  ~ .tier-panels .tier-panel-prestige { display: block; }
+
+    .tier-panel-note {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-style: italic;
+      color: var(--eg-mid-grey);
+      margin-bottom: 28px;
+      padding: 12px 16px;
+      background: var(--eg-white);
+      border-left: 2px solid var(--eg-gold);
+    }
+
+    /* Property cards (3 per panel, whole-card external anchor) */
+    .tier-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--gutter);
+      margin-bottom: 40px;
+    }
+    .property-card {
+      display: block;
+      background: var(--eg-white);
+      border: 1px solid rgba(0,0,0,0.08);
+      transition: box-shadow 0.25s ease, transform 0.25s ease;
+      color: inherit;
+    }
+    .property-card:hover {
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      transform: translateY(-2px);
+    }
+    .property-img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 3 / 2;
+      background: #C8C2B5;
+    }
+    .property-body { padding: 22px 24px; }
+    .property-eyebrow {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--eg-gold);
+      margin-bottom: 8px;
+    }
+    .property-name {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 22px;
+      color: var(--eg-charcoal);
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+    .property-oneliner {
+      font-family: var(--font-body);
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--eg-mid-grey);
+    }
+
+    /* Full Itinerary CTA row */
+    .itinerary-cta-row { text-align: center; }
+    .itinerary-cta {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 16px 40px;
+      border-radius: 2px;
+      border: 1.5px solid var(--eg-gold);
+      background: var(--eg-gold);
+      color: var(--eg-white);
+      cursor: pointer;
+      transition: background 0.25s ease, border-color 0.25s ease;
+    }
+    .itinerary-cta:hover {
+      background: var(--eg-gold-hover);
+      border-color: var(--eg-gold-hover);
+    }
+
+    /* Detail-page responsive (additive to chrome's RESPONSIVE block) */
+    @media (max-width: 1024px) {
+      .tier-cards { grid-template-columns: 1fr; }
+      .tier-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    @media (max-width: 768px) {
+      .detail-hero { min-height: 50vh; }
+      .detail-hero-headline { font-size: 44px; }
+      .detail-hero-content { padding: 0 24px; padding-top: 100px; }
+      .detail-hero-subhead { font-size: 15px; }
+      .overview-title { font-size: 34px; }
+      .overview-body { font-size: 15px; }
+      .property-name { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ────────────────────────────────────────────
+       HEADER
+  ──────────────────────────────────────────── -->
+  <header class="site-header" id="site-header" role="banner">
+    <div class="container">
+      <a href="/" class="site-logo" aria-label="Eventra Group — home">
+        <img src="/EVENTRA_FINAL_LOGOS_20_JUNE_2025-03.png" alt="Eventra Group logo (white)" class="logo-img logo-white">
+        <img src="/EVENTRA_FINAL_LOGOS_20_JUNE_2025-02.png" alt="Eventra Group logo (dark)" class="logo-img logo-dark">
+        <div>
+          <div class="logo-text">Eventra Group</div>
+          <div class="logo-subtitle">Sports Hospitality &amp; Luxury Travel</div>
+        </div>
+      </a>
+
+      <nav class="site-nav" aria-label="Main navigation">
+        <div class="nav-dropdown-wrap">
+          <a href="/experiences" class="nav-link">Experiences</a>
+          <div class="nav-dropdown">
+            <a href="/experiences/rugby">Rugby</a>
+            <a href="/experiences/cricket">Cricket</a>
+            <a href="/experiences/f1">Formula 1</a>
+            <a href="/experiences/football">Football</a>
+            <a href="/experiences/tennis">Tennis</a>
+            <a href="/experiences" class="nav-dropdown-view-all">View All</a>
+          </div>
+        </div>
+        <div class="nav-dropdown-wrap">
+          <a href="/bespoke" class="nav-link">Bespoke Travel</a>
+          <div class="nav-dropdown">
+            <a href="/bespoke/africa">Africa</a>
+            <a href="/bespoke/europe">Europe</a>
+          </div>
+        </div>
+        <a href="/notes" class="nav-link">Notes</a>
+        <a href="/enquire" class="nav-cta">Enquire</a>
+      </nav>
+
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile nav overlay -->
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+    <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close menu">&times;</button>
+    <div class="mobile-exp-wrap">
+      <button class="nav-link mobile-exp-btn" aria-expanded="false" id="mobile-exp-trigger">Experiences <span class="mobile-exp-chevron">&#9662;</span></button>
+      <div class="mobile-subnav" id="mobile-subnav" hidden>
+        <a href="/experiences/rugby" class="nav-link mobile-sublink">Rugby</a>
+        <a href="/experiences/cricket" class="nav-link mobile-sublink">Cricket</a>
+        <a href="/experiences/f1" class="nav-link mobile-sublink">Formula 1</a>
+        <a href="/experiences/football" class="nav-link mobile-sublink">Football</a>
+        <a href="/experiences/tennis" class="nav-link mobile-sublink">Tennis</a>
+        <a href="/experiences" class="nav-link mobile-sublink">View All</a>
+      </div>
+    </div>
+    <div class="mobile-exp-wrap">
+      <button class="nav-link mobile-exp-btn" aria-expanded="false" id="mobile-bespoke-trigger">Bespoke Travel <span class="mobile-exp-chevron">&#9662;</span></button>
+      <div class="mobile-subnav" id="mobile-bespoke-subnav" hidden>
+        <a href="/bespoke/africa" class="nav-link mobile-sublink">Africa</a>
+        <a href="/bespoke/europe" class="nav-link mobile-sublink">Europe</a>
+      </div>
+    </div>
+    <a href="/notes" class="nav-link">Notes</a>
+    <a href="/enquire" class="nav-cta btn btn-secondary">Enquire Now</a>
+  </nav>
+
+
+  <!-- ────────────────────────────────────────────
+       HERO (content-only, dark placeholder)
+  ──────────────────────────────────────────── -->
+  <section class="detail-hero" aria-label="Kenya — East Africa">
+    <div class="detail-hero-content">
+      <div class="detail-hero-inner">
+        <p class="detail-hero-eyebrow">East Africa</p>
+        <h1 class="detail-hero-headline">Kenya</h1>
+        <p class="detail-hero-subhead">Nairobi, Amboseli and the Maasai Mara.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ────────────────────────────────────────────
+       BREADCRUMB
+  ──────────────────────────────────────────── -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="container">
+      <ol class="breadcrumb-list">
+        <li><a href="/">Home</a></li>
+        <li><a href="/journeys/">Journeys</a></li>
+        <li><span class="current" aria-current="page">Kenya</span></li>
+      </ol>
+    </div>
+  </nav>
+
+
+  <!-- ────────────────────────────────────────────
+       OVERVIEW
+  ──────────────────────────────────────────── -->
+  <section class="overview-section" aria-label="About this journey">
+    <div class="container">
+      <div class="overview-inner">
+        <p class="eyebrow">The Journey</p>
+        <h2 class="overview-title">Where the safari began.</h2>
+        <div class="overview-body">
+          <p>Kenya is where the safari began, and it still sets the standard. This journey runs from Nairobi up through Amboseli, beneath the snows of Kilimanjaro, to the Maasai Mara, widely held to be Africa's greatest wildlife reserve and the stage for the Great Migration. The route stays the same across all three tiers. What changes is where you stay, from characterful classics to some of the finest lodges in East Africa.</p>
+        </div>
+        <div class="overview-divider" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ────────────────────────────────────────────
+       TIER TOGGLE + PANELS
+  ──────────────────────────────────────────── -->
+  <section class="tier-toggle-section" aria-label="Choose your tier">
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">Where You Stay</p>
+        <h2 class="section-title">Three tiers, one route.</h2>
+      </div>
+
+      <div class="tier-toggle-wrap">
+        <input type="radio" id="kenya-tier-classic"   name="kenya-tier">
+        <input type="radio" id="kenya-tier-signature" name="kenya-tier" checked>
+        <input type="radio" id="kenya-tier-prestige"  name="kenya-tier">
+
+        <div class="tier-cards">
+          <label for="kenya-tier-classic">
+            <p class="tier-card-title">Classic</p>
+            <p class="tier-card-essence">Characterful classics, calm and well-judged, away from the noise.</p>
+          </label>
+          <label for="kenya-tier-signature">
+            <p class="tier-card-title">Signature</p>
+            <p class="tier-card-essence">Best-in-class signature houses, with the service to match.</p>
+          </label>
+          <label for="kenya-tier-prestige">
+            <p class="tier-card-title">Prestige</p>
+            <p class="tier-card-essence">Some of the finest lodges in East Africa, privately run.</p>
+          </label>
+        </div>
+
+        <p class="tier-panel-note">The route stays the same across all three tiers. Only where you stay changes.</p>
+
+        <div class="tier-panels">
+
+          <!-- CLASSIC -->
+          <div class="tier-panel tier-panel-classic">
+            <div class="tier-grid">
+              <a class="property-card" href="https://itineraries.safariportal.app/Eventra-Group/1699436320788580075?type=lookbook" target="_blank" rel="noopener noreferrer" aria-label="Palacina Residence & Suites, Nairobi — Classic tier, view full itinerary">
+                <div class="property-img" aria-hidden="true"></div>
+                <div class="property-body">
+                  <p class="property-eyebrow">Nairobi</p>
+                  <p class="property-name">Palacina Residence &amp; Suites</p>
+                  <p class="property-oneliner">A calm, family-owned boutique base in the leafy State House valley, minutes from the city yet away from its noise.</p>
+                </div>
+              </a>
+              <a class="property-card" href="https://itineraries.safariportal.app/Eventra-Group/1699436320788580075?type=lookbook" target="_blank" rel="noopener noreferrer" aria-label="Elewana Tortilis Camp, Amboseli — Classic tier, view full itinerary">
+                <div class="property-img" aria-hidden="true"></div>
+                <div class="property-body">
+                  <p class="property-eyebrow">Amboseli</p>
+                  <p class="property-name">Elewana Tortilis Camp</p>
+                  <p class="property-oneliner">A solar-powered camp in a private conservancy on Amboseli's edge, with uninterrupted views of Kilimanjaro.</p>
+                </div>
+              </a>
+              <a class="property-card" href="https://itineraries.safariportal.app/Eventra-Group/1699436320788580075?type=lookbook" target="_blank" rel="noopener noreferrer" aria-label="Ilkeliani, Maasai Mara — Classic tier, view full itinerary">
+                <div class="property-img" aria-hidden="true"></div>
+                <div class="property-body">
+                  <p class="property-eyebrow">Maasai Mara</p>
+                  <p class="property-name">Ilkeliani</p>
+                  <p class="property-oneliner">An intimate twelve-tent camp in the heart of the Mara, built for privacy and personal service.</p>
+                </div>
+              </a>
+            </div>
+            <div class="itinerary-cta-row">
+              <a class="itinerary-cta" href="https://itineraries.safariportal.app/Eventra-Group/1699436320788580075?type=lookbook" target="_blank" rel="noopener noreferrer">Full Itinerary</a>
+            </div>
+          </div>
+
+          <!-- SIGNATURE -->
+          <div class="tier-panel tier-panel-signature">
+            <div class="tier-grid">
+              <a class="property-card" href="https://itineraries.safariportal.app/Eventra-Group/1699435317460731622?type=lookbook" target="_blank" rel="noopener noreferrer" aria-label="Hemingways Nairobi — Signature tier, view full itinerary">
+                <div class="property-img" aria-hidden="true"></div>
+                <div class="property-body">
+                  <p class="property-eyebrow">Nairobi</p>
+                  <p class="property-name">Hemingways Nairobi</p>
+                  <p class="property-oneliner">A 45-suite, all-suite boutique hotel in Karen with full butler service, set between Nairobi National Park and the Ngong Hills.</p>
+                </div>
+              </a>
+              <a class="property-card" href="https://itineraries.safariportal.app/Eventra-Group/1699435317460731622?type=lookbook" target="_blank" rel="noopener noreferrer" aria-label="Soroi Amboseli — Signature tier, view full itinerary">
+                <div class="property-img" aria-hidden="true"></div>
+                <div class="property-body">
+                  <p class="property-eyebrow">Amboseli</p>
+                  <p class="property-name">Soroi Amboseli</p>
+                  <p class="property-oneliner">A luxury tented retreat in the heart of Amboseli, framed by Kilimanjaro and Mount Meru, with an infinity pool and bush spa.</p>
+                </div>
+              </a>
+              <a class="property-card" href="https://itineraries.safariportal.app/Eventra-Group/1699435317460731622?type=lookbook" target="_blank" rel="noopener noreferrer" aria-label="Ishara Mara — Signature tier, view full itinerary">
+                <div class="property-img" aria-hidden="true"></div>
+                <div class="property-body">
+                  <p class="property-eyebrow">Maasai Mara</p>
+                  <p class="property-name">Ishara Mara</p>
+                  <p class="property-oneliner">A recently reimagined camp on its own waterhole in a prime Mara location, with an extensive wellness oasis and a resident photographic studio.</p>
+                </div>
+              </a>
+            </div>
+            <div class="itinerary-cta-row">
+              <a class="itinerary-cta" href="https://itineraries.safariportal.app/Eventra-Group/1699435317460731622?type=lookbook" target="_blank" rel="noopener noreferrer">Full Itinerary</a>
+            </div>
+          </div>
+
+          <!-- PRESTIGE -->
+          <div class="tier-panel tier-panel-prestige">
+            <div class="tier-grid">
+              <a class="property-card" href="https://itineraries.safariportal.app/Eventra-Group/1699433612945917665?type=lookbook" target="_blank" rel="noopener noreferrer" aria-label="Hemingways Nairobi — Prestige tier, view full itinerary">
+                <div class="property-img" aria-hidden="true"></div>
+                <div class="property-body">
+                  <p class="property-eyebrow">Nairobi</p>
+                  <p class="property-name">Hemingways Nairobi</p>
+                  <p class="property-oneliner">A 45-suite, all-suite boutique hotel in Karen with full butler service, set between Nairobi National Park and the Ngong Hills.</p>
+                </div>
+              </a>
+              <a class="property-card" href="https://itineraries.safariportal.app/Eventra-Group/1699433612945917665?type=lookbook" target="_blank" rel="noopener noreferrer" aria-label="Angama Amboseli — Prestige tier, view full itinerary">
+                <div class="property-img" aria-hidden="true"></div>
+                <div class="property-body">
+                  <p class="property-eyebrow">Amboseli</p>
+                  <p class="property-name">Angama Amboseli</p>
+                  <p class="property-oneliner">An intimate ten-suite lodge in the community-owned Kimana Sanctuary, set in a fever-tree forest where Super Tusker elephants roam beneath Kilimanjaro.</p>
+                </div>
+              </a>
+              <a class="property-card" href="https://itineraries.safariportal.app/Eventra-Group/1699433612945917665?type=lookbook" target="_blank" rel="noopener noreferrer" aria-label="Paradise Plains, Maasai Mara — Prestige tier, view full itinerary">
+                <div class="property-img" aria-hidden="true"></div>
+                <div class="property-body">
+                  <p class="property-eyebrow">Maasai Mara</p>
+                  <p class="property-name">Paradise Plains</p>
+                  <p class="property-oneliner">An exclusive eight-suite camp in a secluded corner of the Mara, pairing wilderness immersion with refined, butler-serviced luxury.</p>
+                </div>
+              </a>
+            </div>
+            <div class="itinerary-cta-row">
+              <a class="itinerary-cta" href="https://itineraries.safariportal.app/Eventra-Group/1699433612945917665?type=lookbook" target="_blank" rel="noopener noreferrer">Full Itinerary</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ────────────────────────────────────────────
+       CTA BAND
+  ──────────────────────────────────────────── -->
+  <section class="cta-band" aria-label="Design Your Journey">
+    <div class="container">
+      <p class="cta-band-eyebrow">Begin Here</p>
+      <h2 class="cta-band-title">Your next journey<br>starts with one conversation.</h2>
+      <p class="cta-band-sub">Tell us where you want to go — or tell us what you want to feel. We will take it from there.</p>
+      <a href="/enquire" class="btn btn-primary">Design Your Journey</a>
+    </div>
+  </section>
+
+
+  <!-- ────────────────────────────────────────────
+       FOOTER
+  ──────────────────────────────────────────── -->
+  <footer class="site-footer" aria-label="Site footer">
+    <div class="footer-main">
+      <div class="container">
+        <div class="footer-grid">
+
+          <div class="footer-brand">
+            <img src="/EVENTRA_FINAL_LOGOS_20_JUNE_2025-01.png" alt="Eventra Group" class="footer-brand-logo">
+            <p class="footer-brand-text">The company you keep. Luxury sports hospitality and experiential travel, curated from Cape Town for the world.</p>
+            <div class="social-links">
+              <a href="https://www.instagram.com/eventragroup" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" fill-rule="evenodd" aria-hidden="true"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12c0 3.259.014 3.668.072 4.948.058 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24c3.259 0 3.668-.014 4.948-.072 1.277-.058 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.689.072-4.948 0-3.259-.014-3.667-.072-4.947-.058-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.259 0 12 0zm0 5.838c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.645-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg></a>
+              <a href="https://www.linkedin.com/company/eventra-group/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+            </div>
+          </div>
+
+          <div>
+            <p class="footer-col-title">Experiences</p>
+            <ul class="footer-links">
+              <li><a href="/experiences/rugby">Rugby</a></li>
+              <li><a href="/experiences/cricket">Cricket</a></li>
+              <li><a href="/experiences/f1">Formula 1</a></li>
+              <li><a href="/events/australia-2027/">Australia 2027</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <p class="footer-col-title">Company</p>
+            <ul class="footer-links">
+              <li><a href="/">Home</a></li>
+              <li><a href="/about">About</a></li>
+              <li><a href="/bespoke">Bespoke Travel</a></li>
+              <li><a href="/enquire">Enquire</a></li>
+              <li><a href="/contact">Contact</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <p class="footer-col-title">Contact</p>
+            <p class="footer-contact-item">Cape Town, South Africa</p>
+            <p class="footer-contact-item"><a href="mailto:info@eventragroup.com">info@eventragroup.com</a></p>
+            <div class="footer-enquire">
+              <a href="/enquire" class="btn btn-secondary btn-sm">Enquire Now</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-legal">
+      <div class="container">
+        <p class="legal-text">&copy; 2026 Eventra Group (Pty) Ltd &mdash; Reg. 2023/183233/07. All rights reserved.</p>
+        <p class="legal-links">
+          <a href="/privacy">Privacy</a>
+          <a href="/terms">Terms</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    // Scroll-triggered nav
+    const header = document.getElementById('site-header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // Mobile nav
+    const hamburger = document.getElementById('nav-hamburger');
+    const mobileNav = document.getElementById('mobile-nav');
+    const mobileClose = document.getElementById('mobile-nav-close');
+    if (hamburger && mobileNav && mobileClose) {
+      hamburger.addEventListener('click', () => mobileNav.classList.add('open'));
+      mobileClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+    }
+
+    // Mobile Experiences expand
+    const expTrigger = document.getElementById('mobile-exp-trigger');
+    const expSubnav = document.getElementById('mobile-subnav');
+    if (expTrigger && expSubnav) {
+      expTrigger.addEventListener('click', () => {
+        const isExp = expTrigger.getAttribute('aria-expanded') === 'true';
+        expTrigger.setAttribute('aria-expanded', String(!isExp));
+        expSubnav.hidden = isExp;
+      });
+    }
+
+    // Mobile Bespoke expand
+    const bespokeTrigger = document.getElementById('mobile-bespoke-trigger');
+    const bespokeSubnav = document.getElementById('mobile-bespoke-subnav');
+    if (bespokeTrigger && bespokeSubnav) {
+      bespokeTrigger.addEventListener('click', () => {
+        const isExp = bespokeTrigger.getAttribute('aria-expanded') === 'true';
+        bespokeTrigger.setAttribute('aria-expanded', String(!isExp));
+        bespokeSubnav.hidden = isExp;
+      });
+    }
+  </script>
+  <script src="/assets/online-consultant.js" defer></script>
+
+</body>
+</html>
