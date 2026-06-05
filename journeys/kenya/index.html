@@ -447,6 +447,20 @@
       align-items: center;
       background: var(--eg-charcoal);
     }
+    .detail-hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    .detail-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.6) 100%);
+      z-index: 1;
+    }
     .detail-hero-content {
       position: relative;
       z-index: 2;
@@ -753,6 +767,8 @@
        HERO (content-only, dark placeholder)
   ──────────────────────────────────────────── -->
   <section class="detail-hero" aria-label="Kenya — East Africa">
+    <img class="detail-hero-img" src="/journeys/kenya/wildebeest-river-crossing-great-migration-maasai-mara.webp" alt="Wildebeest leaping from the bank into the Mara River during the Great Migration crossing, dust in the air as some swim across and others queue to follow." fetchpriority="high" decoding="async">
+    <div class="detail-hero-overlay" aria-hidden="true"></div>
     <div class="detail-hero-content">
       <div class="detail-hero-inner">
         <p class="detail-hero-eyebrow">East Africa</p>
