@@ -1,5 +1,4 @@
 User-agent: *
-Disallow: /notes/
 Disallow: /experiences/concerts-culture/
 
 Sitemap: https://eventragroup.com/sitemap.xml
