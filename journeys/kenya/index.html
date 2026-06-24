@@ -690,63 +690,95 @@
       .property-name { font-size: 20px; }
     }
 
-    /* PARALLAX STYLES START — EVE-600 staging demo. Remove this whole fenced block to revert. */
-    /* Effect 1 — hero depth: transform-ready hook (JS applies the translateY). */
-    .detail-hero { overflow: hidden; }
-    .detail-hero-img { will-change: transform; }
+    /* PARALLAX STYLES START — EVE-602 cinematic parallax v2 (layered hero + pinned moment + reveals). Staging only. Remove this whole fenced block to revert. */
+    /* Default render is clean + static. Every motion effect is gated behind .eve602-on,
+       which the JS adds to <html> ONLY on desktop with motion allowed. Reduced-motion,
+       no-JS and mobile visitors never receive the class, so they see the original page. */
 
-    /* Effect 2 — fixed divider band. */
-    .parallax-band {
+    /* --- Effect A: layered-depth hero (transforms applied by JS, transform/opacity only) --- */
+    .detail-hero { overflow: hidden; }
+    .eve602-on .detail-hero-img,
+    .eve602-on .detail-hero-overlay,
+    .eve602-on .detail-hero-inner { will-change: transform, opacity; }
+
+    /* --- Effect B: cinematic pinned moment ---
+       Base = static full-bleed band (reduced-motion / no-JS / mobile fallback). */
+    .eve602-cinematic { position: relative; }
+    .eve602-cinematic-sticky {
       position: relative;
       min-height: 60vh;
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      background-image: url('/images/bespoke/africa/east-africa/kenya-landscape-safari-sunset.webp');
-      background-attachment: fixed;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
     }
-    .parallax-band-overlay {
+    .eve602-cinematic-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    .eve602-cinematic-overlay {
       position: absolute;
       inset: 0;
       background: linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.6) 100%);
       z-index: 1;
     }
-    .parallax-band-text {
+    .eve602-cinematic-line {
       position: relative;
       z-index: 2;
       font-family: var(--font-display);
       font-weight: 300;
-      font-size: 50px;
+      font-size: 56px;
       line-height: 1.1;
+      letter-spacing: 0.01em;
       color: var(--eg-white);
       text-align: center;
       padding: 0 24px;
-      letter-spacing: 0.01em;
+      max-width: 900px;
     }
-    /* iOS / phones / coarse pointers get a clean static image, not broken fixed behaviour. */
-    @media (max-width: 768px) {
-      .parallax-band { background-attachment: scroll; min-height: 44vh; }
-      .parallax-band-text { font-size: 34px; }
-    }
-    @media (pointer: coarse) {
-      .parallax-band { background-attachment: scroll; }
-    }
+    /* Desktop, motion-OK: pin the image via position:sticky inside a taller scroll
+       container (a real sticky pin, not a fixed background, so it works on iOS too). */
+    .eve602-on .eve602-cinematic { height: 200vh; }
+    .eve602-on .eve602-cinematic-sticky { position: sticky; top: 0; height: 100vh; min-height: 100vh; }
+    .eve602-on .eve602-cinematic-line { will-change: transform, opacity; }
 
-    /* Effect 3 — scroll reveals. Hidden state applies ONLY when JS adds .parallax-reveal-on,
-       so reduced-motion / no-JS visitors see everything static and fully visible. */
-    .parallax-reveal-on .overview-inner,
-    .parallax-reveal-on .property-card {
+    /* --- Effect C: dramatic reveals (hidden default applies ONLY under .eve602-on) --- */
+    .eve602-on .overview-inner,
+    .eve602-on .property-card {
       opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
+      transform: translateY(32px);
+      transition: opacity 0.85s ease, transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
     }
-    .parallax-reveal-on .overview-inner.is-revealed,
-    .parallax-reveal-on .property-card.is-revealed {
+    .eve602-on .overview-inner.eve602-in,
+    .eve602-on .property-card.eve602-in {
       opacity: 1;
       transform: none;
+    }
+    /* image scales gently inside the card frame as the card reveals */
+    .eve602-on .property-card { overflow: hidden; }
+    .eve602-on .property-card .property-img {
+      transform: scale(1.06);
+      transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .eve602-on .property-card.eve602-in .property-img { transform: scale(1); }
+    /* stagger the cards across a row so they resolve in sequence */
+    .eve602-on .tier-grid .property-card:nth-child(2) { transition-delay: 0.12s; }
+    .eve602-on .tier-grid .property-card:nth-child(3) { transition-delay: 0.24s; }
+
+    /* Phones / small screens: heavy effects off, static full-width image + line. */
+    @media (max-width: 768px) {
+      .eve602-cinematic { height: auto; }
+      .eve602-cinematic-sticky { position: relative; height: auto; min-height: 56vh; }
+      .eve602-cinematic-line { font-size: 34px; }
+    }
+    /* Reduced-motion hard stop, even if a class slips through. */
+    @media (prefers-reduced-motion: reduce) {
+      .eve602-on .overview-inner,
+      .eve602-on .property-card { opacity: 1 !important; transform: none !important; }
+      .eve602-on .property-card .property-img { transform: none !important; }
     }
     /* PARALLAX STYLES END */
   </style>
@@ -827,6 +859,7 @@
   <!-- ────────────────────────────────────────────
        HERO (content-only, dark placeholder)
   ──────────────────────────────────────────── -->
+  <!-- PARALLAX HERO START — EVE-602 v2 staging. Layered-depth hero; the effect is CSS/JS only and the hero markup (incl. the LCP img and its attributes) is unchanged. Remove these two fence comments (with PARALLAX STYLES + PARALLAX JS) to revert. -->
   <section class="detail-hero" aria-label="Kenya — East Africa">
     <img class="detail-hero-img" src="/journeys/kenya/wildebeest-river-crossing-great-migration-maasai-mara.webp" alt="Wildebeest leaping from the bank into the Mara River during the Great Migration crossing, dust in the air as some swim across and others queue to follow." fetchpriority="high" decoding="async">
     <div class="detail-hero-overlay" aria-hidden="true"></div>
@@ -838,6 +871,7 @@
       </div>
     </div>
   </section>
+  <!-- PARALLAX HERO END -->
 
 
   <!-- ────────────────────────────────────────────
@@ -871,12 +905,15 @@
   </section>
 
 
-  <!-- PARALLAX BAND START — EVE-600 staging demo. Remove this whole fenced block to revert. -->
-  <section class="parallax-band" aria-label="Kenya">
-    <div class="parallax-band-overlay" aria-hidden="true"></div>
-    <p class="parallax-band-text">Where the safari began.</p>
+  <!-- PARALLAX CINEMATIC START — EVE-602 v2 staging. Pinned full-viewport cinematic moment between Overview and the tier toggle. Remove this whole fenced block to revert. -->
+  <section class="eve602-cinematic" aria-label="Kenya — the Maasai Mara">
+    <div class="eve602-cinematic-sticky">
+      <img class="eve602-cinematic-img" src="/images/bespoke/africa/east-africa/kenya-landscape-safari-sunset.webp" alt="A wide East African landscape at sunset, with acacia trees silhouetted against a golden Kenyan sky." loading="lazy" decoding="async">
+      <div class="eve602-cinematic-overlay" aria-hidden="true"></div>
+      <p class="eve602-cinematic-line">The Mara keeps its own time.</p>
+    </div>
   </section>
-  <!-- PARALLAX BAND END -->
+  <!-- PARALLAX CINEMATIC END -->
 
 
   <!-- ────────────────────────────────────────────
@@ -1134,56 +1171,85 @@
   </script>
   <script src="/assets/online-consultant.js" defer></script>
 
-  <!-- PARALLAX JS START — EVE-600 staging demo. Remove this whole fenced block to revert. -->
+  <!-- PARALLAX JS START — EVE-602 v2 staging. One vanilla script: reduced-motion bail, a single rAF hero+cinematic scroll driver (desktop, transform/opacity only), and IntersectionObserver reveals. No libraries. Remove this whole fenced block to revert. -->
   <script>
     (function () {
-      // Reduced-motion visitors get everything static — bail before any class/listener is added.
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var reduce  = window.matchMedia('(prefers-reduced-motion: reduce)');
+      var desktop = window.matchMedia('(min-width: 769px)');
+      // Static page for reduced-motion, missing matchMedia, or small / touch screens.
+      if (reduce.matches || !desktop.matches) return;
 
-      var docEl = document.documentElement;
+      document.documentElement.classList.add('eve602-on');
 
-      // Effect 3 — scroll reveals. Enable the hidden default state, then reveal on intersect.
-      docEl.classList.add('parallax-reveal-on');
+      // ---- Effect C: dramatic reveals (image scales in frame, content rises + fades) ----
       var revealEls = document.querySelectorAll('.overview-inner, .property-card');
       if ('IntersectionObserver' in window) {
         var io = new IntersectionObserver(function (entries, obs) {
           entries.forEach(function (entry) {
             if (entry.isIntersecting) {
-              entry.target.classList.add('is-revealed');
+              entry.target.classList.add('eve602-in');
               obs.unobserve(entry.target);
             }
           });
-        }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+        }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
         revealEls.forEach(function (el) { io.observe(el); });
-        // Cards in a tier panel hidden at load can't intersect — reveal them when their tier is shown.
+        // Cards in a tier panel hidden at load can't intersect — reveal them when their
+        // tier is shown (CSS nth-child transition-delay staggers the row).
         document.querySelectorAll('input[name="kenya-tier"]').forEach(function (radio) {
           radio.addEventListener('change', function () {
             document.querySelectorAll('.tier-panel .property-card').forEach(function (card) {
-              if (card.offsetParent !== null) card.classList.add('is-revealed');
+              if (card.offsetParent !== null) card.classList.add('eve602-in');
             });
           });
         });
       } else {
-        revealEls.forEach(function (el) { el.classList.add('is-revealed'); });
+        revealEls.forEach(function (el) { el.classList.add('eve602-in'); });
       }
 
-      // Effect 1 — hero depth: subtle slower-than-scroll translateY, desktop only, transform only.
-      var heroImg = document.querySelector('.detail-hero-img');
-      if (heroImg && window.matchMedia('(min-width: 769px)').matches) {
-        var ticking = false;
-        var apply = function () {
-          var offset = window.scrollY * 0.06;
-          heroImg.style.transform = 'translateY(' + offset + 'px) scale(1.15)';
-          ticking = false;
-        };
-        window.addEventListener('scroll', function () {
-          if (!ticking) {
-            ticking = true;
-            window.requestAnimationFrame(apply);
+      // ---- Effects A + B: single throttled rAF scroll driver (transform / opacity only) ----
+      var heroSection = document.querySelector('.detail-hero');
+      var heroImg     = document.querySelector('.detail-hero-img');
+      var heroOverlay = document.querySelector('.detail-hero-overlay');
+      var heroText    = document.querySelector('.detail-hero-inner');
+      var cineSection = document.querySelector('.eve602-cinematic');
+      var cineLine    = document.querySelector('.eve602-cinematic-line');
+      var ticking = false;
+
+      function update() {
+        ticking = false;
+        var y  = window.pageYOffset || 0;
+        var vh = window.innerHeight || 1;
+
+        // Effect A — layered hero. img drifts slowest (within its scale overscan so no gap
+        // ever shows), overlay tracks it, foreground text moves fastest and fades away.
+        if (heroSection && y < heroSection.offsetHeight) {
+          var p = y / (heroSection.offsetHeight || vh);          // 0..1 through the hero
+          if (heroImg)     heroImg.style.transform     = 'translateY(' + (y * 0.03).toFixed(1) + 'px) scale(' + (1 + p * 0.08).toFixed(3) + ')';
+          if (heroOverlay) heroOverlay.style.transform = 'translateY(' + (y * 0.03).toFixed(1) + 'px)';
+          if (heroText) {
+            heroText.style.transform = 'translateY(' + (-y * 0.22).toFixed(1) + 'px)';
+            heroText.style.opacity   = Math.max(0, 1 - p * 1.5).toFixed(3);
           }
-        }, { passive: true });
-        apply();
+        }
+
+        // Effect B — cinematic line scales up + fades in as the pinned section reaches
+        // centre, then releases. Progress is measured across the sticky pin range.
+        if (cineSection && cineLine) {
+          var rect  = cineSection.getBoundingClientRect();
+          var total = rect.height - vh;
+          var cp    = total > 0 ? Math.min(Math.max(-rect.top, 0), total) / total : 0; // 0..1
+          var bell  = Math.max(0, 1 - Math.abs(cp - 0.5) * 2);   // 0 at ends, 1 at centre
+          cineLine.style.transform = 'scale(' + (0.92 + bell * 0.12).toFixed(3) + ')';
+          cineLine.style.opacity   = (0.15 + bell * 0.85).toFixed(3);
+        }
       }
+
+      function onScroll() {
+        if (!ticking) { ticking = true; window.requestAnimationFrame(update); }
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll, { passive: true });
+      update();
     })();
   </script>
   <!-- PARALLAX JS END -->
