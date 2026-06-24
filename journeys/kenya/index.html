@@ -689,6 +689,66 @@
       .overview-body { font-size: 15px; }
       .property-name { font-size: 20px; }
     }
+
+    /* PARALLAX STYLES START — EVE-600 staging demo. Remove this whole fenced block to revert. */
+    /* Effect 1 — hero depth: transform-ready hook (JS applies the translateY). */
+    .detail-hero { overflow: hidden; }
+    .detail-hero-img { will-change: transform; }
+
+    /* Effect 2 — fixed divider band. */
+    .parallax-band {
+      position: relative;
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-image: url('/images/bespoke/africa/east-africa/kenya-landscape-safari-sunset.webp');
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    .parallax-band-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.6) 100%);
+      z-index: 1;
+    }
+    .parallax-band-text {
+      position: relative;
+      z-index: 2;
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: 50px;
+      line-height: 1.1;
+      color: var(--eg-white);
+      text-align: center;
+      padding: 0 24px;
+      letter-spacing: 0.01em;
+    }
+    /* iOS / phones / coarse pointers get a clean static image, not broken fixed behaviour. */
+    @media (max-width: 768px) {
+      .parallax-band { background-attachment: scroll; min-height: 44vh; }
+      .parallax-band-text { font-size: 34px; }
+    }
+    @media (pointer: coarse) {
+      .parallax-band { background-attachment: scroll; }
+    }
+
+    /* Effect 3 — scroll reveals. Hidden state applies ONLY when JS adds .parallax-reveal-on,
+       so reduced-motion / no-JS visitors see everything static and fully visible. */
+    .parallax-reveal-on .overview-inner,
+    .parallax-reveal-on .property-card {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .parallax-reveal-on .overview-inner.is-revealed,
+    .parallax-reveal-on .property-card.is-revealed {
+      opacity: 1;
+      transform: none;
+    }
+    /* PARALLAX STYLES END */
   </style>
 </head>
 <body>
@@ -809,6 +869,14 @@
       </div>
     </div>
   </section>
+
+
+  <!-- PARALLAX BAND START — EVE-600 staging demo. Remove this whole fenced block to revert. -->
+  <section class="parallax-band" aria-label="Kenya">
+    <div class="parallax-band-overlay" aria-hidden="true"></div>
+    <p class="parallax-band-text">Where the safari began.</p>
+  </section>
+  <!-- PARALLAX BAND END -->
 
 
   <!-- ────────────────────────────────────────────
@@ -1065,6 +1133,60 @@
     }
   </script>
   <script src="/assets/online-consultant.js" defer></script>
+
+  <!-- PARALLAX JS START — EVE-600 staging demo. Remove this whole fenced block to revert. -->
+  <script>
+    (function () {
+      // Reduced-motion visitors get everything static — bail before any class/listener is added.
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      var docEl = document.documentElement;
+
+      // Effect 3 — scroll reveals. Enable the hidden default state, then reveal on intersect.
+      docEl.classList.add('parallax-reveal-on');
+      var revealEls = document.querySelectorAll('.overview-inner, .property-card');
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries, obs) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-revealed');
+              obs.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+        revealEls.forEach(function (el) { io.observe(el); });
+        // Cards in a tier panel hidden at load can't intersect — reveal them when their tier is shown.
+        document.querySelectorAll('input[name="kenya-tier"]').forEach(function (radio) {
+          radio.addEventListener('change', function () {
+            document.querySelectorAll('.tier-panel .property-card').forEach(function (card) {
+              if (card.offsetParent !== null) card.classList.add('is-revealed');
+            });
+          });
+        });
+      } else {
+        revealEls.forEach(function (el) { el.classList.add('is-revealed'); });
+      }
+
+      // Effect 1 — hero depth: subtle slower-than-scroll translateY, desktop only, transform only.
+      var heroImg = document.querySelector('.detail-hero-img');
+      if (heroImg && window.matchMedia('(min-width: 769px)').matches) {
+        var ticking = false;
+        var apply = function () {
+          var offset = window.scrollY * 0.06;
+          heroImg.style.transform = 'translateY(' + offset + 'px) scale(1.15)';
+          ticking = false;
+        };
+        window.addEventListener('scroll', function () {
+          if (!ticking) {
+            ticking = true;
+            window.requestAnimationFrame(apply);
+          }
+        }, { passive: true });
+        apply();
+      }
+    })();
+  </script>
+  <!-- PARALLAX JS END -->
 
 </body>
 </html>
