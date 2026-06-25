@@ -1050,8 +1050,7 @@
     sports_f1: { race: 'Race', hospitality: 'Hospitality', travelScope: 'Travel scope', accommodation: 'Accommodation', when: 'Timing', party: 'Party size' },
     sports_motogp: { race: 'Race', hospitality: 'Hospitality', travelScope: 'Travel scope', accommodation: 'Accommodation', when: 'Timing', party: 'Party size' },
     sports_tennis: { slam: 'Slam', hospitality: 'Hospitality', travelScope: 'Travel scope', accommodation: 'Accommodation', when: 'Timing', party: 'Party size' },
-    sports_football: { competition: 'Competition', club: 'Club', hospitality: 'Hospitality', travelScope: 'Travel scope', accommodation: 'Accommodation', when: 'Timing', party: 'Party size' },
-    sports_concerts: { tour: 'Concert/Tour', tourOther: 'Artist/Tour name', hospitality: 'Hospitality', travelScope: 'Travel scope', accommodation: 'Accommodation', when: 'Timing', party: 'Party size' }
+    sports_football: { competition: 'Competition', club: 'Club', hospitality: 'Hospitality', travelScope: 'Travel scope', accommodation: 'Accommodation', when: 'Timing', party: 'Party size' }
   };
 
   function formatAnswers(branch, st) {
@@ -1258,39 +1257,6 @@
       }
       return fbLines.length ? fbLines.join('\n') : 'None provided';
     }
-    if (branch === 'sports' && st.sports && st.sports.sport === 'concerts-culture') {
-      var ccLines = [];
-      var ccSportQ = FLOWS.sports[0];
-      var ccSportLabel = null;
-      for (var ccsi = 0; ccsi < ccSportQ.options.length; ccsi++) {
-        if (ccSportQ.options[ccsi].value === 'concerts-culture') { ccSportLabel = ccSportQ.options[ccsi].label; break; }
-      }
-      ccLines.push((ANSWER_LABELS.sports.sport || 'Sport') + ': ' + (ccSportLabel || 'Concerts & Culture'));
-      var ccFlow = FLOWS.sports_concerts;
-      var ccLabels = ANSWER_LABELS.sports_concerts || {};
-      var ccState = st.sports_concerts || {};
-      var ccIsOther = ccState.tour === 'other-uk';
-      for (var cci = 0; cci < ccFlow.length; cci++) {
-        var ccq = ccFlow[cci];
-        // Step 3a (tourOther) is conditional — only emit when 'Other UK tour' is selected.
-        if (ccq.stateKey === 'tourOther' && !ccIsOther) continue;
-        var ccLeft = ccLabels[ccq.stateKey] || ccq.stateKey;
-        if (ccq.type === 'text') {
-          var ccTrim = (ccState[ccq.stateKey] || '').toString().trim();
-          if (ccTrim) ccLines.push(ccLeft + ': ' + ccTrim);
-        } else {
-          var ccVal = ccState[ccq.stateKey];
-          if (ccVal) {
-            var ccMatch = null;
-            for (var ccj = 0; ccj < ccq.options.length; ccj++) {
-              if (ccq.options[ccj].value === ccVal) { ccMatch = ccq.options[ccj].label; break; }
-            }
-            if (ccMatch) ccLines.push(ccLeft + ': ' + ccMatch);
-          }
-        }
-      }
-      return ccLines.length ? ccLines.join('\n') : 'None provided';
-    }
     if (!branch || !FLOWS[branch] || !st[branch]) return 'None provided';
     var flow = FLOWS[branch];
     var labels = ANSWER_LABELS[branch] || {};
@@ -1365,7 +1331,6 @@
     sports_motogp: { race: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null },
     sports_tennis: { slam: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null },
     sports_football: { competition: null, club: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null },
-    sports_concerts: { tour: null, tourOther: '', hospitality: null, travelScope: null, accommodation: null, when: null, party: null },
     contact: { name: '', email: '', phone: '', notes: '' },
     submitted: false
   };
@@ -1380,7 +1345,6 @@
   if (!state.sports_motogp) state.sports_motogp = { race: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
   if (!state.sports_tennis) state.sports_tennis = { slam: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
   if (!state.sports_football) state.sports_football = { competition: null, club: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
-  if (!state.sports_concerts) state.sports_concerts = { tour: null, tourOther: '', hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
   window.__eventraOnlineConsultantState = state;
 
   var stack = [];
@@ -1390,7 +1354,7 @@
   function escHtml(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
   function parseQuestionId(name) {
-    var m = /^(bespoke_africa|bespoke_europe|sports_rugby|sports_cricket|sports_f1|sports_motogp|sports_tennis|sports_football|sports_concerts|bespoke|sports)-(\d+)$/.exec(name);
+    var m = /^(bespoke_africa|bespoke_europe|sports_rugby|sports_cricket|sports_f1|sports_motogp|sports_tennis|sports_football|bespoke|sports)-(\d+)$/.exec(name);
     if (!m) return null;
     var branch = m[1];
     var idx = parseInt(m[2], 10) - 1;
@@ -1436,8 +1400,8 @@
   // sports_football TOTAL_STEPS is the non-Premier-League default (6 questions + 2 setup steps).
   // The Premier League path adds Step 3a (the club question), and renderQuestion bumps the
   // count to 9 dynamically when state.sports_football.competition === 'premier-league'.
-  var TOTAL_STEPS = { bespoke: 5, bespoke_africa: 7, bespoke_europe: 7, sports: 5, sports_rugby: 8, sports_cricket: 8, sports_f1: 8, sports_motogp: 8, sports_tennis: 8, sports_football: 8, sports_concerts: 8 };
-  var STEP_OFFSET = { bespoke: 2, bespoke_africa: 3, bespoke_europe: 3, sports: 2, sports_rugby: 3, sports_cricket: 3, sports_f1: 3, sports_motogp: 3, sports_tennis: 3, sports_football: 3, sports_concerts: 3 };
+  var TOTAL_STEPS = { bespoke: 5, bespoke_africa: 7, bespoke_europe: 7, sports: 5, sports_rugby: 8, sports_cricket: 8, sports_f1: 8, sports_motogp: 8, sports_tennis: 8, sports_football: 8 };
+  var STEP_OFFSET = { bespoke: 2, bespoke_africa: 3, bespoke_europe: 3, sports: 2, sports_rugby: 3, sports_cricket: 3, sports_f1: 3, sports_motogp: 3, sports_tennis: 3, sports_football: 3 };
 
   function renderQuestion(branch, idx) {
     var q = FLOWS[branch][idx];
@@ -1454,20 +1418,6 @@
       var fbIsPL = state.sports_football && state.sports_football.competition === 'premier-league';
       totalSteps = fbIsPL ? 9 : 8;
       if (fbIsPL) {
-        stepNum = idx + 3;
-      } else {
-        stepNum = idx === 0 ? 3 : idx + 2;
-      }
-    }
-
-    // Concerts: Step 3a (tourOther, idx 1) is conditional. Render the progress indicator
-    // dynamically so Other-UK visitors see "of 9" with sequential step numbers
-    // 3, 4, 5, 6, 7, 8, 9 across the 7 questions, and other-tour visitors see "of 8"
-    // with the tourOther slot skipped (idx 0 -> step 3, idx 2 -> step 4, idx 3 -> step 5, ...).
-    if (branch === 'sports_concerts') {
-      var ccIsOther = state.sports_concerts && state.sports_concerts.tour === 'other-uk';
-      totalSteps = ccIsOther ? 9 : 8;
-      if (ccIsOther) {
         stepNum = idx + 3;
       } else {
         stepNum = idx === 0 ? 3 : idx + 2;
@@ -1667,10 +1617,6 @@
         navigate('sports_football-1');
         return;
       }
-      if (branch === 'sports' && idx === 0 && state.sports.sport === 'concerts-culture') {
-        navigate('sports_concerts-1');
-        return;
-      }
       // Football conditional skip: when the user does NOT pick Premier League at Step 3
       // (sports_football-1, idx 0), skip the conditional Step 3a (club, idx 1) and
       // jump straight to Step 4 (hospitality, idx 2). The stack-based goBack handles
@@ -1687,15 +1633,6 @@
         // into the lead payload if the user goes back and changes competition.
         state.sports_football.club = null;
         navigate('sports_football-3');
-        return;
-      }
-      // Concerts: after sports_concerts-1 (tour, idx 0), if the user did NOT pick
-      // 'Other UK tour', skip the conditional Step 3a (sports_concerts-2) and jump
-      // straight to Step 4 (sports_concerts-3, hospitality). Clear any stale tourOther
-      // value so a previous Other-UK entry doesn't leak into the lead payload.
-      if (branch === 'sports_concerts' && idx === 0 && state.sports_concerts.tour !== 'other-uk') {
-        state.sports_concerts.tourOther = '';
-        navigate('sports_concerts-3');
         return;
       }
       if (idx + 1 < FLOWS[branch].length) {
@@ -1717,7 +1654,6 @@
       state.sports_motogp = { race: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
       state.sports_tennis = { slam: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
       state.sports_football = { competition: null, club: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
-      state.sports_concerts = { tour: null, tourOther: '', hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
       state.contact = { name: '', email: '', phone: '', notes: '' };
       state.submitted = false;
       stack.length = 0;
