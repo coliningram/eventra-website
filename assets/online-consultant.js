@@ -304,8 +304,7 @@
   // ---- Confirmation snippets ----------------------------------------------
   // Snippet content — edit here to update what visitors see on the confirmation
   // screen. Each snippet should be 60-90 words, factual, and align with what
-  // Eventra can actually deliver. Update when product offerings change
-  // (especially CONCERTS which references specific current artist tours).
+  // Eventra can actually deliver. Update when product offerings change.
   var SNIPPETS = {
     BESPOKE_AFRICA: {
       heading: "Bespoke Africa",
@@ -339,13 +338,9 @@
       heading: "Football Hospitality",
       body: "Premier League fixtures across every club, every weekend — and the moments that matter most: Champions League and Europa League finals, the FA Cup final, England internationals at major venues. Hospitality boxes, premium lounges with full pre and post-match service, player meet-and-greets where the access exists. From a single derby weekend to multi-match tours built around the football and the city. Built around the club you support, the match you want to be at, the way you want the day to feel."
     },
-    CONCERTS: {
-      heading: "Concerts & Culture Hospitality",
-      body: "Premium hospitality at the UK's biggest live music tours. Currently confirmed for Harry Styles, Bruno Mars, The Weeknd, and Bon Jovi — stadium and arena packages with hospitality boxes, premium tickets, dining and transfers built into the night. From a single show to a weekend in London or Manchester built around the gig. Beyond live music, we'll arrange access to the cultural moments that matter to you wherever availability allows — tell us what you'd like to be at."
-    },
     SPORTS_GENERAL: {
       heading: "Eventra Sports & Events",
-      body: "Premium hospitality at the world's most iconic sporting and cultural moments — from rugby and cricket to F1, tennis, football, and live music. Tell us the event you want to be at and we'll handle the access, the hospitality, the accommodation, and the transfers. Built around what you'd most like to see."
+      body: "Premium hospitality at the world's most iconic sporting moments — from rugby and cricket to F1, tennis, football. Tell us the event you want to be at and we'll handle the access, the hospitality, the accommodation, and the transfers. Built around what you'd most like to see."
     }
   };
 
@@ -365,7 +360,6 @@
       if (sport === 'motogp') return 'F1_MOTOGP';
       if (sport === 'tennis') return 'TENNIS';
       if (sport === 'football') return 'FOOTBALL';
-      if (sport === 'concerts-culture') return 'CONCERTS';
       return 'SPORTS_GENERAL';
     }
     return 'BESPOKE_GENERAL';
@@ -561,7 +555,6 @@
           { value: 'motogp', label: 'MotoGP' },
           { value: 'tennis', label: 'Tennis' },
           { value: 'football', label: 'Football' },
-          { value: 'concerts-culture', label: 'Concerts & Culture' },
           { value: 'other', label: 'Other / not sure yet' }
         ]
       },
@@ -1042,88 +1035,6 @@
           { value: 'large-group', label: 'A larger group (9+)' }
         ]
       }
-    ],
-    // Concerts & Culture is a full standalone sub-flow that mirrors Football's shape:
-    // Step 3 (tour) plus a conditional Step 3a (sports_concerts-2, free-text artist for
-    // "Other UK tour") gated like Football's Premier League club question, then Steps
-    // 4-8 (hospitality, travel scope, accommodation, when, party). Visitors flow end-to-end
-    // within sports_concerts and exit directly to lead-form — no cross-flow handoff.
-    sports_concerts: [
-      {
-        id: 'sports_concerts-1', stateKey: 'tour',
-        heading: 'Which concert or tour interests you?',
-        // Tour list is highly time-bound — currently confirmed UK tours via P1 Travel inventory. UPDATE QUARTERLY at minimum, not annually. By mid-2026 these specific tours will end. A future task may extract this list to a separate config file for easier updates.
-        options: [
-          { value: 'harry-styles', label: 'Harry Styles UK Tour' },
-          { value: 'bruno-mars', label: 'Bruno Mars UK Tour' },
-          { value: 'the-weeknd', label: 'The Weeknd UK Tour' },
-          { value: 'bon-jovi', label: 'Bon Jovi UK Tour' },
-          { value: 'other-uk', label: 'Other UK tour (free text input on the next step)' },
-          { value: 'open', label: 'Open to suggestions — flexible' }
-        ]
-      },
-      {
-        id: 'sports_concerts-2', stateKey: 'tourOther',
-        heading: 'Which artist or tour?',
-        type: 'text',
-        inputLabel: 'Artist or tour name',
-        ariaLabel: 'Artist or tour name',
-        placeholder: 'e.g. Coldplay, Taylor Swift, Beyoncé...'
-      },
-      {
-        id: 'sports_concerts-3', stateKey: 'hospitality',
-        heading: 'What kind of experience?',
-        options: [
-          { value: 'boxes-suites', label: 'Hospitality box / suite — full box at the venue, dedicated entertaining space' },
-          { value: 'vip-package', label: 'VIP hospitality package — premium tickets, lounge access, drinks and dining' },
-          { value: 'premium-ticketed', label: 'Premium ticketed seating — best seats, no formal hospitality' },
-          { value: 'meet-greet', label: 'Backstage / meet-and-greet — where the artist offers it (not always available)' },
-          { value: 'open-recommendations', label: 'Open to recommendations' }
-        ]
-      },
-      {
-        id: 'sports_concerts-4', stateKey: 'travelScope',
-        heading: 'How much of the trip should we handle?',
-        options: [
-          { value: 'concert-night-only', label: "Concert night only — tickets and hospitality, we'll handle the rest" },
-          { value: 'concert-plus-accommodation', label: 'Concert plus accommodation — hotel near the venue' },
-          { value: 'london-weekend', label: 'Concert plus a London weekend — extend with theatre, dining, sightseeing' },
-          { value: 'full-package', label: 'Full hosted package — flights, transfers, accommodation, hospitality, the lot' }
-        ]
-      },
-      {
-        id: 'sports_concerts-5', stateKey: 'accommodation',
-        heading: 'What style of accommodation suits you?',
-        options: [
-          { value: 'not-applicable', label: 'Not applicable — concert night only, no accommodation needed' },
-          { value: 'excellent-value', label: 'Excellent properties, well-priced — comfortable, well-located, good value' },
-          { value: 'premium', label: 'Premium properties, the better experience — top-tier within their category, often boutique' },
-          { value: 'very-best', label: 'The very best — no compromises — flagship lodges, suites, private villas' },
-          { value: 'mix', label: "Mix across the trip — splash out where it matters, save where it doesn't" }
-        ]
-      },
-      {
-        id: 'sports_concerts-6', stateKey: 'when',
-        heading: 'When are you thinking of travelling?',
-        options: [
-          { value: 'within-3', label: 'Within 3 months' },
-          { value: '3-6', label: '3-6 months' },
-          { value: '6-12', label: '6-12 months' },
-          { value: 'beyond-1y', label: 'More than a year out' },
-          { value: 'flexible', label: 'Flexible' }
-        ]
-      },
-      {
-        id: 'sports_concerts-7', stateKey: 'party',
-        heading: 'How many in your party?',
-        options: [
-          { value: 'just-me', label: 'Just me' },
-          { value: 'couple', label: 'A couple' },
-          { value: 'family', label: 'A family' },
-          { value: 'small-group', label: 'A small group (3-8)' },
-          { value: 'large-group', label: 'A larger group (9+)' }
-        ]
-      }
     ]
   };
 
@@ -1139,8 +1050,7 @@
     sports_f1: { race: 'Race', hospitality: 'Hospitality', travelScope: 'Travel scope', accommodation: 'Accommodation', when: 'Timing', party: 'Party size' },
     sports_motogp: { race: 'Race', hospitality: 'Hospitality', travelScope: 'Travel scope', accommodation: 'Accommodation', when: 'Timing', party: 'Party size' },
     sports_tennis: { slam: 'Slam', hospitality: 'Hospitality', travelScope: 'Travel scope', accommodation: 'Accommodation', when: 'Timing', party: 'Party size' },
-    sports_football: { competition: 'Competition', club: 'Club', hospitality: 'Hospitality', travelScope: 'Travel scope', accommodation: 'Accommodation', when: 'Timing', party: 'Party size' },
-    sports_concerts: { tour: 'Concert/Tour', tourOther: 'Artist/Tour name', hospitality: 'Hospitality', travelScope: 'Travel scope', accommodation: 'Accommodation', when: 'Timing', party: 'Party size' }
+    sports_football: { competition: 'Competition', club: 'Club', hospitality: 'Hospitality', travelScope: 'Travel scope', accommodation: 'Accommodation', when: 'Timing', party: 'Party size' }
   };
 
   function formatAnswers(branch, st) {
@@ -1347,39 +1257,6 @@
       }
       return fbLines.length ? fbLines.join('\n') : 'None provided';
     }
-    if (branch === 'sports' && st.sports && st.sports.sport === 'concerts-culture') {
-      var ccLines = [];
-      var ccSportQ = FLOWS.sports[0];
-      var ccSportLabel = null;
-      for (var ccsi = 0; ccsi < ccSportQ.options.length; ccsi++) {
-        if (ccSportQ.options[ccsi].value === 'concerts-culture') { ccSportLabel = ccSportQ.options[ccsi].label; break; }
-      }
-      ccLines.push((ANSWER_LABELS.sports.sport || 'Sport') + ': ' + (ccSportLabel || 'Concerts & Culture'));
-      var ccFlow = FLOWS.sports_concerts;
-      var ccLabels = ANSWER_LABELS.sports_concerts || {};
-      var ccState = st.sports_concerts || {};
-      var ccIsOther = ccState.tour === 'other-uk';
-      for (var cci = 0; cci < ccFlow.length; cci++) {
-        var ccq = ccFlow[cci];
-        // Step 3a (tourOther) is conditional — only emit when 'Other UK tour' is selected.
-        if (ccq.stateKey === 'tourOther' && !ccIsOther) continue;
-        var ccLeft = ccLabels[ccq.stateKey] || ccq.stateKey;
-        if (ccq.type === 'text') {
-          var ccTrim = (ccState[ccq.stateKey] || '').toString().trim();
-          if (ccTrim) ccLines.push(ccLeft + ': ' + ccTrim);
-        } else {
-          var ccVal = ccState[ccq.stateKey];
-          if (ccVal) {
-            var ccMatch = null;
-            for (var ccj = 0; ccj < ccq.options.length; ccj++) {
-              if (ccq.options[ccj].value === ccVal) { ccMatch = ccq.options[ccj].label; break; }
-            }
-            if (ccMatch) ccLines.push(ccLeft + ': ' + ccMatch);
-          }
-        }
-      }
-      return ccLines.length ? ccLines.join('\n') : 'None provided';
-    }
     if (!branch || !FLOWS[branch] || !st[branch]) return 'None provided';
     var flow = FLOWS[branch];
     var labels = ANSWER_LABELS[branch] || {};
@@ -1454,7 +1331,6 @@
     sports_motogp: { race: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null },
     sports_tennis: { slam: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null },
     sports_football: { competition: null, club: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null },
-    sports_concerts: { tour: null, tourOther: '', hospitality: null, travelScope: null, accommodation: null, when: null, party: null },
     contact: { name: '', email: '', phone: '', notes: '' },
     submitted: false
   };
@@ -1469,7 +1345,6 @@
   if (!state.sports_motogp) state.sports_motogp = { race: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
   if (!state.sports_tennis) state.sports_tennis = { slam: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
   if (!state.sports_football) state.sports_football = { competition: null, club: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
-  if (!state.sports_concerts) state.sports_concerts = { tour: null, tourOther: '', hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
   window.__eventraOnlineConsultantState = state;
 
   var stack = [];
@@ -1479,7 +1354,7 @@
   function escHtml(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
   function parseQuestionId(name) {
-    var m = /^(bespoke_africa|bespoke_europe|sports_rugby|sports_cricket|sports_f1|sports_motogp|sports_tennis|sports_football|sports_concerts|bespoke|sports)-(\d+)$/.exec(name);
+    var m = /^(bespoke_africa|bespoke_europe|sports_rugby|sports_cricket|sports_f1|sports_motogp|sports_tennis|sports_football|bespoke|sports)-(\d+)$/.exec(name);
     if (!m) return null;
     var branch = m[1];
     var idx = parseInt(m[2], 10) - 1;
@@ -1525,8 +1400,8 @@
   // sports_football TOTAL_STEPS is the non-Premier-League default (6 questions + 2 setup steps).
   // The Premier League path adds Step 3a (the club question), and renderQuestion bumps the
   // count to 9 dynamically when state.sports_football.competition === 'premier-league'.
-  var TOTAL_STEPS = { bespoke: 5, bespoke_africa: 7, bespoke_europe: 7, sports: 5, sports_rugby: 8, sports_cricket: 8, sports_f1: 8, sports_motogp: 8, sports_tennis: 8, sports_football: 8, sports_concerts: 8 };
-  var STEP_OFFSET = { bespoke: 2, bespoke_africa: 3, bespoke_europe: 3, sports: 2, sports_rugby: 3, sports_cricket: 3, sports_f1: 3, sports_motogp: 3, sports_tennis: 3, sports_football: 3, sports_concerts: 3 };
+  var TOTAL_STEPS = { bespoke: 5, bespoke_africa: 7, bespoke_europe: 7, sports: 5, sports_rugby: 8, sports_cricket: 8, sports_f1: 8, sports_motogp: 8, sports_tennis: 8, sports_football: 8 };
+  var STEP_OFFSET = { bespoke: 2, bespoke_africa: 3, bespoke_europe: 3, sports: 2, sports_rugby: 3, sports_cricket: 3, sports_f1: 3, sports_motogp: 3, sports_tennis: 3, sports_football: 3 };
 
   function renderQuestion(branch, idx) {
     var q = FLOWS[branch][idx];
@@ -1543,20 +1418,6 @@
       var fbIsPL = state.sports_football && state.sports_football.competition === 'premier-league';
       totalSteps = fbIsPL ? 9 : 8;
       if (fbIsPL) {
-        stepNum = idx + 3;
-      } else {
-        stepNum = idx === 0 ? 3 : idx + 2;
-      }
-    }
-
-    // Concerts: Step 3a (tourOther, idx 1) is conditional. Render the progress indicator
-    // dynamically so Other-UK visitors see "of 9" with sequential step numbers
-    // 3, 4, 5, 6, 7, 8, 9 across the 7 questions, and other-tour visitors see "of 8"
-    // with the tourOther slot skipped (idx 0 -> step 3, idx 2 -> step 4, idx 3 -> step 5, ...).
-    if (branch === 'sports_concerts') {
-      var ccIsOther = state.sports_concerts && state.sports_concerts.tour === 'other-uk';
-      totalSteps = ccIsOther ? 9 : 8;
-      if (ccIsOther) {
         stepNum = idx + 3;
       } else {
         stepNum = idx === 0 ? 3 : idx + 2;
@@ -1756,10 +1617,6 @@
         navigate('sports_football-1');
         return;
       }
-      if (branch === 'sports' && idx === 0 && state.sports.sport === 'concerts-culture') {
-        navigate('sports_concerts-1');
-        return;
-      }
       // Football conditional skip: when the user does NOT pick Premier League at Step 3
       // (sports_football-1, idx 0), skip the conditional Step 3a (club, idx 1) and
       // jump straight to Step 4 (hospitality, idx 2). The stack-based goBack handles
@@ -1776,15 +1633,6 @@
         // into the lead payload if the user goes back and changes competition.
         state.sports_football.club = null;
         navigate('sports_football-3');
-        return;
-      }
-      // Concerts: after sports_concerts-1 (tour, idx 0), if the user did NOT pick
-      // 'Other UK tour', skip the conditional Step 3a (sports_concerts-2) and jump
-      // straight to Step 4 (sports_concerts-3, hospitality). Clear any stale tourOther
-      // value so a previous Other-UK entry doesn't leak into the lead payload.
-      if (branch === 'sports_concerts' && idx === 0 && state.sports_concerts.tour !== 'other-uk') {
-        state.sports_concerts.tourOther = '';
-        navigate('sports_concerts-3');
         return;
       }
       if (idx + 1 < FLOWS[branch].length) {
@@ -1806,7 +1654,6 @@
       state.sports_motogp = { race: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
       state.sports_tennis = { slam: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
       state.sports_football = { competition: null, club: null, hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
-      state.sports_concerts = { tour: null, tourOther: '', hospitality: null, travelScope: null, accommodation: null, when: null, party: null };
       state.contact = { name: '', email: '', phone: '', notes: '' };
       state.submitted = false;
       stack.length = 0;
