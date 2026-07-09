@@ -1807,7 +1807,7 @@
         }, function () {
           submitBtn.disabled = false;
           submitBtn.textContent = 'Send enquiry';
-          if (submitErr) submitErr.textContent = 'Sorry — something went wrong. Please email enquire@eventragroup.com directly.';
+          if (submitErr) submitErr.textContent = 'Sorry — something went wrong. Please email info@eventragroup.com directly.';
         });
       }
 
