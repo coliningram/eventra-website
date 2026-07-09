@@ -768,20 +768,21 @@
 
           <!--
             FORM BACKEND:
-            This form is wired for Formspree (formspree.io).
-            To activate: create a free Formspree account, create a new form,
-            and replace YOUR_FORM_ID in the action URL below with your form ID.
-            Until then, all submissions will fall back to the inline error message
-            prompting the visitor to email info@eventragroup.com directly.
+            This form posts to Web3forms (api.web3forms.com), the same service the
+            Online Consultant chat widget uses. The access_key below is shared with
+            that widget (assets/online-consultant.js); delivery goes to the inbox the
+            key is registered to (info@eventragroup.com). If a submission fails, the
+            visitor is shown an inline error prompting them to email us directly.
           -->
           <form
             class="enquire-form"
             id="enquire-form"
-            action="https://formspree.io/f/YOUR_FORM_ID"
+            action="https://api.web3forms.com/submit"
             method="POST"
             novalidate
           >
-            <input type="hidden" name="_subject" value="New Enquiry — Eventra Group">
+            <input type="hidden" name="access_key" value="6b1b9f4c-cee8-480f-b58b-d08099358faa">
+            <input type="hidden" name="subject" value="Eventra Group Website Enquiry">
 
             <div class="form-row">
               <div class="form-group">
@@ -957,7 +958,7 @@
       mobileClose.addEventListener('click', () => mobileNav.classList.remove('open'));
     }
 
-    // Formspree AJAX submission
+    // Web3forms AJAX submission
     const form = document.getElementById('enquire-form');
     const successMsg = document.getElementById('form-success');
     if (form) {
@@ -978,9 +979,7 @@
             successMsg.scrollIntoView({ behavior: 'smooth', block: 'start' });
           } else {
             const json = await res.json().catch(() => ({}));
-            const msg = json.errors
-              ? json.errors.map(err => err.message).join(' ')
-              : 'Submission failed.';
+            const msg = json.message || 'Submission failed.';
             alert(msg + ' Please email us directly at info@eventragroup.com.');
             submitBtn.disabled = false;
             submitBtn.textContent = 'Send Enquiry';
