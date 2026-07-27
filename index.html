@@ -1267,53 +1267,44 @@
 
   <!-- TICKER START — remove this entire block to disable -->
   <div id="event-ticker" class="event-ticker-wrap" aria-hidden="true">
-    <div class="event-ticker-track" id="event-ticker-track">
-      <span class="event-ticker-item">Wimbledon 2026 · Ladies' Final · Centre Court Debenture Seats · 11 July 2026</span>
-      <span class="event-ticker-sep">—</span>
-      <span class="event-ticker-item">Austrian Grand Prix 2026 · Red Bull Ring · Champions Club · 26 June 2026</span>
-      <span class="event-ticker-sep">—</span>
-      <span class="event-ticker-item">Springboks vs England · Ellis Park · 4 July 2026</span>
-      <span class="event-ticker-sep">—</span>
-      <span class="event-ticker-item">Springboks vs Scotland · Loftus Versfeld · 11 July 2026</span>
-      <span class="event-ticker-sep">—</span>
-      <span class="event-ticker-item">Springboks vs All Blacks · DHL Stadium · 29 August 2026</span>
-      <span class="event-ticker-sep">—</span>
-      <span class="event-ticker-item">US Open 2026 · Men's Final · Arthur Ashe Stadium · 13 September 2026</span>
-      <span class="event-ticker-sep">—</span>
-      <span class="event-ticker-item">Singapore Grand Prix 2026 · Marina Bay · Night Race · 9-11 October 2026</span>
-      <span class="event-ticker-sep">—</span>
-      <span class="event-ticker-item">England vs South Africa · Newlands · January 2027</span>
-      <span class="event-ticker-sep">—</span>
-      <span class="event-ticker-item">Monte Carlo Masters 2027 · Monte Carlo Country Club · April 2027</span>
-      <span class="event-ticker-sep">—</span>
-      <span class="event-ticker-item">Mutua Madrid Open 2027 · Estadio Manolo Santana · April-May 2027</span>
-      <span class="event-ticker-sep">—</span>
-      <span class="event-ticker-item">Australia 2027 · Rugby World Cup · Register Your Interest Now</span>
-      <span class="event-ticker-sep">—</span>
-      <span class="event-ticker-item">Wimbledon 2026 · Ladies' Final · Centre Court Debenture Seats · 11 July 2026</span>
-      <span class="event-ticker-sep">—</span>
-      <span class="event-ticker-item">Austrian Grand Prix 2026 · Red Bull Ring · Champions Club · 26 June 2026</span>
-      <span class="event-ticker-sep">—</span>
-      <span class="event-ticker-item">Springboks vs England · Ellis Park · 4 July 2026</span>
-      <span class="event-ticker-sep">—</span>
-      <span class="event-ticker-item">Springboks vs Scotland · Loftus Versfeld · 11 July 2026</span>
-      <span class="event-ticker-sep">—</span>
-      <span class="event-ticker-item">Springboks vs All Blacks · DHL Stadium · 29 August 2026</span>
-      <span class="event-ticker-sep">—</span>
-      <span class="event-ticker-item">US Open 2026 · Men's Final · Arthur Ashe Stadium · 13 September 2026</span>
-      <span class="event-ticker-sep">—</span>
-      <span class="event-ticker-item">Singapore Grand Prix 2026 · Marina Bay · Night Race · 9-11 October 2026</span>
-      <span class="event-ticker-sep">—</span>
-      <span class="event-ticker-item">England vs South Africa · Newlands · January 2027</span>
-      <span class="event-ticker-sep">—</span>
-      <span class="event-ticker-item">Monte Carlo Masters 2027 · Monte Carlo Country Club · April 2027</span>
-      <span class="event-ticker-sep">—</span>
-      <span class="event-ticker-item">Mutua Madrid Open 2027 · Estadio Manolo Santana · April-May 2027</span>
-      <span class="event-ticker-sep">—</span>
-      <span class="event-ticker-item">Australia 2027 · Rugby World Cup · Register Your Interest Now</span>
-      <span class="event-ticker-sep">—</span>
-    </div>
+    <div class="event-ticker-track" id="event-ticker-track"></div>
   </div>
+  <script>
+    // Homepage event ticker data source. Each item has an ISO `date`
+    // (the fixture date; end-of-month for month-granularity items).
+    // Items with date:null have no fixed date and always render.
+    // The four past-fixture items (Wimbledon 2026, Austrian GP 2026,
+    // Springboks v England, Springboks v Scotland) are removed permanently.
+    (function () {
+      var TICKER_ITEMS = [
+        { text: "Springboks vs All Blacks · DHL Stadium · 29 August 2026", date: "2026-08-29" },
+        { text: "US Open 2026 · Men's Final · Arthur Ashe Stadium · 13 September 2026", date: "2026-09-13" },
+        { text: "Singapore Grand Prix 2026 · Marina Bay · Night Race · 9-11 October 2026", date: "2026-10-11" },
+        { text: "England vs South Africa · Newlands · January 2027", date: "2027-01-31" },
+        { text: "Monte Carlo Masters 2027 · Monte Carlo Country Club · April 2027", date: "2027-04-30" },
+        { text: "Mutua Madrid Open 2027 · Estadio Manolo Santana · April-May 2027", date: "2027-05-31" },
+        { text: "Australia 2027 · Rugby World Cup · Register Your Interest Now", date: null }
+      ];
+      var track = document.getElementById("event-ticker-track");
+      if (!track) return;
+      var today = new Date();
+      today.setHours(0, 0, 0, 0);
+      var live = TICKER_ITEMS.filter(function (item) {
+        if (!item.date) return true;                       // no fixed date -> always show
+        return new Date(item.date + "T00:00:00") >= today;  // hide fixtures before today
+      });
+      if (!live.length) return;
+      function render(items) {
+        var html = "";
+        items.forEach(function (item) {
+          html += '<span class="event-ticker-item">' + item.text + '</span>';
+          html += '<span class="event-ticker-sep">—</span>';
+        });
+        return html;
+      }
+      track.innerHTML = render(live) + render(live); // duplicate set = seamless -50% scroll
+    })();
+  </script>
   <!-- TICKER END -->
 
 
@@ -1407,7 +1398,7 @@
           <div class="event-card-body">
             <p class="event-category">Rugby &middot; Cape Town</p>
             <h3 class="event-title">The test that defines a season.</h3>
-            <p class="event-teaser">The Boks and the All Blacks. DHL Stadium. Three suites available.</p>
+            <p class="event-teaser">The Boks and the All Blacks. DHL Stadium. Remaining seats in a private suite behind the posts.</p>
             <span class="btn btn-primary btn-sm">Request a Proposal</span>
           </div>
         </a>
@@ -1420,7 +1411,7 @@
               alt="Aerial view of Monaco harbour and Mediterranean Sea — Formula 1 Monaco Grand Prix hospitality packages with Eventra"
               loading="lazy"
             >
-            <div class="event-date-badge">May 2026</div>
+            <div class="event-date-badge">May 2027</div>
           </div>
           <div class="event-card-body">
             <p class="event-category">Formula 1 &middot; Monaco</p>
