@@ -1,0 +1,76 @@
+{
+  "_about": "Single source of truth for date-filtered fixture blocks rendered into static HTML by scripts/build-fixtures.mjs. Keys are list ids; each row carries an ISO `date` (same pattern as the homepage ticker, e.g. \"2026-08-29\") used to drop past fixtures and sort ascending, plus the display fields that list's markup needs. `date: null` means always render (undated, like the ticker). Do NOT swap/replace/add images here — image paths are transcribed verbatim from the committed pages (image-lock rule). Rebuild with: node scripts/build-fixtures.mjs",
+  "rugby-hub": [
+    {
+      "id": "springboks-vs-all-blacks-2026",
+      "date": "2026-08-29",
+      "comment": "Springboks vs All Blacks",
+      "href": "/events/springboks-vs-all-blacks-2026",
+      "imgSrc": "/images/experiences/rugby/springboks-vs-all-blacks-tour-2026.webp",
+      "imgAlt": "South Africa vs New Zealand flags — Springboks vs All Blacks tour 2026 rugby hospitality with Eventra",
+      "badge": "29 Aug 2026",
+      "category": "Rugby &middot; Cape Town",
+      "title": "Springboks vs All Blacks.",
+      "venue": "DHL Stadium &mdash; 29 August 2026",
+      "teaser": "The greatest rivalry in rugby. Two nations. One stage. DHL Stadium, late August.",
+      "cta": "Enquire Now"
+    },
+    {
+      "id": "england-inbound-tour-2026",
+      "date": "2026-07-04",
+      "comment": "England Tour",
+      "href": "/events/england-inbound-tour-2026",
+      "imgSrc": "/images/experiences/rugby/springboks-vs-england-ellis-park-4-july-2026.webp",
+      "imgAlt": "South Africa vs England rugby — Springboks vs England hospitality at Ellis Park Johannesburg 4 July 2026 with Eventra",
+      "badge": "4 Jul 2026",
+      "category": "Rugby &middot; Johannesburg",
+      "title": "Springboks England Tour.",
+      "venue": "Ellis Park Stadium &mdash; 4 July 2026",
+      "teaser": "England on South African soil. Ellis Park, Johannesburg, the first Test of the inbound.",
+      "cta": "Enquire Now"
+    },
+    {
+      "id": "scotland-inbound-tour-2026",
+      "date": "2026-07-11",
+      "comment": "Scotland Tour",
+      "href": "/events/scotland-inbound-tour-2026",
+      "imgSrc": "/images/experiences/rugby/springboks-vs-scotland-loftus-versfeld-11-july-2026.webp",
+      "imgAlt": "South Africa vs Scotland rugby — Springboks vs Scotland hospitality at Loftus Versfeld Pretoria 11 July 2026 with Eventra",
+      "badge": "11 Jul 2026",
+      "category": "Rugby &middot; Pretoria",
+      "title": "Springboks Scotland Tour.",
+      "venue": "Loftus Versfeld &mdash; 11 July 2026",
+      "teaser": "Scotland in Pretoria. Loftus Versfeld, the second Test, mid-July.",
+      "cta": "Enquire Now"
+    },
+    {
+      "id": "australia-2027",
+      "date": "2027-09-01",
+      "comment": "Australia 2027",
+      "href": "/events/australia-2027",
+      "imgSrc": "/images/experiences/rugby/sydney-harbour-australia-2027.webp",
+      "imgAlt": "Sydney Harbour Australia — Eventra rugby hospitality packages Australia 2027",
+      "badge": "2027",
+      "category": "Australia 2027",
+      "title": "Australia 2027.",
+      "venue": "Australia &mdash; September/October 2027",
+      "teaser": "Rugby's four-year cycle returns. Sydney, Melbourne, Brisbane. Register early &mdash; limited availability.",
+      "cta": "Enquire Now"
+    },
+    {
+      "id": "nations-championship-finals-2026",
+      "date": "2026-11-28",
+      "comment": "Nations Championship Finals",
+      "href": "/experiences/rugby/nations-championship-finals-2026/",
+      "imageComment": "FINAL IMAGE: /images/experiences/rugby/twickenham-nations-finals-2026-hero.webp (Colin supplying; swap in on prod prep)",
+      "imgSrc": "/images/experiences/rugby/new-zealand-tour-hero.webp",
+      "imgAlt": "Nations Championship Finals Weekend at Allianz Stadium, Twickenham",
+      "badge": "Nov 2026",
+      "category": "Rugby &middot; London",
+      "title": "Nations Championship Finals.",
+      "venue": "Allianz Stadium, Twickenham &mdash; 28&ndash;29 November 2026",
+      "teaser": "Eight nations, two finals days at the home of rugby. Four nights in Mayfair, hospitality direct from the RFU.",
+      "cta": "Enquire Now"
+    }
+  ]
+}
