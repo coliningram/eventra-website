@@ -15,6 +15,12 @@
  *    read the fixtures without running scripts.)
  *  - No-op cleanly: if a rendered block is unchanged, the file is left untouched
  *    (no write, no empty commit).
+ *  - A list may declare additional marker-wired regions in `extras` (e.g. a
+ *    section heading whose wording states the fixture count). These are rendered
+ *    from the same selected rows so hand-written prose cannot drift out of sync
+ *    with the cards when a fixture drops off.
+ *  - Zero-row guard: a list that selects NO rows aborts the run before writing
+ *    anything. See ZERO-ROW GUARD below for why this is a hard failure.
  *
  * Adding a new list later (e.g. homepage ticker, Nations page) is just: add its
  * rows under a new key in data/fixtures.json, add a marker pair to the target
@@ -70,6 +76,29 @@ function renderRugbyHubCard(row) {
   return lines.join('\n');
 }
 
+// Number words, so the generated heading keeps the page's editorial voice
+// ("Three rugby experiences.") rather than switching to a numeral.
+const NUMBER_WORDS = [
+  'Zero', 'One', 'Two', 'Three', 'Four', 'Five',
+  'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve',
+];
+
+function numberWord(n) {
+  return NUMBER_WORDS[n] ?? String(n);
+}
+
+// rugby-hub heading: the section title states how many experiences are listed.
+// It is generated from the same selected rows as the cards, because the date
+// filter changes that count whenever a fixture drops off the page.
+// Singular matters here: the filter genuinely reaches one row (once the Nations
+// Finals date passes in Nov 2026, Australia 2027 is the only fixture left for
+// ~10 months), and "One rugby experiences." would sit on the live page for all
+// of it.
+function renderRugbyHubHeading(rows) {
+  const noun = rows.length === 1 ? 'experience' : 'experiences';
+  return `<h2 class="section-title">${numberWord(rows.length)} rugby ${noun}.</h2>`;
+}
+
 // ---- Registry -------------------------------------------------------------
 // One entry per marker-wired list. `indent` is the leading whitespace used for
 // the generated-by comment and the END marker line so the block sits neatly in
@@ -80,6 +109,12 @@ const LISTS = [
     file: join(ROOT, 'experiences', 'rugby', 'index.html'),
     indent: '        ',
     render: renderRugbyHubCard,
+    // Marker-wired regions outside the card block that are derived from the
+    // same rows. `inline: true` means the replacement sits between the markers
+    // on one line, with no added newlines or indentation.
+    extras: [
+      { id: 'rugby-hub-heading', render: renderRugbyHubHeading, inline: true },
+    ],
   },
 ];
 
@@ -109,32 +144,61 @@ function buildBlock(list, rows) {
   return `\n${genComment}\n\n${cards}\n\n${list.indent}`;
 }
 
-function processList(list, data) {
-  const rows = data[list.id];
-  if (!Array.isArray(rows)) {
-    throw new Error(`No rows for list "${list.id}" in ${DATA_FILE}`);
-  }
-  const startMarker = `<!-- FIXTURES:${list.id} START -->`;
-  const endMarker = `<!-- FIXTURES:${list.id} END -->`;
-  const src = readFileSync(list.file, 'utf8');
+// Replace whatever sits between the START/END markers for `markerId`.
+function replaceRegion(src, markerId, file, replacement) {
+  const startMarker = `<!-- FIXTURES:${markerId} START -->`;
+  const endMarker = `<!-- FIXTURES:${markerId} END -->`;
 
   const startIdx = src.indexOf(startMarker);
   const endIdx = src.indexOf(endMarker);
   if (startIdx === -1 || endIdx === -1) {
     throw new Error(
-      `Markers for "${list.id}" not found in ${list.file} (need ${startMarker} … ${endMarker})`
+      `Markers for "${markerId}" not found in ${file} (need ${startMarker} … ${endMarker})`
     );
   }
   if (endIdx < startIdx) {
-    throw new Error(`END marker precedes START marker for "${list.id}" in ${list.file}`);
+    throw new Error(`END marker precedes START marker for "${markerId}" in ${file}`);
   }
 
-  const selected = selectRows(rows);
-  const block = buildBlock(list, selected);
+  return src.slice(0, startIdx + startMarker.length) + replacement + src.slice(endIdx);
+}
 
-  const before = src.slice(0, startIdx + startMarker.length);
-  const after = src.slice(endIdx);
-  const next = before + block + after;
+function processList(list, data) {
+  const rows = data[list.id];
+  if (!Array.isArray(rows)) {
+    throw new Error(`No rows for list "${list.id}" in ${DATA_FILE}`);
+  }
+  const src = readFileSync(list.file, 'utf8');
+  const selected = selectRows(rows);
+
+  // ---- ZERO-ROW GUARD ----
+  // Every row has passed its date, so the block would render as an empty grid.
+  // Abort BEFORE writing: publishing an empty "N rugby experiences" section is
+  // worse than not rebuilding at all, and it would happen silently — no error,
+  // no failure email — which is the exact failure mode this mechanism exists to
+  // prevent. Failing here surfaces it through the workflow's documented signal
+  // (GitHub emails the repo owner on workflow failure) while the page keeps its
+  // last-good content. Fix by adding the next season's fixtures to
+  // data/fixtures.json.
+  if (selected.length === 0) {
+    throw new Error(
+      `List "${list.id}" selected 0 of ${rows.length} rows — every fixture is in the past ` +
+        `(today is ${TODAY} UTC). Refusing to publish an empty block in ${list.file}. ` +
+        `Add upcoming fixtures to ${DATA_FILE}.`
+    );
+  }
+
+  let next = replaceRegion(src, list.id, list.file, buildBlock(list, selected));
+
+  for (const extra of list.extras ?? []) {
+    const rendered = extra.render(selected);
+    next = replaceRegion(
+      next,
+      extra.id,
+      list.file,
+      extra.inline ? rendered : `\n${list.indent}${rendered}\n${list.indent}`
+    );
+  }
 
   if (next === src) {
     return { id: list.id, file: list.file, changed: false, count: selected.length };

@@ -24,6 +24,22 @@ git push
 `fixtures.yml` is byte-identical to the intended final file, so the `git mv` is
 all that is needed — no edits.
 
+## Failure behaviour (zero-row guard)
+
+The generator **aborts with a non-zero exit** if a list ends up with no rows —
+i.e. every fixture in `data/fixtures.json` has passed. It does not write, so the
+page keeps its last-good content rather than publishing an empty section under a
+heading that claims a count.
+
+That makes the workflow run fail, which is deliberate: GitHub emails the repo
+owner on workflow failure, and that email is the signal to add the next season's
+fixtures. A silently-empty events grid would produce no error and no email,
+which is the exact failure this mechanism exists to prevent.
+
+For the rugby hub this first bites after **1 Sep 2027** (Australia 2027, the
+last-dated fixture). Undated rows (`date: null`) always render, so a list that
+carries one never trips the guard.
+
 ## Scheduling caveat
 
 GitHub's `schedule` trigger only fires from the repository's **default branch
