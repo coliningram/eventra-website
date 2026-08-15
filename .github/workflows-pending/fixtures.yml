@@ -47,6 +47,13 @@ jobs:
       - name: Rebuild fixtures from data/fixtures.json
         run: node scripts/build-fixtures.mjs
 
+      # NOTE: deliberately NO "[skip ci]" in the commit message. This workflow has
+      # no `push` trigger, so there is no self-trigger loop to suppress, and the
+      # commit MUST reach Cloudflare's build so the regenerated HTML actually
+      # deploys. Workers Builds ignores [skip ci] today, but it is an open feature
+      # request (cloudflare/workers-sdk#11061) and Cloudflare Pages already honours
+      # it — including the flag would silently stop fixture updates from going live
+      # the day that lands.
       - name: Commit and push if changed
         run: |
           if [ -z "$(git status --porcelain)" ]; then
@@ -56,7 +63,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
-          git commit -m "chore(fixtures): rebuild date-filtered fixtures [skip ci]
+          git commit -m "chore(fixtures): rebuild date-filtered fixtures
 
           Co-Authored-By: Paperclip <noreply@paperclip.ing>"
           git push
