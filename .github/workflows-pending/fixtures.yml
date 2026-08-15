@@ -1,0 +1,62 @@
+name: Rebuild static fixtures
+
+# Regenerates the date-filtered fixture blocks (data/fixtures.json ->
+# scripts/build-fixtures.mjs -> static HTML) so past fixtures drop off the site
+# automatically. Output is plain static HTML — non-JS AI crawlers (GPTBot,
+# ClaudeBot, PerplexityBot, CCBot) read the fixtures without running any script.
+#
+# IMPORTANT — scheduling caveat: GitHub's `schedule` trigger ONLY fires from the
+# repository's DEFAULT branch (main). On the `staging` branch the daily cron will
+# NOT run — that is expected. Validate on staging via the `workflow_dispatch`
+# button (Actions tab -> this workflow -> "Run workflow") and by running the
+# generator locally: `node scripts/build-fixtures.mjs`. The daily cron only
+# activates once this file is promoted to `main` (Colin-gated).
+#
+# Failure signal: this workflow relies on GitHub's default behaviour of emailing
+# the repository owner when a scheduled workflow run fails. There is no custom
+# alerting path by design.
+
+on:
+  schedule:
+    # 03:17 UTC daily — a low-traffic hour; offset off the top of the hour to
+    # avoid GitHub's peak-of-the-hour scheduler congestion. (Only fires on main.)
+    - cron: '17 3 * * *'
+  workflow_dispatch: {}
+
+# Allow the job to push the regenerated HTML back to the branch.
+permissions:
+  contents: write
+
+# Never run two rebuilds against the same branch at once.
+concurrency:
+  group: fixtures-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Rebuild fixtures from data/fixtures.json
+        run: node scripts/build-fixtures.mjs
+
+      - name: Commit and push if changed
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No fixture changes — nothing to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "chore(fixtures): rebuild date-filtered fixtures [skip ci]
+
+          Co-Authored-By: Paperclip <noreply@paperclip.ing>"
+          git push
