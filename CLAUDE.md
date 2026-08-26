@@ -8,7 +8,7 @@
 ## HTML Rules
 
 - NEVER nest `<a>` tags inside another `<a>` tag. This is invalid HTML and breaks cards in the browser. If a destination card (`<a class="dest-card">`) needs to reference another page in its description text, use plain text or a `<span>` — never an inline `<a>` link.
-- All destination cards (`dest-card`) must link to their actual destination page, NOT to `/enquire`. For example, a Mediterranean card on the Europe page must link to `/bespoke/europe/mediterranean`. The only links to `/enquire` should be the nav CTA button and the "Design Your Journey" CTA sections.
+- A destination card links to the destination page it names. Where that page does not yet exist, the card links to `/enquire` and its aria-label states the enquiry. A destination card must never link to the page it already sits on.
 
 ## CSS Rules
 
