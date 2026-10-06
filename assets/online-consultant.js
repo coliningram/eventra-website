@@ -564,7 +564,7 @@
         type: 'text',
         inputLabel: 'Specific event',
         ariaLabel: 'Specific event in mind',
-        placeholder: "e.g. Springboks vs All Blacks, Wimbledon, Monaco GP, or 'open to suggestions'"
+        placeholder: "e.g. Springboks at Loftus, Wimbledon, Monaco GP, or 'open to suggestions'"
       },
       {
         id: 'sports-3', stateKey: 'when',
@@ -595,7 +595,6 @@
         heading: 'Which Springbok fixture interests you?',
         // Update annually — fixture list goes stale year to year. Refresh before each new Springbok season.
         options: [
-          { value: 'all-blacks-2026', label: 'All Blacks tour 2026 — the August Cape Town test' },
           { value: 'england-2026', label: 'England inbound 2026 — the July test series' },
           { value: 'scotland-2026', label: 'Scotland inbound 2026 — the July Loftus test' },
           { value: 'lions-2027', label: 'British & Irish Lions 2027 — the July tour' },

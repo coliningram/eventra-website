@@ -2,20 +2,6 @@
   "_about": "Single source of truth for date-filtered fixture blocks rendered into static HTML by scripts/build-fixtures.mjs. Keys are list ids; each row carries an ISO `date` (same pattern as the homepage ticker, e.g. \"2026-08-29\") used to drop past fixtures and sort ascending, plus the display fields that list's markup needs. `date: null` means always render (undated, like the ticker). Do NOT swap/replace/add images here — image paths are transcribed verbatim from the committed pages (image-lock rule). Rebuild with: node scripts/build-fixtures.mjs",
   "rugby-hub": [
     {
-      "id": "springboks-vs-all-blacks-2026",
-      "date": "2026-08-29",
-      "comment": "Springboks vs All Blacks",
-      "href": "/events/springboks-vs-all-blacks-2026",
-      "imgSrc": "/images/experiences/rugby/springboks-vs-all-blacks-tour-2026.webp",
-      "imgAlt": "South Africa vs New Zealand flags — Springboks vs All Blacks tour 2026 rugby hospitality with Eventra",
-      "badge": "29 Aug 2026",
-      "category": "Rugby &middot; Cape Town",
-      "title": "Springboks vs All Blacks.",
-      "venue": "DHL Stadium &mdash; 29 August 2026",
-      "teaser": "The greatest rivalry in rugby. Two nations. One stage. DHL Stadium, late August.",
-      "cta": "Enquire Now"
-    },
-    {
       "id": "england-inbound-tour-2026",
       "date": "2026-07-04",
       "comment": "England Tour",
