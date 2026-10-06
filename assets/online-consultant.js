@@ -595,6 +595,8 @@
         heading: 'Which Springbok fixture interests you?',
         // Update annually — fixture list goes stale year to year. Refresh before each new Springbok season.
         options: [
+          { value: 'england-2026', label: 'England inbound 2026 — the July test series' },
+          { value: 'scotland-2026', label: 'Scotland inbound 2026 — the July Loftus test' },
           { value: 'lions-2027', label: 'British & Irish Lions 2027 — the July tour' },
           { value: 'other-home-2026', label: 'Other 2026 home test — Wallabies, Argentina, France, etc.' },
           { value: 'away-tour', label: 'Springbok away tour — UK November tour, NZ/Australia' },
