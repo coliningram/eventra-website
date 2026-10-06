@@ -1785,6 +1785,7 @@
         var branch = state.branch;
         var branchLabel = BRANCH_LABELS[branch] || '';
         var notesValue = state.contact.notes ? state.contact.notes : '';
+        var answersValue = formatAnswers(branch, state);
         var phoneValue = state.contact.phone ? state.contact.phone : '';
 
         var payload = {
@@ -1795,8 +1796,9 @@
           email: state.contact.email,
           phone: phoneValue,
           branch: branchLabel,
-          answers: formatAnswers(branch, state),
-          notes: notesValue
+          answers: answersValue,
+          notes: notesValue,
+          message: answersValue + (notesValue ? '\n\n' + notesValue : '')
         };
 
         postWithTimeout(WEB3FORMS_URL, payload, 10000).then(function () {

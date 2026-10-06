@@ -967,6 +967,15 @@
     if (form) {
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
+        const emailInput = form.querySelector('#email');
+        // Clear any stale custom message first, or checkValidity() would keep failing.
+        if (emailInput) emailInput.setCustomValidity('');
+        if (!form.checkValidity()) { form.reportValidity(); return; }
+        if (emailInput && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value)) {
+          emailInput.setCustomValidity('Please enter a full email address, including the domain (for example name@example.com).');
+          emailInput.reportValidity();
+          return;
+        }
         const submitBtn = form.querySelector('.btn-submit');
         submitBtn.disabled = true;
         submitBtn.textContent = 'Sending…';
