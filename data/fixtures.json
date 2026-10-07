@@ -57,5 +57,49 @@
       "teaser": "Twelve nations, two finals days at the home of rugby. Four nights in Mayfair, hospitality direct from the RFU.",
       "cta": "Enquire Now"
     }
+  ],
+  "experiences-hub": [
+    {
+      "id": "singapore-gp-2026",
+      "date": "2026-10-11",
+      "comment": "10. Singapore Grand Prix 2026 — The Green Room",
+      "href": "/experiences/f1/singapore-gp-2026",
+      "imgSrc": "https://images.unsplash.com/photo-1572470977675-95f8275d6c55?w=800&q=70&auto=format&fit=crop",
+      "imgAlt": "Singapore Marina Bay night skyline — Singapore Grand Prix 2026 Green Room with Eventra",
+      "badge": "9&ndash;11 Oct 2026",
+      "category": "Formula 1 &middot; Singapore",
+      "title": "Singapore Grand Prix 2026 &mdash; The Green Room",
+      "venue": "Marina Bay Street Circuit &mdash; 9&ndash;11 October 2026",
+      "teaser": "The only night race in Formula 1. Three days at Turn 3 on the Marina Bay Street Circuit.",
+      "cta": "Enquire Now"
+    },
+    {
+      "id": "england-cricket-newlands-2027",
+      "date": "2027-01-07",
+      "comment": "11. England vs South Africa — Newlands 2027",
+      "href": "/events/england-cricket-newlands-2027",
+      "imgSrc": "/images/events/newlands-cricket-ground-table-mountain-cape-town.webp",
+      "imgAlt": "Newlands Cricket Ground Cape Town with Table Mountain — England vs South Africa Test hospitality with Eventra",
+      "badge": "Jan 2027",
+      "category": "Cricket &middot; Cape Town",
+      "title": "England vs South Africa &mdash; Newlands 2027",
+      "venue": "Newlands Cricket Ground &mdash; January 2027",
+      "teaser": "The 10-night New Year package. Test match hospitality at Newlands with Table Mountain as the backdrop.",
+      "cta": "Enquire Now"
+    },
+    {
+      "id": "australia-2027",
+      "date": "2027-09-01",
+      "comment": "12. Australia 2027",
+      "href": "/events/australia-2027",
+      "imgSrc": "/images/experiences/rugby/sydney-harbour-australia-2027.webp",
+      "imgAlt": "Sydney Harbour, Australia. Bespoke rugby packages for Australia 2027 with Eventra",
+      "badge": "2027",
+      "category": "Rugby &middot; Australia",
+      "title": "Australia 2027: Rugby&rsquo;s Biggest Stage",
+      "venue": "Australia &mdash; 2027",
+      "teaser": "The tournament that comes every four years. Sydney, Melbourne, Brisbane. Register your interest now.",
+      "cta": "Enquire Now"
+    }
   ]
 }
