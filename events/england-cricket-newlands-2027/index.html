@@ -756,26 +756,105 @@
       letter-spacing: 0.05em;
     }
 
+    .option-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .option-card {
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .option-card-featured {
+      border-color: var(--eg-gold);
+      background: rgba(184,150,107,0.07);
+    }
+
+    .option-label {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--eg-gold);
+      margin-bottom: 12px;
+    }
+
+    .option-name {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 27px;
+      line-height: 1.15;
+      color: var(--eg-white);
+      margin-bottom: 14px;
+    }
+
+    .option-text {
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.72);
+      margin-bottom: 22px;
+    }
+
+    .option-includes {
+      list-style: none;
+      margin-top: auto;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 18px;
+    }
+
+    .option-includes li {
+      font-family: var(--font-body);
+      font-size: 14px;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.8);
+      padding: 7px 0 7px 18px;
+      position: relative;
+    }
+
+    .option-includes li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 15px;
+      width: 8px;
+      height: 1px;
+      background: var(--eg-gold);
+    }
+
+    .option-note {
+      font-family: var(--font-body);
+      font-size: 14px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.55);
+      margin-top: 28px;
+    }
+
     /* ───────────────────────────────────────────────
-       SECTION 5 — DOWNLOAD ITINERARY
+       MAKE A TRIP OF IT
     ─────────────────────────────────────────────── */
-    .download-itinerary {
+    .trip-section {
       background: var(--eg-warm-neutral);
       padding: 80px 0;
     }
 
-    .download-inner {
+    .trip-inner {
       text-align: center;
       max-width: 560px;
       margin: 0 auto;
     }
 
-    .download-inner .eyebrow {
+    .trip-inner .eyebrow {
       display: block;
       margin-bottom: 16px;
     }
 
-    .download-headline {
+    .trip-headline {
       font-family: var(--font-display);
       font-weight: 400;
       font-size: 38px;
@@ -784,7 +863,7 @@
       margin-bottom: 16px;
     }
 
-    .download-body {
+    .trip-body {
       font-family: var(--font-body);
       font-size: 16px;
       line-height: 1.75;
@@ -1103,6 +1182,7 @@
 
       .inclusions-list { grid-template-columns: 1fr; }
       .inclusions-list li:nth-child(odd) { padding-right: 0; }
+      .option-cards { grid-template-columns: 1fr; }
 
       .itinerary-item {
         grid-template-columns: 1fr;
@@ -1286,7 +1366,6 @@ window.evgEventId = function(p){return p+'_'+Date.now()+'_'+Math.random().toStri
             <div class="overview-body">
               <p>England v South Africa, Newlands, Cape Town. 3 to 7 January 2027. Five days of Test cricket.</p>
               <p>All options include all five days.</p>
-              <p>We can book accommodation, transfers and the rest of the time in Cape Town.</p>
             </div>
             <div class="gold-divider"></div>
             <a href="#enquire" class="btn btn-primary">Request a Proposal</a>
@@ -1328,33 +1407,81 @@ window.evgEventId = function(p){return p+'_'+Date.now()+'_'+Math.random().toStri
           <div class="inclusions-label-col">
             <p class="eyebrow section-eyebrow">Hospitality Options</p>
             <h2 class="inclusions-heading">
-              Four ways<br>to watch.
+              Hospitality at<br>Newlands.
             </h2>
-            <p class="inclusions-intro">All options include<br>all five days.</p>
+            <p class="inclusions-intro">Four ways to watch the New Year Test. Every option includes all five days of the Test.</p>
           </div>
 
           <div>
-            <ul class="inclusions-list">
-              <li>
-                <div class="inclusion-icon"></div>
-                <span class="inclusion-text">President&rsquo;s Pavilion: a reserved seat in the President&rsquo;s Pavilion Upper for every day of the Test.</span>
-              </li>
-              <li>
-                <div class="inclusion-icon"></div>
-                <span class="inclusion-text">Pavilion Hospitality: the same seat, plus lunch and afternoon tea every day at a reserved table in a private marquee a short walk from the ground. Soft drinks, beer and wine.</span>
-              </li>
-              <li>
-                <div class="inclusion-icon"></div>
-                <span class="inclusion-text">Hospitality Suite: a place in a hosted suite with a host or hostess, direct access to your seats, morning tea, lunch and afternoon tea, soft drinks, beer, wine and spirits, tables and chairs, television.</span>
-              </li>
-              <li>
-                <div class="inclusion-icon"></div>
-                <span class="inclusion-text">Premier Suite: everything in the Hospitality Suite, with upmarket catering all day and a premium bar. Exclusive use of a whole suite is available on request.</span>
-              </li>
-            </ul>
-            <p class="inclusions-not-included">We can book accommodation, transfers and the rest of the time in Cape Town.</p>
+            <div class="option-cards">
+
+              <article class="option-card">
+                <p class="option-label">Seat only</p>
+                <h3 class="option-name">President&rsquo;s Pavilion</h3>
+                <p class="option-text">A reserved seat in the President&rsquo;s Pavilion Upper for every day of the Test.</p>
+                <ul class="option-includes">
+                  <li>Reserved seat, all five days</li>
+                  <li>Pavilion views of Table Mountain</li>
+                </ul>
+              </article>
+
+              <article class="option-card">
+                <p class="option-label">Seat and marquee</p>
+                <h3 class="option-name">Pavilion Hospitality</h3>
+                <p class="option-text">Your President&rsquo;s Pavilion seat, with lunch and afternoon tea every day in a private marquee a short walk from the ground.</p>
+                <ul class="option-includes">
+                  <li>Reserved seat, all five days</li>
+                  <li>Reserved table in the marquee</li>
+                  <li>Lunch and afternoon tea</li>
+                  <li>Soft drinks, beer and wine</li>
+                </ul>
+              </article>
+
+              <article class="option-card">
+                <p class="option-label">Hosted suite</p>
+                <h3 class="option-name">Hospitality Suite</h3>
+                <p class="option-text">A place in a hosted suite, with a dedicated host and your seats a step away.</p>
+                <ul class="option-includes">
+                  <li>Suite host or hostess</li>
+                  <li>Direct access to your seats</li>
+                  <li>Morning tea, lunch and afternoon tea</li>
+                  <li>Tables and chairs in the suite</li>
+                  <li>Television in the suite</li>
+                  <li>Soft drinks, beer, wine and spirits</li>
+                </ul>
+              </article>
+
+              <article class="option-card option-card-featured">
+                <p class="option-label">Our finest suite</p>
+                <h3 class="option-name">Premier Suite</h3>
+                <p class="option-text">A step up in every respect, with a more refined menu and a premium bar throughout the day.</p>
+                <ul class="option-includes">
+                  <li>Everything in the Hospitality Suite</li>
+                  <li>Our premium suite</li>
+                  <li>Upmarket catering all day</li>
+                  <li>Premium bar</li>
+                </ul>
+              </article>
+
+            </div>
+
+            <p class="option-note">Exclusive use of a whole suite is available on request.</p>
           </div>
 
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ────────────────────────────────────────────
+         MAKE A TRIP OF IT
+    ──────────────────────────────────────────── -->
+    <section class="trip-section" aria-label="Make a trip of it">
+      <div class="container">
+        <div class="trip-inner">
+          <p class="eyebrow section-eyebrow">Cape Town</p>
+          <h2 class="trip-headline">Make a trip of it</h2>
+          <p class="trip-body">We can book your accommodation, transfers and the rest of your time in Cape Town, so the whole trip is taken care of.</p>
         </div>
       </div>
     </section>
