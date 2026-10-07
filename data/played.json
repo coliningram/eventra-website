@@ -52,7 +52,7 @@
         {
           "note": "CTA band body: drop the stale present-tense race-date sentence",
           "find": "<p class=\"cta-band-body\">The Green Room at Turn 3 is one of the most sought-after hospitality experiences on the Formula 1 calendar. The Singapore Grand Prix takes place 9&ndash;11 October 2026.</p>",
-          "replace": "<p class=\"cta-band-body\">The Green Room at Turn 3 is one of the most sought-after hospitality experiences on the Formula 1 calendar.</p>"
+          "replace": "<p class=\"cta-band-body\">The 2026 Singapore Grand Prix, 9 to 11 October 2026, is no longer on sale.</p>"
         },
         {
           "note": "CTA band aria-label: stop inviting an enquiry for a race that is over",
