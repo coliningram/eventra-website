@@ -99,6 +99,13 @@ function renderRugbyHubHeading(rows) {
   return `<h2 class="section-title">${numberWord(rows.length)} rugby ${noun}.</h2>`;
 }
 
+// experiences-hub sub: the section's count sentence, generated from the same rows
+// as the cards so it cannot drift when a fixture drops off.
+function renderExperiencesHubSub(rows) {
+  const noun = rows.length === 1 ? 'experience' : 'experiences';
+  return `<p class="section-sub">${numberWord(rows.length)} curated ${noun} across sport. Each one built around access that general tickets cannot provide.</p>`;
+}
+
 // ---- Registry -------------------------------------------------------------
 // One entry per marker-wired list. `indent` is the leading whitespace used for
 // the generated-by comment and the END marker line so the block sits neatly in
@@ -114,6 +121,15 @@ const LISTS = [
     // on one line, with no added newlines or indentation.
     extras: [
       { id: 'rugby-hub-heading', render: renderRugbyHubHeading, inline: true },
+    ],
+  },
+  {
+    id: 'experiences-hub',
+    file: join(ROOT, 'experiences', 'index.html'),
+    indent: '        ',
+    render: renderRugbyHubCard,
+    extras: [
+      { id: 'experiences-hub-sub', render: renderExperiencesHubSub, inline: true },
     ],
   },
 ];
