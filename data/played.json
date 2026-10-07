@@ -154,6 +154,90 @@
           "replace": "<url><loc>https://eventragroup.com/experiences/rugby/nations-championship-finals-2026/</loc><lastmod>2026-12-01</lastmod></url>"
         }
       ]
+    },
+    {
+      "id": "england-cricket-newlands-2027",
+      "file": "events/england-cricket-newlands-2027/index.html",
+      "event": "England v South Africa, Newlands Cricket Ground, Cape Town, 3 to 7 January 2027 (five days of Test cricket)",
+      "playedFrom": "2027-01-08",
+      "source": "EVE-863. playedFrom is the day after the last day of play: the page's Event JSON-LD is startDate 2027-01-03 / endDate 2027-01-07, data/fixtures.json carries date 2027-01-07, and EVE-853 settled the dates as 3 to 7 January 2027, so 2027-01-08 is the first day the Test is past. Every replacement reuses wording already live on origin/main from the EVE-794 section B treatment ('This fixture has been played.', the 'Past Fixture' label, '... is no longer on sale.', the 'kept as a record of it' note and the 'See the ... Eventra Group arranges now.' pointer); the only change is the sport noun, which already varies per page across five live instances. No new voice, so this is not EVE-823-gated. This page has no twitter:description, unlike EVE-862's.",
+      "edits": [
+        {
+          "note": "meta description: played notice + cricket forward pointer. The pointer sentence is the frame already live on origin/main in five places (rugby, Formula 1, Wimbledon, US Open, Roland Garros); only the sport noun changes.",
+          "find": "<meta name=\"description\" content=\"England v South Africa at Newlands, Cape Town, 3 to 7 January 2027. Five days of Test cricket, with hospitality from a reserved Pavilion seat to exclusive use of a suite.\">",
+          "replace": "<meta name=\"description\" content=\"England v South Africa at Newlands, Cape Town, 3 to 7 January 2027. Five days of Test cricket, with hospitality from a reserved Pavilion seat to exclusive use of a suite. This fixture has been played. See the cricket Eventra Group arranges now.\">"
+        },
+        {
+          "note": "og:description: played notice. This is the share-card surface an unfurl reads, and noindex does not stop an unfurl.",
+          "find": "<meta property=\"og:description\" content=\"Five days of Test cricket at Newlands, Cape Town, 3 to 7 January 2027. President's Pavilion, Pavilion Hospitality, Hospitality Suite and Premier Suite.\">",
+          "replace": "<meta property=\"og:description\" content=\"Five days of Test cricket at Newlands, Cape Town, 3 to 7 January 2027. President's Pavilion, Pavilion Hospitality, Hospitality Suite and Premier Suite. This fixture has been played.\">"
+        },
+        {
+          "note": "Event JSON-LD description: played notice",
+          "find": "\"description\": \"England v South Africa at Newlands Cricket Ground, Cape Town, 3 to 7 January 2027. Five days of Test cricket. Hospitality options are the President's Pavilion, Pavilion Hospitality, a Hospitality Suite and a Premier Suite.\"",
+          "replace": "\"description\": \"England v South Africa at Newlands Cricket Ground, Cape Town, 3 to 7 January 2027. Five days of Test cricket. Hospitality options are the President's Pavilion, Pavilion Hospitality, a Hospitality Suite and a Premier Suite. This fixture has been played.\""
+        },
+        {
+          "note": "RULING on the schema offers block: it GOES. An Offer asserts the thing can still be acquired, and its own description (\"Hospitality options from a reserved seat ... to exclusive use of a suite\") is present-tense selling of a match that is over. Removing it is the schema half of what the on-page edits below do. Anchored on the organizer block so the replacement text does not already exist in the file (a bare tail anchor would make the idempotency check skip this edit forever). Note this page carries NO price: the site's one board-authorised ZAR 170000 is on experiences/rugby/nations-championship-finals-2026, not here. eventStatus STAYS EventScheduled: schema.org offers no \"completed\" value and all five EVE-794-treated pages left theirs alone.",
+          "find": "    \"organizer\": {\n      \"@type\": \"Organization\",\n      \"name\": \"Eventra Group\",\n      \"url\": \"https://eventragroup.com\"\n    },\n    \"offers\": {\n      \"@type\": \"Offer\",\n      \"url\": \"https://eventragroup.com/events/england-cricket-newlands-2027\",\n      \"validFrom\": \"2026-01-01\",\n      \"description\": \"Five days of Test cricket at Newlands. Hospitality options from a reserved seat in the President's Pavilion Upper to exclusive use of a suite.\"\n    },\n    \"description\": \"England v South Africa at Newlands Cricket Ground",
+          "replace": "    \"organizer\": {\n      \"@type\": \"Organization\",\n      \"name\": \"Eventra Group\",\n      \"url\": \"https://eventragroup.com\"\n    },\n    \"description\": \"England v South Africa at Newlands Cricket Ground"
+        },
+        {
+          "note": "hero eyebrow: append the Past Fixture label, the form used on the treated events/springboks-vs-all-blacks-2026 hero eyebrow (\"Eventra Experiences, Past Fixture\").",
+          "find": "<p class=\"hero-eyebrow\">England v South Africa. Newlands, Cape Town</p>",
+          "replace": "<p class=\"hero-eyebrow\">England v South Africa. Newlands, Cape Town. Past Fixture</p>"
+        },
+        {
+          "note": "hero body: played notice",
+          "find": "<p class=\"hero-text\">Five days of Test cricket beneath Table Mountain. Watch from a reserved seat in the President&rsquo;s Pavilion or from a hosted suite, with hospitality every day of the match.</p>",
+          "replace": "<p class=\"hero-text\">Five days of Test cricket beneath Table Mountain. Watch from a reserved seat in the President&rsquo;s Pavilion or from a hosted suite, with hospitality every day of the match. This fixture has been played.</p>"
+        },
+        {
+          "note": "hero primary CTA: send the reader to the cricket hub instead of an in-page enquiry form for a finished Test. Anchored on the hero-ctas wrapper because the replacement button is identical to the overview one, and two identical replace strings would make the second edit read as already applied.",
+          "find": "          <div class=\"hero-ctas\">\n            <a href=\"#enquire\" class=\"btn btn-primary\">Enquire Now</a>",
+          "replace": "          <div class=\"hero-ctas\">\n            <a href=\"/experiences/cricket\" class=\"btn btn-primary\">Cricket Hospitality</a>"
+        },
+        {
+          "note": "overview CTA: \"Request a Proposal\" is a live sell. Anchored on the gold-divider for the same replace-uniqueness reason.",
+          "find": "            <div class=\"gold-divider\"></div>\n            <a href=\"#enquire\" class=\"btn btn-primary\">Request a Proposal</a>",
+          "replace": "            <div class=\"gold-divider\"></div>\n            <a href=\"/experiences/cricket\" class=\"btn btn-primary\">Cricket Hospitality</a>"
+        },
+        {
+          "note": "hospitality options intro: played notice, so the four option cards below read as a record of what was offered rather than a menu. The card bodies themselves are left intact on purpose: they describe what the hospitality was, which is the record this page keeps.",
+          "find": "<p class=\"inclusions-intro\">Four ways to watch the New Year Test. Every option includes all five days of the Test.</p>",
+          "replace": "<p class=\"inclusions-intro\">Four ways to watch the New Year Test. Every option includes all five days of the Test. This fixture has been played.</p>"
+        },
+        {
+          "note": "options note: \"Exclusive use of a whole suite is available on request\" is a live availability claim for a match that is over, so it is replaced by the played notice rather than appended to.",
+          "find": "<p class=\"option-note\">Exclusive use of a whole suite is available on request.</p>",
+          "replace": "<p class=\"option-note\">This fixture has been played.</p>"
+        },
+        {
+          "note": "enquiry section aria-label: stop announcing an enquiry for a Test that is over (form live on the treated tennis and rugby pages, aria-label=\"Wimbledon hospitality\" / \"Rugby hospitality\").",
+          "find": "<section class=\"enquiry-cta\" id=\"enquire\" aria-label=\"Enquire now\">",
+          "replace": "<section class=\"enquiry-cta\" id=\"enquire\" aria-label=\"Cricket hospitality\">"
+        },
+        {
+          "note": "enquiry band as one contiguous block (eyebrow, headline, subtext, both buttons). Replaced together because the parts depend on each other: the mailto button carries a \"Newlands 2027 Enquiry\" subject line and goes, which cannot be expressed as an edit independent of the button list. Every string is already live on origin/main: \"This fixture<br>has been played.\" is the treated springboks overview headline verbatim; \"... is no longer on sale.\" is the frame on both the springboks and the Wimbledon treatments; \"This page is kept as a record of it. For the ... on sale now, see the ... hospitality hub\" is the springboks record note with the sport noun swapped. Only one link in the subtext and no nested anchors (CLAUDE.md).",
+          "find": "          <p class=\"enquiry-eyebrow\">Enquire</p>\n          <h2 class=\"enquiry-headline\">\n            Request a<br>proposal.\n          </h2>\n          <p class=\"enquiry-subtext\">Tell us how many are travelling and which option suits you, and we will come back with a proposal.</p>\n\n          <div class=\"enquiry-ctas\">\n            <a href=\"/enquire?event=england-cricket-newlands-2027\" class=\"btn btn-primary\">Send Enquiry</a>\n            <a href=\"mailto:info@eventragroup.com?subject=Newlands%202027%20Enquiry\" class=\"btn btn-white-outline\">Email Our Team</a>\n",
+          "replace": "          <p class=\"enquiry-eyebrow\">Past Fixture</p>\n          <h2 class=\"enquiry-headline\">\n            This fixture<br>has been played.\n          </h2>\n          <p class=\"enquiry-subtext\">England v South Africa at Newlands on 3 to 7 January 2027 is no longer on sale. This page is kept as a record of it. For the cricket on sale now, see the <a href=\"/experiences/cricket\">cricket hospitality hub</a>.</p>\n\n          <div class=\"enquiry-ctas\">\n            <a href=\"/experiences/cricket\" class=\"btn btn-primary\">Cricket Hospitality</a>\n"
+        }
+      ]
+    },
+    {
+      "id": "england-cricket-newlands-2027-sitemap",
+      "file": "sitemap.xml",
+      "event": "England v South Africa, Newlands Cricket Ground, Cape Town, 3 to 7 January 2027 (five days of Test cricket)",
+      "playedFrom": "2027-01-08",
+      "source": "EVE-863; sitemap lastmod convention = the page own last CONTENT change, and the played treatment is itself a content change, so lastmod moves to the day the treatment applies.",
+      "edits": [
+        {
+          "note": "sitemap lastmod. Both main and staging currently carry a lastmod on this URL, so this is a real edit on both branches today; optional is kept because the staging sitemap carries lastmod on only a subset of URLs and may lose this one, and absence there must be a clean skip rather than a hard error.",
+          "optional": true,
+          "find": "<url><loc>https://eventragroup.com/events/england-cricket-newlands-2027/</loc><lastmod>2026-10-07</lastmod></url>",
+          "replace": "<url><loc>https://eventragroup.com/events/england-cricket-newlands-2027/</loc><lastmod>2027-01-08</lastmod></url>"
+        }
+      ]
     }
   ]
 }
