@@ -171,6 +171,7 @@ function applyPlayedEdits(entry) {
   let next = src;
   let applied = 0;
   let already = 0;
+  let skipped = 0;
 
   for (const edit of entry.edits) {
     const label = edit.note ? `"${edit.note}"` : `find ${JSON.stringify(edit.find.slice(0, 40))}`;
@@ -179,6 +180,16 @@ function applyPlayedEdits(entry) {
       continue;
     }
     const hits = next.split(edit.find).length - 1;
+    // `optional` is ONLY for a surface that legitimately does not exist on every
+    // branch, where "absent" is a real state rather than drift. sitemap.xml is
+    // the live case: main carries a <lastmod> on all 76 URLs, staging on 9, so
+    // the same edit must be a clean skip on one branch and a real edit on the
+    // other. It stays strict about ambiguity — >1 match is still a hard error —
+    // and it narrows the blind spot to "find absent AND replace absent".
+    if (hits === 0 && edit.optional) {
+      skipped += 1;
+      continue;
+    }
     if (hits !== 1) {
       throw new Error(
         `[played] ${entry.id}: edit ${label} matched ${hits} times in ${entry.file} ` +
@@ -190,7 +201,7 @@ function applyPlayedEdits(entry) {
     applied += 1;
   }
 
-  return { file, src, next, applied, already };
+  return { file, src, next, applied, already, skipped };
 }
 
 function processPlayed(entries) {
@@ -200,9 +211,10 @@ function processPlayed(entries) {
       results.push({ id: entry.id, state: 'not yet played', changed: false, detail: `plays until ${entry.playedFrom}` });
       continue;
     }
-    const { file, src, next, applied, already } = applyPlayedEdits(entry);
+    const { file, src, next, applied, already, skipped } = applyPlayedEdits(entry);
+    const skipNote = skipped ? `, ${skipped} not on this branch` : '';
     if (next === src) {
-      results.push({ id: entry.id, state: 'already treated', changed: false, detail: `${already} edits in place` });
+      results.push({ id: entry.id, state: 'already treated', changed: false, detail: `${already} edits in place${skipNote}` });
       continue;
     }
     if (!CHECK_ONLY) {
@@ -212,7 +224,7 @@ function processPlayed(entries) {
       id: entry.id,
       state: CHECK_ONLY ? 'WOULD TREAT' : 'treated',
       changed: true,
-      detail: `${applied} applied, ${already} already in place`,
+      detail: `${applied} applied, ${already} already in place${skipNote}`,
     });
   }
   return results;
