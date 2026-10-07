@@ -1,0 +1,69 @@
+{
+  "_comment": [
+    "Date-driven played-fixture treatment for individual event pages.",
+    "Read by scripts/build-fixtures.mjs. Each entry applies its edits only once",
+    "TODAY (UTC) >= playedFrom, and is idempotent: an edit whose `replace` text is",
+    "already present is skipped. Before playedFrom the pass is a strict no-op, so",
+    "landing a new entry changes no rendered byte until the event is actually over.",
+    "playedFrom = the first day on which the event is in the past (day after the",
+    "last day of the event), matching the >= TODAY drop rule used for hub cards.",
+    "Replacement copy must be wording already signed off elsewhere on the site, or",
+    "a deletion. This file is not a place to write new voice."
+  ],
+  "pages": [
+    {
+      "id": "singapore-gp-2026",
+      "file": "experiences/f1/singapore-gp-2026/index.html",
+      "event": "Singapore Grand Prix 2026, 9-11 October 2026",
+      "playedFrom": "2026-10-12",
+      "source": "EVE-860; treatment pattern approved on EVE-794 section B and live on austrian-gp-2026 and monaco-gp-2026",
+      "edits": [
+        {
+          "note": "meta description: played notice + forward pointer",
+          "find": "<meta name=\"description\" content=\"Singapore Grand Prix 2026 Green Room hospitality at Turn 3 &mdash; night race, gourmet cuisine, free-flow drinks and Singapore Flyer ride included. 9-11 October 2026.\">",
+          "replace": "<meta name=\"description\" content=\"Singapore Grand Prix 2026 Green Room hospitality at Turn 3 &mdash; night race, gourmet cuisine, free-flow drinks and Singapore Flyer ride included. 9-11 October 2026. This race has been run. See the Formula 1 hospitality Eventra Group arranges now.\">"
+        },
+        {
+          "note": "og:description: played notice",
+          "find": "<meta property=\"og:description\" content=\"Singapore Grand Prix 2026 Green Room hospitality at Turn 3 — night race, gourmet cuisine, free-flow drinks and Singapore Flyer ride included. 9-11 October 2026.\">",
+          "replace": "<meta property=\"og:description\" content=\"Singapore Grand Prix 2026 Green Room hospitality at Turn 3 — night race, gourmet cuisine, free-flow drinks and Singapore Flyer ride included. 9-11 October 2026. This race has been run.\">"
+        },
+        {
+          "note": "Event JSON-LD description: played notice",
+          "find": "\"description\": \"Singapore Grand Prix 2026 Green Room hospitality at Turn 3 — night race, gourmet cuisine, free-flow drinks and Singapore Flyer ride included. 9-11 October 2026.\"",
+          "replace": "\"description\": \"Singapore Grand Prix 2026 Green Room hospitality at Turn 3 — night race, gourmet cuisine, free-flow drinks and Singapore Flyer ride included. 9-11 October 2026. This race has been run.\""
+        },
+        {
+          "note": "hero subhead: played notice",
+          "find": "<p class=\"hero-subhead\">The Singapore Grand Prix is the only night race on the Formula 1 calendar &mdash; and it is unlike anything else the season has to offer. The Marina Bay Street Circuit winds through the heart of one of the world&rsquo;s great cities, lit by thousands of lights, with the skyline as the backdrop and the heat of the equatorial night as the atmosphere. Since 2008, Singapore has been the race that everyone wants to attend. The Green Room at Turn 3 is where you attend it properly.</p>",
+          "replace": "<p class=\"hero-subhead\">The Singapore Grand Prix is the only night race on the Formula 1 calendar &mdash; and it is unlike anything else the season has to offer. The Marina Bay Street Circuit winds through the heart of one of the world&rsquo;s great cities, lit by thousands of lights, with the skyline as the backdrop and the heat of the equatorial night as the atmosphere. Since 2008, Singapore has been the race that everyone wants to attend. The Green Room at Turn 3 is where you attend it properly. This race has been run.</p>"
+        },
+        {
+          "note": "CTA band eyebrow: selling headline -> Past Race",
+          "find": "<p class=\"eyebrow cta-band-eyebrow\">Secure Your Place at the Singapore Grand Prix</p>",
+          "replace": "<p class=\"eyebrow cta-band-eyebrow\">Past Race</p>"
+        },
+        {
+          "note": "CTA band title: selling headline -> played notice",
+          "find": "<h2 class=\"cta-band-title\">Secure Your Place at the Singapore Grand Prix</h2>",
+          "replace": "<h2 class=\"cta-band-title\">This race has been run.</h2>"
+        },
+        {
+          "note": "CTA band body: drop the stale present-tense race-date sentence",
+          "find": "<p class=\"cta-band-body\">The Green Room at Turn 3 is one of the most sought-after hospitality experiences on the Formula 1 calendar. The Singapore Grand Prix takes place 9&ndash;11 October 2026.</p>",
+          "replace": "<p class=\"cta-band-body\">The Green Room at Turn 3 is one of the most sought-after hospitality experiences on the Formula 1 calendar.</p>"
+        },
+        {
+          "note": "CTA band aria-label: stop inviting an enquiry for a race that is over",
+          "find": "<section class=\"cta-band\" aria-label=\"Enquire about Singapore Grand Prix Green Room\">",
+          "replace": "<section class=\"cta-band\" aria-label=\"Formula 1 hospitality\">"
+        },
+        {
+          "note": "CTA button: send the reader to the F1 hub instead of enquiring about a run race",
+          "find": "<a href=\"/enquire\" class=\"btn btn-primary\">Enquire Now</a>",
+          "replace": "<a href=\"/experiences/f1\" class=\"btn btn-primary\">Formula 1 Hospitality</a>"
+        }
+      ]
+    }
+  ]
+}
