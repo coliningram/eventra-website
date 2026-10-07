@@ -21,6 +21,13 @@
  *    with the cards when a fixture drops off.
  *  - Zero-row guard: a list that selects NO rows aborts the run before writing
  *    anything. See ZERO-ROW GUARD below for why this is a hard failure.
+ *  - Played-page pass: after the lists, data/played.json applies the approved
+ *    played-fixture treatment to INDIVIDUAL event pages on the date the event
+ *    becomes past. Hub cards drop themselves via the date filter above, but that
+ *    never touched a page's own meta tags or on-page copy, so a dropped fixture
+ *    kept a share card that still sold it (EVE-858, EVE-860). This pass closes
+ *    that gap on the same daily cron. It is a strict no-op before `playedFrom`
+ *    and idempotent after it. See PLAYED-PAGE PASS below.
  *
  * Adding a new list later (e.g. homepage ticker, Nations page) is just: add its
  * rows under a new key in data/fixtures.json, add a marker pair to the target
@@ -38,6 +45,7 @@ import { dirname, join } from 'node:path';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
 const DATA_FILE = join(ROOT, 'data', 'fixtures.json');
+const PLAYED_FILE = join(ROOT, 'data', 'played.json');
 
 const CHECK_ONLY = process.argv.includes('--check');
 
@@ -133,6 +141,82 @@ const LISTS = [
     ],
   },
 ];
+
+// ---- PLAYED-PAGE PASS -----------------------------------------------------
+// The list pass above drops a past fixture's CARD from the hubs. It does not
+// touch the event page itself, which stays live at 200 with its own meta
+// description, og:description, JSON-LD description and on-page CTA all still
+// selling in the present tense. Social unfurls read those meta tags directly,
+// so a played page keeps selling even after every hub card has gone — and
+// `noindex` does not stop an unfurl.
+//
+// Each entry in data/played.json names one event page, the first date on which
+// the event is past (`playedFrom`), and a list of literal find/replace edits.
+//
+// Two properties make this safe to land long before the date:
+//   - Strict no-op while TODAY < playedFrom. Registering a future event changes
+//     no rendered byte, so the entry can be reviewed and shipped in advance
+//     instead of racing the lapse date.
+//   - Idempotent once applied: an edit whose `replace` text is already present
+//     is skipped, so the daily cron does not churn the file.
+//
+// An edit that matches NEITHER `find` nor `replace`, or whose `find` is not
+// unique, is a hard error. That means the page has been edited away from what
+// the entry was written against, and silently guessing which span was meant is
+// how you corrupt a live page. Failing keeps the last-good content and surfaces
+// through the workflow's documented signal (GitHub emails the repo owner).
+function applyPlayedEdits(entry) {
+  const file = join(ROOT, entry.file);
+  const src = readFileSync(file, 'utf8');
+  let next = src;
+  let applied = 0;
+  let already = 0;
+
+  for (const edit of entry.edits) {
+    const label = edit.note ? `"${edit.note}"` : `find ${JSON.stringify(edit.find.slice(0, 40))}`;
+    if (next.includes(edit.replace)) {
+      already += 1;
+      continue;
+    }
+    const hits = next.split(edit.find).length - 1;
+    if (hits !== 1) {
+      throw new Error(
+        `[played] ${entry.id}: edit ${label} matched ${hits} times in ${entry.file} ` +
+          `(need exactly 1), and its replacement is not present either. The page has ` +
+          `drifted from data/played.json — re-derive this entry's find text from the file.`
+      );
+    }
+    next = next.replace(edit.find, edit.replace);
+    applied += 1;
+  }
+
+  return { file, src, next, applied, already };
+}
+
+function processPlayed(entries) {
+  const results = [];
+  for (const entry of entries) {
+    if (TODAY < entry.playedFrom) {
+      results.push({ id: entry.id, state: 'not yet played', changed: false, detail: `plays until ${entry.playedFrom}` });
+      continue;
+    }
+    const { file, src, next, applied, already } = applyPlayedEdits(entry);
+    if (next === src) {
+      results.push({ id: entry.id, state: 'already treated', changed: false, detail: `${already} edits in place` });
+      continue;
+    }
+    if (!CHECK_ONLY) {
+      writeFileSync(file, next, 'utf8');
+    }
+    results.push({
+      id: entry.id,
+      state: CHECK_ONLY ? 'WOULD TREAT' : 'treated',
+      changed: true,
+      detail: `${applied} applied, ${already} already in place`,
+    });
+  }
+  return results;
+}
 
 // ---- Engine ---------------------------------------------------------------
 
@@ -234,8 +318,16 @@ function main() {
     const state = res.changed ? (CHECK_ONLY ? 'WOULD CHANGE' : 'updated') : 'unchanged';
     console.log(`[fixtures] ${res.id}: ${state} (${res.count} rows) -> ${res.file}`);
   }
+  // Played-page pass runs AFTER the lists so that a drifted event page cannot
+  // stop a hub card from dropping on the same day.
+  const played = JSON.parse(readFileSync(PLAYED_FILE, 'utf8')).pages ?? [];
+  for (const res of processPlayed(played)) {
+    anyChanged = anyChanged || res.changed;
+    console.log(`[played] ${res.id}: ${res.state} (${res.detail})`);
+  }
+
   if (CHECK_ONLY && anyChanged) {
-    console.error('[fixtures] --check: files are out of date; run: node scripts/build-fixtures.mjs');
+    console.error('[build] --check: files are out of date; run: node scripts/build-fixtures.mjs');
     process.exit(1);
   }
 }
