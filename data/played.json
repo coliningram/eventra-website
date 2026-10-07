@@ -80,6 +80,80 @@
           "replace": "<url><loc>https://eventragroup.com/experiences/f1/singapore-gp-2026/</loc><lastmod>2026-10-12</lastmod></url>"
         }
       ]
+    },
+    {
+      "id": "nations-championship-finals-2026",
+      "file": "experiences/rugby/nations-championship-finals-2026/index.html",
+      "event": "Nations Championship Finals Weekend tour, London, 26-30 November 2026 (match days 28-29 November)",
+      "playedFrom": "2026-12-01",
+      "source": "EVE-862. playedFrom is derived from the tour's endDate, not the last match day: the page's Event JSON-LD is startDate 2026-11-26 / endDate 2026-11-30 and the page sells '26 to 30 November 2026', matching data/fixtures.json date 2026-11-30, so the first day the whole product is past is 2026-12-01. Every replacement reuses wording already live on origin/main: 'This fixture has been played.' and 'This fixture has been played. See the rugby Eventra Group arranges now.' from the EVE-794 section B treatment of events/springboks-vs-all-blacks-2026, plus the 'Past Fixture' eyebrow label from that same page. No new voice, so this is not EVE-823-gated.",
+      "edits": [
+        {
+          "note": "meta description: played notice + rugby forward pointer (wording live on events/springboks-vs-all-blacks-2026)",
+          "find": "<meta name=\"description\" content=\"Four nights in Mayfair and two days of rugby at Allianz Stadium, Twickenham, 26 to 30 November 2026. Official RFU hospitality, bought direct.\">",
+          "replace": "<meta name=\"description\" content=\"Four nights in Mayfair and two days of rugby at Allianz Stadium, Twickenham, 26 to 30 November 2026. Official RFU hospitality, bought direct. This fixture has been played. See the rugby Eventra Group arranges now.\">"
+        },
+        {
+          "note": "og:description: played notice",
+          "find": "<meta property=\"og:description\" content=\"Four nights in Mayfair and two days of rugby at Allianz Stadium, Twickenham, 26 to 30 November 2026. Official RFU hospitality, bought direct.\">",
+          "replace": "<meta property=\"og:description\" content=\"Four nights in Mayfair and two days of rugby at Allianz Stadium, Twickenham, 26 to 30 November 2026. Official RFU hospitality, bought direct. This fixture has been played.\">"
+        },
+        {
+          "note": "twitter:description: played notice. This page carries a twitter:description that none of the five EVE-794-treated pages had; it is a share-card surface, so it gets the same notice.",
+          "find": "<meta name=\"twitter:description\" content=\"Four nights in Mayfair and two days of rugby at Allianz Stadium, Twickenham, 26 to 30 November 2026. Official RFU hospitality, bought direct.\">",
+          "replace": "<meta name=\"twitter:description\" content=\"Four nights in Mayfair and two days of rugby at Allianz Stadium, Twickenham, 26 to 30 November 2026. Official RFU hospitality, bought direct. This fixture has been played.\">"
+        },
+        {
+          "note": "Event JSON-LD description: played notice",
+          "find": "\"description\": \"An Eventra tour to the inaugural Nations Championship Finals Weekend in London, arriving 26 November and departing 30 November 2026. Four nights in Mayfair, two match days at Allianz Stadium, Twickenham, curated by Eventra Group.\"",
+          "replace": "\"description\": \"An Eventra tour to the inaugural Nations Championship Finals Weekend in London, arriving 26 November and departing 30 November 2026. Four nights in Mayfair, two match days at Allianz Stadium, Twickenham, curated by Eventra Group. This fixture has been played.\""
+        },
+        {
+          "note": "hero eyebrow: selling label -> Past Fixture (label live on the treated springboks page)",
+          "find": "<p class=\"hero-eyebrow\">A Private Itinerary</p>",
+          "replace": "<p class=\"hero-eyebrow\">Past Fixture</p>"
+        },
+        {
+          "note": "hero subhead: played notice",
+          "find": "<p class=\"hero-subhead\">A private London tour. 26 to 30 November 2026.</p>",
+          "replace": "<p class=\"hero-subhead\">A private London tour. 26 to 30 November 2026. This fixture has been played.</p>"
+        },
+        {
+          "note": "hero CTA button: send the reader to the rugby hub instead of enquiring about a finished tour. Anchored on the hero-cta wrapper because this page has TWO identical /enquire primary buttons (hero and CTA band).",
+          "find": "<div class=\"hero-cta\">\n          <a href=\"/enquire\" class=\"btn btn-primary\">Enquire Now</a>",
+          "replace": "<div class=\"hero-cta\">\n          <a href=\"/experiences/rugby\" class=\"btn btn-primary\">Rugby Hospitality</a>"
+        },
+        {
+          "note": "inclusions sell line: stop inviting an enquiry for itinerary and pricing on a finished tour",
+          "find": "<p class=\"hero-subhead\">Enquire for the full itinerary and pricing.</p>",
+          "replace": "<p class=\"hero-subhead\">This fixture has been played.</p>"
+        },
+        {
+          "note": "CTA band aria-label: stop inviting an enquiry for a tour that is over",
+          "find": "<section class=\"cta-band\" aria-label=\"Enquire about the Nations Championship Finals Weekend\">",
+          "replace": "<section class=\"cta-band\" aria-label=\"Rugby hospitality\">"
+        },
+        {
+          "note": "CTA band eyebrow + title + button as one contiguous block: the eyebrow and title carry identical text, so they are replaced together to avoid find strings that depend on each other's application order.",
+          "find": "        <p class=\"eyebrow cta-band-eyebrow\">Experience the Unforgettable</p>\n        <h2 class=\"cta-band-title\">Experience the Unforgettable</h2>\n        <a href=\"/enquire\" class=\"btn btn-primary\">Enquire Now</a>",
+          "replace": "        <p class=\"eyebrow cta-band-eyebrow\">Past Fixture</p>\n        <h2 class=\"cta-band-title\">This fixture has been played.</h2>\n        <a href=\"/experiences/rugby\" class=\"btn btn-primary\">Rugby Hospitality</a>"
+        }
+      ]
+    },
+    {
+      "id": "nations-championship-finals-2026-sitemap",
+      "file": "sitemap.xml",
+      "event": "Nations Championship Finals Weekend tour, London, 26-30 November 2026 (match days 28-29 November)",
+      "playedFrom": "2026-12-01",
+      "source": "EVE-862; sitemap lastmod convention = the page's own last CONTENT change, and the played treatment is itself a content change, so lastmod moves to the day the treatment applies.",
+      "edits": [
+        {
+          "note": "sitemap lastmod. main carries a lastmod on this URL and staging does not, so this edit is a real edit on main and a clean skip on staging.",
+          "optional": true,
+          "find": "<url><loc>https://eventragroup.com/experiences/rugby/nations-championship-finals-2026/</loc><lastmod>2026-10-07</lastmod></url>",
+          "replace": "<url><loc>https://eventragroup.com/experiences/rugby/nations-championship-finals-2026/</loc><lastmod>2026-12-01</lastmod></url>"
+        }
+      ]
     }
   ]
 }
