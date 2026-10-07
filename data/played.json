@@ -8,7 +8,8 @@
     "playedFrom = the first day on which the event is in the past (day after the",
     "last day of the event), matching the >= TODAY drop rule used for hub cards.",
     "Replacement copy must be wording already signed off elsewhere on the site, or",
-    "a deletion. This file is not a place to write new voice."
+    "a deletion. This file is not a place to write new voice.",
+    "An edit may set \"optional\": true when the surface it targets legitimately does not exist on every branch (sitemap.xml lastmod is the live case: main carries one per URL, staging does not). Absent find AND absent replace is then a clean skip; two or more matches is still a hard error."
   ],
   "pages": [
     {
@@ -62,6 +63,21 @@
           "note": "CTA button: send the reader to the F1 hub instead of enquiring about a run race",
           "find": "<a href=\"/enquire\" class=\"btn btn-primary\">Enquire Now</a>",
           "replace": "<a href=\"/experiences/f1\" class=\"btn btn-primary\">Formula 1 Hospitality</a>"
+        }
+      ]
+    },
+    {
+      "id": "singapore-gp-2026-sitemap",
+      "file": "sitemap.xml",
+      "event": "Singapore Grand Prix 2026, 9-11 October 2026",
+      "playedFrom": "2026-10-12",
+      "source": "EVE-860; sitemap lastmod convention = the page's own last CONTENT change. All five EVE-794-treated pages carry lastmod 2026-10-06, the date their played treatment landed, so the treatment counts as a content change.",
+      "edits": [
+        {
+          "note": "sitemap lastmod: the played treatment is itself a content change, so lastmod moves to the day it applies, not the day the entry was written",
+          "optional": true,
+          "find": "<url><loc>https://eventragroup.com/experiences/f1/singapore-gp-2026/</loc><lastmod>2026-05-11</lastmod></url>",
+          "replace": "<url><loc>https://eventragroup.com/experiences/f1/singapore-gp-2026/</loc><lastmod>2026-10-12</lastmod></url>"
         }
       ]
     }
