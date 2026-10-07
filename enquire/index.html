@@ -1018,6 +1018,10 @@ window.evgEventId = function(p){return p+'_'+Date.now()+'_'+Math.random().toStri
             headers: { 'Accept': 'application/json' }
           });
           if (res.ok) {
+            var id = (window.evgEventId ? evgEventId('lead') : 'lead_' + Date.now());
+            if (typeof gtag === 'function') gtag('event', 'generate_lead');
+            if (typeof fbq === 'function') fbq('track', 'Lead', {}, {eventID: id});
+            if (window.zaraz && typeof zaraz.track === 'function') zaraz.track('meta_lead', {event_id: id});
             form.style.display = 'none';
             successMsg.style.display = 'block';
             successMsg.scrollIntoView({ behavior: 'smooth', block: 'start' });

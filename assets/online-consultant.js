@@ -1802,6 +1802,10 @@
         };
 
         postWithTimeout(WEB3FORMS_URL, payload, 10000).then(function () {
+          var id = (window.evgEventId ? evgEventId('lead') : 'lead_' + Date.now());
+          if (typeof gtag === 'function') gtag('event', 'generate_lead');
+          if (typeof fbq === 'function') fbq('track', 'Lead', {}, {eventID: id});
+          if (window.zaraz && typeof zaraz.track === 'function') zaraz.track('meta_lead', {event_id: id});
           if (submitErr) submitErr.textContent = '';
           state.submitted = true;
           navigate('confirmation');
