@@ -238,6 +238,40 @@
           "replace": "<url><loc>https://eventragroup.com/events/england-cricket-newlands-2027/</loc><lastmod>2027-01-08</lastmod></url>"
         }
       ]
+    },
+    {
+      "id": "springboks-vs-all-blacks-2026-nations-pointer",
+      "file": "events/springboks-vs-all-blacks-2026/index.html",
+      "event": "Nations Championship Finals Weekend tour, London, 26-30 November 2026 — the forward pointer, not this page's own fixture (Springboks vs All Blacks, 29 August 2026, already treated)",
+      "playedFrom": "2026-12-01",
+      "source": "EVE-864. This page is already played-treated, but its recovery copy recommends the Nations Championship Finals page as rugby on sale now. That page self-treats to \"This fixture has been played.\" on 2026-12-01 via the nations-championship-finals-2026 entry, so from that date the recovery path sends a reader from one played page to another. playedFrom is the day after the Nations tour's last day, the same >= rule as every other entry, applied to the referenced event. Both edits are deletions, which this file permits without new voice; the rugby hospitality hub and Australia 2027 remain as the live recommendations.",
+      "edits": [
+        {
+          "note": "recovery paragraph: delete the Nations clause and its separating comma, leaving \"see the rugby hospitality hub or Australia 2027\". Matches the single-pointer form already live on the Wimbledon ladies-final page (\"For the Wimbledon hospitality Eventra Group arranges now, see the Wimbledon hub.\").",
+          "find": "<p>This fixture has been played. Springboks vs All Blacks at DHL Stadium on 29 August 2026 is no longer on sale. For the rugby Eventra Group arranges now, see the <a href=\"/experiences/rugby\">rugby hospitality hub</a>, the <a href=\"/experiences/rugby/nations-championship-finals-2026/\">Nations Championship Finals Weekend</a> at Allianz Stadium, Twickenham in November 2026, or <a href=\"/events/australia-2027\">Australia 2027</a>.</p>",
+          "replace": "<p>This fixture has been played. Springboks vs All Blacks at DHL Stadium on 29 August 2026 is no longer on sale. For the rugby Eventra Group arranges now, see the <a href=\"/experiences/rugby\">rugby hospitality hub</a> or <a href=\"/events/australia-2027\">Australia 2027</a>.</p>"
+        },
+        {
+          "note": "\"On Sale Now\" list: delete the Nations list item. Its lead-in reads \"These are the rugby experiences Eventra Group arranges now.\" and the section is aria-label=\"What is on sale now\", so from 2026-12-01 this item makes the same false claim as the paragraph above. Anchored on the preceding and following list items so the replacement text is a junction that does not exist before treatment — a bare empty replace would make the engine's includes(replace) idempotency check true forever and skip the edit.",
+          "find": "calendar.</li>\n              <li><a href=\"/experiences/rugby/nations-championship-finals-2026/\">Nations Championship Finals Weekend</a>, Allianz Stadium, Twickenham, 26 to 30 November 2026.</li>\n              <li><a href=\"/events/australia-2027\">",
+          "replace": "calendar.</li>\n              <li><a href=\"/events/australia-2027\">"
+        }
+      ]
+    },
+    {
+      "id": "springboks-vs-all-blacks-2026-nations-pointer-sitemap",
+      "file": "sitemap.xml",
+      "event": "Nations Championship Finals Weekend tour, London, 26-30 November 2026 (the referenced event)",
+      "playedFrom": "2026-12-01",
+      "source": "EVE-864; sitemap lastmod convention = the page's own last CONTENT change, and removing the stale pointer is itself a content change, so lastmod moves to the day the treatment applies.",
+      "edits": [
+        {
+          "note": "sitemap lastmod. Both main and staging currently carry an identical lastmod on this URL, so this is a real edit on both branches today; optional is kept because the staging sitemap carries lastmod on only a subset of URLs and absence there must be a clean skip rather than a hard error.",
+          "optional": true,
+          "find": "<url><loc>https://eventragroup.com/events/springboks-vs-all-blacks-2026/</loc><lastmod>2026-10-06</lastmod></url>",
+          "replace": "<url><loc>https://eventragroup.com/events/springboks-vs-all-blacks-2026/</loc><lastmod>2026-12-01</lastmod></url>"
+        }
+      ]
     }
   ]
 }
