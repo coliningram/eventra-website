@@ -724,6 +724,38 @@
       .intro-title { font-size: 28px; }
     }
   </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-T6JVM735NG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-T6JVM735NG');
+</script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1411635980970096');
+window.evgEventId = function(p){return p+'_'+Date.now()+'_'+Math.random().toString(36).slice(2,10);};
+(function(){
+  var id = evgEventId('pv');
+  fbq('track', 'PageView', {}, {eventID: id});
+  function z(){
+    if (window.zaraz && typeof zaraz.track === 'function') { zaraz.track('meta_pageview', {event_id: id}); return true; }
+    return false;
+  }
+  if (!z()) window.addEventListener('load', z);
+})();
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1411635980970096&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
 </head>
 <body>
 
