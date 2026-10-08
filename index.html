@@ -1302,8 +1302,11 @@ window.evgEventId = function(p){return p+'_'+Date.now()+'_'+Math.random().toStri
     <div class="event-ticker-track" id="event-ticker-track"></div>
   </div>
   <script>
-    // Homepage event ticker data source. Each item has an ISO `date`
-    // (the fixture date; end-of-month for month-granularity items).
+    // Homepage event ticker data source. Each item has an ISO `date`.
+    // Where data/fixtures.json holds the fixture, `date` is that row's date
+    // to the day, so the ticker drops on the same morning as every other
+    // retirement surface. End-of-month is a fallback only for
+    // month-granularity items with no row in any registry.
     // Items with date:null have no fixed date and always render.
     // The four past-fixture items (Wimbledon 2026, Austrian GP 2026,
     // Springboks v England, Springboks v Scotland) are removed permanently.
@@ -1312,7 +1315,7 @@ window.evgEventId = function(p){return p+'_'+Date.now()+'_'+Math.random().toStri
         { text: "US Open 2026 · Men's Final · Arthur Ashe Stadium · 13 September 2026", date: "2026-09-13" },
         { text: "Singapore Grand Prix 2026 · Marina Bay · Night Race · 9-11 October 2026", date: "2026-10-11" },
         { text: "Nations Championship Finals Weekend · Allianz Stadium, Twickenham · 26 to 30 November 2026", date: "2026-11-30" },
-        { text: "England vs South Africa · Newlands · January 2027", date: "2027-01-31" },
+        { text: "England vs South Africa · Newlands · January 2027", date: "2027-01-07" },
         { text: "Monte Carlo Masters 2027 · Monte Carlo Country Club · April 2027", date: "2027-04-30" },
         { text: "Mutua Madrid Open 2027 · Estadio Manolo Santana · April-May 2027", date: "2027-05-31" },
         { text: "Australia 2027 · Rugby’s Biggest Stage · Register Your Interest Now", date: null }
