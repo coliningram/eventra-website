@@ -25,6 +25,12 @@
 
 - CRITICAL: Every single task must end with a git push to github.com/coliningram/eventra-website main branch. Never mark a task complete without confirming the commit hash. If you cannot push, report the exact error. Never save to memory instead of pushing.
 
+## Commit Message Rules
+
+- Any commit that touches **shared chrome** across pages carries `[chrome]` in its message.
+  Shared chrome means the footer, the nav (desktop and mobile), page titles, and CSS. (EVE-791)
+- A commit that changes only a single page's own body content does not carry the marker.
+
 ## Hosting Decisions
 
 - `eventragroup.com` stays on Framer until the new build is explicitly ready to migrate. Do NOT flag this in audits or recommend migration unless the board has explicitly decided we're ready. (EVE-212)
