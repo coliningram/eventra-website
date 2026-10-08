@@ -137,6 +137,26 @@
           "note": "CTA band eyebrow + title + button as one contiguous block: the eyebrow and title carry identical text, so they are replaced together to avoid find strings that depend on each other's application order.",
           "find": "        <p class=\"eyebrow cta-band-eyebrow\">Experience the Unforgettable</p>\n        <h2 class=\"cta-band-title\">Experience the Unforgettable</h2>\n        <a href=\"/enquire\" class=\"btn btn-primary\">Enquire Now</a>",
           "replace": "        <p class=\"eyebrow cta-band-eyebrow\">Past Fixture</p>\n        <h2 class=\"cta-band-title\">This fixture has been played.</h2>\n        <a href=\"/experiences/rugby\" class=\"btn btn-primary\">Rugby Hospitality</a>"
+        },
+        {
+          "note": "The invitation body: the non-availability sentence replaces the urgency claim. Frame is Monaco's comma form for a date range (live on experiences/f1/monaco-gp-2026 and in the shipped Singapore edit 7); subject and dates are this page's own FAQ and hero wording. EVE-865.",
+          "find": "The inaugural Nations Championship Finals Weekend takes place at the end of November 2026, and it is not one to miss.",
+          "replace": "The Eventra tour to the Nations Championship Finals Weekend, 26 to 30 November 2026, is no longer on sale."
+        },
+        {
+          "note": "The house body: drop the live suite-availability sentence. Junction-anchored on the preceding sentence tail so the replacement is novel. An empty replace string would make next.includes(replace) always true and the edit a permanent silent no-op. EVE-865.",
+          "find": "and quiet. A number of Junior City and Junior Park Suites are available should anyone in the party want the extra space or the park outlook. The hotel",
+          "replace": "and quiet. The hotel"
+        },
+        {
+          "note": "The house detail-list: drop the on-request availability clause. Anchored on the HTML through the closing </li>, because a replacement that is a substring of its own find text is read as already present and skipped forever. EVE-865.",
+          "find": "<span class=\"detail-label\">The upgrades:</span> Junior City and Junior Park Suites, on request</li>",
+          "replace": "<span class=\"detail-label\">The upgrades:</span> Junior City and Junior Park Suites</li>"
+        },
+        {
+          "note": "What is included: drop the on-request availability clause. 'on request' is the exact phrase the Newlands edit-10 ruling was written against. EVE-865.",
+          "find": "Deluxe City and Metropolitan City categories, suite upgrades on request.",
+          "replace": "Deluxe City and Metropolitan City categories."
         }
       ]
     },
