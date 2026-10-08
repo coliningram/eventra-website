@@ -272,6 +272,69 @@
           "replace": "<url><loc>https://eventragroup.com/events/springboks-vs-all-blacks-2026/</loc><lastmod>2026-12-01</lastmod></url>"
         }
       ]
+    },
+    {
+      "id": "homepage-nations-championship-finals-2026",
+      "file": "index.html",
+      "event": "Nations Championship Finals Weekend, Allianz Stadium, Twickenham, 28-29 November 2026 — the homepage's first and largest featured card, not this page's own fixture",
+      "playedFrom": "2026-12-01",
+      "source": "EVE-872. The homepage sat in neither retirement mechanism, so from 2026-12-01 its largest featured card would have gone on selling the Nations Finals under a \"Request a Proposal\" button, linking to a page that self-treats to \"This fixture has been played.\" on the same date via the nations-championship-finals-2026 entry. Both edits are deletions. The count sentence is DELETED rather than corrected to \"Three experiences.\", following EVE-775, which deleted a sibling numeral for exactly this reason: a corrected number goes stale again at the next retirement (here 2027-01-08). The homepage grid is positional (grid-template-rows: auto auto plus :nth-child(3)/:nth-child(4) split-layout rules at three breakpoints), so it is NOT marker-wired — see the EVE-872 follow-up row.",
+      "edits": [
+        {
+          "note": "Featured Experiences grid: delete card 1 (Nations Championship Finals Weekend, large) in full. Anchored from the grid's opening <div> through the card-2 comment so the replacement text is a junction that does not exist before treatment — a find ending at the card-2 comment alone would make the engine's includes(replace) check true immediately and skip the edit forever. Leaves Monaco, Newlands and Australia 2027 as cards 1 to 3.",
+          "find": "      <div class=\"events-grid\">\n\n        <!-- Card 1 - Nations Championship Finals Weekend (large) -->\n        <a href=\"/experiences/rugby/nations-championship-finals-2026/\" class=\"event-card large\">\n          <div class=\"event-card-image\">\n            <img\n              src=\"/images/experiences/rugby/aerial-view-twickenham-stadium.webp\"\n              alt=\"Aerial view of Allianz Stadium, Twickenham, London\"\n              loading=\"lazy\"\n            >\n            <div class=\"event-date-badge\">November 2026</div>\n          </div>\n          <div class=\"event-card-body\">\n            <p class=\"event-category\">Rugby &middot; London</p>\n            <h3 class=\"event-title\">The Nations Championship Finals Weekend</h3>\n            <p class=\"event-teaser\">Four nights in Mayfair. Two days at Allianz Stadium, Twickenham.</p>\n            <span class=\"btn btn-primary btn-sm\">Request a Proposal</span>\n          </div>\n        </a>\n\n        <!-- Card 2 — Monaco GP (large) -->",
+          "replace": "      <div class=\"events-grid\">\n\n        <!-- Card 2 — Monaco GP (large) -->"
+        },
+        {
+          "note": "Section header: delete the hard-coded count sentence \"Four experiences.\" rather than correct it. EVE-773 had to correct this class of string by hand and EVE-775 then chose deletion over correction because the number would have been wrong again at the next lapse. Anchored through </header> so the replacement is a junction absent before treatment.",
+          "find": "        <h2 class=\"section-title\">The moments worth planning around.</h2>\n        <p class=\"section-sub\">Four experiences.</p>\n      </header>",
+          "replace": "        <h2 class=\"section-title\">The moments worth planning around.</h2>\n      </header>"
+        }
+      ]
+    },
+    {
+      "id": "homepage-nations-championship-finals-2026-sitemap",
+      "file": "sitemap.xml",
+      "event": "Nations Championship Finals Weekend, Allianz Stadium, Twickenham, 28-29 November 2026 — homepage card retirement",
+      "playedFrom": "2026-12-01",
+      "source": "EVE-872; sitemap lastmod convention = the page's own last CONTENT change, and the played treatment is itself a content change.",
+      "edits": [
+        {
+          "note": "sitemap lastmod for the homepage. optional, because the staging sitemap carries lastmod on only a subset of URLs and absence there must be a clean skip rather than a hard error.",
+          "optional": true,
+          "find": "<url><loc>https://eventragroup.com/</loc><lastmod>2026-10-07</lastmod></url>",
+          "replace": "<url><loc>https://eventragroup.com/</loc><lastmod>2026-12-01</lastmod></url>"
+        }
+      ]
+    },
+    {
+      "id": "events-hub-newlands-2027-meta",
+      "file": "events/index.html",
+      "event": "England v South Africa, Newlands Cricket Ground, Cape Town, 3 to 7 January 2027 — the /events/ meta description only",
+      "playedFrom": "2027-01-08",
+      "source": "EVE-872. /events/ is marker-wired as events-hub, so its Newlands card and its count sentence both drop themselves on this date. The meta description is not card markup and the marker mechanism cannot reach it, so it needs this entry — otherwise a social unfurl keeps naming Newlands after the card has gone, which is the EVE-858/EVE-860 gap. Deletion only.",
+      "edits": [
+        {
+          "note": "meta description enumeration: delete \"Newlands\" from the three-item list, leaving \"Springboks and Australia 2027\". Anchored on the full clause including the trailing sentence so the replacement is absent before treatment. This is the same enumeration EVE-773 was told to correct by hand.",
+          "find": "Springboks, Newlands and Australia 2027, from Eventra Group.",
+          "replace": "Springboks and Australia 2027, from Eventra Group."
+        }
+      ]
+    },
+    {
+      "id": "events-hub-newlands-2027-meta-sitemap",
+      "file": "sitemap.xml",
+      "event": "England v South Africa, Newlands 2027 — /events/ meta description retirement",
+      "playedFrom": "2027-01-08",
+      "source": "EVE-872; sitemap lastmod convention = the page's own last CONTENT change.",
+      "edits": [
+        {
+          "note": "sitemap lastmod for /events/. optional for the same staging-subset reason as the other lastmod edits.",
+          "optional": true,
+          "find": "<url><loc>https://eventragroup.com/events/</loc><lastmod>2026-10-07</lastmod></url>",
+          "replace": "<url><loc>https://eventragroup.com/events/</loc><lastmod>2027-01-08</lastmod></url>"
+        }
+      ]
     }
   ]
 }
