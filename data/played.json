@@ -335,6 +335,108 @@
           "replace": "<url><loc>https://eventragroup.com/events/</loc><lastmod>2027-01-08</lastmod></url>"
         }
       ]
+    },
+    {
+      "id": "homepage-england-cricket-newlands-2027",
+      "file": "index.html",
+      "event": "England v South Africa, Newlands Cricket Ground, Cape Town, 3 to 7 January 2027 — the homepage's third featured card, not this page's own fixture",
+      "playedFrom": "2027-01-08",
+      "source": "EVE-872, second of the homepage's two featured-card retirements. The homepage is in neither mechanism, so without this entry its Newlands card keeps selling a finished Test under an \"Enquire Now\" button, pointing at /events/england-cricket-newlands-2027 which self-treats to non-availability on the same date via the newlands-2027 entry registered on EVE-863. Deletion only. The count sentence needs nothing here: homepage-nations-championship-finals-2026 already DELETES \"Four experiences.\" on 2026-12-01, which is the EVE-775 reason for deleting a numeral rather than correcting it — a corrected \"Three experiences.\" would have been wrong again on exactly this date. Known cosmetic consequence, not a defect: .events-grid styles the horizontal split layout positionally (:nth-child(3)/:nth-child(4) at three breakpoints), so with two cards left those rules match nothing and the surviving Australia 2027 card renders in the vertical .small style. Marker-wiring the grid needs a renderer variant emitting event-card large/small plus the btn span, which renderRugbyHubCard does not emit; that is the EVE-872 follow-up, and it is a far smaller harm than selling a played fixture.",
+      "edits": [
+        {
+          "note": "Featured Experiences grid: delete card 3 (England vs SA, Newlands, small) in full. Anchored from the Monaco card's unique teaser line through the card-4 comment, so the replacement fuses the Monaco card's close to the card-4 comment — an adjacency that does not exist before treatment. A find starting at the card-3 comment would have made replace (the bare card-4 comment) already present, and the engine's includes(replace) check would skip this edit forever. Starts after the card-2 comment where homepage-nations-championship-finals-2026's find ends, so the two never overlap in either order.",
+          "find": "            <p class=\"event-teaser\">The circuit that invented glamour. Eventra handles the rest.</p>\n            <span class=\"btn btn-primary btn-sm\">Request a Proposal</span>\n          </div>\n        </a>\n\n        <!-- Card 3 — England vs SA 3rd Test Cricket (small, horizontal) -->\n        <a href=\"/events/england-cricket-newlands-2027\" class=\"event-card small\">\n          <div class=\"event-card-image\">\n            <img\n              src=\"/images/events/newlands-cricket-ground-table-mountain-cape-town.webp\"\n              alt=\"View from the stands at Newlands Cricket Ground, Cape Town, looking across the playing field towards Table Mountain.\"\n              loading=\"lazy\"\n            >\n            <div class=\"event-date-badge\">Jan 2027</div>\n          </div>\n          <div class=\"event-card-body\">\n            <p class=\"event-category\">Cricket &middot; Cape Town</p>\n            <h3 class=\"event-title\">Newlands in January. There is no better seat in South African cricket.</h3>\n            <p class=\"event-teaser\">Five days of Test cricket at Newlands, from a reserved Pavilion seat to a hosted suite.</p>\n            <span class=\"btn btn-primary btn-sm\">Enquire Now</span>\n          </div>\n        </a>\n\n        <!-- Card 4 — Australia 2027 (small, horizontal) -->",
+          "replace": "            <p class=\"event-teaser\">The circuit that invented glamour. Eventra handles the rest.</p>\n            <span class=\"btn btn-primary btn-sm\">Request a Proposal</span>\n          </div>\n        </a>\n\n        <!-- Card 4 — Australia 2027 (small, horizontal) -->"
+        }
+      ]
+    },
+    {
+      "id": "homepage-england-cricket-newlands-2027-sitemap",
+      "file": "sitemap.xml",
+      "event": "England v South Africa, Newlands 2027 — homepage card retirement",
+      "playedFrom": "2027-01-08",
+      "source": "EVE-872; sitemap lastmod convention = the page's own last CONTENT change, and the played treatment is itself a content change. Finds the 2026-12-01 value that homepage-nations-championship-finals-2026-sitemap writes earlier in this same array, so on any run date from 2027-01-08 the two apply in order and the homepage ends on the later date.",
+      "edits": [
+        {
+          "note": "sitemap lastmod for the homepage. optional, because staging carries lastmod on only a subset of URLs and absence there must be a clean skip rather than a hard error.",
+          "optional": true,
+          "find": "<url><loc>https://eventragroup.com/</loc><lastmod>2026-12-01</lastmod></url>",
+          "replace": "<url><loc>https://eventragroup.com/</loc><lastmod>2027-01-08</lastmod></url>"
+        }
+      ]
+    },
+    {
+      "id": "cricket-hub-newlands-2027",
+      "file": "experiences/cricket/index.html",
+      "event": "England v South Africa, Newlands Cricket Ground, Cape Town, 3 to 7 January 2027 — the cricket hub's Featured Experience block and its two titles",
+      "playedFrom": "2027-01-08",
+      "source": "EVE-872. The cricket hub is a static prose page, not a card list, so it takes played.json rather than markers. Three surfaces, all deletions. The hub keeps selling the fixture in its <title>, its og:title and a full Featured Experience block with a View Options button to a product page that by then reads non-available. Everything edition-generic on this page is deliberately left alone: the hero subhead (\"From New Year Tests at Newlands to the Ashes\"), the three What We Offer paragraphs, the Newlands venue-list row and the image alt all describe a recurring fixture or a venue, not the 2027 edition. The page's only two JSON-LD blocks are Organization and BreadcrumbList, neither edition-specific, so there is no schema mirror to treat.",
+      "edits": [
+        {
+          "note": "<title>: delete \" &amp; Newlands 2027\" from the keyword list, leaving \"Test Cricket, Ashes\". Pure deletion, no added words, following EVE-775's choice to delete a stale token rather than reword around it. Anchored on the whole title element, which is distinct from the og:title line — the bare string \"Ashes &amp; Newlands 2027\" resolves TWICE on this page, and under played.json's own rule a 2-match find is a hard error that aborts the build and every later entry in the array, not a skipped edit.",
+          "find": "  <title>Cricket Hospitality | Test Cricket, Ashes &amp; Newlands 2027 | Eventra Group</title>",
+          "replace": "  <title>Cricket Hospitality | Test Cricket, Ashes | Eventra Group</title>"
+        },
+        {
+          "note": "og:title: the same deletion. Anchored on the whole meta element, the second of the two \"Ashes &amp; Newlands 2027\" matches, so each anchor resolves exactly once.",
+          "find": "  <meta property=\"og:title\" content=\"Cricket Hospitality | Test Cricket, Ashes &amp; Newlands 2027 | Eventra\">",
+          "replace": "  <meta property=\"og:title\" content=\"Cricket Hospitality | Test Cricket, Ashes | Eventra\">"
+        },
+        {
+          "note": "Featured Experience: delete the whole <section class=\"feature-section\"> in full. It is self-contained between the breadcrumb and What We Offer, so the page flows breadcrumb to What We Offer with no orphaned heading. Anchored from the unique Cricket breadcrumb row through the What We Offer comment, so the replacement fuses </nav> to that comment — absent before treatment. Anchoring from the FEATURED EXPERIENCE comment instead would have left replace (the bare What We Offer comment) already present and skipped this edit forever.",
+          "find": "        <li><span class=\"current\" aria-current=\"page\">Cricket</span></li>\n      </ol>\n    </div>\n  </nav>\n\n  <!-- FEATURED EXPERIENCE -->\n  <section class=\"feature-section\" aria-label=\"England vs South Africa New Year Test Series\">\n    <div class=\"container\">\n      <div class=\"feature-layout\">\n        <div class=\"feature-image\">\n          <img\n            src=\"/images/events/newlands-cricket-ground-table-mountain-cape-town.webp\"\n            alt=\"View from the stands at Newlands Cricket Ground, Cape Town, looking across the playing field towards Table Mountain.\"\n            loading=\"lazy\"\n          >\n        </div>\n        <div class=\"feature-content\">\n          <p class=\"eyebrow\">Featured Experience</p>\n          <h2 class=\"feature-title\">England v South Africa, Newlands 2027</h2>\n          <p class=\"feature-subtitle\">Five Days of Test Cricket</p>\n          <p class=\"feature-body\">This is the one.</p>\n          <p class=\"feature-body\">England&rsquo;s tour of South Africa at New Year is one of the most anticipated series on the international calendar, and Newlands at New Year is unlike anywhere else in cricket.</p>\n          <p class=\"feature-body\">England v South Africa, Newlands, Cape Town, 3 to 7 January 2027. Five days of Test cricket, and every option includes all five days. We can book accommodation, transfers and the rest of the time in Cape Town.</p>\n          <p class=\"feature-body\">It is the kind of trip people talk about for years.</p>\n          <div class=\"feature-cta\">\n            <a href=\"/events/england-cricket-newlands-2027\" class=\"btn btn-primary\">View Options</a>\n          </div>\n        </div>\n      </div>\n    </div>\n  </section>\n\n\n  <!-- WHAT WE OFFER -->",
+          "replace": "        <li><span class=\"current\" aria-current=\"page\">Cricket</span></li>\n      </ol>\n    </div>\n  </nav>\n\n  <!-- WHAT WE OFFER -->"
+        }
+      ]
+    },
+    {
+      "id": "cricket-hub-newlands-2027-sitemap",
+      "file": "sitemap.xml",
+      "event": "England v South Africa, Newlands 2027 — cricket hub retirement",
+      "playedFrom": "2027-01-08",
+      "source": "EVE-872; sitemap lastmod convention = the page's own last CONTENT change.",
+      "edits": [
+        {
+          "note": "sitemap lastmod for /experiences/cricket/. optional for the same staging-subset reason as the other lastmod edits.",
+          "optional": true,
+          "find": "<url><loc>https://eventragroup.com/experiences/cricket/</loc><lastmod>2026-10-07</lastmod></url>",
+          "replace": "<url><loc>https://eventragroup.com/experiences/cricket/</loc><lastmod>2027-01-08</lastmod></url>"
+        }
+      ]
+    },
+    {
+      "id": "football-hub-cricket-crosssell-newlands-2027",
+      "file": "experiences/football/index.html",
+      "event": "England v South Africa, Newlands Cricket Ground, Cape Town, 3 to 7 January 2027 — the football hub's cricket cross-sell card",
+      "playedFrom": "2027-01-08",
+      "source": "EVE-872. The card is a cross-sell to /experiences/cricket, not to the product page, so deleting it would leave the section's own sub line (\"Premium experiences across rugby, cricket, and Formula 1.\") enumerating a sport with no card — a new inconsistency. Instead both edition-specific strings are replaced with copy already live and signed off on the page the card links to, which is edition-proof: the title is the cricket hub's <h1> \"Test cricket on its great grounds\" (terminal period dropped to match the two sibling card titles, which carry none), and the description is the cricket hub's meta description with its em-dash clause split into two sentences per the standing Eventra voice rule that visible copy carries no em-dashes. No new voice, so not EVE-823-gated. The section sub carries no numeral (EVE-775 deleted it), so there is no count to drift. The remaining Newlands string on this page is an image alt describing the venue, which is generic and image-locked.",
+      "edits": [
+        {
+          "note": "cricket cross-sell card title: replace the 2027 edition with the cricket hub's own h1. Single unique line; the replacement is absent before treatment.",
+          "find": "            <h3 class=\"sport-card-title\">England v South Africa, Newlands 2027</h3>",
+          "replace": "            <h3 class=\"sport-card-title\">Test cricket on its great grounds</h3>"
+        },
+        {
+          "note": "cricket cross-sell card description: drop \"3 to 7 January 2027\" and the fixture-specific sell for the cricket hub's meta description, em-dash split to a period per the voice rule. Single unique line; the replacement is absent before treatment.",
+          "find": "            <p class=\"sport-card-desc\">England v South Africa at Newlands, 3 to 7 January 2027. Five days of Test cricket, with hospitality on every day.</p>",
+          "replace": "            <p class=\"sport-card-desc\">Premium Test cricket hospitality. The Ashes in England and Australia, England tours of South Africa, and the great grounds of international cricket.</p>"
+        }
+      ]
+    },
+    {
+      "id": "football-hub-cricket-crosssell-newlands-2027-sitemap",
+      "file": "sitemap.xml",
+      "event": "England v South Africa, Newlands 2027 — football hub cross-sell retirement",
+      "playedFrom": "2027-01-08",
+      "source": "EVE-872; sitemap lastmod convention = the page's own last CONTENT change.",
+      "edits": [
+        {
+          "note": "sitemap lastmod for /experiences/football/. optional for the same staging-subset reason as the other lastmod edits.",
+          "optional": true,
+          "find": "<url><loc>https://eventragroup.com/experiences/football/</loc><lastmod>2026-10-08</lastmod></url>",
+          "replace": "<url><loc>https://eventragroup.com/experiences/football/</loc><lastmod>2027-01-08</lastmod></url>"
+        }
+      ]
     }
   ]
 }
