@@ -272,6 +272,85 @@
           "replace": "<url><loc>https://eventragroup.com/events/springboks-vs-all-blacks-2026/</loc><lastmod>2026-12-01</lastmod></url>"
         }
       ]
+    },
+    {
+      "id": "nations-championship-finals-weekend-explained-note",
+      "file": "notes/nations-championship-finals-weekend-explained/index.html",
+      "event": "Nations Championship Finals Weekend 2026, 27 to 29 November 2026 (Notes explainer post)",
+      "playedFrom": "2026-12-01",
+      "source": "EVE-871; the Notes layer sat outside this registry entirely. This post is wholly about a registered fixture and carries an edition-specific Eventra sell in prose, in the visible FAQ and inside FAQPage JSON-LD. Same playedFrom as the nations-championship-finals-2026 product page it links to, derived from that tour's endDate 2026-11-30. Every replacement is a deletion or wording already live on main: \"This fixture has been played.\", \"See the rugby Eventra Group arranges now.\", \"Past Fixture\", the \"Rugby hospitality\" aria-label and the /experiences/rugby \"Rugby Hospitality\" button all come from the treated springboks and nations product pages; the non-availability line uses the multi-day frame live on monaco-gp-2026 and singapore-gp-2026. The two FAQ questions keep their present-tense wording because rewriting a question is new voice, not reuse; the played notice goes on each answer instead, in both the visible <p> and the JSON-LD \"text\".",
+      "edits": [
+        {
+          "note": "meta description: played notice + rugby forward pointer (both sentences live on the treated events/springboks-vs-all-blacks-2026 and on the nations-championship-finals-2026 entry)",
+          "find": "<meta name=\"description\" content=\"The Nations Championship Finals Weekend comes to Allianz Stadium, Twickenham, 27 to 29 November 2026. What it is, how the finals format works, and how to attend.\">",
+          "replace": "<meta name=\"description\" content=\"The Nations Championship Finals Weekend comes to Allianz Stadium, Twickenham, 27 to 29 November 2026. What it is, how the finals format works, and how to attend. This fixture has been played. See the rugby Eventra Group arranges now.\">"
+        },
+        {
+          "note": "og:description: played notice. Identical sentence to meta description, so the attribute prefix is part of the anchor; this sentence resolves 4 times in the file and each surface is its own edit.",
+          "find": "<meta property=\"og:description\" content=\"The Nations Championship Finals Weekend comes to Allianz Stadium, Twickenham, 27 to 29 November 2026. What it is, how the finals format works, and how to attend.\">",
+          "replace": "<meta property=\"og:description\" content=\"The Nations Championship Finals Weekend comes to Allianz Stadium, Twickenham, 27 to 29 November 2026. What it is, how the finals format works, and how to attend. This fixture has been played.\">"
+        },
+        {
+          "note": "twitter:description: played notice. A share-card surface, and noindex does not stop an unfurl.",
+          "find": "<meta name=\"twitter:description\" content=\"The Nations Championship Finals Weekend comes to Allianz Stadium, Twickenham, 27 to 29 November 2026. What it is, how the finals format works, and how to attend.\">",
+          "replace": "<meta name=\"twitter:description\" content=\"The Nations Championship Finals Weekend comes to Allianz Stadium, Twickenham, 27 to 29 November 2026. What it is, how the finals format works, and how to attend. This fixture has been played.\">"
+        },
+        {
+          "note": "BlogPosting JSON-LD description: played notice. Third occurrence of the same sentence; anchored on the JSON key and trailing comma.",
+          "find": "\"description\": \"The Nations Championship Finals Weekend comes to Allianz Stadium, Twickenham, 27 to 29 November 2026. What it is, how the finals format works, and how to attend.\",",
+          "replace": "\"description\": \"The Nations Championship Finals Weekend comes to Allianz Stadium, Twickenham, 27 to 29 November 2026. What it is, how the finals format works, and how to attend. This fixture has been played.\","
+        },
+        {
+          "note": "body sell, \"How to attend\": delete the edition-specific package sentence and its link to the product page, which itself reads \"This fixture has been played.\" from the same date. Anchored from the preceding sentence tail so the replacement is a junction absent before treatment.",
+          "find": "that is the version that removes the complexity. Eventra's <a href=\"/experiences/rugby/nations-championship-finals-2026/\">Nations Championship Finals Weekend package</a> covers four nights in Mayfair, the Saturday and Sunday match days with RFU hospitality at Twickenham, and all transfers.</p>",
+          "replace": "that is the version that removes the complexity. This fixture has been played.</p>"
+        },
+        {
+          "note": "body enquiry pointer: delete the sentence inviting an enquiry about this specific weekend. The preceding rugby-hub sentence is generic capability language and stays. Junction anchor on the surviving clause.",
+          "find": "the <a href=\"/experiences/rugby/\">rugby hub</a> covers the range of experiences we arrange. To discuss the Finals Weekend specifically, the enquiry form is below.</p>",
+          "replace": "the <a href=\"/experiences/rugby/\">rugby hub</a> covers the range of experiences we arrange.</p>"
+        },
+        {
+          "note": "FAQ \"Which days does the Eventra tour cover?\" visible answer: played notice. The visible <p> and the FAQPage JSON-LD \"text\" carry byte-identical prose, so the tag/key wrapper is part of each anchor.",
+          "find": "<p>The Eventra Nations Championship Finals Weekend tour covers the Saturday and Sunday match days at Allianz Stadium, Twickenham. The full tour runs four nights in Mayfair and includes RFU hospitality for both match days.</p>",
+          "replace": "<p>The Eventra Nations Championship Finals Weekend tour covers the Saturday and Sunday match days at Allianz Stadium, Twickenham. The full tour runs four nights in Mayfair and includes RFU hospitality for both match days. This fixture has been played.</p>"
+        },
+        {
+          "note": "FAQ \"Which days does the Eventra tour cover?\" FAQPage JSON-LD answer: played notice. A crawler reads this as a live answer.",
+          "find": "\"text\": \"The Eventra Nations Championship Finals Weekend tour covers the Saturday and Sunday match days at Allianz Stadium, Twickenham. The full tour runs four nights in Mayfair and includes RFU hospitality for both match days.\"",
+          "replace": "\"text\": \"The Eventra Nations Championship Finals Weekend tour covers the Saturday and Sunday match days at Allianz Stadium, Twickenham. The full tour runs four nights in Mayfair and includes RFU hospitality for both match days. This fixture has been played.\""
+        },
+        {
+          "note": "FAQ \"How can I attend?\" visible answer: delete the edition-specific package sell and the \"To enquire\" invitation, keep the generic three-categories sentence, append the played notice.",
+          "find": "<p>Attendance options range from general tickets through the host union to official RFU hospitality to a full curated tour. Eventra's Nations Championship Finals Weekend package covers four nights in Mayfair, both Saturday and Sunday match days with RFU hospitality, and all transfers. To enquire, visit the experience page or contact Eventra directly.</p>",
+          "replace": "<p>Attendance options range from general tickets through the host union to official RFU hospitality to a full curated tour. This fixture has been played.</p>"
+        },
+        {
+          "note": "FAQ \"How can I attend?\" FAQPage JSON-LD answer: same deletion inside structured data. This is the surface a crawler surfaces as an answer, so it must not keep selling a finished tour.",
+          "find": "\"text\": \"Attendance options range from general tickets through the host union to official RFU hospitality to a full curated tour. Eventra's Nations Championship Finals Weekend package covers four nights in Mayfair, both Saturday and Sunday match days with RFU hospitality, and all transfers. To enquire, visit the experience page or contact Eventra directly.\"",
+          "replace": "\"text\": \"Attendance options range from general tickets through the host union to official RFU hospitality to a full curated tour. This fixture has been played.\""
+        },
+        {
+          "note": "CTA band aria-label + eyebrow + title + body + button as one contiguous block. aria-label \"Rugby hospitality\", eyebrow \"Past Fixture\", title \"This fixture has been played.\" and the /experiences/rugby \"Rugby Hospitality\" button are the strings already live on the treated nations-championship-finals-2026 entry; the body line uses the multi-day non-availability frame live on monaco-gp-2026 and singapore-gp-2026. Site chrome keeps its three /enquire links.",
+          "find": "    <section class=\"cta-band\" aria-label=\"Enquire\">\n      <div class=\"container\">\n        <span class=\"eyebrow\">Plan your attendance</span>\n        <h2>The inaugural Nations Championship Finals Weekend at Twickenham.</h2>\n        <p>Four nights in Mayfair, two match days with RFU hospitality, and a new chapter in the history of the sport. Tell us what you need and we will arrange the rest.</p>\n        <a href=\"/enquire\" class=\"btn btn-primary\">Enquire Now</a>",
+          "replace": "    <section class=\"cta-band\" aria-label=\"Rugby hospitality\">\n      <div class=\"container\">\n        <span class=\"eyebrow\">Past Fixture</span>\n        <h2>This fixture has been played.</h2>\n        <p>The 2026 Nations Championship Finals Weekend, 27 to 29 November 2026, is no longer on sale.</p>\n        <a href=\"/experiences/rugby\" class=\"btn btn-primary\">Rugby Hospitality</a>"
+        }
+      ]
+    },
+    {
+      "id": "nations-championship-finals-weekend-explained-note-sitemap",
+      "file": "sitemap.xml",
+      "event": "Nations Championship Finals Weekend 2026 Notes post, sitemap lastmod",
+      "playedFrom": "2026-12-01",
+      "source": "EVE-871; sitemap lastmod convention = the page's own last CONTENT change, and the played treatment is a content change. optional: true because this URL carries a lastmod on main and is absent from the staging sitemap entirely, so the edit must be a clean skip there rather than a hard error.",
+      "edits": [
+        {
+          "note": "sitemap lastmod. main carries <lastmod>2026-10-06</lastmod> on this URL; the staging sitemap does not list this URL at all, so find and replace are both absent there and the edit skips.",
+          "optional": true,
+          "find": "<url><loc>https://eventragroup.com/notes/nations-championship-finals-weekend-explained/</loc><lastmod>2026-10-06</lastmod></url>",
+          "replace": "<url><loc>https://eventragroup.com/notes/nations-championship-finals-weekend-explained/</loc><lastmod>2026-12-01</lastmod></url>"
+        }
+      ]
     }
   ]
 }
