@@ -125,6 +125,72 @@ function renderEventsHubSub(rows) {
   return `<p class="section-sub">${numberWord(rows.length)} curated sporting ${noun}. Each one built around access that general tickets do not provide.</p>`;
 }
 
+// homepage-featured: the homepage's featured-experiences block. This is NOT the
+// rugby-hub card and renderRugbyHubCard is not a drop-in for it. Three
+// differences, all load-bearing:
+//   - the anchor carries a size class, `event-card large` or `event-card small`;
+//   - there is no `<p class="event-venue">` line;
+//   - the CTA wording differs per card ("Request a Proposal", "Enquire Now",
+//     "Register Interest"), so it comes from the row rather than the renderer.
+//
+// The size class is assigned HERE, from the card's position in the SELECTED
+// rows, and that is the point of this renderer (EVE-880). `.events-grid` used to
+// style the bottom-row horizontal split with `:nth-child(3)`/`:nth-child(4)`
+// rules at three breakpoints, so when a played card dropped out of the grid the
+// rules matched the wrong card, or nothing at all, and the surviving card
+// rendered in the vertical style nobody chose. The layout policy is now a
+// function of position and cannot go stale:
+//   - cards pair into rows of two. Row 1 is `large` (image above the body);
+//     every later row is `small` (the horizontal image-left split).
+//   - a card left alone at the end of the list is `small full`: it renders as
+//     the horizontal split across both columns rather than sitting in one
+//     column with an empty half beside it.
+// With the four rows registered today that is large, large, small, small —
+// byte-identical to the markup this block replaced.
+const HOMEPAGE_CARD_NOTE = {
+  large: 'large',
+  small: 'small, horizontal',
+  full: 'small, horizontal, full width',
+};
+
+function renderHomepageCard(row, i, rows) {
+  // Alone in its own row: last card, and its 0-based index starts a pair.
+  const alone = i === rows.length - 1 && i % 2 === 0;
+  const size = alone || i >= 2 ? 'small' : 'large';
+  const classes = alone ? `event-card ${size} full` : `event-card ${size}`;
+  const note = alone ? HOMEPAGE_CARD_NOTE.full : HOMEPAGE_CARD_NOTE[size];
+
+  const lines = [];
+  lines.push(`        <!-- Card ${i + 1} — ${row.comment} (${note}) -->`);
+  lines.push(`        <a href="${row.href}" class="${classes}">`);
+  lines.push(`          <div class="event-card-image">`);
+  lines.push(`            <img`);
+  lines.push(`              src="${row.imgSrc}"`);
+  lines.push(`              alt="${row.imgAlt}"`);
+  lines.push(`              loading="lazy"`);
+  lines.push(`            >`);
+  lines.push(`            <div class="event-date-badge">${row.badge}</div>`);
+  lines.push(`          </div>`);
+  lines.push(`          <div class="event-card-body">`);
+  lines.push(`            <p class="event-category">${row.category}</p>`);
+  lines.push(`            <h3 class="event-title">${row.title}</h3>`);
+  lines.push(`            <p class="event-teaser">${row.teaser}</p>`);
+  lines.push(`            <span class="btn btn-primary btn-sm">${row.cta}</span>`);
+  lines.push(`          </div>`);
+  lines.push(`        </a>`);
+  return lines.join('\n');
+}
+
+// homepage-featured sub: the section header's count sentence, four words long and
+// previously hand-written as "Four experiences.". data/played.json DELETED it on
+// 2026-12-01 rather than correct it, precisely because a corrected numeral goes
+// stale again at the next retirement. Generated from the selected rows, it needs
+// neither deletion nor correction.
+function renderHomepageFeaturedSub(rows) {
+  const noun = rows.length === 1 ? 'experience' : 'experiences';
+  return `<p class="section-sub">${numberWord(rows.length)} ${noun}.</p>`;
+}
+
 // ---- Registry -------------------------------------------------------------
 // One entry per marker-wired list. `indent` is the leading whitespace used for
 // the generated-by comment and the END marker line so the block sits neatly in
@@ -164,6 +230,30 @@ const LISTS = [
     render: renderRugbyHubCard,
     extras: [
       { id: 'events-hub-sub', render: renderEventsHubSub, inline: true },
+    ],
+  },
+  {
+    // / homepage — the featured-experiences block. `preserveOrder` because this
+    // block is editorially curated rather than chronological: two large cards
+    // above a horizontal split pair, and which card is large is a design
+    // decision. Sorting it ascending by date would lift Newlands (Jan 2027)
+    // above Monaco (Jun 2027) and silently swap which cards render large,
+    // a homepage redesign nobody asked for. The date filter still applies, and
+    // the filter is the only part of the mechanism this block needs.
+    //
+    // Monaco and Australia 2027 carry `date: null` (always render), as they do
+    // today: the Monaco card points at the evergreen /experiences/f1 hub and
+    // badges a month, not a day, and the Australia card badges "2027" under a
+    // Register Interest CTA. Neither names a date that can be retired to the
+    // day, and inventing one is not available. That also keeps this list
+    // clear of the zero-row guard for good.
+    id: 'homepage-featured',
+    file: join(ROOT, 'index.html'),
+    indent: '        ',
+    preserveOrder: true,
+    render: renderHomepageCard,
+    extras: [
+      { id: 'homepage-featured-sub', render: renderHomepageFeaturedSub, inline: true },
     ],
   },
 ];
@@ -258,8 +348,12 @@ function processPlayed(entries) {
 
 // ---- Engine ---------------------------------------------------------------
 
-function selectRows(rows) {
+function selectRows(rows, preserveOrder = false) {
   const kept = rows.filter((r) => r.date == null || r.date >= TODAY);
+  // A list may opt out of sorting (`preserveOrder: true`) when its order is an
+  // editorial choice rather than chronology — see the homepage-featured entry.
+  // The date filter above still applies; only the reordering is skipped.
+  if (preserveOrder) return kept;
   // Stable ascending sort by date; undated (null) rows sort last.
   return kept
     .map((r, i) => ({ r, i }))
@@ -307,7 +401,7 @@ function processList(list, data) {
     throw new Error(`No rows for list "${list.id}" in ${DATA_FILE}`);
   }
   const src = readFileSync(list.file, 'utf8');
-  const selected = selectRows(rows);
+  const selected = selectRows(rows, list.preserveOrder === true);
 
   // ---- ZERO-ROW GUARD ----
   // Every row has passed its date, so the block would render as an empty grid.

@@ -131,5 +131,59 @@
       "teaser": "Bespoke Australia 2027 packages built around your schedule. Limited availability.",
       "cta": "Enquire Now"
     }
+  ],
+  "homepage-featured": [
+    {
+      "id": "nations-championship-finals-2026",
+      "date": "2026-11-30",
+      "comment": "Nations Championship Finals Weekend",
+      "href": "/experiences/rugby/nations-championship-finals-2026/",
+      "imgSrc": "/images/experiences/rugby/aerial-view-twickenham-stadium.webp",
+      "imgAlt": "Aerial view of Allianz Stadium, Twickenham, London",
+      "badge": "November 2026",
+      "category": "Rugby &middot; London",
+      "title": "The Nations Championship Finals Weekend",
+      "teaser": "Four nights in Mayfair. Two days at Allianz Stadium, Twickenham.",
+      "cta": "Request a Proposal"
+    },
+    {
+      "id": "monaco-gp-2027",
+      "date": null,
+      "comment": "Monaco GP",
+      "href": "/experiences/f1",
+      "imgSrc": "/images/experiences/f1/monaco-harbour-aerial-f1-grand-prix.webp",
+      "imgAlt": "Aerial view of Monaco harbour and Mediterranean Sea — Formula 1 Monaco Grand Prix hospitality packages with Eventra",
+      "badge": "June 2027",
+      "category": "Formula 1 &middot; Monaco",
+      "title": "Monaco is not a race. It is the proof of concept.",
+      "teaser": "The circuit that invented glamour. Eventra handles the rest.",
+      "cta": "Request a Proposal"
+    },
+    {
+      "id": "england-cricket-newlands-2027",
+      "date": "2027-01-07",
+      "comment": "England vs SA 3rd Test Cricket",
+      "href": "/events/england-cricket-newlands-2027",
+      "imgSrc": "/images/events/newlands-cricket-ground-table-mountain-cape-town.webp",
+      "imgAlt": "View from the stands at Newlands Cricket Ground, Cape Town, looking across the playing field towards Table Mountain.",
+      "badge": "Jan 2027",
+      "category": "Cricket &middot; Cape Town",
+      "title": "Newlands in January. There is no better seat in South African cricket.",
+      "teaser": "Five days of Test cricket at Newlands, from a reserved Pavilion seat to a hosted suite.",
+      "cta": "Enquire Now"
+    },
+    {
+      "id": "australia-2027",
+      "date": null,
+      "comment": "Australia 2027",
+      "href": "/events/australia-2027/",
+      "imgSrc": "/images/experiences/rugby/sydney-harbour-australia-2027.webp",
+      "imgAlt": "Sydney Harbour Australia — Eventra rugby hospitality packages Australia 2027",
+      "badge": "2027",
+      "category": "Rugby · Australia",
+      "title": "Australia, 2027. The tournament that comes every four years.",
+      "teaser": "Bespoke Australia 2027 packages.",
+      "cta": "Register Interest"
+    }
   ]
 }

@@ -761,17 +761,26 @@
       margin-top: 48px;
     }
 
-    /* Bottom row events */
-    .events-grid .event-card:nth-child(3),
-    .events-grid .event-card:nth-child(4) {
+    /* Bottom-row events. Keyed to the card's own `.small` class, which
+       scripts/build-fixtures.mjs assigns by position, so the split layout
+       follows the card instead of the slot. These were :nth-child(3) and
+       :nth-child(4): once a played card dropped out of the grid they matched
+       the wrong card, or nothing at all, and the survivor rendered in the
+       vertical style nobody chose (EVE-880). */
+    .events-grid .event-card.small {
       display: grid;
       grid-template-columns: 1fr 1fr;
     }
 
-    .events-grid .event-card:nth-child(3) .event-card-image,
-    .events-grid .event-card:nth-child(4) .event-card-image {
+    .events-grid .event-card.small .event-card-image {
       aspect-ratio: unset;
       height: 100%;
+    }
+
+    /* A card left alone at the end of the list spans both columns rather than
+       sitting in one with an empty half beside it. */
+    .events-grid .event-card.full {
+      grid-column: 1 / -1;
     }
 
     /* ───────────────────────────────────────────────
@@ -1007,14 +1016,12 @@
         grid-template-columns: 1fr 1fr;
       }
 
-      .events-grid .event-card:nth-child(3),
-      .events-grid .event-card:nth-child(4) {
+      .events-grid .event-card.small {
         display: flex;
         flex-direction: column;
       }
 
-      .events-grid .event-card:nth-child(3) .event-card-image,
-      .events-grid .event-card:nth-child(4) .event-card-image {
+      .events-grid .event-card.small .event-card-image {
         aspect-ratio: 4/3;
         height: auto;
       }
@@ -1054,14 +1061,12 @@
         grid-template-columns: 1fr;
       }
 
-      .events-grid .event-card:nth-child(3),
-      .events-grid .event-card:nth-child(4) {
+      .events-grid .event-card.small {
         display: flex;
         flex-direction: column;
       }
 
-      .events-grid .event-card:nth-child(3) .event-card-image,
-      .events-grid .event-card:nth-child(4) .event-card-image {
+      .events-grid .event-card.small .event-card-image {
         aspect-ratio: 4/3;
         height: auto;
       }
@@ -1415,12 +1420,14 @@ window.evgEventId = function(p){return p+'_'+Date.now()+'_'+Math.random().toStri
       <header class="section-header">
         <p class="eyebrow">Featured Experiences</p>
         <h2 class="section-title">The moments worth planning around.</h2>
-        <p class="section-sub">Four experiences.</p>
+        <!-- FIXTURES:homepage-featured-sub START --><p class="section-sub">Four experiences.</p><!-- FIXTURES:homepage-featured-sub END -->
       </header>
 
       <div class="events-grid">
+        <!-- FIXTURES:homepage-featured START -->
+        <!-- Auto-generated from /data/fixtures.json by scripts/build-fixtures.mjs. Do not hand-edit cards between the FIXTURES markers. -->
 
-        <!-- Card 1 - Nations Championship Finals Weekend (large) -->
+        <!-- Card 1 — Nations Championship Finals Weekend (large) -->
         <a href="/experiences/rugby/nations-championship-finals-2026/" class="event-card large">
           <div class="event-card-image">
             <img
@@ -1492,6 +1499,7 @@ window.evgEventId = function(p){return p+'_'+Date.now()+'_'+Math.random().toStri
           </div>
         </a>
 
+        <!-- FIXTURES:homepage-featured END -->
       </div>
 
       <div class="events-footer">

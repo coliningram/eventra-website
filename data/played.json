@@ -274,30 +274,11 @@
       ]
     },
     {
-      "id": "homepage-nations-championship-finals-2026",
-      "file": "index.html",
-      "event": "Nations Championship Finals Weekend, Allianz Stadium, Twickenham, 28-29 November 2026 — the homepage's first and largest featured card, not this page's own fixture",
-      "playedFrom": "2026-12-01",
-      "source": "EVE-872. The homepage sat in neither retirement mechanism, so from 2026-12-01 its largest featured card would have gone on selling the Nations Finals under a \"Request a Proposal\" button, linking to a page that self-treats to \"This fixture has been played.\" on the same date via the nations-championship-finals-2026 entry. Both edits are deletions. The count sentence is DELETED rather than corrected to \"Three experiences.\", following EVE-775, which deleted a sibling numeral for exactly this reason: a corrected number goes stale again at the next retirement (here 2027-01-08). The homepage grid is positional (grid-template-rows: auto auto plus :nth-child(3)/:nth-child(4) split-layout rules at three breakpoints), so it is NOT marker-wired — see the EVE-872 follow-up row.",
-      "edits": [
-        {
-          "note": "Featured Experiences grid: delete card 1 (Nations Championship Finals Weekend, large) in full. Anchored from the grid's opening <div> through the card-2 comment so the replacement text is a junction that does not exist before treatment — a find ending at the card-2 comment alone would make the engine's includes(replace) check true immediately and skip the edit forever. Leaves Monaco, Newlands and Australia 2027 as cards 1 to 3.",
-          "find": "      <div class=\"events-grid\">\n\n        <!-- Card 1 - Nations Championship Finals Weekend (large) -->\n        <a href=\"/experiences/rugby/nations-championship-finals-2026/\" class=\"event-card large\">\n          <div class=\"event-card-image\">\n            <img\n              src=\"/images/experiences/rugby/aerial-view-twickenham-stadium.webp\"\n              alt=\"Aerial view of Allianz Stadium, Twickenham, London\"\n              loading=\"lazy\"\n            >\n            <div class=\"event-date-badge\">November 2026</div>\n          </div>\n          <div class=\"event-card-body\">\n            <p class=\"event-category\">Rugby &middot; London</p>\n            <h3 class=\"event-title\">The Nations Championship Finals Weekend</h3>\n            <p class=\"event-teaser\">Four nights in Mayfair. Two days at Allianz Stadium, Twickenham.</p>\n            <span class=\"btn btn-primary btn-sm\">Request a Proposal</span>\n          </div>\n        </a>\n\n        <!-- Card 2 — Monaco GP (large) -->",
-          "replace": "      <div class=\"events-grid\">\n\n        <!-- Card 2 — Monaco GP (large) -->"
-        },
-        {
-          "note": "Section header: delete the hard-coded count sentence \"Four experiences.\" rather than correct it. EVE-773 had to correct this class of string by hand and EVE-775 then chose deletion over correction because the number would have been wrong again at the next lapse. Anchored through </header> so the replacement is a junction absent before treatment.",
-          "find": "        <h2 class=\"section-title\">The moments worth planning around.</h2>\n        <p class=\"section-sub\">Four experiences.</p>\n      </header>",
-          "replace": "        <h2 class=\"section-title\">The moments worth planning around.</h2>\n      </header>"
-        }
-      ]
-    },
-    {
       "id": "homepage-nations-championship-finals-2026-sitemap",
       "file": "sitemap.xml",
       "event": "Nations Championship Finals Weekend, Allianz Stadium, Twickenham, 28-29 November 2026 — homepage card retirement",
       "playedFrom": "2026-12-01",
-      "source": "EVE-872; sitemap lastmod convention = the page's own last CONTENT change, and the played treatment is itself a content change.",
+      "source": "EVE-872, re-pointed by EVE-880. The homepage card itself is no longer treated here: it drops out of the marker-wired homepage-featured list in data/fixtures.json on this date, and its sibling index.html entry has been retired so the card is never treated twice. This lastmod is the sitemap mirror of that generated change, under the convention that lastmod = the page's own last CONTENT change.",
       "edits": [
         {
           "note": "sitemap lastmod for the homepage. optional, because the staging sitemap carries lastmod on only a subset of URLs and absence there must be a clean skip rather than a hard error.",
@@ -337,25 +318,11 @@
       ]
     },
     {
-      "id": "homepage-england-cricket-newlands-2027",
-      "file": "index.html",
-      "event": "England v South Africa, Newlands Cricket Ground, Cape Town, 3 to 7 January 2027 — the homepage's third featured card, not this page's own fixture",
-      "playedFrom": "2027-01-08",
-      "source": "EVE-872, second of the homepage's two featured-card retirements. The homepage is in neither mechanism, so without this entry its Newlands card keeps selling a finished Test under an \"Enquire Now\" button, pointing at /events/england-cricket-newlands-2027 which self-treats to non-availability on the same date via the newlands-2027 entry registered on EVE-863. Deletion only. The count sentence needs nothing here: homepage-nations-championship-finals-2026 already DELETES \"Four experiences.\" on 2026-12-01, which is the EVE-775 reason for deleting a numeral rather than correcting it — a corrected \"Three experiences.\" would have been wrong again on exactly this date. Known cosmetic consequence, not a defect: .events-grid styles the horizontal split layout positionally (:nth-child(3)/:nth-child(4) at three breakpoints), so with two cards left those rules match nothing and the surviving Australia 2027 card renders in the vertical .small style. Marker-wiring the grid needs a renderer variant emitting event-card large/small plus the btn span, which renderRugbyHubCard does not emit; that is the EVE-872 follow-up, and it is a far smaller harm than selling a played fixture.",
-      "edits": [
-        {
-          "note": "Featured Experiences grid: delete card 3 (England vs SA, Newlands, small) in full. Anchored from the Monaco card's unique teaser line through the card-4 comment, so the replacement fuses the Monaco card's close to the card-4 comment — an adjacency that does not exist before treatment. A find starting at the card-3 comment would have made replace (the bare card-4 comment) already present, and the engine's includes(replace) check would skip this edit forever. Starts after the card-2 comment where homepage-nations-championship-finals-2026's find ends, so the two never overlap in either order.",
-          "find": "            <p class=\"event-teaser\">The circuit that invented glamour. Eventra handles the rest.</p>\n            <span class=\"btn btn-primary btn-sm\">Request a Proposal</span>\n          </div>\n        </a>\n\n        <!-- Card 3 — England vs SA 3rd Test Cricket (small, horizontal) -->\n        <a href=\"/events/england-cricket-newlands-2027\" class=\"event-card small\">\n          <div class=\"event-card-image\">\n            <img\n              src=\"/images/events/newlands-cricket-ground-table-mountain-cape-town.webp\"\n              alt=\"View from the stands at Newlands Cricket Ground, Cape Town, looking across the playing field towards Table Mountain.\"\n              loading=\"lazy\"\n            >\n            <div class=\"event-date-badge\">Jan 2027</div>\n          </div>\n          <div class=\"event-card-body\">\n            <p class=\"event-category\">Cricket &middot; Cape Town</p>\n            <h3 class=\"event-title\">Newlands in January. There is no better seat in South African cricket.</h3>\n            <p class=\"event-teaser\">Five days of Test cricket at Newlands, from a reserved Pavilion seat to a hosted suite.</p>\n            <span class=\"btn btn-primary btn-sm\">Enquire Now</span>\n          </div>\n        </a>\n\n        <!-- Card 4 — Australia 2027 (small, horizontal) -->",
-          "replace": "            <p class=\"event-teaser\">The circuit that invented glamour. Eventra handles the rest.</p>\n            <span class=\"btn btn-primary btn-sm\">Request a Proposal</span>\n          </div>\n        </a>\n\n        <!-- Card 4 — Australia 2027 (small, horizontal) -->"
-        }
-      ]
-    },
-    {
       "id": "homepage-england-cricket-newlands-2027-sitemap",
       "file": "sitemap.xml",
       "event": "England v South Africa, Newlands 2027 — homepage card retirement",
       "playedFrom": "2027-01-08",
-      "source": "EVE-872; sitemap lastmod convention = the page's own last CONTENT change, and the played treatment is itself a content change. Finds the 2026-12-01 value that homepage-nations-championship-finals-2026-sitemap writes earlier in this same array, so on any run date from 2027-01-08 the two apply in order and the homepage ends on the later date.",
+      "source": "EVE-872, re-pointed by EVE-880. As with the 2026-12-01 homepage lastmod, the card itself now drops out of the marker-wired homepage-featured list rather than being treated here; this entry is only the sitemap mirror. Finds the 2026-12-01 value that homepage-nations-championship-finals-2026-sitemap writes earlier in this same array, so on any run date from 2027-01-08 the two apply in order and the homepage ends on the later date.",
       "edits": [
         {
           "note": "sitemap lastmod for the homepage. optional, because staging carries lastmod on only a subset of URLs and absence there must be a clean skip rather than a hard error.",
