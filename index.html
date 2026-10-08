@@ -672,7 +672,12 @@
     .events-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      grid-template-rows: auto auto;
+      /* Rows are implicit on purpose. This was `grid-template-rows: auto auto`,
+         which is a second positional assumption of the same kind as the
+         :nth-child rules below: with two cards left the explicit second row
+         stays in the grid and its `gap` opens a gutter of empty space under
+         the block. Auto-placement creates exactly as many rows as there are
+         cards, at the same `auto` height (EVE-880). */
       gap: var(--gutter);
     }
 
