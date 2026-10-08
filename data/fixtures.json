@@ -101,5 +101,35 @@
       "teaser": "The tournament that comes every four years. Sydney, Melbourne, Brisbane. Register your interest now.",
       "cta": "Enquire Now"
     }
+  ],
+  "events-hub": [
+    {
+      "id": "england-cricket-newlands-2027",
+      "date": "2027-01-07",
+      "comment": "Card 2 — England vs SA Cricket, Newlands",
+      "href": "/events/england-cricket-newlands-2027",
+      "imgSrc": "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=800&q=70&auto=format&fit=crop",
+      "imgAlt": "England v South Africa at Newlands Cricket Ground, Cape Town, January 2027",
+      "badge": "3 to 7 Jan 2027",
+      "category": "Cricket &middot; Cape Town",
+      "title": "Newlands in January. There is no better seat in South African cricket.",
+      "venue": "Newlands Cricket Ground, 3 to 7 January 2027",
+      "teaser": "Five days of Test cricket at Newlands, from a reserved Pavilion seat to a hosted suite.",
+      "cta": "Enquire Now"
+    },
+    {
+      "id": "australia-2027",
+      "date": "2027-09-01",
+      "comment": "Card 3 — Australia 2027",
+      "href": "/events/australia-2027/",
+      "imgSrc": "/images/experiences/sydney-harbour-australia-2027.webp",
+      "imgAlt": "Sydney Harbour Australia — Eventra Bespoke rugby hospitality packages Australia 2027",
+      "badge": "2027",
+      "category": "Australia 2027",
+      "title": "Australia, 2027. The tournament that comes every four years.",
+      "venue": "Australia &mdash; September/October 2027",
+      "teaser": "Bespoke Australia 2027 packages built around your schedule. Limited availability.",
+      "cta": "Enquire Now"
+    }
   ]
 }

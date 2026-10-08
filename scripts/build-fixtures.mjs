@@ -114,6 +114,17 @@ function renderExperiencesHubSub(rows) {
   return `<p class="section-sub">${numberWord(rows.length)} curated ${noun} across sport. Each one built around access that general tickets cannot provide.</p>`;
 }
 
+// events-hub sub: /events/ states its own count in the same sentence shape as the
+// experiences hub, in that page's own wording ("do not provide", not "cannot
+// provide"). Generated from the selected rows because this is the exact string
+// EVE-773 had to correct by hand, and EVE-775 then deleted a sibling numeral
+// rather than correct it a second time. Only the count and the noun are
+// generated; the rest is the wording already live on the page.
+function renderEventsHubSub(rows) {
+  const noun = rows.length === 1 ? 'experience' : 'experiences';
+  return `<p class="section-sub">${numberWord(rows.length)} curated sporting ${noun}. Each one built around access that general tickets do not provide.</p>`;
+}
+
 // ---- Registry -------------------------------------------------------------
 // One entry per marker-wired list. `indent` is the leading whitespace used for
 // the generated-by comment and the END marker line so the block sits neatly in
@@ -138,6 +149,21 @@ const LISTS = [
     render: renderRugbyHubCard,
     extras: [
       { id: 'experiences-hub-sub', render: renderExperiencesHubSub, inline: true },
+    ],
+  },
+  {
+    // /events/ — the season landing page. Its two cards are byte-for-byte the
+    // same markup as the rugby hub's (same classes, same event-venue line, same
+    // 8-space indent), so renderRugbyHubCard is a true drop-in here; verified by
+    // the generator reporting this list `unchanged` on the day it was wired.
+    // The grid is `repeat(3, 1fr)` with no :nth-child rules, so losing a card is
+    // a pure content change with no layout consequence.
+    id: 'events-hub',
+    file: join(ROOT, 'events', 'index.html'),
+    indent: '        ',
+    render: renderRugbyHubCard,
+    extras: [
+      { id: 'events-hub-sub', render: renderEventsHubSub, inline: true },
     ],
   },
 ];
