@@ -378,9 +378,9 @@
           "replace": "\"description\": \"England v South Africa at Newlands, 3 to 7 January 2027. Series dates, how tickets sold, ways in now, where to sit, getting there and planning a Cape Town trip. This fixture has been played."
         },
         {
-          "note": "body hospitality sentence: drop the edition-specific sell and its link to the product page, which by this date carries the played treatment itself (entry england-cricket-newlands-2027). Replacement is the record-note frame from that entry's edit 12, verbatim. One link, no nesting (CLAUDE.md).",
-          "find": "Eventra offers <a href=\"/events/england-cricket-newlands-2027\">hospitality at Newlands</a> for all five days of the Test, from a reserved seat in the President's Pavilion Upper to a hosted suite.",
-          "replace": "This fixture has been played. For the cricket on sale now, see the <a href=\"/experiences/cricket\">cricket hospitality hub</a>."
+          "note": "body hospitality paragraph: lead with the played notice, keep the historical sentence verbatim, and drop the edition-specific sell plus its link to the product page, which by this date carries the played treatment itself (entry england-cricket-newlands-2027). Reordered on EVE-870 review feedback so the status reads before the sale mechanics rather than after them. The surrounding tense is deliberately left alone, matching that entry's edit 9, which leaves \"Every option includes all five days\" present-tense and only appends the notice. Replacement is the notice plus that entry's edit 12 record-note frame; one link, no nesting (CLAUDE.md).",
+          "find": "          <p><strong>Hospitality.</strong> Pavilion seats, marquee hospitality and hosted suites sit outside the general sale. Eventra offers <a href=\"/events/england-cricket-newlands-2027\">hospitality at Newlands</a> for all five days of the Test, from a reserved seat in the President's Pavilion Upper to a hosted suite.</p>",
+          "replace": "          <p><strong>Hospitality.</strong> This fixture has been played. Pavilion seats, marquee hospitality and hosted suites sit outside the general sale. For the cricket on sale now, see the <a href=\"/experiences/cricket\">cricket hospitality hub</a>.</p>"
         },
         {
           "note": "FAQ \"Can I combine the Test with a holiday in Cape Town?\", visible <p>. The question keeps its wording; the answer keeps its generic capability sentence and swaps the edition-specific link for the live cricket hub, prefixed with the played notice.",
