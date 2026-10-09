@@ -416,6 +416,36 @@
           "note": "closing CTA band as one contiguous block: aria-label, headline, body and button. \"Planning to be at Newlands?\" plus \"we will come back with a proposal\" is the live sell this entry exists to retire. Every replacement string is verbatim from the approved england-cricket-newlands-2027 entry: aria-label \"Cricket hospitality\" (edit 11), the \"is no longer on sale ... kept as a record of it\" subtext and the /experiences/cricket \"Cricket Hospitality\" button (edit 12). Site chrome keeps its /enquire links; only this band's instance goes.",
           "find": "<section class=\"cta-band\" aria-label=\"Enquire\">\n      <div class=\"container\">\n        <h2>Planning to be at Newlands?</h2>\n        <p>Eventra offers <a href=\"/events/england-cricket-newlands-2027\">hospitality at Newlands</a> for all five days of the Test, and can book your accommodation, transfers and the rest of your time in Cape Town. Tell us how many are travelling and we will come back with a proposal.</p>\n        <a href=\"/enquire\" class=\"btn btn-primary\">Enquire about Newlands</a>",
           "replace": "<section class=\"cta-band\" aria-label=\"Cricket hospitality\">\n      <div class=\"container\">\n        <h2>This fixture has been played.</h2>\n        <p>England v South Africa at Newlands on 3 to 7 January 2027 is no longer on sale. This page is kept as a record of it. For the cricket on sale now, see the <a href=\"/experiences/cricket\">cricket hospitality hub</a>.</p>\n        <a href=\"/experiences/cricket\" class=\"btn btn-primary\">Cricket Hospitality</a>"
+        },
+        {
+          "note": "article intro: drop the \"ways in that remain\" clause from the guide's own contents sentence, keeping both historical sentences verbatim. Deletion only, per the data/played.json rule; junction \"how the tickets went, where to sit\" is absent before treatment. Same shape as this file's nations-championship-finals-weekend-explained-note edits 5/6.",
+          "find": "This guide covers the series, how the tickets went, the ways in that remain, where to sit and how to plan the trip around it.</p>",
+          "replace": "This guide covers the series, how the tickets went, where to sit and how to plan the trip around it.</p>"
+        },
+        {
+          "note": "\"The short version\" Tickets <li>: drop the present-tense availability sentence, keep the two historical sentences (how the May sale went, and what Cricket South Africa said) verbatim. Anchored through to </li> so the replace is a junction absent before treatment.",
+          "find": "will be released later. Hospitality and travel packages remain the main route in.</li>",
+          "replace": "will be released later.</li>"
+        },
+        {
+          "note": "FAQ \"Is the Newlands New Year Test sold out?\", visible <p>: drop the present-tense routes-in sentence and append the played notice. Keeps the historical sell-out record. Visible <p> and the FAQPage JSON-LD \"text\" carry byte-identical prose, so the tag/key wrapper is part of each anchor and they are two edits, not one.",
+          "find": "<p>Days one to four sold out on general sale in May 2026. Cricket South Africa has said further general access tickets will be released later. Hospitality and travel packages offer other routes in.</p>",
+          "replace": "<p>Days one to four sold out on general sale in May 2026. Cricket South Africa has said further general access tickets will be released later. This fixture has been played.</p>"
+        },
+        {
+          "note": "FAQ \"Is the Newlands New Year Test sold out?\", FAQPage JSON-LD \"text\": same deletion inside structured data. A crawler surfaces this as a live answer, so it must not keep asserting that routes in remain.",
+          "find": "\"text\": \"Days one to four sold out on general sale in May 2026. Cricket South Africa has said further general access tickets will be released later. Hospitality and travel packages offer other routes in.\"",
+          "replace": "\"text\": \"Days one to four sold out on general sale in May 2026. Cricket South Africa has said further general access tickets will be released later. This fixture has been played.\""
+        },
+        {
+          "note": "FAQ \"Can I still get tickets for day five?\", visible <p>: drop both instructions to act (check CSA ticketing; choose a five-day hospitality option) and append the played notice. The historical first sentence stays verbatim. The question keeps its wording, matching nations-championship-finals-weekend-explained-note edits 9/10, which treat the answer and leave the question.",
+          "find": "<p>Day five was not part of the May sell-out announcement. Check Cricket South Africa's ticketing for day five releases, or choose a hospitality option that includes all five days.</p>",
+          "replace": "<p>Day five was not part of the May sell-out announcement. This fixture has been played.</p>"
+        },
+        {
+          "note": "FAQ \"Can I still get tickets for day five?\", FAQPage JSON-LD \"text\": same deletion inside structured data.",
+          "find": "\"text\": \"Day five was not part of the May sell-out announcement. Check Cricket South Africa's ticketing for day five releases, or choose a hospitality option that includes all five days.\"",
+          "replace": "\"text\": \"Day five was not part of the May sell-out announcement. This fixture has been played.\""
         }
       ]
     },
