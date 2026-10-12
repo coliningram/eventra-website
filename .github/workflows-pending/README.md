@@ -1,8 +1,21 @@
-# Parked workflow — activation is a manual step Colin owns
+# Parked workflows — every write under `.github/workflows/` is a manual step Colin owns
 
-`fixtures.yml` in this directory is the finished GitHub Actions workflow for the
-Option C static fixtures rebuild (EVE-761). It is **not active** while it sits
-here — GitHub only runs workflows found in `.github/workflows/`.
+GitHub only runs workflows found in `.github/workflows/`. A file in **this**
+directory is inert, and no agent can move it: see "Why no agent can move this
+file" below.
+
+**State on `main` as of 2026-10-12.** The Option C fixtures rebuild (EVE-761) is
+no longer parked — Colin hand-moved it, `.github/workflows/fixtures.yml` is
+active, and the daily cron has run and pushed (7 runs, all green, latest
+`3ae9bd1` on 2026-10-12). Everything below about *activating* `fixtures.yml` is
+therefore **history**, kept because it records the routes that are barred and
+the repo settings that were pre-flighted. What is still parked here and still
+owed:
+
+| File | What it is | Owed |
+| --- | --- | --- |
+| `sitemap-lastmod.yml` | never activated | hand-move to `.github/workflows/` |
+| `fixtures-eve904.yml` | a **patch** to the already-active `fixtures.yml` | hand-apply over the live file — see the EVE-904 section at the end |
 
 This is now the **decided** final resting place, not a waiting room. Colin
 answered on EVE-768, 2026-08-17 15:07 UTC:
@@ -150,6 +163,74 @@ a throwaway copy of the tree with the clock moved forward:
   published for roughly ten months.
 - simulated **2028-01-01** (every row past) → guard throws, exit `1`, and the
   page file is left **byte-for-byte unchanged** — no partial write.
+
+## EVE-904 — a pending patch to the now-active `fixtures.yml`
+
+`fixtures-eve904.yml` in this directory is **not a new workflow**. It is the
+complete, intended contents of the already-active
+`.github/workflows/fixtures.yml`, with the EVE-904 failure-handling change
+applied. It sits here for the same reason everything else does: the deploy PAT
+cannot write under `.github/workflows/`, and per Colin's EVE-768 ruling the PAT
+route is closed by decision. Do not ask for `workflow` scope.
+
+### What the patch changes, and why
+
+Three steps instead of two:
+
+1. the generator step gains `id: rebuild` and `continue-on-error: true`;
+2. `Commit and push if changed` gains `if: ${{ !cancelled() }}` and labels a
+   partial commit in its subject;
+3. a final step re-raises the generator's failure so the run still goes red and
+   GitHub still emails the owner.
+
+Nothing else in the file moves. The generator's semantics are untouched.
+
+Before this, `Commit and push if changed` carried no `if:` condition, so under
+GitHub's default `if: success()` it was **skipped on any throw** — and the units
+the run had already completed on disk were discarded unpushed. Pair that with
+the generator's old single unguarded sequence and a renamed `FIXTURES:` marker,
+a missing list key, or the zero-row guard cost the whole day: every played
+treatment due that date was withheld, and the event page kept its
+`description`, `og:description`, `twitter:description` and JSON-LD still selling
+a fixture that had been played. `noindex` does not help there, because a social
+unfurl reads the meta tags directly.
+
+The generator half of the fix is already on `main` — `scripts/build-fixtures.mjs`
+now runs each list and the played-page pass as an isolated unit, so a throw in
+one no longer withholds the others. **That half is inert on the cron without
+this patch**, because the run still exits 1 and the unpatched commit step is
+still skipped, so the units that did land are still thrown away. Both halves are
+needed; only this one needs your hands.
+
+Committing a partial rebuild is safe because the generator's writes are
+unit-atomic: `processList` writes only after the card region and every `extras`
+region have resolved, and `processPlayed` writes only after every edit in an
+entry has resolved. Whatever is on disk when it exits non-zero is a set of
+complete, valid files. That was measured on a six-cell matrix over `main`'s own
+bytes; see EVE-904.
+
+### To apply
+
+```sh
+git checkout main
+cp .github/workflows-pending/fixtures-eve904.yml .github/workflows/fixtures.yml
+git rm .github/workflows-pending/fixtures-eve904.yml
+node scripts/build-fixtures.mjs --check   # expect exit 0, no diff
+git commit -am "EVE-904 Apply fixtures workflow failure handling"
+git push
+```
+
+Or paste the file into GitHub's web editor on `main`, which needs no local
+checkout and no `workflow` scope.
+
+### To validate it
+
+The one link in the EVE-904 argument that could not be executed locally is
+GitHub's step-skip behaviour itself, because the workflow has never failed — all
+7 runs to date are green, so there is no historical run to read it off. After
+applying, the cheap proof is the **Run workflow** button with a deliberately
+broken marker on a throwaway branch: the run should go red *and* carry a commit
+whose subject begins `chore(fixtures): partial rebuild`.
 
 ## Scheduling caveat
 

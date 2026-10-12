@@ -1,0 +1,110 @@
+name: Rebuild static fixtures
+
+# Regenerates the date-filtered fixture blocks (data/fixtures.json ->
+# scripts/build-fixtures.mjs -> static HTML) so past fixtures drop off the site
+# automatically. Output is plain static HTML — non-JS AI crawlers (GPTBot,
+# ClaudeBot, PerplexityBot, CCBot) read the fixtures without running any script.
+#
+# IMPORTANT — scheduling caveat: GitHub's `schedule` trigger ONLY fires from the
+# repository's DEFAULT branch (main). On the `staging` branch the daily cron will
+# NOT run — that is expected. Validate on staging via the `workflow_dispatch`
+# button (Actions tab -> this workflow -> "Run workflow") and by running the
+# generator locally: `node scripts/build-fixtures.mjs`. The daily cron only
+# activates once this file is promoted to `main` (Colin-gated).
+#
+# Failure signal: this workflow relies on GitHub's default behaviour of emailing
+# the repository owner when a scheduled workflow run fails. There is no custom
+# alerting path by design.
+#
+# Failure handling (EVE-904): the generator step is `continue-on-error`, the
+# commit-and-push step runs regardless, and a final step re-raises the
+# generator's failure. A hard error in one unit of the rebuild therefore still
+# turns the run red and still emails the owner, but it no longer discards the
+# units that completed before it.
+
+on:
+  schedule:
+    # 03:17 UTC daily — a low-traffic hour; offset off the top of the hour to
+    # avoid GitHub's peak-of-the-hour scheduler congestion. (Only fires on main.)
+    - cron: '17 3 * * *'
+  workflow_dispatch: {}
+
+# Allow the job to push the regenerated HTML back to the branch.
+permissions:
+  contents: write
+
+# Never run two rebuilds against the same branch at once.
+concurrency:
+  group: fixtures-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # `continue-on-error` so a hard error in ONE unit of the generator does not
+      # take the push with it (EVE-904). The generator writes atomically per unit
+      # — a list's page, or the played-page pass — so whatever is on disk when it
+      # exits non-zero is a set of complete, valid files, never a half-rewritten
+      # one. Before this, the commit step below was simply skipped on any throw
+      # under GitHub's default `if: success()`, so a run that had already dropped
+      # a played fixture's card, or already rewritten a played event page's meta
+      # tags, threw that work away unpushed and the site kept selling a fixture
+      # that had been played until the next clean run.
+      #
+      # The step's failure is NOT swallowed: `Fail the job if the rebuild failed`
+      # below re-raises it after the commit, so the run still goes red and
+      # GitHub still emails the repository owner — the mechanism's documented
+      # and only failure signal.
+      - name: Rebuild fixtures from data/fixtures.json
+        id: rebuild
+        continue-on-error: true
+        run: node scripts/build-fixtures.mjs
+
+      # NOTE: deliberately NO "[skip ci]" in the commit message. This workflow has
+      # no `push` trigger, so there is no self-trigger loop to suppress, and the
+      # commit MUST reach Cloudflare's build so the regenerated HTML actually
+      # deploys. Workers Builds ignores [skip ci] today, but it is an open feature
+      # request (cloudflare/workers-sdk#11061) and Cloudflare Pages already honours
+      # it — including the flag would silently stop fixture updates from going live
+      # the day that lands.
+      #
+      # Runs whether or not the generator step succeeded, so the units that DID
+      # complete reach Cloudflare's build. The commit subject records which of
+      # the two it was, so a partial rebuild is legible in `git log` without
+      # opening the Actions run.
+      - name: Commit and push if changed
+        if: ${{ !cancelled() }}
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No fixture changes — nothing to commit."
+            exit 0
+          fi
+          if [ "${{ steps.rebuild.outcome }}" = "success" ]; then
+            SUBJECT="chore(fixtures): rebuild date-filtered fixtures"
+          else
+            SUBJECT="chore(fixtures): partial rebuild; committing the units that completed"
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "$SUBJECT
+
+          Co-Authored-By: Paperclip <noreply@paperclip.ing>"
+          git push
+
+      # Re-raise the generator's failure so the run goes red and the owner email
+      # fires. Last, so it cannot pre-empt the push above.
+      - name: Fail the job if the rebuild failed
+        if: ${{ steps.rebuild.outcome == 'failure' }}
+        run: |
+          echo "::error::scripts/build-fixtures.mjs exited non-zero. Any units that completed were committed by the previous step; see its log for the per-unit failures."
+          exit 1

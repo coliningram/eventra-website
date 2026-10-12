@@ -21,6 +21,9 @@
  *    with the cards when a fixture drops off.
  *  - Zero-row guard: a list that selects NO rows aborts the run before writing
  *    anything. See ZERO-ROW GUARD below for why this is a hard failure.
+ *  - Failure isolation: each list and the played-page pass run as independent
+ *    units (EVE-904). One unit's hard error no longer withholds the others, and
+ *    the run still exits 1 so the failure reaches the workflow's email signal.
  *  - Played-page pass: after the lists, data/played.json applies the approved
  *    played-fixture treatment to INDIVIDUAL event pages on the date the event
  *    becomes past. Hub cards drop themselves via the date filter above, but that
@@ -321,21 +324,92 @@ function processList(list, data) {
   return { id: list.id, file: list.file, changed: true, count: selected.length };
 }
 
-function main() {
-  const data = JSON.parse(readFileSync(DATA_FILE, 'utf8'));
-  let anyChanged = false;
-  for (const list of LISTS) {
-    const res = processList(list, data);
-    anyChanged = anyChanged || res.changed;
-    const state = res.changed ? (CHECK_ONLY ? 'WOULD CHANGE' : 'updated') : 'unchanged';
-    console.log(`[fixtures] ${res.id}: ${state} (${res.count} rows) -> ${res.file}`);
+// ---- FAILURE ISOLATION ----------------------------------------------------
+// Every unit of work above writes atomically. `processList` writes only after
+// the card region AND every `extras` region have been replaced; `applyPlayedEdits`
+// builds the whole new text and `processPlayed` writes only after every edit in
+// an entry has resolved. A unit therefore either lands complete or does not land
+// at all, and no unit reads a file another unit writes. Continuing past a failed
+// unit cannot leave a half-written page behind.
+//
+// That is what makes isolation safe, and isolation is what the daily cron needs.
+// Before EVE-904 every unit ran in one unguarded sequence, so a single throw in
+// the list pass propagated straight out of `main()` and the played-page pass
+// below it never ran at all: every played treatment due that day was withheld,
+// and the event page kept its present-tense `description`, `og:description`,
+// `twitter:description` and JSON-LD selling a fixture that had already been
+// played. That is the EVE-858 / EVE-860 harm, and the one `noindex` cannot stop,
+// because a social unfurl reads the meta tags directly. A renamed marker on
+// either hub page, or a list key missing from data/fixtures.json, was enough —
+// and from 2027-09-02, when both lists select 0 rows on today's data, the
+// zero-row guard fires every day and would have disabled the played pass
+// permanently until the next season's fixtures were added.
+//
+// Each unit now runs through `runUnit`, which records the failure instead of
+// throwing. Nothing is softened: the run still exits 1 if ANY unit failed, so
+// the zero-row guard and the played-drift guard keep refusing to publish and
+// keep surfacing through the workflow's documented signal (GitHub emails the
+// repository owner when a scheduled run fails). What changed is only that the
+// units which did succeed are no longer thrown away with the one that did not.
+// `.github/workflows/fixtures.yml` commits and pushes those units before it
+// re-raises the failure.
+function runUnit(failures, label, fn) {
+  try {
+    fn();
+  } catch (err) {
+    failures.push(`${label}: ${err.message}`);
+    console.error(`[FAILED] ${label}: ${err.message}`);
   }
+}
+
+function main() {
+  const failures = [];
+  let anyChanged = false;
+
+  let data = null;
+  runUnit(failures, 'data/fixtures.json', () => {
+    data = JSON.parse(readFileSync(DATA_FILE, 'utf8'));
+  });
+
+  // One unit per list: a broken marker or a missing key on one hub page no
+  // longer withholds the card drop on the others.
+  for (const list of data === null ? [] : LISTS) {
+    runUnit(failures, `[fixtures] ${list.id}`, () => {
+      const res = processList(list, data);
+      anyChanged = anyChanged || res.changed;
+      const state = res.changed ? (CHECK_ONLY ? 'WOULD CHANGE' : 'updated') : 'unchanged';
+      console.log(`[fixtures] ${res.id}: ${state} (${res.count} rows) -> ${res.file}`);
+    });
+  }
+
   // Played-page pass runs AFTER the lists so that a drifted event page cannot
-  // stop a hub card from dropping on the same day.
-  const played = JSON.parse(readFileSync(PLAYED_FILE, 'utf8')).pages ?? [];
-  for (const res of processPlayed(played)) {
-    anyChanged = anyChanged || res.changed;
-    console.log(`[played] ${res.id}: ${res.state} (${res.detail})`);
+  // stop a hub card from dropping on the same day, and — since EVE-904 — it runs
+  // whether or not a list above it failed, so a broken hub marker can no longer
+  // withhold a played treatment.
+  //
+  // The pass is ONE unit, so its existing fail-fast is unchanged: a drifted
+  // entry still stops the entries after it. Splitting it per entry is EVE-878's
+  // call, not this fix's, because a page entry and its sitemap `lastmod` entry
+  // are separate registrations of the same change — treating the sitemap entry
+  // after the page entry failed would bump `lastmod` for a page that was never
+  // rewritten.
+  runUnit(failures, '[played] pass', () => {
+    const played = JSON.parse(readFileSync(PLAYED_FILE, 'utf8')).pages ?? [];
+    for (const res of processPlayed(played)) {
+      anyChanged = anyChanged || res.changed;
+      console.log(`[played] ${res.id}: ${res.state} (${res.detail})`);
+    }
+  });
+
+  if (failures.length > 0) {
+    console.error(
+      `\n[build] ${failures.length} unit(s) failed; every other unit completed and was ` +
+        `written. Fix each one below and re-run: node scripts/build-fixtures.mjs`
+    );
+    for (const f of failures) {
+      console.error(`  - ${f}`);
+    }
+    process.exit(1);
   }
 
   if (CHECK_ONLY && anyChanged) {
