@@ -61,8 +61,8 @@
         },
         {
           "note": "CTA button: send the reader to the F1 hub instead of enquiring about a run race",
-          "find": "<a href=\"/enquire\" class=\"btn btn-primary\">Enquire Now</a>",
-          "replace": "<a href=\"/experiences/f1\" class=\"btn btn-primary\">Formula 1 Hospitality</a>"
+          "find": "<a href=\"/enquire/\" class=\"btn btn-primary\">Enquire Now</a>",
+          "replace": "<a href=\"/experiences/f1/\" class=\"btn btn-primary\">Formula 1 Hospitality</a>"
         }
       ]
     },
@@ -120,8 +120,8 @@
         },
         {
           "note": "hero CTA button: send the reader to the rugby hub instead of enquiring about a finished tour. Anchored on the hero-cta wrapper because this page has TWO identical /enquire primary buttons (hero and CTA band).",
-          "find": "<div class=\"hero-cta\">\n          <a href=\"/enquire\" class=\"btn btn-primary\">Enquire Now</a>",
-          "replace": "<div class=\"hero-cta\">\n          <a href=\"/experiences/rugby\" class=\"btn btn-primary\">Rugby Hospitality</a>"
+          "find": "<div class=\"hero-cta\">\n          <a href=\"/enquire/\" class=\"btn btn-primary\">Enquire Now</a>",
+          "replace": "<div class=\"hero-cta\">\n          <a href=\"/experiences/rugby/\" class=\"btn btn-primary\">Rugby Hospitality</a>"
         },
         {
           "note": "inclusions sell line: stop inviting an enquiry for itinerary and pricing on a finished tour",
@@ -135,8 +135,8 @@
         },
         {
           "note": "CTA band eyebrow + title + button as one contiguous block: the eyebrow and title carry identical text, so they are replaced together to avoid find strings that depend on each other's application order.",
-          "find": "        <p class=\"eyebrow cta-band-eyebrow\">Experience the Unforgettable</p>\n        <h2 class=\"cta-band-title\">Experience the Unforgettable</h2>\n        <a href=\"/enquire\" class=\"btn btn-primary\">Enquire Now</a>",
-          "replace": "        <p class=\"eyebrow cta-band-eyebrow\">Past Fixture</p>\n        <h2 class=\"cta-band-title\">This fixture has been played.</h2>\n        <a href=\"/experiences/rugby\" class=\"btn btn-primary\">Rugby Hospitality</a>"
+          "find": "        <p class=\"eyebrow cta-band-eyebrow\">Experience the Unforgettable</p>\n        <h2 class=\"cta-band-title\">Experience the Unforgettable</h2>\n        <a href=\"/enquire/\" class=\"btn btn-primary\">Enquire Now</a>",
+          "replace": "        <p class=\"eyebrow cta-band-eyebrow\">Past Fixture</p>\n        <h2 class=\"cta-band-title\">This fixture has been played.</h2>\n        <a href=\"/experiences/rugby/\" class=\"btn btn-primary\">Rugby Hospitality</a>"
         },
         {
           "note": "The invitation body: the non-availability sentence replaces the urgency claim. Frame is Monaco's comma form for a date range (live on experiences/f1/monaco-gp-2026 and in the shipped Singapore edit 7); subject and dates are this page's own FAQ and hero wording. EVE-865.",
@@ -199,7 +199,7 @@
         },
         {
           "note": "RULING on the schema offers block: it GOES. An Offer asserts the thing can still be acquired, and its own description (\"Hospitality options from a reserved seat ... to exclusive use of a suite\") is present-tense selling of a match that is over. Removing it is the schema half of what the on-page edits below do. Anchored on the organizer block so the replacement text does not already exist in the file (a bare tail anchor would make the idempotency check skip this edit forever). Note this page carries NO price: the site's one board-authorised ZAR 170000 is on experiences/rugby/nations-championship-finals-2026, not here. eventStatus STAYS EventScheduled: schema.org offers no \"completed\" value and all five EVE-794-treated pages left theirs alone.",
-          "find": "    \"organizer\": {\n      \"@type\": \"Organization\",\n      \"name\": \"Eventra Group\",\n      \"url\": \"https://eventragroup.com\"\n    },\n    \"offers\": {\n      \"@type\": \"Offer\",\n      \"url\": \"https://eventragroup.com/events/england-cricket-newlands-2027\",\n      \"validFrom\": \"2026-01-01\",\n      \"description\": \"Five days of Test cricket at Newlands. Hospitality options from a reserved seat in the President's Pavilion Upper to exclusive use of a suite.\"\n    },\n    \"description\": \"England v South Africa at Newlands Cricket Ground",
+          "find": "    \"organizer\": {\n      \"@type\": \"Organization\",\n      \"name\": \"Eventra Group\",\n      \"url\": \"https://eventragroup.com\"\n    },\n    \"offers\": {\n      \"@type\": \"Offer\",\n      \"url\": \"https://eventragroup.com/events/england-cricket-newlands-2027/\",\n      \"validFrom\": \"2026-01-01\",\n      \"description\": \"Five days of Test cricket at Newlands. Hospitality options from a reserved seat in the President's Pavilion Upper to exclusive use of a suite.\"\n    },\n    \"description\": \"England v South Africa at Newlands Cricket Ground",
           "replace": "    \"organizer\": {\n      \"@type\": \"Organization\",\n      \"name\": \"Eventra Group\",\n      \"url\": \"https://eventragroup.com\"\n    },\n    \"description\": \"England v South Africa at Newlands Cricket Ground"
         },
         {
@@ -215,12 +215,12 @@
         {
           "note": "hero primary CTA: send the reader to the cricket hub instead of an in-page enquiry form for a finished Test. Anchored on the hero-ctas wrapper because the replacement button is identical to the overview one, and two identical replace strings would make the second edit read as already applied.",
           "find": "          <div class=\"hero-ctas\">\n            <a href=\"#enquire\" class=\"btn btn-primary\">Enquire Now</a>",
-          "replace": "          <div class=\"hero-ctas\">\n            <a href=\"/experiences/cricket\" class=\"btn btn-primary\">Cricket Hospitality</a>"
+          "replace": "          <div class=\"hero-ctas\">\n            <a href=\"/experiences/cricket/\" class=\"btn btn-primary\">Cricket Hospitality</a>"
         },
         {
           "note": "overview CTA: \"Request a Proposal\" is a live sell. Anchored on the gold-divider for the same replace-uniqueness reason.",
           "find": "            <div class=\"gold-divider\"></div>\n            <a href=\"#enquire\" class=\"btn btn-primary\">Request a Proposal</a>",
-          "replace": "            <div class=\"gold-divider\"></div>\n            <a href=\"/experiences/cricket\" class=\"btn btn-primary\">Cricket Hospitality</a>"
+          "replace": "            <div class=\"gold-divider\"></div>\n            <a href=\"/experiences/cricket/\" class=\"btn btn-primary\">Cricket Hospitality</a>"
         },
         {
           "note": "hospitality options intro: played notice, so the four option cards below read as a record of what was offered rather than a menu. The card bodies themselves are left intact on purpose: they describe what the hospitality was, which is the record this page keeps.",
@@ -239,8 +239,8 @@
         },
         {
           "note": "enquiry band as one contiguous block (eyebrow, headline, subtext, both buttons). Replaced together because the parts depend on each other: the mailto button carries a \"Newlands 2027 Enquiry\" subject line and goes, which cannot be expressed as an edit independent of the button list. Every string is already live on origin/main: \"This fixture<br>has been played.\" is the treated springboks overview headline verbatim; \"... is no longer on sale.\" is the frame on both the springboks and the Wimbledon treatments; \"This page is kept as a record of it. For the ... on sale now, see the ... hospitality hub\" is the springboks record note with the sport noun swapped. Only one link in the subtext and no nested anchors (CLAUDE.md).",
-          "find": "          <p class=\"enquiry-eyebrow\">Enquire</p>\n          <h2 class=\"enquiry-headline\">\n            Request a<br>proposal.\n          </h2>\n          <p class=\"enquiry-subtext\">Tell us how many are travelling and which option suits you, and we will come back with a proposal.</p>\n\n          <div class=\"enquiry-ctas\">\n            <a href=\"/enquire?event=england-cricket-newlands-2027\" class=\"btn btn-primary\">Send Enquiry</a>\n            <a href=\"mailto:info@eventragroup.com?subject=Newlands%202027%20Enquiry\" class=\"btn btn-white-outline\">Email Our Team</a>\n",
-          "replace": "          <p class=\"enquiry-eyebrow\">Past Fixture</p>\n          <h2 class=\"enquiry-headline\">\n            This fixture<br>has been played.\n          </h2>\n          <p class=\"enquiry-subtext\">England v South Africa at Newlands on 3 to 7 January 2027 is no longer on sale. This page is kept as a record of it. For the cricket on sale now, see the <a href=\"/experiences/cricket\">cricket hospitality hub</a>.</p>\n\n          <div class=\"enquiry-ctas\">\n            <a href=\"/experiences/cricket\" class=\"btn btn-primary\">Cricket Hospitality</a>\n"
+          "find": "          <p class=\"enquiry-eyebrow\">Enquire</p>\n          <h2 class=\"enquiry-headline\">\n            Request a<br>proposal.\n          </h2>\n          <p class=\"enquiry-subtext\">Tell us how many are travelling and which option suits you, and we will come back with a proposal.</p>\n\n          <div class=\"enquiry-ctas\">\n            <a href=\"/enquire/?event=england-cricket-newlands-2027\" class=\"btn btn-primary\">Send Enquiry</a>\n            <a href=\"mailto:info@eventragroup.com?subject=Newlands%202027%20Enquiry\" class=\"btn btn-white-outline\">Email Our Team</a>\n",
+          "replace": "          <p class=\"enquiry-eyebrow\">Past Fixture</p>\n          <h2 class=\"enquiry-headline\">\n            This fixture<br>has been played.\n          </h2>\n          <p class=\"enquiry-subtext\">England v South Africa at Newlands on 3 to 7 January 2027 is no longer on sale. This page is kept as a record of it. For the cricket on sale now, see the <a href=\"/experiences/cricket/\">cricket hospitality hub</a>.</p>\n\n          <div class=\"enquiry-ctas\">\n            <a href=\"/experiences/cricket/\" class=\"btn btn-primary\">Cricket Hospitality</a>\n"
         }
       ]
     },
@@ -268,13 +268,13 @@
       "edits": [
         {
           "note": "recovery paragraph: delete the Nations clause and its separating comma, leaving \"see the rugby hospitality hub or Australia 2027\". Matches the single-pointer form already live on the Wimbledon ladies-final page (\"For the Wimbledon hospitality Eventra Group arranges now, see the Wimbledon hub.\").",
-          "find": "<p>This fixture has been played. Springboks vs All Blacks at DHL Stadium on 29 August 2026 is no longer on sale. For the rugby Eventra Group arranges now, see the <a href=\"/experiences/rugby\">rugby hospitality hub</a>, the <a href=\"/experiences/rugby/nations-championship-finals-2026/\">Nations Championship Finals Weekend</a> at Allianz Stadium, Twickenham in November 2026, or <a href=\"/events/australia-2027\">Australia 2027</a>.</p>",
-          "replace": "<p>This fixture has been played. Springboks vs All Blacks at DHL Stadium on 29 August 2026 is no longer on sale. For the rugby Eventra Group arranges now, see the <a href=\"/experiences/rugby\">rugby hospitality hub</a> or <a href=\"/events/australia-2027\">Australia 2027</a>.</p>"
+          "find": "<p>This fixture has been played. Springboks vs All Blacks at DHL Stadium on 29 August 2026 is no longer on sale. For the rugby Eventra Group arranges now, see the <a href=\"/experiences/rugby/\">rugby hospitality hub</a>, the <a href=\"/experiences/rugby/nations-championship-finals-2026/\">Nations Championship Finals Weekend</a> at Allianz Stadium, Twickenham in November 2026, or <a href=\"/events/australia-2027/\">Australia 2027</a>.</p>",
+          "replace": "<p>This fixture has been played. Springboks vs All Blacks at DHL Stadium on 29 August 2026 is no longer on sale. For the rugby Eventra Group arranges now, see the <a href=\"/experiences/rugby/\">rugby hospitality hub</a> or <a href=\"/events/australia-2027/\">Australia 2027</a>.</p>"
         },
         {
           "note": "\"On Sale Now\" list: delete the Nations list item. Its lead-in reads \"These are the rugby experiences Eventra Group arranges now.\" and the section is aria-label=\"What is on sale now\", so from 2026-12-01 this item makes the same false claim as the paragraph above. Anchored on the preceding and following list items so the replacement text is a junction that does not exist before treatment — a bare empty replace would make the engine's includes(replace) idempotency check true forever and skip the edit.",
-          "find": "calendar.</li>\n              <li><a href=\"/experiences/rugby/nations-championship-finals-2026/\">Nations Championship Finals Weekend</a>, Allianz Stadium, Twickenham, 26 to 30 November 2026.</li>\n              <li><a href=\"/events/australia-2027\">",
-          "replace": "calendar.</li>\n              <li><a href=\"/events/australia-2027\">"
+          "find": "calendar.</li>\n              <li><a href=\"/experiences/rugby/nations-championship-finals-2026/\">Nations Championship Finals Weekend</a>, Allianz Stadium, Twickenham, 26 to 30 November 2026.</li>\n              <li><a href=\"/events/australia-2027/\">",
+          "replace": "calendar.</li>\n              <li><a href=\"/events/australia-2027/\">"
         }
       ]
     },
@@ -352,8 +352,8 @@
         },
         {
           "note": "CTA band aria-label + eyebrow + title + body + button as one contiguous block. aria-label \"Rugby hospitality\", eyebrow \"Past Fixture\", title \"This fixture has been played.\" and the /experiences/rugby \"Rugby Hospitality\" button are the strings already live on the treated nations-championship-finals-2026 entry; the body line uses the multi-day non-availability frame live on monaco-gp-2026 and singapore-gp-2026. Site chrome keeps its three /enquire links.",
-          "find": "    <section class=\"cta-band\" aria-label=\"Enquire\">\n      <div class=\"container\">\n        <span class=\"eyebrow\">Plan your attendance</span>\n        <h2>The inaugural Nations Championship Finals Weekend at Twickenham.</h2>\n        <p>Four nights in Mayfair, two match days with RFU hospitality, and a new chapter in the history of the sport. Tell us what you need and we will arrange the rest.</p>\n        <a href=\"/enquire\" class=\"btn btn-primary\">Enquire Now</a>",
-          "replace": "    <section class=\"cta-band\" aria-label=\"Rugby hospitality\">\n      <div class=\"container\">\n        <span class=\"eyebrow\">Past Fixture</span>\n        <h2>This fixture has been played.</h2>\n        <p>The 2026 Nations Championship Finals Weekend, 27 to 29 November 2026, is no longer on sale.</p>\n        <a href=\"/experiences/rugby\" class=\"btn btn-primary\">Rugby Hospitality</a>"
+          "find": "    <section class=\"cta-band\" aria-label=\"Enquire\">\n      <div class=\"container\">\n        <span class=\"eyebrow\">Plan your attendance</span>\n        <h2>The inaugural Nations Championship Finals Weekend at Twickenham.</h2>\n        <p>Four nights in Mayfair, two match days with RFU hospitality, and a new chapter in the history of the sport. Tell us what you need and we will arrange the rest.</p>\n        <a href=\"/enquire/\" class=\"btn btn-primary\">Enquire Now</a>",
+          "replace": "    <section class=\"cta-band\" aria-label=\"Rugby hospitality\">\n      <div class=\"container\">\n        <span class=\"eyebrow\">Past Fixture</span>\n        <h2>This fixture has been played.</h2>\n        <p>The 2026 Nations Championship Finals Weekend, 27 to 29 November 2026, is no longer on sale.</p>\n        <a href=\"/experiences/rugby/\" class=\"btn btn-primary\">Rugby Hospitality</a>"
         }
       ]
     },
@@ -399,13 +399,13 @@
         },
         {
           "note": "body hospitality paragraph: lead with the played notice, keep the historical sentence verbatim, and drop the edition-specific sell plus its link to the product page, which by this date carries the played treatment itself (entry england-cricket-newlands-2027). Reordered on EVE-870 review feedback so the status reads before the sale mechanics rather than after them. The surrounding tense is deliberately left alone, matching that entry's edit 9, which leaves \"Every option includes all five days\" present-tense and only appends the notice. Replacement is the notice plus that entry's edit 12 record-note frame; one link, no nesting (CLAUDE.md).",
-          "find": "          <p><strong>Hospitality.</strong> Pavilion seats, marquee hospitality and hosted suites sit outside the general sale. Eventra offers <a href=\"/events/england-cricket-newlands-2027\">hospitality at Newlands</a> for all five days of the Test, from a reserved seat in the President's Pavilion Upper to a hosted suite.</p>",
-          "replace": "          <p><strong>Hospitality.</strong> This fixture has been played. Pavilion seats, marquee hospitality and hosted suites sit outside the general sale. For the cricket on sale now, see the <a href=\"/experiences/cricket\">cricket hospitality hub</a>.</p>"
+          "find": "          <p><strong>Hospitality.</strong> Pavilion seats, marquee hospitality and hosted suites sit outside the general sale. Eventra offers <a href=\"/events/england-cricket-newlands-2027/\">hospitality at Newlands</a> for all five days of the Test, from a reserved seat in the President's Pavilion Upper to a hosted suite.</p>",
+          "replace": "          <p><strong>Hospitality.</strong> This fixture has been played. Pavilion seats, marquee hospitality and hosted suites sit outside the general sale. For the cricket on sale now, see the <a href=\"/experiences/cricket/\">cricket hospitality hub</a>.</p>"
         },
         {
           "note": "FAQ \"Can I combine the Test with a holiday in Cape Town?\", visible <p>. The question keeps its wording; the answer keeps its generic capability sentence and swaps the edition-specific link for the live cricket hub, prefixed with the played notice.",
-          "find": "<p>Yes. Eventra arranges <a href=\"/events/england-cricket-newlands-2027\">hospitality at Newlands</a> together with accommodation, transfers and the rest of a Cape Town trip, including the Winelands and further afield.</p>",
-          "replace": "<p>This fixture has been played. Eventra arranges <a href=\"/experiences/cricket\">cricket hospitality</a> together with accommodation, transfers and the rest of a Cape Town trip, including the Winelands and further afield.</p>"
+          "find": "<p>Yes. Eventra arranges <a href=\"/events/england-cricket-newlands-2027/\">hospitality at Newlands</a> together with accommodation, transfers and the rest of a Cape Town trip, including the Winelands and further afield.</p>",
+          "replace": "<p>This fixture has been played. Eventra arranges <a href=\"/experiences/cricket/\">cricket hospitality</a> together with accommodation, transfers and the rest of a Cape Town trip, including the Winelands and further afield.</p>"
         },
         {
           "note": "FAQPage JSON-LD \"text\" for the same answer. Structured data a crawler reads as a live answer, so it must be treated alongside the visible <p>. No markup here, it is JSON.",
@@ -414,8 +414,8 @@
         },
         {
           "note": "closing CTA band as one contiguous block: aria-label, headline, body and button. \"Planning to be at Newlands?\" plus \"we will come back with a proposal\" is the live sell this entry exists to retire. Every replacement string is verbatim from the approved england-cricket-newlands-2027 entry: aria-label \"Cricket hospitality\" (edit 11), the \"is no longer on sale ... kept as a record of it\" subtext and the /experiences/cricket \"Cricket Hospitality\" button (edit 12). Site chrome keeps its /enquire links; only this band's instance goes.",
-          "find": "<section class=\"cta-band\" aria-label=\"Enquire\">\n      <div class=\"container\">\n        <h2>Planning to be at Newlands?</h2>\n        <p>Eventra offers <a href=\"/events/england-cricket-newlands-2027\">hospitality at Newlands</a> for all five days of the Test, and can book your accommodation, transfers and the rest of your time in Cape Town. Tell us how many are travelling and we will come back with a proposal.</p>\n        <a href=\"/enquire\" class=\"btn btn-primary\">Enquire about Newlands</a>",
-          "replace": "<section class=\"cta-band\" aria-label=\"Cricket hospitality\">\n      <div class=\"container\">\n        <h2>This fixture has been played.</h2>\n        <p>England v South Africa at Newlands on 3 to 7 January 2027 is no longer on sale. This page is kept as a record of it. For the cricket on sale now, see the <a href=\"/experiences/cricket\">cricket hospitality hub</a>.</p>\n        <a href=\"/experiences/cricket\" class=\"btn btn-primary\">Cricket Hospitality</a>"
+          "find": "<section class=\"cta-band\" aria-label=\"Enquire\">\n      <div class=\"container\">\n        <h2>Planning to be at Newlands?</h2>\n        <p>Eventra offers <a href=\"/events/england-cricket-newlands-2027/\">hospitality at Newlands</a> for all five days of the Test, and can book your accommodation, transfers and the rest of your time in Cape Town. Tell us how many are travelling and we will come back with a proposal.</p>\n        <a href=\"/enquire/\" class=\"btn btn-primary\">Enquire about Newlands</a>",
+          "replace": "<section class=\"cta-band\" aria-label=\"Cricket hospitality\">\n      <div class=\"container\">\n        <h2>This fixture has been played.</h2>\n        <p>England v South Africa at Newlands on 3 to 7 January 2027 is no longer on sale. This page is kept as a record of it. For the cricket on sale now, see the <a href=\"/experiences/cricket/\">cricket hospitality hub</a>.</p>\n        <a href=\"/experiences/cricket/\" class=\"btn btn-primary\">Cricket Hospitality</a>"
         },
         {
           "note": "article intro: drop the \"ways in that remain\" clause from the guide's own contents sentence, keeping both historical sentences verbatim. Deletion only, per the data/played.json rule; junction \"how the tickets went, where to sit\" is absent before treatment. Same shape as this file's nations-championship-finals-weekend-explained-note edits 5/6.",
