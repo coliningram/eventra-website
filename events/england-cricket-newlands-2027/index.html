@@ -23,12 +23,22 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Event",
+    "@type": "SportsEvent",
     "name": "England v South Africa, Newlands Cricket Ground",
     "startDate": "2027-01-03",
     "endDate": "2027-01-07",
     "eventStatus": "https://schema.org/EventScheduled",
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "image": "https://eventragroup.com/images/events/newlands-cricket-ground-table-mountain-cape-town.webp",
+    "homeTeam": {
+      "@type": "SportsTeam",
+      "name": "South Africa",
+      "alternateName": "Proteas"
+    },
+    "awayTeam": {
+      "@type": "SportsTeam",
+      "name": "England"
+    },
     "location": {
       "@type": "Place",
       "name": "Newlands Cricket Ground",
@@ -52,6 +62,48 @@
       "description": "Five days of Test cricket at Newlands. Hospitality options from a reserved seat in the President's Pavilion Upper to exclusive use of a suite."
     },
     "description": "England v South Africa at Newlands Cricket Ground, Cape Town, 3 to 7 January 2027. Five days of Test cricket. Hospitality options are the President's Pavilion, Pavilion Hospitality, a Hospitality Suite and a Premier Suite."
+  }
+  </script>
+
+  <!-- Schema: FAQPage (EVE-920) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "When is the England v South Africa Test at Newlands?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Test runs from 3 to 7 January 2027 at Newlands Cricket Ground, Cape Town. It is five days of Test cricket, and every hospitality option includes all five days."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Where is Newlands Cricket Ground?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Newlands Cricket Ground is at 146 Campground Road in Cape Town, with Table Mountain behind the stand. It is one of the most distinctive grounds in world cricket."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What hospitality does Eventra Group arrange for the Newlands Test?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Eventra Group arranges four options, each covering all five days: a reserved seat in the President’s Pavilion, Pavilion Hospitality with lunch and afternoon tea in a private marquee, a hosted Hospitality Suite, and the Premier Suite. Exclusive use of a whole suite is available on request."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I request a proposal?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tell us how many are travelling and which option suits you, and we will come back with a proposal. Send an enquiry through the enquiry form or email info@eventragroup.com."
+        }
+      }
+    ]
   }
   </script>
 
@@ -1214,6 +1266,17 @@
       .hero-ctas { flex-direction: column; }
       .enquiry-ctas { flex-direction: column; align-items: center; }
     }
+    /* FAQ (EVE-920, markup as on the Nations Championship Finals page) */
+    .faq-section { background: var(--eg-white); padding: var(--section-pad-v) 0; }
+    .faq-inner { max-width: 800px; }
+    .faq-item { border-bottom: 1px solid rgba(0,0,0,0.08); padding: 28px 0; }
+    .faq-item:first-of-type { border-top: 1px solid rgba(0,0,0,0.08); }
+    .faq-question { font-family: var(--font-display); font-weight: 400; font-size: 24px; color: var(--eg-charcoal); margin-bottom: 12px; line-height: 1.3; }
+    .faq-answer { font-family: var(--font-body); font-size: 16px; color: var(--eg-mid-grey); line-height: 1.8; }
+    @media (max-width: 768px) {
+      .faq-section { padding: var(--section-pad-v-sm) 0; }
+      .faq-question { font-size: 21px; }
+    }
   </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-T6JVM735NG"></script>
@@ -1313,19 +1376,17 @@ window.evgEventId = function(p){return p+'_'+Date.now()+'_'+Math.random().toStri
          SECTION 1 — HERO
     ──────────────────────────────────────────── -->
     <section class="hero" aria-label="Newlands 2027 hero">
-      <div class="hero-bg" id="hero-bg" role="img" aria-label="View from the stands at Newlands Cricket Ground, Cape Town, looking across the playing field towards Table Mountain."></div>
+      <div class="hero-bg" id="hero-bg" role="img" aria-label="View from the stands at Newlands Cricket Ground, Cape Town, looking across the playing field towards Table Mountain. The venue for South Africa v England."></div>
       <div class="hero-overlay"></div>
 
       <div class="hero-content">
         <div class="hero-inner">
 
-          <p class="hero-eyebrow">England v South Africa. Newlands, Cape Town</p>
+          <p class="hero-eyebrow">Newlands &rsquo;27</p>
 
           <h1 class="hero-headline">
-            Newlands &rsquo;27
+            England v South Africa.<br>Newlands, Cape Town.<br>3 to 7 January 2027.
           </h1>
-
-          <p class="hero-subline">3 to 7 January 2027</p>
 
           <p class="hero-text">Five days of Test cricket beneath Table Mountain. Watch from a reserved seat in the President&rsquo;s Pavilion or from a hosted suite, with hospitality every day of the match.</p>
 
@@ -1367,7 +1428,7 @@ window.evgEventId = function(p){return p+'_'+Date.now()+'_'+Math.random().toStri
               Five Days.<br>Every Option.
             </h2>
             <div class="overview-body">
-              <p>England v South Africa, Newlands, Cape Town. 3 to 7 January 2027. Five days of Test cricket.</p>
+              <p>England v South Africa, Newlands, Cape Town. 3 to 7 January 2027. Five days of Test cricket. The New Year Test of the England tour of South Africa: South Africa vs England, with the Proteas at home.</p>
               <p>All options include all five days.</p>
             </div>
             <div class="gold-divider"></div>
@@ -1532,6 +1593,38 @@ window.evgEventId = function(p){return p+'_'+Date.now()+'_'+Math.random().toStri
 
         </div>
       </div>
+    </section>
+
+
+    <!-- ────────────────────────────────────────────
+         SECTION 6B: QUESTIONS (EVE-920)
+    ──────────────────────────────────────────── -->
+    <section class="faq-section" aria-label="Frequently asked questions">
+    <div class="container">
+      <div class="faq-inner">
+
+        <div class="faq-item">
+          <h3 class="faq-question">When is the England v South Africa Test at Newlands?</h3>
+          <p class="faq-answer">The Test runs from 3 to 7 January 2027 at Newlands Cricket Ground, Cape Town. It is five days of Test cricket, and every hospitality option includes all five days.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-question">Where is Newlands Cricket Ground?</h3>
+          <p class="faq-answer">Newlands Cricket Ground is at 146 Campground Road in Cape Town, with Table Mountain behind the stand. It is one of the most distinctive grounds in world cricket.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-question">What hospitality does Eventra Group arrange for the Newlands Test?</h3>
+          <p class="faq-answer">Eventra Group arranges four options, each covering all five days: a reserved seat in the President&rsquo;s Pavilion, Pavilion Hospitality with lunch and afternoon tea in a private marquee, a hosted Hospitality Suite, and the Premier Suite. Exclusive use of a whole suite is available on request.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-question">How do I request a proposal?</h3>
+          <p class="faq-answer">Tell us how many are travelling and which option suits you, and we will come back with a proposal. Send an enquiry through the enquiry form or email info@eventragroup.com.</p>
+        </div>
+
+      </div>
+    </div>
     </section>
 
 
