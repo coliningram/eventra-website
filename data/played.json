@@ -264,7 +264,7 @@
         {
           "note": "sitemap lastmod. Both main and staging currently carry a lastmod on this URL, so this is a real edit on both branches today; optional is kept because the staging sitemap carries lastmod on only a subset of URLs and may lose this one, and absence there must be a clean skip rather than a hard error.",
           "optional": true,
-          "find": "<url><loc>https://eventragroup.com/events/england-cricket-newlands-2027/</loc><lastmod>2026-10-07</lastmod></url>",
+          "find": "<url><loc>https://eventragroup.com/events/england-cricket-newlands-2027/</loc><lastmod>2026-11-10</lastmod></url>",
           "replace": "<url><loc>https://eventragroup.com/events/england-cricket-newlands-2027/</loc><lastmod>2027-01-08</lastmod></url>"
         }
       ]
@@ -497,6 +497,34 @@
           "note": "recovery paragraph: delete the Nations clause, leaving the rugby hub and Australia 2027",
           "find": "<p>This fixture has been played. Springboks vs Scotland at Loftus Versfeld on 11 July 2026 is no longer on sale. For the rugby Eventra Group arranges now, see the <a href=\"/experiences/rugby/\">rugby hospitality hub</a>, the <a href=\"/experiences/rugby/nations-championship-finals-2026/\">Nations Championship Finals Weekend</a> at Allianz Stadium, Twickenham in November 2026, or <a href=\"/events/australia-2027/\">Australia 2027</a>.</p>",
           "replace": "<p>This fixture has been played. Springboks vs Scotland at Loftus Versfeld on 11 July 2026 is no longer on sale. For the rugby Eventra Group arranges now, see the <a href=\"/experiences/rugby/\">rugby hospitality hub</a> or <a href=\"/events/australia-2027/\">Australia 2027</a>.</p>"
+        }
+      ]
+    },
+    {
+      "id": "england-inbound-tour-2026-nations-pointer-sitemap",
+      "file": "sitemap.xml",
+      "playedFrom": "2026-12-01",
+      "source": "EVE-920, mirroring EVE-864: removing the stale Nations pointer is a content change, so lastmod moves to the day it applies.",
+      "edits": [
+        {
+          "note": "sitemap lastmod",
+          "optional": true,
+          "find": "<url><loc>https://eventragroup.com/events/england-inbound-tour-2026/</loc><lastmod>2026-11-10</lastmod></url>",
+          "replace": "<url><loc>https://eventragroup.com/events/england-inbound-tour-2026/</loc><lastmod>2026-12-01</lastmod></url>"
+        }
+      ]
+    },
+    {
+      "id": "scotland-inbound-tour-2026-nations-pointer-sitemap",
+      "file": "sitemap.xml",
+      "playedFrom": "2026-12-01",
+      "source": "EVE-920, mirroring EVE-864: removing the stale Nations pointer is a content change, so lastmod moves to the day it applies.",
+      "edits": [
+        {
+          "note": "sitemap lastmod",
+          "optional": true,
+          "find": "<url><loc>https://eventragroup.com/events/scotland-inbound-tour-2026/</loc><lastmod>2026-11-10</lastmod></url>",
+          "replace": "<url><loc>https://eventragroup.com/events/scotland-inbound-tour-2026/</loc><lastmod>2026-12-01</lastmod></url>"
         }
       ]
     }
