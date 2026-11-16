@@ -25,6 +25,25 @@
 
 - CRITICAL: Every single task must end with a git push to github.com/coliningram/eventra-website main branch. Never mark a task complete without confirming the commit hash. If you cannot push, report the exact error. Never save to memory instead of pushing.
 
+## Modern Web Guidance
+
+Approved by Colin on 16 Nov 2026 (EVE-924, EVE-925).
+
+**Browser target.**
+
+- **Baseline Widely available** is the target for anything a visitor needs: content, navigation, images and the enquiry form. A feature only counts once it has been interoperable for 30 months or more.
+- **Baseline Newly available** features are allowed only as progressive enhancement, behind `@supports` or feature detection. The page must work the same without them.
+- **Floor:** content, navigation and enquiry still work on iOS Safari 15 and Chrome/Android 109, with the modern extras simply absent.
+
+**Going forward.** Before writing new front-end code on this site, consult Google's Modern Web Guidance tool on demand. It is not installed, and usage data stays off on every command:
+
+```
+DISABLE_TELEMETRY=1 npx modern-web-guidance@latest search "<topic>"
+DISABLE_TELEMETRY=1 npx modern-web-guidance@latest retrieve <guide-id>
+```
+
+If the guidance conflicts with something Colin has asked for, do not pick a side. Flag the conflict and let Colin decide.
+
 ## Hosting Decisions
 
 - `eventragroup.com` stays on Framer until the new build is explicitly ready to migrate. Do NOT flag this in audits or recommend migration unless the board has explicitly decided we're ready. (EVE-212)
