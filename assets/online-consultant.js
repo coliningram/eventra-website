@@ -1527,7 +1527,7 @@
         '<span class="oc-launcher__dot" aria-hidden="true"></span>',
         '<span class="oc-launcher__label">Online Consultant</span>',
       '</button>',
-      '<div id="oc-panel" class="oc-panel" role="dialog" aria-modal="false" aria-labelledby="oc-title" aria-hidden="true">',
+      '<div id="oc-panel" class="oc-panel" role="dialog" aria-modal="false" aria-labelledby="oc-title" aria-hidden="true" inert>',
         '<div class="oc-header">',
           '<div>',
             '<span class="oc-header__sub">Eventra</span>',
@@ -1710,6 +1710,8 @@
         textInput.addEventListener('keydown', function (e) {
           if (e.key === 'Enter') {
             e.preventDefault();
+            // Enter also confirms an IME candidate (Japanese, Chinese, Korean); do not submit mid-composition.
+            if (e.isComposing || e.keyCode === 229) return;
             commitText();
           }
         });
@@ -1824,6 +1826,7 @@
       if (panel.classList.contains('is-open')) return;
       lastFocused = document.activeElement;
       panel.classList.add('is-open');
+      panel.removeAttribute('inert');
       panel.setAttribute('aria-hidden', 'false');
       launcher.setAttribute('aria-expanded', 'true');
       launcher.classList.add('is-hidden');
@@ -1835,6 +1838,7 @@
       var shouldReset = (current === 'confirmation' || state.submitted);
       panel.classList.remove('is-open');
       panel.setAttribute('aria-hidden', 'true');
+      panel.setAttribute('inert', '');
       launcher.setAttribute('aria-expanded', 'false');
       launcher.classList.remove('is-hidden');
       if (lastFocused && typeof lastFocused.focus === 'function') {
