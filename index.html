@@ -52,7 +52,7 @@
     ─────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; } @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
     body {
       font-family: var(--font-body);
@@ -1640,7 +1640,10 @@ window.evgEventId = function(p){return p+'_'+Date.now()+'_'+Math.random().toStri
     const heroSlides = document.querySelectorAll('.hero-slide');
     if (heroSlides.length > 1) {
       let current = 0;
+      // Visitors who ask for reduced motion keep the first slide.
+      const reduceMotion = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
       setInterval(() => {
+        if (reduceMotion && reduceMotion.matches) return;
         heroSlides[current].classList.remove('hero-slide--active');
         current = (current + 1) % heroSlides.length;
         heroSlides[current].classList.add('hero-slide--active');

@@ -89,7 +89,7 @@
       --gutter:           32px;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; } @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
     body { font-family: var(--font-body); font-size: 16px; color: var(--eg-charcoal); background: var(--eg-white); -webkit-font-smoothing: antialiased; }
     img { display: block; width: 100%; height: auto; }
     a { color: inherit; text-decoration: none; }
