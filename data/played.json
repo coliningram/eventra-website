@@ -409,7 +409,7 @@
         },
         {
           "note": "body hospitality paragraph: lead with the played notice, keep the historical sentence verbatim, and drop the edition-specific sell plus its link to the product page, which by this date carries the played treatment itself (entry england-cricket-newlands-2027). Reordered on EVE-870 review feedback so the status reads before the sale mechanics rather than after them. The surrounding tense is deliberately left alone, matching that entry's edit 9, which leaves \"Every option includes all five days\" present-tense and only appends the notice. Replacement is the notice plus that entry's edit 12 record-note frame; one link, no nesting (CLAUDE.md).",
-          "find": "          <p><strong>Hospitality.</strong> Pavilion seats, marquee hospitality and hosted suites sit outside the general sale. Eventra offers <a href=\"/events/england-cricket-newlands-2027/\">hospitality at Newlands</a> for all five days of the Test, from a reserved seat in the President's Pavilion Upper to a hosted suite.</p>",
+          "find": "          <p><strong>Hospitality.</strong> Pavilion seats, marquee hospitality and hosted suites sit outside the general sale. Eventra offers <a href=\"/events/england-cricket-newlands-2027/\">hospitality at Newlands</a>. Places are limited, so ask us what is still available.</p>",
           "replace": "          <p><strong>Hospitality.</strong> This fixture has been played. Pavilion seats, marquee hospitality and hosted suites sit outside the general sale. For the cricket on sale now, see the <a href=\"/experiences/cricket/\">cricket hospitality hub</a>.</p>"
         },
         {
@@ -424,7 +424,7 @@
         },
         {
           "note": "closing CTA band as one contiguous block: aria-label, headline, body and button. \"Planning to be at Newlands?\" plus \"we will come back with a proposal\" is the live sell this entry exists to retire. Every replacement string is verbatim from the approved england-cricket-newlands-2027 entry: aria-label \"Cricket hospitality\" (edit 11), the \"is no longer on sale ... kept as a record of it\" subtext and the /experiences/cricket \"Cricket Hospitality\" button (edit 12). Site chrome keeps its /enquire links; only this band's instance goes.",
-          "find": "<section class=\"cta-band\" aria-label=\"Enquire\">\n      <div class=\"container\">\n        <h2>Planning to be at Newlands?</h2>\n        <p>Eventra offers <a href=\"/events/england-cricket-newlands-2027/\">hospitality at Newlands</a> for all five days of the Test, and can book your accommodation, transfers and the rest of your time in Cape Town. Tell us how many are travelling and we will come back with a proposal.</p>\n        <a href=\"/enquire/\" class=\"btn btn-primary\">Enquire about Newlands</a>",
+          "find": "<section class=\"cta-band\" aria-label=\"Enquire\">\n      <div class=\"container\">\n        <h2>Planning to be at Newlands?</h2>\n        <p>Eventra offers <a href=\"/events/england-cricket-newlands-2027/\">hospitality at Newlands</a>, and can book your accommodation, transfers and the rest of your time in Cape Town. Tell us how many are travelling and we will come back with a proposal.</p>\n        <a href=\"/enquire/\" class=\"btn btn-primary\">Enquire about Newlands</a>",
           "replace": "<section class=\"cta-band\" aria-label=\"Cricket hospitality\">\n      <div class=\"container\">\n        <h2>This fixture has been played.</h2>\n        <p>England v South Africa at Newlands on 3 to 7 January 2027 is no longer on sale. This page is kept as a record of it. For the cricket on sale now, see the <a href=\"/experiences/cricket/\">cricket hospitality hub</a>.</p>\n        <a href=\"/experiences/cricket/\" class=\"btn btn-primary\">Cricket Hospitality</a>"
         },
         {
@@ -449,12 +449,12 @@
         },
         {
           "note": "FAQ \"Can I still get tickets for day five?\", visible <p>: drop both instructions to act (check CSA ticketing; choose a five-day hospitality option) and append the played notice. The historical first sentence stays verbatim. The question keeps its wording, matching nations-championship-finals-weekend-explained-note edits 9/10, which treat the answer and leave the question.",
-          "find": "<p>Day five was not part of the May sell-out announcement. Check Cricket South Africa's ticketing for day five releases, or choose a hospitality option that includes all five days.</p>",
+          "find": "<p>Day five was not part of the May sell-out announcement. Check Cricket South Africa's ticketing for day five releases, or ask us what hospitality is still available.</p>",
           "replace": "<p>Day five was not part of the May sell-out announcement. This fixture has been played.</p>"
         },
         {
           "note": "FAQ \"Can I still get tickets for day five?\", FAQPage JSON-LD \"text\": same deletion inside structured data.",
-          "find": "\"text\": \"Day five was not part of the May sell-out announcement. Check Cricket South Africa's ticketing for day five releases, or choose a hospitality option that includes all five days.\"",
+          "find": "\"text\": \"Day five was not part of the May sell-out announcement. Check Cricket South Africa's ticketing for day five releases, or ask us what hospitality is still available.\"",
           "replace": "\"text\": \"Day five was not part of the May sell-out announcement. This fixture has been played.\""
         }
       ]
@@ -466,7 +466,7 @@
       "edits": [
         {
           "note": "sitemap lastmod: the played treatment is itself a content change, so lastmod moves to the day it applies. optional because this URL is new on staging (EVE-870) and is not listed in the main sitemap at all, so find and replace are both legitimately absent there until the post is promoted.",
-          "find": "<url><loc>https://eventragroup.com/notes/newlands-new-year-test-2027-england-south-africa/</loc><lastmod>2026-10-08</lastmod></url>",
+          "find": "<url><loc>https://eventragroup.com/notes/newlands-new-year-test-2027-england-south-africa/</loc><lastmod>2026-11-17</lastmod></url>",
           "replace": "<url><loc>https://eventragroup.com/notes/newlands-new-year-test-2027-england-south-africa/</loc><lastmod>2027-01-08</lastmod></url>",
           "optional": true
         }
