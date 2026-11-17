@@ -284,6 +284,96 @@
       ]
     },
     {
+      "id": "newlands-new-year-test-2027-note",
+      "file": "notes/newlands-new-year-test-2027-england-south-africa/index.html",
+      "playedFrom": "2027-01-08",
+      "edits": [
+        {
+          "note": "meta description: played notice appended. The same sentence resolves to four surfaces, so each is anchored on its own attribute or JSON key.",
+          "find": "<meta name=\"description\" content=\"England v South Africa at Newlands, 3 to 7 January 2027. Series dates, how tickets sold, ways in now, where to sit, getting there and planning a Cape Town trip.",
+          "replace": "<meta name=\"description\" content=\"England v South Africa at Newlands, 3 to 7 January 2027. Series dates, how tickets sold, ways in now, where to sit, getting there and planning a Cape Town trip. This fixture has been played."
+        },
+        {
+          "note": "og:description, the surface a social unfurl reads: played notice appended. The same sentence resolves to four surfaces, so each is anchored on its own attribute or JSON key.",
+          "find": "<meta property=\"og:description\" content=\"England v South Africa at Newlands, 3 to 7 January 2027. Series dates, how tickets sold, ways in now, where to sit, getting there and planning a Cape Town trip.",
+          "replace": "<meta property=\"og:description\" content=\"England v South Africa at Newlands, 3 to 7 January 2027. Series dates, how tickets sold, ways in now, where to sit, getting there and planning a Cape Town trip. This fixture has been played."
+        },
+        {
+          "note": "twitter:description: played notice appended. The same sentence resolves to four surfaces, so each is anchored on its own attribute or JSON key.",
+          "find": "<meta name=\"twitter:description\" content=\"England v South Africa at Newlands, 3 to 7 January 2027. Series dates, how tickets sold, ways in now, where to sit, getting there and planning a Cape Town trip.",
+          "replace": "<meta name=\"twitter:description\" content=\"England v South Africa at Newlands, 3 to 7 January 2027. Series dates, how tickets sold, ways in now, where to sit, getting there and planning a Cape Town trip. This fixture has been played."
+        },
+        {
+          "note": "BlogPosting JSON-LD description: played notice appended. The same sentence resolves to four surfaces, so each is anchored on its own attribute or JSON key.",
+          "find": "\"description\": \"England v South Africa at Newlands, 3 to 7 January 2027. Series dates, how tickets sold, ways in now, where to sit, getting there and planning a Cape Town trip.",
+          "replace": "\"description\": \"England v South Africa at Newlands, 3 to 7 January 2027. Series dates, how tickets sold, ways in now, where to sit, getting there and planning a Cape Town trip. This fixture has been played."
+        },
+        {
+          "note": "body hospitality paragraph: lead with the played notice, keep the historical sentence verbatim, and drop the edition-specific sell plus its link to the product page, which by this date carries the played treatment itself (entry england-cricket-newlands-2027). Reordered on EVE-870 review feedback so the status reads before the sale mechanics rather than after them. The surrounding tense is deliberately left alone, matching that entry's edit 9, which leaves \"Every option includes all five days\" present-tense and only appends the notice. Replacement is the notice plus that entry's edit 12 record-note frame; one link, no nesting (CLAUDE.md).",
+          "find": "          <p><strong>Hospitality.</strong> Pavilion seats, marquee hospitality and hosted suites sit outside the general sale. Eventra offers <a href=\"/events/england-cricket-newlands-2027/\">hospitality at Newlands</a>. Places are limited, so ask us what is still available.</p>",
+          "replace": "          <p><strong>Hospitality.</strong> This fixture has been played. Pavilion seats, marquee hospitality and hosted suites sit outside the general sale. For the cricket on sale now, see the <a href=\"/experiences/cricket/\">cricket hospitality hub</a>.</p>"
+        },
+        {
+          "note": "FAQ \"Can I combine the Test with a holiday in Cape Town?\", visible <p>. The question keeps its wording; the answer keeps its generic capability sentence and swaps the edition-specific link for the live cricket hub, prefixed with the played notice.",
+          "find": "<p>Yes. Eventra arranges <a href=\"/events/england-cricket-newlands-2027/\">hospitality at Newlands</a> together with accommodation, transfers and the rest of a Cape Town trip, including the Winelands and further afield.</p>",
+          "replace": "<p>This fixture has been played. Eventra arranges <a href=\"/experiences/cricket/\">cricket hospitality</a> together with accommodation, transfers and the rest of a Cape Town trip, including the Winelands and further afield.</p>"
+        },
+        {
+          "note": "FAQPage JSON-LD \"text\" for the same answer. Structured data a crawler reads as a live answer, so it must be treated alongside the visible <p>. No markup here, it is JSON.",
+          "find": "\"text\": \"Yes. Eventra arranges hospitality at Newlands together with accommodation, transfers and the rest of a Cape Town trip, including the Winelands and further afield.\"",
+          "replace": "\"text\": \"This fixture has been played. Eventra arranges cricket hospitality together with accommodation, transfers and the rest of a Cape Town trip, including the Winelands and further afield.\""
+        },
+        {
+          "note": "closing CTA band as one contiguous block: aria-label, headline, body and button. \"Planning to be at Newlands?\" plus \"we will come back with a proposal\" is the live sell this entry exists to retire. Every replacement string is verbatim from the approved england-cricket-newlands-2027 entry: aria-label \"Cricket hospitality\" (edit 11), the \"is no longer on sale ... kept as a record of it\" subtext and the /experiences/cricket \"Cricket Hospitality\" button (edit 12). Site chrome keeps its /enquire links; only this band's instance goes.",
+          "find": "<section class=\"cta-band\" aria-label=\"Enquire\">\n      <div class=\"container\">\n        <h2>Planning to be at Newlands?</h2>\n        <p>Eventra offers <a href=\"/events/england-cricket-newlands-2027/\">hospitality at Newlands</a>, and can book your accommodation, transfers and the rest of your time in Cape Town. Tell us how many are travelling and we will come back with a proposal.</p>\n        <a href=\"/enquire/\" class=\"btn btn-primary\">Enquire about Newlands</a>",
+          "replace": "<section class=\"cta-band\" aria-label=\"Cricket hospitality\">\n      <div class=\"container\">\n        <h2>This fixture has been played.</h2>\n        <p>England v South Africa at Newlands on 3 to 7 January 2027 is no longer on sale. This page is kept as a record of it. For the cricket on sale now, see the <a href=\"/experiences/cricket/\">cricket hospitality hub</a>.</p>\n        <a href=\"/experiences/cricket/\" class=\"btn btn-primary\">Cricket Hospitality</a>"
+        },
+        {
+          "note": "article intro: drop the \"ways in that remain\" clause from the guide's own contents sentence, keeping both historical sentences verbatim. Deletion only, per the data/played.json rule; junction \"how the tickets went, where to sit\" is absent before treatment. Same shape as this file's nations-championship-finals-weekend-explained-note edits 5/6.",
+          "find": "This guide covers the series, how the tickets went, the ways in that remain, where to sit and how to plan the trip around it.</p>",
+          "replace": "This guide covers the series, how the tickets went, where to sit and how to plan the trip around it.</p>"
+        },
+        {
+          "note": "\"The short version\" Tickets <li>: drop the present-tense availability sentence, keep the two historical sentences (how the May sale went, and what Cricket South Africa said) verbatim. Anchored through to </li> so the replace is a junction absent before treatment.",
+          "find": "will be released later. Hospitality and travel packages remain the main route in.</li>",
+          "replace": "will be released later.</li>"
+        },
+        {
+          "note": "FAQ \"Is the Newlands New Year Test sold out?\", visible <p>: drop the present-tense routes-in sentence and append the played notice. Keeps the historical sell-out record. Visible <p> and the FAQPage JSON-LD \"text\" carry byte-identical prose, so the tag/key wrapper is part of each anchor and they are two edits, not one.",
+          "find": "<p>Days one to four sold out on general sale in May 2026. Cricket South Africa has said further general access tickets will be released later. Hospitality and travel packages offer other routes in.</p>",
+          "replace": "<p>Days one to four sold out on general sale in May 2026. Cricket South Africa has said further general access tickets will be released later. This fixture has been played.</p>"
+        },
+        {
+          "note": "FAQ \"Is the Newlands New Year Test sold out?\", FAQPage JSON-LD \"text\": same deletion inside structured data. A crawler surfaces this as a live answer, so it must not keep asserting that routes in remain.",
+          "find": "\"text\": \"Days one to four sold out on general sale in May 2026. Cricket South Africa has said further general access tickets will be released later. Hospitality and travel packages offer other routes in.\"",
+          "replace": "\"text\": \"Days one to four sold out on general sale in May 2026. Cricket South Africa has said further general access tickets will be released later. This fixture has been played.\""
+        },
+        {
+          "note": "FAQ \"Can I still get tickets for day five?\", visible <p>: drop both instructions to act (check CSA ticketing; choose a five-day hospitality option) and append the played notice. The historical first sentence stays verbatim. The question keeps its wording, matching nations-championship-finals-weekend-explained-note edits 9/10, which treat the answer and leave the question.",
+          "find": "<p>Day five was not part of the May sell-out announcement. Check Cricket South Africa's ticketing for day five releases, or ask us what hospitality is still available.</p>",
+          "replace": "<p>Day five was not part of the May sell-out announcement. This fixture has been played.</p>"
+        },
+        {
+          "note": "FAQ \"Can I still get tickets for day five?\", FAQPage JSON-LD \"text\": same deletion inside structured data.",
+          "find": "\"text\": \"Day five was not part of the May sell-out announcement. Check Cricket South Africa's ticketing for day five releases, or ask us what hospitality is still available.\"",
+          "replace": "\"text\": \"Day five was not part of the May sell-out announcement. This fixture has been played.\""
+        }
+      ]
+    },
+    {
+      "id": "newlands-new-year-test-2027-note-sitemap",
+      "file": "sitemap.xml",
+      "playedFrom": "2027-01-08",
+      "edits": [
+        {
+          "note": "sitemap lastmod: the played treatment is itself a content change, so lastmod moves to the day it applies. optional because this URL is new on staging (EVE-870) and is not listed in the main sitemap at all, so find and replace are both legitimately absent there until the post is promoted.",
+          "find": "<url><loc>https://eventragroup.com/notes/newlands-new-year-test-2027-england-south-africa/</loc><lastmod>2026-11-17</lastmod></url>",
+          "replace": "<url><loc>https://eventragroup.com/notes/newlands-new-year-test-2027-england-south-africa/</loc><lastmod>2027-01-08</lastmod></url>",
+          "optional": true
+        }
+      ]
+    },
+    {
       "id": "england-inbound-tour-2026-nations-pointer",
       "file": "events/england-inbound-tour-2026/index.html",
       "event": "Nations Championship Finals Weekend tour, London, 26-30 November 2026: the forward pointer, not this page's own fixture (Springboks vs England, 4 July 2026, treated under EVE-920)",
