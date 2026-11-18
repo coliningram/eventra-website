@@ -264,7 +264,7 @@
         {
           "note": "sitemap lastmod. Both main and staging currently carry a lastmod on this URL, so this is a real edit on both branches today; optional is kept because the staging sitemap carries lastmod on only a subset of URLs and may lose this one, and absence there must be a clean skip rather than a hard error.",
           "optional": true,
-          "find": "<url><loc>https://eventragroup.com/events/england-cricket-newlands-2027/</loc><lastmod>2026-11-10</lastmod></url>",
+          "find": "<url><loc>https://eventragroup.com/events/england-cricket-newlands-2027/</loc><lastmod>2026-11-18</lastmod></url>",
           "replace": "<url><loc>https://eventragroup.com/events/england-cricket-newlands-2027/</loc><lastmod>2027-01-08</lastmod></url>"
         }
       ]
@@ -466,7 +466,7 @@
       "edits": [
         {
           "note": "sitemap lastmod: the played treatment is itself a content change, so lastmod moves to the day it applies. optional because this URL is new on staging (EVE-870) and is not listed in the main sitemap at all, so find and replace are both legitimately absent there until the post is promoted.",
-          "find": "<url><loc>https://eventragroup.com/notes/newlands-new-year-test-2027-england-south-africa/</loc><lastmod>2026-11-17</lastmod></url>",
+          "find": "<url><loc>https://eventragroup.com/notes/newlands-new-year-test-2027-england-south-africa/</loc><lastmod>2026-11-18</lastmod></url>",
           "replace": "<url><loc>https://eventragroup.com/notes/newlands-new-year-test-2027-england-south-africa/</loc><lastmod>2027-01-08</lastmod></url>",
           "optional": true
         }
