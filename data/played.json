@@ -22,7 +22,7 @@
         {
           "note": "meta description: played notice + forward pointer",
           "find": "<meta name=\"description\" content=\"Singapore Grand Prix 2026 Green Room hospitality at Turn 3 &mdash; night race, gourmet cuisine, free-flow drinks and Singapore Flyer ride included. 9-11 October 2026.\">",
-          "replace": "<meta name=\"description\" content=\"Singapore Grand Prix 2026 Green Room hospitality at Turn 3 &mdash; night race, gourmet cuisine, free-flow drinks and Singapore Flyer ride included. 9-11 October 2026. This race has been run. See the Formula 1 hospitality Eventra Group arranges now.\">"
+          "replace": "<meta name=\"description\" content=\"Singapore Grand Prix 2026 Green Room hospitality at Turn 3 of the Marina Bay night race, 9 to 11 October 2026. This race has been run.\">"
         },
         {
           "note": "og:description: played notice",
@@ -89,9 +89,9 @@
       "source": "EVE-862. playedFrom is derived from the tour's endDate, not the last match day: the page's Event JSON-LD is startDate 2026-11-26 / endDate 2026-11-30 and the page sells '26 to 30 November 2026', matching data/fixtures.json date 2026-11-30, so the first day the whole product is past is 2026-12-01. Every replacement reuses wording already live on origin/main: 'This fixture has been played.' and 'This fixture has been played. See the rugby Eventra Group arranges now.' from the EVE-794 section B treatment of events/springboks-vs-all-blacks-2026, plus the 'Past Fixture' eyebrow label from that same page. No new voice, so this is not EVE-823-gated.",
       "edits": [
         {
-          "note": "meta description: played notice + rugby forward pointer (wording live on events/springboks-vs-all-blacks-2026)",
+          "note": "meta description: played notice in place of the sentence on how hospitality is bought, so the played description stays within 160 characters (EVE-939)",
           "find": "<meta name=\"description\" content=\"Four nights in Mayfair and two days of rugby at Allianz Stadium, Twickenham, 26 to 30 November 2026. Official RFU hospitality, bought direct.\">",
-          "replace": "<meta name=\"description\" content=\"Four nights in Mayfair and two days of rugby at Allianz Stadium, Twickenham, 26 to 30 November 2026. Official RFU hospitality, bought direct. This fixture has been played. See the rugby Eventra Group arranges now.\">"
+          "replace": "<meta name=\"description\" content=\"Four nights in Mayfair and two days of rugby at Allianz Stadium, Twickenham, 26 to 30 November 2026. This fixture has been played.\">"
         },
         {
           "note": "og:description: played notice",
@@ -163,9 +163,9 @@
       "source": "EVE-863. playedFrom is the day after the last day of play: the page's Event JSON-LD is startDate 2027-01-03 / endDate 2027-01-07, data/fixtures.json carries date 2027-01-07, and EVE-853 settled the dates as 3 to 7 January 2027, so 2027-01-08 is the first day the Test is past. Every replacement reuses wording already live on origin/main from the EVE-794 section B treatment ('This fixture has been played.', the 'Past Fixture' label, '... is no longer on sale.', the 'kept as a record of it' note and the 'See the ... Eventra Group arranges now.' pointer); the only change is the sport noun, which already varies per page across five live instances. No new voice, so this is not EVE-823-gated. This page has no twitter:description, unlike EVE-862's.",
       "edits": [
         {
-          "note": "meta description: played notice + cricket forward pointer. The pointer sentence is the frame already live on origin/main in five places (rugby, Formula 1, Wimbledon, US Open, Roland Garros); only the sport noun changes.",
+          "note": "meta description: played notice in place of the suite hospitality clause, so the played description stays within 160 characters (EVE-939)",
           "find": "<meta name=\"description\" content=\"England v South Africa at Newlands, Cape Town, 3 to 7 January 2027. Five days of Test cricket, with suite hospitality sold in two-day packages.\">",
-          "replace": "<meta name=\"description\" content=\"England v South Africa at Newlands, Cape Town, 3 to 7 January 2027. Five days of Test cricket, with suite hospitality sold in two-day packages. This fixture has been played. See the cricket Eventra Group arranges now.\">"
+          "replace": "<meta name=\"description\" content=\"England v South Africa at Newlands, Cape Town, 3 to 7 January 2027. Five days of Test cricket. This fixture has been played.\">"
         },
         {
           "note": "og:description: played notice. This is the share-card surface an unfurl reads, and noindex does not stop an unfurl.",
@@ -289,9 +289,9 @@
       "playedFrom": "2027-01-08",
       "edits": [
         {
-          "note": "meta description: played notice appended. The same sentence resolves to four surfaces, so each is anchored on its own attribute or JSON key.",
+          "note": "meta description: played notice, with the contents sentence shortened so the played description stays within 160 characters (EVE-939). The same sentence resolves to four surfaces, so each is anchored on its own attribute or JSON key",
           "find": "<meta name=\"description\" content=\"England v South Africa at Newlands, 3 to 7 January 2027. Series dates, how tickets sold, ways in now, where to sit, getting there and planning a Cape Town trip.",
-          "replace": "<meta name=\"description\" content=\"England v South Africa at Newlands, 3 to 7 January 2027. Series dates, how tickets sold, ways in now, where to sit, getting there and planning a Cape Town trip. This fixture has been played."
+          "replace": "<meta name=\"description\" content=\"England v South Africa at Newlands, 3 to 7 January 2027. The series, how tickets sold, where to sit and planning a Cape Town trip. This fixture has been played."
         },
         {
           "note": "og:description, the surface a social unfurl reads: played notice appended. The same sentence resolves to four surfaces, so each is anchored on its own attribute or JSON key.",
