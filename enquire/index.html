@@ -860,6 +860,7 @@ window.evgEventId = function(p){return p+'_'+Date.now()+'_'+Math.random().toStri
           >
             <input type="hidden" name="access_key" value="6b1b9f4c-cee8-480f-b58b-d08099358faa">
             <input type="hidden" name="subject" value="Eventra Group Website Enquiry">
+            <input type="hidden" name="event" id="enquiry-event" value="">
 
             <div class="form-row">
               <div class="form-group">
@@ -1041,6 +1042,21 @@ window.evgEventId = function(p){return p+'_'+Date.now()+'_'+Math.random().toStri
     // Web3forms AJAX submission
     const form = document.getElementById('enquire-form');
     const successMsg = document.getElementById('form-success');
+
+    // Event the visitor came from (?event=slug), carried in a hidden field.
+    // Only a plain slug is accepted, and it is set as a field value, never as HTML.
+    const eventField = document.getElementById('enquiry-event');
+    if (eventField) {
+      const eventSlug = new URLSearchParams(window.location.search).get('event');
+      if (eventSlug && /^[a-z0-9-]{1,80}$/.test(eventSlug)) {
+        eventField.value = eventSlug;
+        const typeSelect = document.getElementById('enquiry-type');
+        if (typeSelect && typeSelect.value === '') typeSelect.value = 'Sports Hospitality';
+      } else {
+        eventField.value = '';
+      }
+    }
+
     if (form) {
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
