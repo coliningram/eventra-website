@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preload" as="image" href="../../../images/bespoke/europe/western-europe/paris-seine-river-eiffel-tower-view.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="../../../images/bespoke/europe/western-europe/paris-seine-river-eiffel-tower-view-1200.webp" fetchpriority="high" media="(max-width: 768px)">
+  <link rel="preload" as="image" href="../../../images/bespoke/europe/western-europe/paris-seine-river-eiffel-tower-view.webp" fetchpriority="high" media="(min-width: 769px)">
   <title>Western Europe Luxury Travel | France Monaco Spain | Eventra Group</title>
   <link rel="icon" type="image/png" href="/images/logos/Eventra-Logo-Gold.png">
   <link rel="apple-touch-icon" href="/images/logos/Eventra-Logo-Gold.png">
@@ -368,6 +369,10 @@
       .hero-headline { font-size: 36px; }
       .intro-title { font-size: 28px; }
     }
+    /* Phone-sized hero copy (EVE-941) */
+    @media (max-width: 768px) {
+      .hero-bg { background-image: url('../../../images/bespoke/europe/western-europe/paris-seine-river-eiffel-tower-view-1200.webp'); }
+    }
   </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-T6JVM735NG"></script>
@@ -699,7 +704,7 @@ window.evgEventId = function(p){return p+'_'+Date.now()+'_'+Math.random().toStri
     if (heroBg) {
       const img = new Image();
       img.onload = () => heroBg.classList.add('loaded');
-      img.src = '../../../images/bespoke/europe/western-europe/paris-seine-river-eiffel-tower-view.webp';
+      img.src = window.matchMedia('(max-width: 768px)').matches ? '../../../images/bespoke/europe/western-europe/paris-seine-river-eiffel-tower-view-1200.webp' : '../../../images/bespoke/europe/western-europe/paris-seine-river-eiffel-tower-view.webp';
       img.alt = 'View along the Seine River in Paris towards the Eiffel Tower — luxury France and Western Europe travel with Eventra Bespoke';
     }
 

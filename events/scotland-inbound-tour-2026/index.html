@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preload" as="image" href="/images/experiences/rugby/scotland-tour-hero.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="/images/experiences/rugby/scotland-tour-hero-1200.webp" fetchpriority="high" media="(max-width: 768px)">
+  <link rel="preload" as="image" href="/images/experiences/rugby/scotland-tour-hero.webp" fetchpriority="high" media="(min-width: 769px)">
   <title>Springboks vs Scotland 2026: Loftus Hospitality | Eventra Group</title>
   <link rel="icon" type="image/png" href="/images/logos/Eventra-Logo-Gold.png">
   <link rel="apple-touch-icon" href="/images/logos/Eventra-Logo-Gold.png">
@@ -451,6 +452,10 @@
       .hero-ctas { flex-direction: column; }
       .event-stats { grid-template-columns: 1fr; }
       .event-stats .stat-item { border-right: none; }
+    }
+    /* Phone-sized hero copy (EVE-941) */
+    @media (max-width: 768px) {
+      .hero-bg { background-image: url('/images/experiences/rugby/scotland-tour-hero-1200.webp'); }
     }
   </style>
 <!-- Google tag (gtag.js) -->

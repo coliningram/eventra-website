@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preload" as="image" href="/images/bespoke/europe/uk-ireland/london-thames-houses-of-parliament-big-ben-aerial.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="/images/bespoke/europe/uk-ireland/london-thames-houses-of-parliament-big-ben-aerial-1200.webp" fetchpriority="high" media="(max-width: 768px)">
+  <link rel="preload" as="image" href="/images/bespoke/europe/uk-ireland/london-thames-houses-of-parliament-big-ben-aerial.webp" fetchpriority="high" media="(min-width: 769px)">
   <title>England Luxury Travel | London Cotswolds Cornwall | Eventra Group</title>
   <link rel="icon" type="image/png" href="/images/logos/Eventra-Logo-Gold.png">
   <link rel="apple-touch-icon" href="/images/logos/Eventra-Logo-Gold.png">
@@ -353,6 +354,10 @@
       .occasions-grid { grid-template-columns: 1fr; gap: 20px; }
       .occ-card { min-height: 380px; }
       .occasions-intro-title { font-size: 32px; }
+    }
+    /* Phone-sized hero copy (EVE-941) */
+    @media (max-width: 768px) {
+      .hero-bg { background-image: url('/images/bespoke/europe/uk-ireland/london-thames-houses-of-parliament-big-ben-aerial-1200.webp'); }
     }
   </style>
 <!-- Google tag (gtag.js) -->
@@ -837,7 +842,7 @@ window.evgEventId = function(p){return p+'_'+Date.now()+'_'+Math.random().toStri
     if (heroBg) {
       const img = new Image();
       img.onload = () => heroBg.classList.add('loaded');
-      img.src = '/images/bespoke/europe/uk-ireland/london-thames-houses-of-parliament-big-ben-aerial.webp';
+      img.src = window.matchMedia('(max-width: 768px)').matches ? '/images/bespoke/europe/uk-ireland/london-thames-houses-of-parliament-big-ben-aerial-1200.webp' : '/images/bespoke/europe/uk-ireland/london-thames-houses-of-parliament-big-ben-aerial.webp';
     }
 
     const hamburger = document.getElementById('nav-hamburger');
