@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preload" as="image" href="/images/hero/cape-town-table-mountain-devils-peak-sunset-sea.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="/images/hero/cape-town-table-mountain-devils-peak-sunset-sea-1600.webp" fetchpriority="high" media="(max-width: 768px)">
+  <link rel="preload" as="image" href="/images/hero/cape-town-table-mountain-devils-peak-sunset-sea.webp" fetchpriority="high" media="(min-width: 769px)">
   <title>Get in Touch | Eventra Group</title>
   <link rel="icon" type="image/png" href="/images/logos/Eventra-Logo-Gold.png">
   <link rel="apple-touch-icon" href="/images/logos/Eventra-Logo-Gold.png">
@@ -659,6 +660,10 @@
     .breadcrumb-list a { color: var(--eg-mid-grey); transition: color 0.2s; }
     .breadcrumb-list a:hover { color: var(--eg-gold); }
     .breadcrumb-list .current { color: var(--eg-charcoal); }
+    /* Phone-sized hero copy (EVE-941) */
+    @media (max-width: 768px) {
+      .page-hero-bg { background-image: url('/images/hero/cape-town-table-mountain-devils-peak-sunset-sea-1600.webp'); }
+    }
   </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-T6JVM735NG"></script>
