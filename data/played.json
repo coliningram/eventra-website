@@ -157,6 +157,11 @@
           "note": "What is included: drop the on-request availability clause. 'on request' is the exact phrase the Newlands edit-10 ruling was written against. EVE-865.",
           "find": "Deluxe City and Metropolitan City categories, suite upgrades on request.",
           "replace": "Deluxe City and Metropolitan City categories."
+        },
+        {
+          "note": "The Event JSON-LD offer: availability goes from InStock to SoldOut, so the offer no longer reads as in stock once the page says the tour is no longer on sale. Only the availability value changes; price, currency, url and validFrom stay. SoldOut is one of the availability values Google documents for event offers, approved by Colin. EVE-949.",
+          "find": "\"availability\": \"https://schema.org/InStock\"",
+          "replace": "\"availability\": \"https://schema.org/SoldOut\""
         }
       ]
     },
