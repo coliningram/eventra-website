@@ -17,7 +17,7 @@
   <meta name="twitter:card" content="summary_large_image">
 
   <!-- Preload critical hero image -->
-  <link rel="preload" as="image" href="/images/hero/cape-town-aerial-table-mountain-dhl-stadium-sea.webp">
+  <link rel="preload" as="image" href="/images/hero/cape-town-aerial-table-mountain-dhl-stadium-sea.webp" fetchpriority="high">
 
   <!-- Fonts, self-hosted -->
   <link rel="preconnect" href="https://images.unsplash.com">
@@ -1328,10 +1328,10 @@ window.evgEventId = function(p){return p+'_'+Date.now()+'_'+Math.random().toStri
   <section class="hero" aria-label="Hero">
     <div class="hero-carousel" id="hero-carousel" aria-hidden="true">
       <div class="hero-slide hero-slide--active" style="background-image: url('/images/hero/cape-town-aerial-table-mountain-dhl-stadium-sea.webp');" role="img" aria-label="Aerial view of Cape Town with Table Mountain and DHL Stadium"></div>
-      <div class="hero-slide" style="background-image: url('/images/events/newlands-cricket-ground-table-mountain-cape-town.webp');" role="img" aria-label="View from the stands at Newlands Cricket Ground Cape Town with Table Mountain"></div>
-      <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1483683804023-6ccdb62f86ef?w=1200&q=70&auto=format&fit=crop&fm=webp');" role="img" aria-label="Mauritius Indian Ocean island luxury travel — Eventra Bespoke"></div>
-      <div class="hero-slide" style="background-image: url('/images/hero/atrani-italy-along-the-beautiful-amalfi-coast.webp');" role="img" aria-label="Beautiful houses in Atrani on the Italian Amalfi coast"></div>
-      <div class="hero-slide" style="background-image: url('/images/hero/tunisia-harbour-boats.webp');" role="img" aria-label="Colourful boats in a Tunisian harbour"></div>
+      <div class="hero-slide" data-bg="/images/events/newlands-cricket-ground-table-mountain-cape-town.webp" role="img" aria-label="View from the stands at Newlands Cricket Ground Cape Town with Table Mountain"></div>
+      <div class="hero-slide" data-bg="https://images.unsplash.com/photo-1483683804023-6ccdb62f86ef?w=1200&amp;q=70&amp;auto=format&amp;fit=crop&amp;fm=webp" role="img" aria-label="Mauritius Indian Ocean island luxury travel — Eventra Bespoke"></div>
+      <div class="hero-slide" data-bg="/images/hero/atrani-italy-along-the-beautiful-amalfi-coast.webp" role="img" aria-label="Beautiful houses in Atrani on the Italian Amalfi coast"></div>
+      <div class="hero-slide" data-bg="/images/hero/tunisia-harbour-boats.webp" role="img" aria-label="Colourful boats in a Tunisian harbour"></div>
     </div>
     <div class="hero-overlay"></div>
 
@@ -1653,18 +1653,72 @@ window.evgEventId = function(p){return p+'_'+Date.now()+'_'+Math.random().toStri
     };
     window.addEventListener('scroll', onScroll, { passive: true });
 
-    // Hero carousel
+    // Hero carousel (EVE-944)
+    // Only the first slide's picture loads with the page. Slides 2 to 5 keep
+    // their picture in data-bg; once the first slide has been painted they are
+    // fetched one at a time, in order, at low priority. The slideshow never
+    // fades to a slide whose picture has not finished loading: it keeps the
+    // current slide and moves on as soon as the next one is ready.
     const heroSlides = document.querySelectorAll('.hero-slide');
     if (heroSlides.length > 1) {
       let current = 0;
+      let waiting = false;
+      const ready = [true];
+      const failed = [];
+      const held = [];
       // Visitors who ask for reduced motion keep the first slide.
       const reduceMotion = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
-      setInterval(() => {
-        if (reduceMotion && reduceMotion.matches) return;
-        heroSlides[current].classList.remove('hero-slide--active');
-        current = (current + 1) % heroSlides.length;
-        heroSlides[current].classList.add('hero-slide--active');
-      }, 3500);
+      const nextIndex = () => {
+        let n = current;
+        for (let k = 1; k < heroSlides.length; k++) {
+          n = (n + 1) % heroSlides.length;
+          if (!failed[n]) return n;
+        }
+        return current;
+      };
+      const tick = () => {
+        if (reduceMotion && reduceMotion.matches) { setTimeout(tick, 3500); return; }
+        const next = nextIndex();
+        if (!ready[next]) { waiting = true; return; }
+        waiting = false;
+        if (next !== current) {
+          heroSlides[current].classList.remove('hero-slide--active');
+          current = next;
+          heroSlides[current].classList.add('hero-slide--active');
+        }
+        setTimeout(tick, 3500);
+      };
+      const settled = () => { if (waiting && (ready[nextIndex()] || nextIndex() === current)) tick(); };
+      const loadSlide = (i) => {
+        if (i >= heroSlides.length) return;
+        const slide = heroSlides[i];
+        const url = slide.getAttribute('data-bg');
+        if (!url) { ready[i] = true; settled(); loadSlide(i + 1); return; }
+        const img = new Image();
+        held.push(img);
+        if ('fetchPriority' in img) img.fetchPriority = 'low';
+        const done = () => {
+          slide.style.backgroundImage = "url('" + url + "')";
+          ready[i] = true;
+          settled();
+          loadSlide(i + 1);
+        };
+        img.onload = () => { if (img.decode) img.decode().then(done, done); else done(); };
+        img.onerror = () => { failed[i] = true; settled(); loadSlide(i + 1); };
+        img.src = url;
+      };
+      // Start on slides 2 to 5 in the frame after the first slide has painted.
+      const startRest = () => requestAnimationFrame(() => setTimeout(() => loadSlide(1), 0));
+      const firstBg = getComputedStyle(heroSlides[0]).backgroundImage.match(/url\(["']?([^"')]+)["']?\)/);
+      if (firstBg) {
+        const first = new Image();
+        held.push(first);
+        first.onload = first.onerror = startRest;
+        first.src = firstBg[1];
+      } else {
+        startRest();
+      }
+      setTimeout(tick, 3500);
     }
 
     // Mobile nav
