@@ -17,7 +17,8 @@
   <meta name="twitter:card" content="summary_large_image">
 
   <!-- Preload critical hero image -->
-  <link rel="preload" as="image" href="/images/hero/cape-town-aerial-table-mountain-dhl-stadium-sea.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="/images/hero/cape-town-aerial-table-mountain-dhl-stadium-sea-1600.webp" fetchpriority="high" media="(max-width: 768px)">
+  <link rel="preload" as="image" href="/images/hero/cape-town-aerial-table-mountain-dhl-stadium-sea.webp" fetchpriority="high" media="(min-width: 769px)">
 
   <!-- Fonts, self-hosted -->
   <link rel="preconnect" href="https://images.unsplash.com">
@@ -1148,6 +1149,10 @@
       .event-ticker-track { animation-duration: 90s; }
     }
     /* TICKER STYLES END */
+    /* Phone-sized copy of the first hero slide (EVE-944) */
+    @media (max-width: 768px) {
+      #hero-carousel .hero-slide:first-child { background-image: url('/images/hero/cape-town-aerial-table-mountain-dhl-stadium-sea-1600.webp') !important; }
+    }
   </style>
 <!-- Eventra website - last updated by Web Developer -->
 <!-- Google tag (gtag.js) -->
@@ -1328,10 +1333,10 @@ window.evgEventId = function(p){return p+'_'+Date.now()+'_'+Math.random().toStri
   <section class="hero" aria-label="Hero">
     <div class="hero-carousel" id="hero-carousel" aria-hidden="true">
       <div class="hero-slide hero-slide--active" style="background-image: url('/images/hero/cape-town-aerial-table-mountain-dhl-stadium-sea.webp');" role="img" aria-label="Aerial view of Cape Town with Table Mountain and DHL Stadium"></div>
-      <div class="hero-slide" data-bg="/images/events/newlands-cricket-ground-table-mountain-cape-town.webp" role="img" aria-label="View from the stands at Newlands Cricket Ground Cape Town with Table Mountain"></div>
+      <div class="hero-slide" data-bg="/images/events/newlands-cricket-ground-table-mountain-cape-town.webp" data-bg-phone="/images/events/newlands-cricket-ground-table-mountain-cape-town-1200.webp" role="img" aria-label="View from the stands at Newlands Cricket Ground Cape Town with Table Mountain"></div>
       <div class="hero-slide" data-bg="https://images.unsplash.com/photo-1483683804023-6ccdb62f86ef?w=1200&amp;q=70&amp;auto=format&amp;fit=crop&amp;fm=webp" role="img" aria-label="Mauritius Indian Ocean island luxury travel — Eventra Bespoke"></div>
-      <div class="hero-slide" data-bg="/images/hero/atrani-italy-along-the-beautiful-amalfi-coast.webp" role="img" aria-label="Beautiful houses in Atrani on the Italian Amalfi coast"></div>
-      <div class="hero-slide" data-bg="/images/hero/tunisia-harbour-boats.webp" role="img" aria-label="Colourful boats in a Tunisian harbour"></div>
+      <div class="hero-slide" data-bg="/images/hero/atrani-italy-along-the-beautiful-amalfi-coast.webp" data-bg-phone="/images/hero/atrani-italy-along-the-beautiful-amalfi-coast-1600.webp" role="img" aria-label="Beautiful houses in Atrani on the Italian Amalfi coast"></div>
+      <div class="hero-slide" data-bg="/images/hero/tunisia-harbour-boats.webp" data-bg-phone="/images/hero/tunisia-harbour-boats-1600.webp" role="img" aria-label="Colourful boats in a Tunisian harbour"></div>
     </div>
     <div class="hero-overlay"></div>
 
@@ -1666,6 +1671,8 @@ window.evgEventId = function(p){return p+'_'+Date.now()+'_'+Math.random().toStri
       const ready = [true];
       const failed = [];
       const held = [];
+      // Phones (768 px wide and below) get the lighter copy where a slide has one.
+      const phone = window.matchMedia ? window.matchMedia('(max-width: 768px)').matches : false;
       // Visitors who ask for reduced motion keep the first slide.
       const reduceMotion = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
       const nextIndex = () => {
@@ -1692,7 +1699,7 @@ window.evgEventId = function(p){return p+'_'+Date.now()+'_'+Math.random().toStri
       const loadSlide = (i) => {
         if (i >= heroSlides.length) return;
         const slide = heroSlides[i];
-        const url = slide.getAttribute('data-bg');
+        const url = (phone && slide.getAttribute('data-bg-phone')) || slide.getAttribute('data-bg');
         if (!url) { ready[i] = true; settled(); loadSlide(i + 1); return; }
         const img = new Image();
         held.push(img);
