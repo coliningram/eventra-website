@@ -1660,8 +1660,10 @@ window.evgEventId = function(p){return p+'_'+Date.now()+'_'+Math.random().toStri
 
     // Hero carousel (EVE-944)
     // Only the first slide's picture loads with the page. Slides 2 to 5 keep
-    // their picture in data-bg; once the first slide has been painted they are
-    // fetched one at a time, in order, at low priority. The slideshow never
+    // their picture in data-bg. They are fetched one at a time, in order, at low
+    // priority, starting once the first slide has been painted and no earlier
+    // than 3 s after the page started (the first change is at 3.5 s), so the
+    // first view has the connection to itself. The slideshow never
     // fades to a slide whose picture has not finished loading: it keeps the
     // current slide and moves on as soon as the next one is ready.
     const heroSlides = document.querySelectorAll('.hero-slide');
@@ -1714,8 +1716,9 @@ window.evgEventId = function(p){return p+'_'+Date.now()+'_'+Math.random().toStri
         img.onerror = () => { failed[i] = true; settled(); loadSlide(i + 1); };
         img.src = url;
       };
-      // Start on slides 2 to 5 in the frame after the first slide has painted.
-      const startRest = () => requestAnimationFrame(() => setTimeout(() => loadSlide(1), 0));
+      // Start on slides 2 to 5 in the frame after the first slide has painted,
+      // and not before 3 s after navigation start.
+      const startRest = () => requestAnimationFrame(() => setTimeout(() => loadSlide(1), Math.max(0, 3000 - performance.now())));
       const firstBg = getComputedStyle(heroSlides[0]).backgroundImage.match(/url\(["']?([^"')]+)["']?\)/);
       if (firstBg) {
         const first = new Image();
